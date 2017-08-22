@@ -34,7 +34,7 @@ const config = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist', 'assets'),
     filename: '[name].bundle.js',
     publicPath: '/',
   },

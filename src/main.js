@@ -30,23 +30,24 @@ import Async from 'react-code-splitting';
 
 import ShopifyBuy from 'shopify-buy';
 
+/**
+ * @section Init
+ */
+
 const client = ShopifyBuy.buildClient({
   appId: '6', // '6' is for JS Buy Button (this app)
   accessToken,
   domain,
 });
-const cart = client.createCart();
+const sharedProps = { client };
 
 /**
  * @section Dynamic components (lazy-loaded)
  */
 
-const sharedProps = { client, cart };
-
 const Nav = () => (<Async load={import('./components/Nav')} componentProps={sharedProps} />);
-const Home = () => (<Async load={import('./pages/Home')} componentProps={sharedProps} />);
+const Home = () => (<Async load={import('./pages/Home')} />);
 const Coffee = () => (<Async load={import('./pages/Coffee')} componentProps={sharedProps} />);
-const Cart = () => (<Async load={import('./components/Cart')} componentProps={sharedProps} />);
 const fourOhFour = () => (<Async load={import('./pages/404')} componentProps={sharedProps} />);
 
 /**
@@ -61,7 +62,7 @@ const App = () => (
   <Router>
     <BaseStyles>
       <Nav />
-      <Route exact path="/cart" component={Cart} />
+
       <Route exact path="/" component={Home} />
       <Route exact path="/collections/coffee" component={Coffee} />
       <Route exact path="/collections/gear" component={Coffee} />
@@ -72,5 +73,5 @@ const App = () => (
 
 ReactDOM.render(
   React.createElement(App),
-  document.getElementById('app-root'),
+  document.getElementById('app-root')
 );
