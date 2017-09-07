@@ -40,7 +40,7 @@ export default class extends React.Component {
         <a href="/cart" onClick={this.openCart}>Cart</a>
 
         <Cart
-          client={this.props.client}
+          cart={this.props.cart}
           closeCart={this.closeCart}
           isCartOpen={this.state.isCartOpen}
         />

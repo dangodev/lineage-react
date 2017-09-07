@@ -1,6 +1,6 @@
 /**
- * Coffee Page
- * But first, ☕️!
+ * Gear Page
+ * For all your tactical coffee needs
  */
 
 import React from 'react';
