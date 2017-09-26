@@ -1,6 +1,6 @@
 /**
  * App
- * Root-level data structure
+ * The top of the waterfall.
  */
 
 import React from 'react';
@@ -12,14 +12,11 @@ import {
   Redirect,
   withRouter
 } from 'react-router-dom';
-import styled, { injectGlobal } from 'styled-components';
 
 import Nav from './components/Nav';
+import ProductListContainer from './containers/ProductListContainer';
 
-import Coffee from './pages/Coffee';
-import Gear from './pages/Gear';
 import Home from './pages/Home';
-import Product from './pages/Product';
 
 /* Shopify */
 
@@ -29,7 +26,7 @@ import ShopifyBuy from 'shopify-buy';
  * @section Config
  */
 
-const accessToken = '8b97d4f794c051c78b3f00e8da03ef19';
+const accessToken = '8b97d4f794c051c78b3f00e8da03ef19'; // Read-only. It’s cool.
 const domain = 'lineage-coffee-roasting.myshopify.com';
 
 const coffeeCollection = 27654297;
@@ -37,29 +34,28 @@ const gearCollection = '28017149';
 const cartCollection = '';
 
 /**
- * @section Render
+ * @section Component
  */
 
-export default class extends React.Component {
+class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      cart: { lineItems: [] },
+      cartItems: [],
       client: ShopifyBuy.buildClient({
         appId: '6', // '6' is for JS Buy Button (this app)
         accessToken,
         domain,
       }),
-      coffeeProducts: [],  // We have to do it this way, because Shopify doesn’t
-      gearProducts: [],    // expose collections on products.
+      collections: [],
+      products: [],
+      selectedCollectionHandle: null,
+      selectedProductHandle: null,
     };
-
-    this.getProduct.bind(this);
 
     // Init
     this.getCart();
-    this.getCoffeeProducts();
-    this.getGearProducts();
+    this.getProducts();
   }
 
   getCart() {
@@ -70,7 +66,7 @@ export default class extends React.Component {
         .then((result) => {
           this.setState({ isLoading: false });
           if (result) {
-            this.setState({ cart: result });
+            this.setState({ cartItems: result.lineItems });
           } else {
             setTimeout(() => this.getCart(), 1000); // If failed, try again
           }
@@ -80,7 +76,7 @@ export default class extends React.Component {
         .then((result) => {
           this.setState({ isLoading: false });
           if (result) {
-            this.setState({ cart: result });
+            this.setState({ cartItems: result.lineItems });
             window.localStorage.setItem('lineageCart', result.id);
           } else {
             setTimeout(() => this.getCart(), 1000); // If failed, try again
@@ -89,44 +85,46 @@ export default class extends React.Component {
     }
   }
 
-  getProduct(handle) {
-    return [...this.state.coffeeProducts, ...this.state.gearProducts]
-      .find(product => product.handle === handle);
+  getCollections() {
+    this.state.client.fetchAllCollections()
+      .then(result => this.setState({ collections: result }));
   }
 
-  getCoffeeProducts() {
-    this.state.client.fetchQueryProducts({ collection_id: coffeeCollection })
-      .then((result) => {
-        this.setState({ coffeeProducts: result });
-      });
-  }
-  getGearProducts() {
-    this.state.client.fetchQueryProducts({ collection_id: gearCollection })
-      .then((result) => {
-        this.setState({ gearProducts: result });
-      });
+  getProducts() {
+    this.state.client.fetchAllProducts()
+      .then(result => this.setState({
+        products: result,
+      }));
   }
 
   render() {
-    const BaseStyles = styled.div`
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    `;
-
     return (
       <Router>
-        <BaseStyles>
-          <Nav cart={this.state.cart} />
+        <div>
+          <Nav cartItems={this.state.cartItems} />
 
           <Route exact path="/" component={Home} />
-          <Route path="/collections/coffee" component={() => <Coffee products={this.state.coffeeProducts} />} />
-          <Route path="/collections/gear" component={() => <Gear products={this.state.gearProducts} />} />
-          <Route path="/product/:handle" component={({ match }) =>
-            <Product product={this.getProduct(match.params.handle)} />
-          } />
 
-          {/*<Route component={fourOhFour} />*/}
-        </BaseStyles>
+          <ProductListContainer
+            collections={this.state.collections}
+            products={this.state.products}
+            selectedCollectionHandle={this.state.selectedCollectionHandle}
+            selectedProductHandle={this.state.selectedProductHandle}
+          />
+        </div>
       </Router>
     );
   }
 }
+
+/**
+ * @section Styles
+ */
+
+const BaseStyles = `
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+`;
+
+export default App;

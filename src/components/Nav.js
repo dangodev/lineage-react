@@ -1,14 +1,16 @@
 /**
  * Nav
  * It’s a big site!
+ * @param {array} cartItems
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Cart from './Cart';
 
-export default class extends React.Component {
+class Nav extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -40,7 +42,7 @@ export default class extends React.Component {
         <a href="/cart" onClick={this.openCart}>Cart</a>
 
         <Cart
-          cart={this.props.cart}
+          cartItems={this.props.cartItems}
           closeCart={this.closeCart}
           isCartOpen={this.state.isCartOpen}
         />
@@ -48,3 +50,13 @@ export default class extends React.Component {
     );
   }
 }
+
+Nav.defaultProps = {
+  cartItems: [],
+};
+
+Nav.propTypes = {
+  cartItems: PropTypes.array,
+};
+
+export default Nav;

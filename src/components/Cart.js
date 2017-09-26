@@ -1,18 +1,32 @@
 /**
  * Cart
  * “Cart.” Rather skeumorphic, don’tcha think?
+ * @param {boolean} isCartOpen
+ * @param {array} cartItems
  */
 
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-export default props => (
+const Cart = props => (
   <div style={props.isCartOpen ? { display: 'block' } : { display: 'none' }}>
-    {props.cart.lineItems.length > 0 && props.cart.lineItems.map((lineItem) => (
+    {props.cartItems.map((lineItem) => (
       <div key={lineItem.id}>{lineItem.title}</div>
     ))}
-    {props.cart.lineItems.length === 0 && (
+    {props.cartItems.length === 0 && (
       <div>No Items</div>
     )}
   </div>
 );
+
+Cart.defaultProps = {
+  cartItems: [],
+  isCartOpen: false,
+};
+
+Cart.propTypes = {
+  cartItems: PropTypes.array,
+  isCartOpen: PropTypes.bool,
+};
+
+export default Cart;
