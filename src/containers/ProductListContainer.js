@@ -17,11 +17,11 @@ class ProductListContainer extends React.PureComponent {
 
     const selectedProduct = props.selectedProductHandle
       ? props.products.find(product => product.attrs.handle === props.selectedProductHandle)
-      : null;
+      : {};
 
     const selectedProducts = props.selectedCollectionHandle
       ? props.products.filter(product => product.collections.indexOf(props.selectedCollectionHandle) !== -1)
-      : null;
+      : [];
 
     this.state = {
       selectedProduct,
@@ -30,10 +30,6 @@ class ProductListContainer extends React.PureComponent {
   }
 
   render() {
-    if (!this.state.selectedProducts) {
-      return false;
-    }
-
     return (
       <ProductList
         products={this.state.selectedProducts}
@@ -46,13 +42,15 @@ class ProductListContainer extends React.PureComponent {
 ProductListContainer.defaultProps = {
   collections: [],
   products: [],
-  selectedCollectionHandle: '',
-  selectedProductHandle: '',
+  product: {},
+  selectedCollectionHandle: null,
+  selectedProductHandle: null,
 };
 
 ProductListContainer.propTypes = {
   collections: PropTypes.array,
   products: PropTypes.array,
+  product: PropTypes.object,
   selectedCollectionHandle: PropTypes.string,
   selectedProductHandle: PropTypes.string,
 };

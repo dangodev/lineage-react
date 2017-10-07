@@ -12,9 +12,10 @@ module.exports = merge.smart(common, {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      inject: false,
+      template: require('html-webpack-template'),
       appMountId: 'app-root',
       inlineManifestWebpackName: 'webpackManifest',
-      template: require('html-webpack-template'),
       title: 'But First, ☕!',
     }),
   ],

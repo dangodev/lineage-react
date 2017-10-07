@@ -12,21 +12,18 @@ import {
   Redirect,
   withRouter
 } from 'react-router-dom';
+import ShopifyBuy from 'shopify-buy';
 
 import Nav from './components/Nav';
 import ProductListContainer from './containers/ProductListContainer';
 
 import Home from './pages/Home';
 
-/* Shopify */
-
-import ShopifyBuy from 'shopify-buy';
-
 /**
  * @section Config
  */
 
-const accessToken = '8b97d4f794c051c78b3f00e8da03ef19'; // Read-only. It’s cool.
+const accessToken = '8b97d4f794c051c78b3f00e8da03ef19'; // Read-only. It’s cool if it’s in the client JS.
 const domain = 'lineage-coffee-roasting.myshopify.com';
 
 const coffeeCollection = 27654297;
@@ -53,7 +50,12 @@ class App extends React.PureComponent {
       selectedProductHandle: null,
     };
 
-    // Init
+    this.getCart = this.getCart.bind(this);
+    this.getCollections = this.getCollections.bind(this);
+    this.getProducts = this.getProducts.bind(this);
+  }
+
+  componentWillMount() {
     this.getCart();
     this.getProducts();
   }
@@ -120,11 +122,5 @@ class App extends React.PureComponent {
 /**
  * @section Styles
  */
-
-const BaseStyles = `
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 14px;
-`;
 
 export default App;
