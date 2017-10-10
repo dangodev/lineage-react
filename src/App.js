@@ -14,10 +14,12 @@ import {
 } from 'react-router-dom';
 import ShopifyBuy from 'shopify-buy';
 
+import Cart from './components/Cart';
 import Nav from './components/Nav';
-import ProductListContainer from './containers/ProductListContainer';
+import ProductContainer from './containers/ProductContainer';
 
 import Home from './pages/Home';
+import About from './pages/About';
 
 /**
  * @section Config
@@ -44,14 +46,11 @@ class App extends React.PureComponent {
         accessToken,
         domain,
       }),
-      collections: [],
-      products: [],
-      selectedCollectionHandle: null,
-      selectedProductHandle: null,
+      coffeeProducts: [],
+      gearProducts: [],
     };
 
     this.getCart = this.getCart.bind(this);
-    this.getCollections = this.getCollections.bind(this);
     this.getProducts = this.getProducts.bind(this);
   }
 
@@ -87,15 +86,14 @@ class App extends React.PureComponent {
     }
   }
 
-  getCollections() {
-    this.state.client.fetchAllCollections()
-      .then(result => this.setState({ collections: result }));
-  }
-
   getProducts() {
-    this.state.client.fetchAllProducts()
+    this.state.client.fetchQueryProducts({ collection_id: coffeeCollection })
       .then(result => this.setState({
-        products: result,
+        coffeeProducts: result,
+      }));
+    this.state.client.fetchQueryProducts({ collection_id: gearCollection })
+      .then(result => this.setState({
+        gearProducts: result,
       }));
   }
 
@@ -106,18 +104,33 @@ class App extends React.PureComponent {
           <Nav cartItems={this.state.cartItems} />
 
           <Route exact path="/" component={Home} />
+          <Route exact path="/pages/learn" component={About} />
+          <Route exact path="/pages/about" component={About} />
+          <Route
+            path="/:route"
+            render={(props) => {
+              return (
+                <ProductContainer
+                  match={props.match}
+                  location={props.location}
+                  coffeeProducts={this.state.coffeeProducts}
+                  gearProducts={this.state.gearProducts}
+                />
+              );
+            }}
+          />
 
-          <ProductListContainer
-            collections={this.state.collections}
-            products={this.state.products}
-            selectedCollectionHandle={this.state.selectedCollectionHandle}
-            selectedProductHandle={this.state.selectedProductHandle}
+          <CartRouter
+            cartItems={this.state.cartitems}
+            isShowing={props => props.location.pathname === '/cart'}
           />
         </div>
       </Router>
     );
   }
 }
+
+const CartRouter = withRouter(Cart);
 
 /**
  * @section Styles

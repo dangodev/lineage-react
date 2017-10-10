@@ -12,7 +12,7 @@ import ProductView from './ProductView';
 
 const ProductList = (props) => (
   <div>
-    {props.products.map((product) => (
+    {props.products && props.products.map((product) => (
       <div key={product.id}>
         {product.title}
         <Link to={`/product/${product.attrs.handle}`}>View</Link>

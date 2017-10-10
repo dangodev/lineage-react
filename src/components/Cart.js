@@ -9,7 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Cart = props => (
-  <div style={props.isCartOpen ? { display: 'block' } : { display: 'none' }}>
+  <div style={{ display: props.location.pathname === '/cart' ? 'block' : 'none' }}>
     {props.cartItems.map((lineItem) => (
       <div key={lineItem.id}>{lineItem.title}</div>
     ))}
@@ -21,12 +21,11 @@ const Cart = props => (
 
 Cart.defaultProps = {
   cartItems: [],
-  isCartOpen: false,
 };
 
 Cart.propTypes = {
   cartItems: PropTypes.array,
-  isCartOpen: PropTypes.bool,
+  location: PropTypes.object.isRequired,
 };
 
 export default Cart;

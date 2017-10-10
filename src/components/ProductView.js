@@ -6,24 +6,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ProductView = (props) => {
-  return (
-    <div>
-      <h1>{props.title}</h1>
-      <p>{props.description}</p>
-    </div>
-  );
-};
-
-ProductView.defaultProps = {
-  product: {
-    title: '',
-    description: '',
-  },
-};
+const ProductView = props => (
+  <div>
+    <h1>{props.product.title}</h1>
+    <div dangerouslySetInnerHTML={{ __html: props.product.description }} />
+  </div>
+);
 
 ProductView.propTypes = {
-  product: PropTypes.object,
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductView;
