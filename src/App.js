@@ -7,14 +7,12 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Switch,
-  Redirect,
-  withRouter
+  withRouter,
 } from 'react-router-dom';
 import ShopifyBuy from 'shopify-buy';
 
 import Cart from './components/Cart';
+import CartBlocker from './containers/CartBlocker';
 import Nav from './components/Nav';
 import ProductContainer from './containers/ProductContainer';
 
@@ -102,24 +100,22 @@ class App extends React.PureComponent {
       <Router>
         <div>
           <Nav cartItems={this.state.cartItems} />
-
-          <Route exact path="/" component={Home} />
-          <Route exact path="/pages/learn" component={About} />
-          <Route exact path="/pages/about" component={About} />
-          <Route
-            path="/:route"
-            render={(props) => {
-              return (
+          <AppRouter>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/pages/learn" component={About} />
+            <Route exact path="/pages/about" component={About} />
+            <Route
+              path="/:route"
+              render={props => (
                 <ProductContainer
                   match={props.match}
                   location={props.location}
                   coffeeProducts={this.state.coffeeProducts}
                   gearProducts={this.state.gearProducts}
                 />
-              );
-            }}
-          />
-
+              )}
+            />
+          </AppRouter>
           <CartRouter
             cartItems={this.state.cartitems}
             isShowing={props => props.location.pathname === '/cart'}
@@ -130,6 +126,7 @@ class App extends React.PureComponent {
   }
 }
 
+const AppRouter = withRouter(CartBlocker);
 const CartRouter = withRouter(Cart);
 
 /**
