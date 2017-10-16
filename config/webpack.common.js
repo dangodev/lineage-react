@@ -4,36 +4,45 @@ const path = require('path');
 module.exports = {
   context: path.resolve(__dirname, '..', 'src'),
   entry: {
-    main: './main.js',
+    main: ['./main.js'],
     vendor: [
       'react',
       'react-dom',
       'react-router',
       'react-router-dom',
+      'glamorous',
       'shopify-buy',
     ],
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js$/i,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
       {
-        test: /\.(jpg|jpeg|png|svg|woff|woff2)$/,
+        test: /\.ejs$/i,
+        use: 'ejs-loader',
+      },
+      {
+        test: /\.mp4$/i,
         use: 'file-loader',
       },
     ],
   },
   output: {
-    path: path.resolve(__dirname, '..', 'dist', 'assets'),
-    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, '..', 'dist'),
+    filename: '[name].js',
     publicPath: '/',
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
+      minChunks: Infinity,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'runtime',
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
   ],

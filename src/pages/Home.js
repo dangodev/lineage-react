@@ -1,10 +1,11 @@
-/**
- * Home
- * …is where the call-to-action is?
- */
-
 import React from 'react';
 
+import Video from '../components/Video';
+import FeaturedProduct from '../components/FeaturedProduct';
+
 export default () => (
-  <div>Home page</div>
+  <div>
+    <Video />
+    <FeaturedProduct />
+  </div>
 );

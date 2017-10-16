@@ -1,8 +1,3 @@
-/**
- * App
- * The top of the waterfall.
- */
-
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -13,6 +8,7 @@ import ShopifyBuy from 'shopify-buy';
 
 import Cart from './components/Cart';
 import CartBlocker from './containers/CartBlocker';
+import GlobalStyles from './components/GlobalStyles';
 import Nav from './components/Nav';
 import ProductContainer from './containers/ProductContainer';
 
@@ -98,7 +94,7 @@ class App extends React.PureComponent {
   render() {
     return (
       <Router>
-        <div>
+        <GlobalStyles>
           <Nav cartItems={this.state.cartItems} />
           <AppRouter>
             <Route exact path="/" component={Home} />
@@ -120,7 +116,7 @@ class App extends React.PureComponent {
             cartItems={this.state.cartitems}
             isShowing={props => props.location.pathname === '/cart'}
           />
-        </div>
+        </GlobalStyles>
       </Router>
     );
   }
@@ -128,9 +124,5 @@ class App extends React.PureComponent {
 
 const AppRouter = withRouter(CartBlocker);
 const CartRouter = withRouter(Cart);
-
-/**
- * @section Styles
- */
 
 export default App;

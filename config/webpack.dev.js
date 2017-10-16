@@ -1,22 +1,33 @@
-const webpack = require('webpack');
-const path = require('path');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const common = require('./webpack.common.js');
 
 module.exports = merge.smart(common, {
   devServer: {
-    contentBase: path.resolve(__dirname, '..', 'src'),
     historyApiFallback: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ExtractTextPlugin.extract({
+          use: 'css-loader',
+        }),
+      },
+      {
+        test: /\.(gif|jpe?g|png|svg|woff2?)$/i,
+        use: 'file-loader',
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       inject: false,
-      template: require('html-webpack-template'),
+      template: '../src/index.ejs',
       appMountId: 'app-root',
-      inlineManifestWebpackName: 'webpackManifest',
-      title: 'But First, ☕!',
     }),
+    new ExtractTextPlugin('[name].css'),
   ],
 });
