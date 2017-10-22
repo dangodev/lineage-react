@@ -4,6 +4,7 @@
   ],
   "plugins": [
     "syntax-dynamic-import",
-    "transform-react-jsx",
+    "transform-object-rest-spread",
+    "transform-react-jsx"
   ]
 }

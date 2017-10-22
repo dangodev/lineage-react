@@ -15,10 +15,9 @@ const ProductList = (props) => (
     {props.products && props.products.map((product) => (
       <div key={product.id}>
         {product.title}
-        <Link to={`/product/${product.attrs.handle}`}>View</Link>
+        <Link to={`/product/${product.handle}`}>View</Link>
       </div>
     ))}
-    <ProductView product={props.product} />
   </div>
 );
 

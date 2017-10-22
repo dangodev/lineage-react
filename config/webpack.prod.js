@@ -6,7 +6,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const NameAllModulesPlugin = require('name-all-modules-plugin');
-const OfflinePlugin = require('offline-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -25,9 +24,6 @@ const templates = [
 }));
 
 module.exports = merge.smart(common, {
-  entry: {
-    main: ['./lib/sw.js'],
-  },
   output: {
     filename: '[name].[chunkhash].js',
   },
@@ -80,12 +76,5 @@ module.exports = merge.smart(common, {
     new CopyWebpackPlugin([                        // copy /public dir
       { from: '../src/static', to: 'assets' },
     ]),
-    new OfflinePlugin({                            // SW; should be last
-      AppCache: false,                             // AppCache is deprecated, so disable
-      externals: [
-        '/public/app-manifest.json',               // add manifest webpack doesn’t know about
-      ],
-      ServiceWorker: { events: true },             // IDK what this is I copied it
-    }),
   ],
 });

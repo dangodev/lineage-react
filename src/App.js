@@ -22,10 +22,6 @@ import About from './pages/About';
 const accessToken = '8b97d4f794c051c78b3f00e8da03ef19'; // Read-only. It’s cool if it’s in the client JS.
 const domain = 'lineage-coffee-roasting.myshopify.com';
 
-const coffeeCollection = 27654297;
-const gearCollection = '28017149';
-const cartCollection = '';
-
 /**
  * @section Component
  */
@@ -33,6 +29,7 @@ const cartCollection = '';
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
+
     this.state = {
       cartItems: [],
       client: ShopifyBuy.buildClient({
@@ -40,17 +37,16 @@ class App extends React.PureComponent {
         accessToken,
         domain,
       }),
-      coffeeProducts: [],
-      gearProducts: [],
+      collections: window.lineageCollections.map(collection => collection.products.map(({ id }) => id)),
+      products: this.formatProducts(),
     };
 
     this.getCart = this.getCart.bind(this);
-    this.getProducts = this.getProducts.bind(this);
+    this.formatProducts = this.formatProducts.bind(this);
   }
 
   componentWillMount() {
     this.getCart();
-    this.getProducts();
   }
 
   getCart() {
@@ -80,15 +76,23 @@ class App extends React.PureComponent {
     }
   }
 
-  getProducts() {
-    this.state.client.fetchQueryProducts({ collection_id: coffeeCollection })
-      .then(result => this.setState({
-        coffeeProducts: result,
-      }));
-    this.state.client.fetchQueryProducts({ collection_id: gearCollection })
-      .then(result => this.setState({
-        gearProducts: result,
-      }));
+  formatProducts() {
+    const all = [];
+    window.lineageCollections.forEach(collection =>
+      collection.products.forEach((collectionProduct) => {
+        const existingProduct = all.find(product => collectionProduct.id === product.id);
+        if (existingProduct) {
+          existingProduct.collections.push(collection.handle);
+        } else {
+          all.push({
+            ...collectionProduct,
+            collections: [collection.handle],
+            metafields: window.lineageMetafields.find(metafield => metafield.id === collectionProduct.id) || {},
+          });
+        }
+      })
+    );
+    return all;
   }
 
   render() {
@@ -97,7 +101,7 @@ class App extends React.PureComponent {
         <GlobalStyles>
           <Nav cartItems={this.state.cartItems} />
           <AppRouter>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={() => <Home products={this.state.products} />} />
             <Route exact path="/pages/learn" component={About} />
             <Route exact path="/pages/about" component={About} />
             <Route
@@ -106,15 +110,17 @@ class App extends React.PureComponent {
                 <ProductContainer
                   match={props.match}
                   location={props.location}
-                  coffeeProducts={this.state.coffeeProducts}
-                  gearProducts={this.state.gearProducts}
+                  products={this.state.products}
+                  collections={this.state.collections}
                 />
               )}
             />
           </AppRouter>
           <CartRouter
             cartItems={this.state.cartitems}
+            collections={this.state.collections}
             isShowing={props => props.location.pathname === '/cart'}
+            products={this.state.products}
           />
         </GlobalStyles>
       </Router>

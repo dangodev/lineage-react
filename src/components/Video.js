@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from 'glamor';
 import glamorous from 'glamorous';
 
-import { color, grid, transition } from '../lib/theme';
+import { color, grid, layer, transition } from '../lib/theme';
 
 import bgReel from '../assets/home-reel.mp4';
 import bigLogo from '../assets/lineage-full.svg';
@@ -10,6 +10,16 @@ import bigLogo from '../assets/lineage-full.svg';
 class Video extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeSource: bgReel,
+    };
+  }
+
+  componentWillMount() {
+    if (typeof window !== 'undefined' && window.screen.width && window.screen.width >= 680) {
+      this.setState({ activeSource: bgReel });
+    }
   }
 
   componentDidMount() {
@@ -28,8 +38,14 @@ class Video extends React.Component {
     return (
       <Container>
         <Stretch>
-          <video loop ref={(el) => { this.video = el; }}>
-            <source src={bgReel} type="video/mp4" />
+          <video
+            loop
+            autoPlay
+            playsInline
+            muted
+            ref={(el) => { this.video = el; }}
+          >
+            <source src={this.state.activeSource} type="video/mp4" />
           </video>
         </Stretch>
         <Pink />
@@ -56,7 +72,7 @@ const Pink = glamorous.div({
   position: 'absolute',
   top: 0,
   width: '100%',
-  zIndex: 10,
+  zIndex: layer.base,
 });
 
 const Pink2 = glamorous.div({
@@ -67,7 +83,7 @@ const Pink2 = glamorous.div({
   position: 'absolute',
   top: 0,
   width: '100%',
-  zIndex: 10,
+  zIndex: layer.base,
 });
 
 const fadeIn = css.keyframes({
@@ -90,7 +106,7 @@ const BigLogo = glamorous.img({
   opacity: 0,
   transform: 'translate(-50%, -25%)',
   width: 8 * grid,
-  zIndex: 20,
+  zIndex: layer.base + 1,
 });
 
 const Stretch = glamorous.div({

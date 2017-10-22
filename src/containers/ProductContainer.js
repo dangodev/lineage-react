@@ -11,46 +11,42 @@ import ProductList from '../components/ProductList';
 import ProductView from '../components/ProductView';
 
 const ProductContainer = (props) => {
-  let product;
-  let products;
+  const request = props.location.pathname.split('/');
+  const subroute = request[request.length - 1];
 
-  /* Show coffee collection */
-  if (props.location.pathname === '/collections/coffee') {
-    product = null;
-    products = props.coffeeProducts;
+  let selectedProduct = null;
+  let selectedProducts;
+  let returnTo = null;
 
-  /* Show gear collection */
-  } else if (props.location.pathname === '/collections/gear') {
-    product = null;
-    products = props.gearProducts;
+  /* Show a collection */
+  if (props.match.url === '/collections') {
+    selectedProducts = props.products.filter(product =>
+      product.collections.indexOf(subroute) !== -1);
 
-  /* Show a product with its appropriate collection in the background */
+  /* Show a product, and show its first collection in the background (usually coffee) */
   } else if (props.match.url === '/product') {
-    const handle = props.location.pathname.split('/');
-    const coffeeMatch = props.coffeeProducts
-      ? props.coffeeProducts.find(({ attrs }) => attrs.handle === handle[handle.length - 1])
-      : null;
-    const gearMatch = props.gearProducts
-      ? props.gearProducts.find(({ attrs }) => attrs.handle === handle[handle.length - 1])
-      : null;
-    product = coffeeMatch || gearMatch;
-    products = coffeeMatch ? props.coffeeProducts : (gearMatch ? props.gearProducts : null);
+    selectedProduct = props.products.find(product => product.handle === subroute);
+    const firstCollection = selectedProduct.collections[0];
+    selectedProducts = props.products.filter(product =>
+      product.collections.indexOf(firstCollection) !== -1);
+    returnTo = `/collections/${firstCollection}`;
   }
+
   return (
     <div>
-      <ProductList products={products} />
-      {product &&
-        <ProductView product={product} />
+      <ProductList products={selectedProducts} />
+      {selectedProduct &&
+        <ProductView product={selectedProduct} returnTo={returnTo} />
       }
     </div>
   );
 };
 
 ProductContainer.propTypes = {
-  coffeeProducts: PropTypes.array,
-  gearProducts: PropTypes.array,
-  location: PropTypes.object,
-  match: PropTypes.object,
+  collections: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  products: PropTypes.array.isRequired,
 };
 
 export default ProductContainer;

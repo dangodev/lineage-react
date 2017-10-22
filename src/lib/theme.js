@@ -18,7 +18,8 @@ const color = {
 
 const font = {
   din: '"FF DIN", "DIN", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  kauffmann: '"Kauffmann", cursive',
+  kaufmann: '"Kaufmann", cursive',
+  blokk: '"BLOKK", cursive',
 
   up5: '2em',
   up4: '1.7511em',
@@ -36,6 +37,13 @@ const font = {
 
 const grid = 36;
 
+/* Layers */
+
+const layer = {
+  base: 10,
+  modal: 20,
+};
+
 /* Transitions */
 
 const transition = {
@@ -49,4 +57,4 @@ transition.acceleration = transition.fastOutLinearIn;
 transition.deceleration = transition.linearOutSlowIn;
 transition.standard = transition.default;
 
-export { color, font, grid, transition };
+export { color, font, grid, layer, transition };
