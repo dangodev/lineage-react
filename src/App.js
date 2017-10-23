@@ -9,6 +9,7 @@ import ShopifyBuy from 'shopify-buy';
 import Cart from './components/Cart';
 import CartBlocker from './containers/CartBlocker';
 import GlobalStyles from './components/GlobalStyles';
+import Footer from './components/Footer';
 import Nav from './components/Nav';
 import ProductContainer from './containers/ProductContainer';
 
@@ -84,10 +85,11 @@ class App extends React.PureComponent {
         if (existingProduct) {
           existingProduct.collections.push(collection.handle);
         } else {
+          const metafields = window.lineageMetafields.find(metafield => metafield.id === collectionProduct.id);
           all.push({
             ...collectionProduct,
             collections: [collection.handle],
-            metafields: window.lineageMetafields.find(metafield => metafield.id === collectionProduct.id) || {},
+            metafields: metafields ? metafields.metafields : {},
           });
         }
       })
@@ -122,6 +124,7 @@ class App extends React.PureComponent {
             isShowing={props => props.location.pathname === '/cart'}
             products={this.state.products}
           />
+          <Footer />
         </GlobalStyles>
       </Router>
     );

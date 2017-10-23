@@ -42,6 +42,7 @@ const grid = 36;
 const layer = {
   base: 10,
   modal: 20,
+  cart: 30,
 };
 
 /* Transitions */

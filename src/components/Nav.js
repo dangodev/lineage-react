@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import glamorous from 'glamorous';
 
-import { color, font, grid } from '../lib/theme';
+import { color, font, grid, transition } from '../lib/theme';
 
 import logo from '../assets/lineage.svg';
 import speckle from '../assets/speckle.png';
@@ -10,16 +10,16 @@ import speckle from '../assets/speckle.png';
 const Nav = () => (
   <Container>
     <Logo>
-      <Link to="/">
+      <NavLink to="/">
         <img src={logo} alt="Lineage Coffee Roasters, Orlando" />
-      </Link>
+      </NavLink>
     </Logo>
     <Links>
-      <Link to="/collections/coffee">Coffee</Link>
-      <Link to="/collections/gear">Gear</Link>
-      <Link to="/pages/learn">Learn</Link>
-      <Link to="/pages/about">About</Link>
-      <Link to="/cart">Cart</Link>
+      <StyledLink to="/collections/coffee">Coffee</StyledLink>
+      <StyledLink to="/collections/gear">Gear</StyledLink>
+      <StyledLink to="/pages/learn">Learn</StyledLink>
+      <StyledLink to="/pages/about">About</StyledLink>
+      <StyledLink to="/cart">Cart</StyledLink>
     </Links>
   </Container>
 );
@@ -45,15 +45,41 @@ const Container = glamorous.div({
 const Links = glamorous.nav({
   display: 'flex',
   fontSize: font.down1,
+});
 
-  '& a': {
-    color: `rgb(${color.black})`,
-    fontWeight: 500,
-    textDecoration: 'none',
-    textTransform: 'uppercase',
+const StyledLink = glamorous(NavLink)({
+  color: `rgb(${color.black})`,
+  display: 'block',
+  fontWeight: 500,
+  paddingBottom: 0.5 * grid,
+  paddingTop: 0.5 * grid,
+  position: 'relative',
+  textDecoration: 'none',
+  textTransform: 'uppercase',
 
-    ' & + a': {
-      marginLeft: grid / 2,
+  ' & + *': {
+    marginLeft: 0.75 * grid,
+  },
+
+  '&::after': {
+    backgroundColor: `rgb(${color.blue})`,
+    borderRadius: '50%',
+    bottom: 0,
+    content: '""',
+    height: 6,
+    left: '50%',
+    opacity: 0,
+    pointerEvents: 'none',
+    position: 'absolute',
+    transform: 'translate(-50%, 100%)',
+    transition: `opacity 200ms, transform 200ms ${transition.standard}`,
+    width: 6,
+  },
+
+  ['.active']: {
+    '&::after': {
+      opacity: 1,
+      transform: 'translate(-50%, 0)',
     },
   },
 });

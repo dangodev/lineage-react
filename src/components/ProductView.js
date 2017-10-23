@@ -13,7 +13,7 @@ const ProductView = props => (
   <Container>
     <Grid>
       <Modal>
-        <StyledLink to={props.returnTo}>✕</StyledLink>
+        <Close to={props.returnTo}>✕</Close>
         <Title>{props.product.title}</Title>
         <div dangerouslySetInnerHTML={{ __html: props.product.description }} />
       </Modal>
@@ -56,14 +56,20 @@ const Modal = glamorous.div({
   top: '12.5vw',
 });
 
-const StyledLink = glamorous(Link)({
+const Close = glamorous(Link)({
+  alignItems: 'center',
   color: `rgb(${color.black})`,
-  display: 'block',
+  display: 'grid',
+  fontSize: 24,
   fontWeight: 500,
+  height: 1.5 * grid,
+  justifyContent: 'center',
+  lineHeight: 1,
   position: 'absolute',
-  right: 0.5 * grid,
+  right: 0,
   textDecoration: 'none',
-  top: 0.5 * grid,
+  top: 0,
+  width: 1.5 * grid,
 });
 
 const Overlay = glamorous.div({
