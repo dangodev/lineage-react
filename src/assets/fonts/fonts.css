@@ -2,47 +2,47 @@
   font-family: "FF DIN";
   font-weight: 400;
   font-style: normal;
-  src: url('ffdin-regular.woff') format('woff');
+  src: url("ffdin-regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "FF DIN";
   font-weight: 400;
   font-style: italic;
-  src: url('ffdin-regularitalic.woff') format('woff');
+  src: url("ffdin-regularitalic.woff") format("woff");
 }
 
 @font-face {
   font-family: "FF DIN";
   font-weight: 500;
   font-style: normal;
-  src: url('ffdin-medium.woff') format('woff');
+  src: url("ffdin-medium.woff") format("woff");
 }
 
 @font-face {
   font-family: "FF DIN";
   font-weight: 700;
   font-style: normal;
-  src: url('ffdin-bold.woff') format('woff');
+  src: url("ffdin-bold.woff") format("woff");
 }
 
 @font-face {
   font-family: "FF DIN";
   font-weight: 700;
   font-style: italic;
-  src: url('ffdin-bolditalic.woff') format('woff');
+  src: url("ffdin-bolditalic.woff") format("woff");
 }
 
 @font-face {
   font-family: "Kaufmann";
   font-weight: 400;
   font-style: normal;
-  src: url('kaufmann-bold.woff2') format('woff2'), url('kaufmann-bold.woff') format('woff');
+  src: url("kaufmann-bold.woff2") format("woff2"), url("kaufmann-bold.woff") format("woff");
 }
 
 @font-face {
   font-family: "BLOKK";
   font-weight: 400;
   font-style: normal;
-  src: url('BLOKKNeue-Regular.woff2') format('woff2'), url('BLOKKNeue-Regular.woff') format('woff');
+  src: url("BLOKKNeue-Regular.woff2") format("woff2"), url("BLOKKNeue-Regular.woff") format("woff");
 }

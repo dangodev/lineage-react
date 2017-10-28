@@ -5,25 +5,35 @@ import glamorous from 'glamorous';
 
 import { color, font, grid } from '../lib/theme';
 
-const format = (price) => `$${Math.round(price/100)}`;
+import speckle from '../assets/speckle.png';
 
-const ProductCard = props => (
-  <Container>
-    <Heading>{props.product.title}</Heading>
-    <Meta>{props.product.metafields.country} / {props.product.metafields.altitude}m</Meta>
-    <Notes>
-      {props.product.tags.map(note =>
-        <Note key={note}>{note}</Note>
-      )}
-    </Notes>
-    <Colophon>
-      <Price>
-        {format(props.product.price)}
-      </Price>
-      <StyledLink to={`/product/${props.product.handle}`}>View</StyledLink>
-    </Colophon>
-  </Container>
-);
+const format = price => `$${Math.round(price / 100)}`;
+
+const ProductCard = (props) => {
+  const productType = props.product.type.toLowerCase();
+
+  return (
+    <Container flavor={props.product.metafields.color} to={`/product/${props.product.handle}`}>
+      <Inner>
+        <Heading>{props.product.title}</Heading>
+        {(productType === 'coffee' || productType === 'coffee beans') &&
+          <Meta>{props.product.metafields.country} / {props.product.metafields.altitude}m</Meta>
+        }
+        <Notes>
+          {props.product.tags.map(note =>
+            <Note key={note}>{note}</Note>
+          )}
+        </Notes>
+        <Colophon>
+          <Price>
+            {format(props.product.price)}
+          </Price>
+          <HoverLink>View</HoverLink>
+        </Colophon>
+      </Inner>
+    </Container>
+  );
+};
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired,
@@ -33,16 +43,33 @@ ProductCard.propTypes = {
  * Styles
  */
 
-const Container = glamorous.div({
+const Container = glamorous(Link)(
+  {
+    backgroundImage: `url(${speckle})`,
+    backgroundSize: '400 auto',
+    backgroundRepeat: 'repeat',
+    boxShadow: `0 ${0.25 * grid}px ${0.5 * grid}px rgba(${color.black}, 0.1)`,
+    color: `rgb(${color.black})`,
+    display: 'grid',
+    textDecoration: 'none',
+    lineHeight: 1,
+    paddingLeft: '25%',
+  },
+  ({ flavor = 'pink' }) => ({
+    backgroundColor: `rgb(${color[flavor]})`,
+  })
+);
+
+const Inner = glamorous.div({
   backgroundColor: `rgb(${color.white})`,
-  boxShadow: `0 ${0.5 * grid}px ${0.5 * grid}px rgba(${color.black}, 0.2)`,
-  lineHeight: 1,
+  display: 'grid',
+  flexDirection: 'column',
   padding: grid,
 });
 
 const Heading = glamorous.h1({
   fontSize: font.up1,
-  fontWeight: 500,
+  fontWeight: 700,
   margin: 0,
   textTransform: 'uppercase',
 });
@@ -63,16 +90,18 @@ const Notes = glamorous.div({
 
 const Note = glamorous.p({
   margin: 0,
+  textTransform: 'capitalize',
   lineHeight: 1.75,
 });
 
-const StyledLink = glamorous(Link)({
+const HoverLink = glamorous.span({
   color: `rgb(${color.black})`,
   display: 'block',
   fontWeight: 500,
   textDecoration: 'none',
   textTransform: 'uppercase',
   transition: 'color 200ms',
+
   '&:hover': {
     color: `rgb(${color.blue})`,
   },
@@ -81,6 +110,7 @@ const StyledLink = glamorous(Link)({
 const Colophon = glamorous.div({
   display: 'flex',
   justifyContent: 'space-between',
+  marginTop: 'auto',
   width: '100%',
 });
 

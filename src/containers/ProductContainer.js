@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import CollectionHeader from '../components/CollectionHeader';
 import ProductList from '../components/ProductList';
 import ProductView from '../components/ProductView';
 
@@ -14,6 +15,7 @@ const ProductContainer = (props) => {
   const request = props.location.pathname.split('/');
   const subroute = request[request.length - 1];
 
+  let collection = null;
   let selectedProduct = null;
   let selectedProducts;
   let returnTo = null;
@@ -22,6 +24,7 @@ const ProductContainer = (props) => {
   if (props.match.url === '/collections') {
     selectedProducts = props.products.filter(product =>
       product.collections.indexOf(subroute) !== -1);
+    collection = props.collections.find(({ handle }) => handle === subroute);
 
   /* Show a product, and show its first collection in the background (usually coffee) */
   } else if (props.match.url === '/product') {
@@ -34,6 +37,9 @@ const ProductContainer = (props) => {
 
   return (
     <div>
+      {collection &&
+        <CollectionHeader collection={collection} />
+      }
       <ProductList products={selectedProducts} />
       {selectedProduct &&
         <ProductView product={selectedProduct} returnTo={returnTo} />

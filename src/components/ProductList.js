@@ -6,19 +6,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import glamorous from 'glamorous';
 
-import ProductView from './ProductView';
+import { color, grid } from '../lib/theme';
 
-const ProductList = (props) => (
-  <div>
-    {props.products && props.products.map((product) => (
-      <div key={product.id}>
-        {product.title}
-        <Link to={`/product/${product.handle}`}>View</Link>
-      </div>
-    ))}
-  </div>
+import ProductCard from './ProductCard';
+
+const ProductList = props => (
+  <Container>
+    <Grid>
+      {props.products && props.products.map(product => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </Grid>
+  </Container>
 );
 
 ProductList.defaultProps = {
@@ -30,5 +31,20 @@ ProductList.propTypes = {
   products: PropTypes.array,
   product: PropTypes.object,
 };
+
+const Container = glamorous.div({
+  backgroundColor: `rgb(${color.offWhite})`,
+  paddingBottom: 2 * grid,
+  paddingLeft: 2 * grid,
+  paddingRight: 2 * grid,
+  paddingTop: 2 * grid,
+});
+
+const Grid = glamorous.div({
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gridColumnGap: grid,
+  gridRowGap: grid,
+});
 
 export default ProductList;
