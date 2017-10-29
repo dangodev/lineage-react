@@ -33,6 +33,7 @@ class App extends React.PureComponent {
 
     this.state = {
       cartItems: [],
+      cart: null,
       client: ShopifyBuy.buildClient({
         appId: '6', // '6' is for JS Buy Button (this app)
         accessToken,
@@ -43,6 +44,7 @@ class App extends React.PureComponent {
     };
 
     this.getCart = this.getCart.bind(this);
+    this.addToCart = this.addToCart.bind(this);
     this.formatProducts = this.formatProducts.bind(this);
   }
 
@@ -58,7 +60,10 @@ class App extends React.PureComponent {
         .then((result) => {
           this.setState({ isLoading: false });
           if (result) {
-            this.setState({ cartItems: result.lineItems });
+            this.setState({
+              cart: result,
+              cartItems: result.lineItems,
+            });
           } else {
             setTimeout(() => this.getCart(), 1000); // If failed, try again
           }
@@ -68,13 +73,26 @@ class App extends React.PureComponent {
         .then((result) => {
           this.setState({ isLoading: false });
           if (result) {
-            this.setState({ cartItems: result.lineItems });
+            this.setState({
+              cart: result,
+              cartItems: result.lineItems,
+            });
             window.localStorage.setItem('lineageCart', result.id);
           } else {
             setTimeout(() => this.getCart(), 1000); // If failed, try again
           }
         });
     }
+  }
+
+  addToCart(variantObject, quantity) {
+    this.state.cart.createLineItemsFromVariants({ variant: variantObject, quantity })
+      .then((result) => {
+        this.setState({
+          cart: result,
+          cartItems: result.lineItems,
+        });
+      });
   }
 
   formatProducts() {
@@ -110,10 +128,11 @@ class App extends React.PureComponent {
               path="/:route"
               render={props => (
                 <ProductContainer
-                  match={props.match}
-                  location={props.location}
-                  products={this.state.products}
+                  addToCart={this.addToCart}
                   collections={this.state.collections}
+                  location={props.location}
+                  match={props.match}
+                  products={this.state.products}
                 />
               )}
             />

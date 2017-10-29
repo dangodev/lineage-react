@@ -42,13 +42,18 @@ const ProductContainer = (props) => {
       }
       <ProductList products={selectedProducts} />
       {selectedProduct &&
-        <ProductView product={selectedProduct} returnTo={returnTo} />
+        <ProductView
+          addToCart={props.addToCart}
+          product={selectedProduct}
+          returnTo={returnTo}
+        />
       }
     </div>
   );
 };
 
 ProductContainer.propTypes = {
+  addToCart: PropTypes.func.isRequired,
   collections: PropTypes.array.isRequired,
   location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
