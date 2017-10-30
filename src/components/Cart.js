@@ -4,30 +4,60 @@ import glamorous from 'glamorous';
 
 import { color, grid, layer, transition } from '../lib/theme';
 
-const Cart = props => {
-  const isShowing = props.location.pathname === '/cart';
-  const navigate = (e) => {
-    e.preventDefault();
-    if (props.history.action === 'PUSH') {
-      return props.history.goBack();
-    }
-    return props.history.push('/');
-  };
+class Cart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      returnTo(e) { e.preventDefault(); this.props.history.push('/'); },
+      isShowing: this.props.location.pathname === '/cart',
+    };
+    this.keydownHandler.bind(this);
+  }
 
-  return (
-    <div>
-      <Inner isShowing={isShowing}>
-        <Close href="/" onClick={navigate}>✕</Close>
-        {props.cartItems.map((lineItem) => (
-          <div key={lineItem.id}>{lineItem.title}</div>
-        ))}
-        {props.cartItems.length === 0 && (
-          <div>No Items</div>
-        )}
-      </Inner>
-      <Overlay isShowing={isShowing} />
-    </div>
-  );
+  componentWillMount() {
+    const keydownHandler = this.keydownHandler.bind(this);
+    window.addEventListener('keydown', keydownHandler);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      const isShowing = nextProps.location.pathname === '/cart';
+
+      if (nextProps.history.action === 'PUSH') {
+        this.setState({ returnTo(e) { e.preventDefault(); nextProps.history.goBack(); } });
+      }
+
+      this.setState({ isShowing });
+    }
+  }
+
+  componentWillUnmount() {
+    const keydownHandler = this.keydownHandler.bind(this);
+    window.removeEventListener('keydown', keydownHandler);
+  }
+
+  keydownHandler(e) {
+    if (this.state.isShowing && e.keyCode === 27) {
+      this.state.returnTo();
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <Inner isShowing={this.state.isShowing}>
+          <Close href="/" onClick={this.state.returnTo}>✕</Close>
+          {this.props.cartItems.map(lineItem => (
+            <div key={lineItem.id}>{lineItem.title}</div>
+          ))}
+          {this.props.cartItems.length === 0 && (
+            <div>No Items</div>
+          )}
+        </Inner>
+        <Overlay isShowing={this.state.isShowing} onClick={this.state.returnTo} />
+      </div>
+    );
+  }
 };
 
 Cart.defaultProps = {
@@ -36,6 +66,7 @@ Cart.defaultProps = {
 
 Cart.propTypes = {
   cartItems: PropTypes.array,
+  history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 };
 
@@ -67,18 +98,19 @@ const Inner = glamorous.div(
 
 const Overlay = glamorous.div(
   {
-    backgroundColor: `rgb(${color.black})`,
+    backgroundColor: `rgb(${color.pink})`,
     bottom: 0,
+    cursor: 'pointer',
     left: 0,
-    pointerEvents: 'none',
     position: 'fixed',
     right: 0,
     top: 0,
-    transition: 'opacity 200ms',
     zIndex: layer.cart,
   },
   props => ({
     opacity: props.isShowing ? 0.8 : 0,
+    visibility: props.isShowing ? 'visible' : 'hidden',
+    transition: props.isShowing ? 'opacity 200ms' :'opacity 200ms, visibility 0ms 200ms',
   }),
 );
 

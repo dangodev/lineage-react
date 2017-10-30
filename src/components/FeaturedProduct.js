@@ -12,7 +12,6 @@ import ProductCard from './ProductCard';
 
 import clipPath from '../assets/bag-clip.svg';
 import speckle from '../assets/speckle.png';
-import bagGreen from '../assets/bag-green.jpg';
 
 /**
  * Template
@@ -26,13 +25,9 @@ const thisYear = date.getFullYear();
 const FeaturedProduct = props => (
   <Container>
     <Grid>
-      <Bag src={bagGreen} />
       <Content>
         <Heading>Featured Product <small>{thisMonth} {thisYear}</small></Heading>
-        <ProductCard
-          noImage
-          product={props.featuredProduct}
-        />
+        <ProductCard product={props.featuredProduct} isShowing={true} />
       </Content>
     </Grid>
   </Container>
@@ -54,15 +49,6 @@ const Container = glamorous.div({
   backgroundSize: `100% ${4 * grid}px, 400px auto`,
   paddingBottom: 2 * grid,
   paddingTop: grid,
-});
-
-const Bag = glamorous.img({
-  clipPath: `url(${clipPath}#clip)`,
-  gridColumnEnd: 4,
-  gridColumnStart: 3,
-  height: 'auto',
-  maxWidth: '100%',
-  width: 4 * grid,
 });
 
 const Content = glamorous.div({

@@ -10,7 +10,7 @@ import FeaturedProduct from '../components/FeaturedProduct';
  */
 
 const HomePage = (props) => {
-  const featured = props.products.find(({ collections }) => collections.indexOf('frontpage') !== -1);
+  const featured = props.allProducts.find(({ collections }) => collections.indexOf('frontpage') !== -1);
 
   return (
     <div>
@@ -22,7 +22,7 @@ const HomePage = (props) => {
 };
 
 HomePage.propTypes = {
-  products: PropTypes.array.isRequired,
+  allProducts: PropTypes.array.isRequired,
 };
 
 export default HomePage;

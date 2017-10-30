@@ -32,20 +32,23 @@ class App extends React.PureComponent {
     super(props);
 
     this.state = {
+      allProducts: this.formatProducts(),
       cartItems: [],
-      cart: null,
       client: ShopifyBuy.buildClient({
         appId: '6', // '6' is for JS Buy Button (this app)
         accessToken,
         domain,
       }),
-      collections: window.lineageCollections.map(collection => collection.products.map(({ id }) => id)),
-      products: this.formatProducts(),
+      collections: window.lineageCollections.map(collection => ({
+        products: collection.products.map(product => product.id),
+        description: collection.description,
+        handle: collection.handle,
+        title: collection.title,
+      })),
     };
 
     this.getCart = this.getCart.bind(this);
     this.addToCart = this.addToCart.bind(this);
-    this.formatProducts = this.formatProducts.bind(this);
   }
 
   componentWillMount() {
@@ -57,27 +60,21 @@ class App extends React.PureComponent {
 
     if (cartID) { // If returning visitor
       this.state.client.fetchCart(cartID)
-        .then((result) => {
+        .then((cart) => {
           this.setState({ isLoading: false });
-          if (result) {
-            this.setState({
-              cart: result,
-              cartItems: result.lineItems,
-            });
+          if (cart) {
+            this.setState({ cart, cartItems: cart.lineItems });
           } else {
             setTimeout(() => this.getCart(), 1000); // If failed, try again
           }
         });
     } else {      // If new visitor
       this.state.client.createCart()
-        .then((result) => {
+        .then((cart) => {
           this.setState({ isLoading: false });
-          if (result) {
-            this.setState({
-              cart: result,
-              cartItems: result.lineItems,
-            });
-            window.localStorage.setItem('lineageCart', result.id);
+          if (cart) {
+            this.setState({ cart, cartItems: cart.lineItems });
+            window.localStorage.setItem('lineageCart', cart.id);
           } else {
             setTimeout(() => this.getCart(), 1000); // If failed, try again
           }
@@ -87,11 +84,8 @@ class App extends React.PureComponent {
 
   addToCart(variantObject, quantity) {
     this.state.cart.createLineItemsFromVariants({ variant: variantObject, quantity })
-      .then((result) => {
-        this.setState({
-          cart: result,
-          cartItems: result.lineItems,
-        });
+      .then((cart) => {
+        this.setState({ cart, cartItems: cart.lineItems });
       });
   }
 
@@ -121,7 +115,7 @@ class App extends React.PureComponent {
         <GlobalStyles>
           <Nav cartItems={this.state.cartItems} />
           <AppRouter>
-            <Route exact path="/" render={() => <Home products={this.state.products} />} />
+            <Route exact path="/" render={() => <Home allProducts={this.state.allProducts} />} />
             <Route exact path="/pages/learn" component={About} />
             <Route exact path="/pages/about" component={About} />
             <Route
@@ -129,10 +123,10 @@ class App extends React.PureComponent {
               render={props => (
                 <ProductContainer
                   addToCart={this.addToCart}
+                  allProducts={this.state.allProducts}
                   collections={this.state.collections}
                   location={props.location}
                   match={props.match}
-                  products={this.state.products}
                 />
               )}
             />

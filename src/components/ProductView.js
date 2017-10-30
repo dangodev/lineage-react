@@ -5,22 +5,11 @@ import { css } from 'glamor';
 import glamorous from 'glamorous';
 import parse from 'url-parse';
 
-import { color, font, grid, layer } from '../lib/theme';
+import { color, font, grid, layer, transition } from '../lib/theme';
 import { formatPrice } from '../lib/tools';
 
+import CoffeeData from './CoffeeData';
 import Waves from './Waves';
-
-import bagGreen from '../assets/bag-green.jpg';
-import bagPink from '../assets/bag-pink.jpg';
-import bagWhite from '../assets/bag-white.jpg';
-import bagYellow from '../assets/bag-yellow.jpg';
-
-const bag = {
-  green: bagGreen,
-  pink: bagPink,
-  white: bagWhite,
-  yellow: bagYellow,
-};
 
 /**
  * Template
@@ -29,7 +18,6 @@ const bag = {
 class ProductView extends React.Component {
   constructor(props) {
     super(props);
-    const productType = this.props.product.type.toLowerCase();
 
     /* Limit quantity to 5 */
     const quantities = [];
@@ -38,41 +26,56 @@ class ProductView extends React.Component {
     }
 
     this.state = {
-      isCoffee: productType === 'coffee' || productType === 'coffee beans',
-      option1: null,
-      option2: null,
-      option3: null,
       quantities,
       quantity: 1,
-      selectedVariant: null,
+      selectedVariant: {},
     };
 
-    this.goBack.bind(this);
     this.setOption.bind(this);
     this.setQuantity.bind(this);
   }
 
   componentWillMount() {
-    if (typeof window !== 'undefined') {
-      /* Set variant from query */
-      const variantID = parse(window.location.href, true).query.variant;
-      const selectedVariant = this.props.product.variants.find(({ id }) => id === parseInt(variantID, 10))
-        || this.props.product.variants[0];
-      this.setState({
-        selectedVariant,
-        option1: selectedVariant.option1,
-        option2: selectedVariant.option2,
-        option3: selectedVariant.option3,
-      });
+    this.setDefaultVariant(this.props);
+    this.updateViewport(this.props);
+    const goBack = this.goBack.bind(this);
+    window.addEventListener('keydown', e => goBack(e));
+  }
 
-      document.body.classList.add(IsShowing);
-      window.addEventListener('keydown', e => this.goBack(e));
-    }
+  componentWillReceiveProps(nextProps) {
+    this.setDefaultVariant(nextProps);
+    this.updateViewport(nextProps);
+    this.setState({ quantity: 1 }); // go back to 1 quantity on product change
   }
 
   componentWillUnmount() {
-    document.body.classList.remove(IsShowing);
-    window.removeEventListener('keydown', e => this.goBack(e));
+    this.updateViewport(this.props);
+    const goBack = this.goBack.bind(this);
+    window.removeEventListener('keydown', e => goBack(e));
+  }
+
+  updateViewport(nextProps) {
+    if (!nextProps.product || nextProps.isShowing === false) {
+      document.body.classList.remove(IsShowing);
+    } else if (nextProps.isShowing === true) {
+      document.body.classList.add(IsShowing);
+    }
+  }
+
+  setDefaultVariant(nextProps) {
+    if (!nextProps.product) return false;
+
+    /* Set variant from query */
+    const variantID = parse(window.location.href, true).query.variant;
+    const selectedVariant = nextProps.product.variants.find(({ id }) => id === parseInt(variantID, 10))
+      || nextProps.product.variants[0];
+
+    this.setState({
+      option1: selectedVariant.option1,
+      option2: selectedVariant.option2,
+      option3: selectedVariant.option3,
+      selectedVariant,
+    });
   }
 
   setOption(key, value) {
@@ -96,6 +99,10 @@ class ProductView extends React.Component {
     this.props.history.replace(`${this.props.location.pathname}?variant=${selectedVariant.id}`);
   }
 
+  setQuantity(quantity) {
+    this.setState({ quantity: quantity });
+  }
+
   addToCart(e) {
     e.preventDefault();
     this.props.addToCart({
@@ -104,138 +111,152 @@ class ProductView extends React.Component {
     });
   }
 
-  setQuantity(quantity) {
-    this.setState({ quantity: quantity });
-  }
-
   goBack(e) {
     if (e.keyCode === 27) {
       this.props.history.push(this.props.returnTo);
     }
   }
 
+  getFlavor() {
+    if (!this.props.product || !this.props.product.metafields.color) return 'pink';
+    return this.props.product.metafields.color;
+  }
+
+  isCoffee() {
+    if (!this.props.product) return false;
+
+    return [
+      'coffee',
+      'coffee beans',
+    ].indexOf(this.props.product.type.toLowerCase());
+  }
+
+  shouldShowVariants() {
+    if (!this.props.product) return false;
+
+    return this.props.product.options.length > 0 && this.props.product.options[0] !== 'Title';
+  }
+
   render() {
     return (
-      <Container>
-        <Grid>
-          <Modal>
-            <Image>
-              <img
-                alt={this.props.product.title}
-                src={bag[this.props.product.metafields.color]}
-              />
-            </Image>
-            <Close to={this.props.returnTo}>✕</Close>
-            <Info>
-              <Heading>{this.props.product.title}</Heading>
-              {this.state.isCoffee && [
-                <Subheading>Notes</Subheading>,
-                <Notes>{this.props.product.tags.join(', ')}</Notes>,
-              ]}
-              <Subheading>Description</Subheading>
-              {/* <div dangerouslySetInnerHTML={{ __html: this.props.product.content }} /> */}
-              <Description>
-                <p>
-                  Way to plant, Ann! What, so the guy we are meeting with can’t
-                  even grow his own hair? COME ON! Taste the happy, Michael.
-                  Taste it. It tastes kind of like sad. Everything they do is
-                  so dramatic and flamboyant.
-                </p>
-              </Description>
-              {this.props.product.options.length > 0 && this.props.product.options[0] !== 'Title' &&
-                this.props.product.options.map((option, index) => {
-                  const optionIndex = index + 1;
-                  return (
-                    <div key={option}>
-                      <Subheading>{option}</Subheading>
-                      <Options>
-                        {this.props.product.variants
-                          .filter(variant => variant[`option${optionIndex}`].length > 0)
-                          .map((variant, vIndex) => (
-                            <Option key={variant[`option${optionIndex}`]}>
-                              <input
-                                type="radio"
-                                id={`option${optionIndex}-${vIndex}`}
-                                name={`option${optionIndex}`}
-                                defaultChecked={variant[`option${optionIndex}`] === this.state.selectedVariant[`option${optionIndex}`]}
-                                onChange={() => this.setOption(`option${optionIndex}`, variant[`option${optionIndex}`])}
-                                value={variant.id}
-                              />
-                              <label htmlFor={`option${optionIndex}-${vIndex}`}>
-                                {variant[`option${optionIndex}`]}
-                              </label>
-                            </Option>
-                          ))
-                        }
-                      </Options>
+      <Container isShowing={this.props.isShowing}>
+        {this.props.product &&
+          <Grid>
+            <Modal isShowing={this.props.isShowing}>
+              <Image>
+                <img
+                  alt={this.props.product.title}
+                  src={this.props.product.images[0]}
+                />
+              </Image>
+              <Close to={this.props.returnTo}>✕</Close>
+              <Info>
+                <CoreInfo>
+                  <Heading>{this.props.product.title}</Heading>
+                  {this.isCoffee() &&
+                    <div>
+                      <Subheading>Notes</Subheading>
+                      <Notes>{this.props.product.tags.join(', ')}</Notes>
                     </div>
-                  );
-                })
-              }
-              <Subheading>Quantity</Subheading>
-              <Quantity>
-                <Options>
-                  {this.state.quantities.map(quantity => (
-                    <Option key={quantity}>
-                      <input
-                        type="radio"
-                        id={`quantity-${quantity}`}
-                        name="quantity"
-                        defaultChecked={quantity === this.state.quantity}
-                        onChange={() => this.setQuantity(quantity)}
-                        value={quantity}
-                      />
-                      <label htmlFor={`quantity-${quantity}`}>{quantity}</label>
-                    </Option>
-                  ))}
-                  <QuantityWholesale>
-                    Need more? Try 5lb bags, or <Link to="/pages/wholesale">wholesale</Link>.
-                  </QuantityWholesale>
-                </Options>
-              </Quantity>
-            </Info>
-            <Price>{formatPrice(this.state.selectedVariant.price)}</Price>
-            <Actions>
-              <Waves width="42.5%" />
-              <Button onClick={e => this.addToCart(e)}>
-                Add to Cart
-              </Button>
-            </Actions>
-            {this.state.isCoffee &&
-              <Data>
-                <Subheading>Deets</Subheading>
-                <Stats>
-                  <Key>Elevation</Key>
-                  <Value>{this.props.product.metafields.elevation}</Value>
-                  <Key>Origin</Key>
-                  <Value>{this.props.product.metafields.country}</Value>
-                  <Key>Farm</Key>
-                  <Value>{this.props.product.metafields.grower}</Value>
-                  <Key>Variety</Key>
-                  <Value>{this.props.product.metafields.variety}</Value>
-                  <Key>Size</Key>
-                  <Value>{this.props.product.metafields.size}</Value>
-                  <Key>Process</Key>
-                  <Value>{this.props.product.metafields.processing_method}</Value>
-                  <Key>Freshness Peak</Key>
-                  <Value>{this.props.product.metafields.peak_flavor}</Value>
-                </Stats>
-              </Data>
-            }
-          </Modal>
-        </Grid>
-        <Overlay to={this.props.returnTo} flavor={this.props.product.metafields.color} />
+                  }
+                  <Subheading>Description</Subheading>
+                  {/* <div dangerouslySetInnerHTML={{ __html: this.props.product.content }} /> */}
+                  <Description>
+                    <p>
+                      Way to plant, Ann! What, so the guy we are meeting with can’t
+                      even grow his own hair? COME ON! Taste the happy, Michael.
+                      Taste it. It tastes kind of like sad. Everything they do is
+                      so dramatic and flamboyant.
+                    </p>
+                  </Description>
+                </CoreInfo>
+                {this.isCoffee() && <CoffeeData metafields={this.props.product.metafields} /> }
+              </Info>
+              <Selections>
+                {this.shouldShowVariants() &&
+                  this.props.product.options.map((option, index) => {
+                    const optionIndex = index + 1;
+                    return (
+                      <div key={option}>
+                        <Subheading>{option}</Subheading>
+                        <Options>
+                          {this.props.product.variants
+                            .filter(variant => variant[`option${optionIndex}`].length > 0)
+                            .map((variant, vIndex) => (
+                              <Option key={variant[`option${optionIndex}`]}>
+                                <input
+                                  type="radio"
+                                  id={`option${optionIndex}-${vIndex}`}
+                                  name={`option${optionIndex}`}
+                                  defaultChecked={variant[`option${optionIndex}`] === this.state.selectedVariant[`option${optionIndex}`]}
+                                  onChange={() => this.setOption(`option${optionIndex}`, variant[`option${optionIndex}`])}
+                                  value={variant.id}
+                                />
+                                <label htmlFor={`option${optionIndex}-${vIndex}`}>
+                                  {variant[`option${optionIndex}`]}
+                                </label>
+                              </Option>
+                            ))
+                          }
+                        </Options>
+                      </div>
+                    );
+                  })
+                }
+                <Subheading>Quantity</Subheading>
+                <Quantity>
+                  <Options>
+                    {this.state.quantities.map(quantity => (
+                      <Option key={quantity}>
+                        <input
+                          type="radio"
+                          id={`quantity-${quantity}`}
+                          name="quantity"
+                          defaultChecked={quantity === this.state.quantity}
+                          onChange={() => this.setQuantity(quantity)}
+                          value={quantity}
+                        />
+                        <label htmlFor={`quantity-${quantity}`}>{quantity}</label>
+                      </Option>
+                    ))}
+                    {this.isCoffee() &&
+                      <QuantityWholesale>
+                        Need more? Try 5lb bags, or <Link to="/pages/wholesale">wholesale</Link>.
+                      </QuantityWholesale>
+                    }
+                  </Options>
+                </Quantity>
+              </Selections>
+              <Price>{formatPrice(this.state.selectedVariant.price)}</Price>
+              <Actions>
+                <Waves width="42.5%" />
+                <Button onClick={e => this.addToCart(e)}>
+                  Add to Cart
+                </Button>
+              </Actions>
+
+            </Modal>
+          </Grid>
+        }
+        <Overlay
+          to={this.props.returnTo}
+          isShowing={this.props.isShowing}
+          flavor={this.getFlavor()}
+        />
       </Container>
     );
   }
 }
 
 ProductView.defaultProps = {
+  isShowing: false,
   returnTo: '\\',
 };
 
 ProductView.propTypes = {
-  product: PropTypes.object.isRequired,
+  history: PropTypes.object,
+  isShowing: PropTypes.bool,
+  product: PropTypes.object,
   returnTo: PropTypes.string,
 };
 
@@ -243,19 +264,25 @@ ProductView.propTypes = {
  * Styles
  */
 
-const Container = glamorous.div({
-  height: '100vh',
-  left: 0,
-  overflowY: 'scroll',
-  position: 'fixed',
-  right: 0,
-  top: 0,
-  WebkitOverflowScrolling: 'touch',
-  zIndex: layer.modal,
-});
+const Container = glamorous.div(
+  {
+    height: '100vh',
+    left: 0,
+    overflowY: 'scroll',
+    position: 'fixed',
+    right: 0,
+    top: 0,
+    WebkitOverflowScrolling: 'touch',
+    zIndex: layer.modal,
+  },
+  ({ isShowing }) => ({
+    visibility: isShowing ? 'visibile' : 'hidden',
+    transition: isShowing ? 'none' : 'visibility 0ms 200ms',
+  }),
+);
 
 const Grid = glamorous.div({
-  marginBottom: 2 * grid,
+  marginBottom: grid,
   marginLeft: 'auto',
   marginRight: 'auto',
   marginTop: 2 * grid,
@@ -264,15 +291,20 @@ const Grid = glamorous.div({
   zIndex: layer.modal + 1,
 });
 
-const Modal = glamorous.div({
-  backgroundColor: `rgb(${color.white})`,
-  display: 'block',
-  paddingBottom: 1.5 * grid,
-  paddingRight: 1.5 * grid,
-  paddingTop: grid,
-  position: 'relative',
-  zIndex: layer.modal + 1,
-});
+const Modal = glamorous.div(
+  {
+    backgroundColor: `rgb(${color.white})`,
+    display: 'block',
+    paddingBottom: grid,
+    position: 'relative',
+    transition: `opacity 200ms, transform 200ms ${transition.standard}`,
+    zIndex: layer.modal + 1,
+  },
+  ({ isShowing }) => ({
+    opacity: isShowing ? 1 : 0,
+    transform: isShowing ? 'translateY(0)' : `translateY(${3 * grid}px)`,
+  })
+);
 
 const Close = glamorous(Link)({
   alignItems: 'center',
@@ -293,17 +325,18 @@ const Close = glamorous(Link)({
 
 const Overlay = glamorous(Link)(
   {
-    backgroundColor: `rgba(${color.black}, 0.4)`,
     cursor: 'pointer',
     bottom: 0,
     left: 0,
     position: 'fixed',
     right: 0,
     top: 0,
+    transition: 'opacity 200ms',
     zIndex: layer.modal,
   },
-  ({ flavor = 'black' }) => ({
-    backgroundColor: `rgba(${color[flavor]}, 0.7)`,
+  ({ flavor, isShowing }) => ({
+    backgroundColor: flavor === 'white' ? `rgba(${color.black}, 0.7)` : `rgba(${color[flavor]}, 0.7)`,
+    opacity: isShowing ? 1 : 0,
   })
 );
 
@@ -312,26 +345,30 @@ const Heading = glamorous.h1({
   lineHeight: 1,
   marginBottom: 0.5 * grid,
   marginTop: 0,
+  paddingTop: grid,
   textTransform: 'uppercase',
 });
 
-const Image = glamorous.div({
+const Image = glamorous.figure({
+  borderRadius: 0.5 * grid,
+  boxShadow: `${0.25 * grid}px ${0.25 * grid}px ${grid}px rgba(${color.black}, 0.1)`,
   left: 0,
+  margin: 0,
+  overflow: 'hidden',
   position: 'absolute',
   top: 0,
-  maxWidth: 5 * grid,
-  width: '25%',
+  transform: `translate(-${2 * grid}px, -${grid}px)`,
+  width: '28%',
 
   '& img': {
+    display: 'block',
     height: 'auto',
-    transform: `translate(-${0.5 * grid}px, -${0.5 * grid}px)`,
-    maxWidth: '100%',
+    width: '100%',
   },
 });
 
 const Description = glamorous.div({
   fontSize: font.down1,
-  paddingRight: `calc(32.5% + ${2 * grid}px)`,
 
   ' & p': {
     lineHeight: 1.8,
@@ -342,6 +379,10 @@ const Description = glamorous.div({
       marginTop: 0.5 * grid,
     },
   },
+});
+
+const Selections = glamorous.div({
+  paddingLeft: '25%',
 });
 
 const Subheading = glamorous.h3({
@@ -404,44 +445,21 @@ const Option = glamorous.div({
 });
 
 const Info = glamorous.div({
+  display: 'flex',
   paddingLeft: '25%',
 });
 
-const Data = glamorous.div({
-  backgroundColor: `rgb(${color.offwhite})`,
-  padding: grid,
-  position: 'absolute',
-  right: 0,
-  top: 0,
-  width: '32.5%',
+const CoreInfo = glamorous.div({
+  flex: 5,
+  paddingRight: grid,
 });
 
-const Stats = glamorous.dl({
-  display: 'flex',
-  flexWrap: 'wrap',
-  fontSize: font.down2,
-  justifyContent: 'space-apart',
-});
-
-const Key = glamorous.dt({
-  fontWeight: 500,
-  margin: 0,
-  paddingTop: 0.25 * grid,
-  width: '50%',
-});
 
 const Price = glamorous.div({
   fontFamily: font.kaufmann,
   fontSize: font.up3,
   marginTop: grid,
   textAlign: 'center',
-});
-
-const Value = glamorous.dd({
-  margin: 0,
-  paddingTop: 0.25 * grid,
-  textAlign: 'right',
-  width: '50%',
 });
 
 const Quantity = glamorous.div({
@@ -474,6 +492,7 @@ const Actions = glamorous.menu({
 const Button = glamorous.button({
   alignItems: 'center',
   appearance: 'none',
+  borderRadius: 0,
   backgroundColor: `rgb(${color.blueT})`,
   border: 'none',
   color: `rgb(${color.black})`,

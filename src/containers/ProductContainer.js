@@ -7,57 +7,105 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CollectionHeader from '../components/CollectionHeader';
-import ProductList from '../components/ProductList';
+import Collection from '../components/Collection';
 import ProductView from '../components/ProductView';
 
-const ProductContainer = (props) => {
-  const request = props.location.pathname.split('/');
-  const subroute = request[request.length - 1];
-
-  let collection = null;
-  let selectedProduct = null;
-  let selectedProducts;
-  let returnTo = null;
-
-  /* Show a collection */
-  if (props.match.url === '/collections') {
-    selectedProducts = props.products.filter(product =>
-      product.collections.indexOf(subroute) !== -1);
-    collection = props.collections.find(({ handle }) => handle === subroute);
-
-  /* Show a product, and show its first collection in the background (usually coffee) */
-  } else if (props.match.url === '/product') {
-    selectedProduct = props.products.find(product => product.handle === subroute);
-    const firstCollection = selectedProduct.collections[0];
-    selectedProducts = props.products.filter(product =>
-      product.collections.indexOf(firstCollection) !== -1);
-    returnTo = `/collections/${firstCollection}`;
+class ProductContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      collection: undefined,
+      collectionTransitionOut: 200,
+      isChangingProduct: false,
+      isShowingCollection: false,
+      isShowingProduct: false,
+      product: undefined,
+      productTransitionOut: 200,
+      returnTo: '/',
+    };
   }
 
-  return (
-    <div>
-      {collection &&
-        <CollectionHeader collection={collection} />
+  componentWillMount() {
+    this.route(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.route(nextProps);
+  }
+
+  route(nextProps) {
+    const request = nextProps.location.pathname.split('/');
+    const subroute = request[request.length - 1];
+    const magicCSSTimeout = 30; // magic # to account for DOM writing (it’s OK if it’s not bullet-proof; it keeps things slick);
+
+    switch (nextProps.match.url) {
+      case '/collections': {
+        const nextCollection = nextProps.collections.find(({ handle }) => handle === subroute);
+        this.setState({ returnTo: `/collections/${nextCollection.handle}` });
+
+        if (this.state.product) { // unload product
+          this.setState({ isShowingProduct: false });
+          setTimeout(() => this.setState({ product: undefined }), this.state.productTransitionOut);
+        }
+
+        if (this.state.collection && this.state.collection.handle !== subroute) { // animate between collections
+          this.setState({ isShowingCollection: false });
+          setTimeout(() => this.setState({ collection: nextCollection }), this.state.collectionTransitionOut);
+          setTimeout(() => this.setState({ isShowingCollection: true }), this.state.collectionTransitionOut + magicCSSTimeout);
+        }
+
+        else if (!this.state.collection) { // Load collection, if none
+          this.setState({ collection: nextCollection });
+          setTimeout(() => this.setState({ isShowingCollection: true }), magicCSSTimeout);
+        }
+        break;
       }
-      <ProductList products={selectedProducts} />
-      {selectedProduct &&
-        <ProductView
-          addToCart={props.addToCart}
-          product={selectedProduct}
-          returnTo={returnTo}
+      case '/product': {
+        const nextProduct = nextProps.allProducts.find(({ handle }) => handle === subroute);
+
+        if (!this.state.collection) { // set collection if none
+          const collection = nextProps.collections.find(({ handle }) => handle === nextProduct.collections[0]);
+          this.setState({
+            collection,
+            isShowingCollection: true,
+            returnTo: `/collections/${collection.handle}`,
+          });
+        }
+
+        this.setState({ product: nextProduct });
+        setTimeout(() => this.setState({ isShowingProduct: true }), magicCSSTimeout); // transition product in
+
+        break;
+      }
+      default: {}
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <Collection
+          allProducts={this.props.allProducts}
+          collection={this.state.collection}
+          isShowing={this.state.isShowingCollection}
         />
-      }
-    </div>
-  );
-};
+        <ProductView
+          addToCart={this.props.addToCart}
+          isShowing={this.state.isShowingProduct}
+          product={this.state.product}
+          returnTo={this.state.returnTo}
+        />
+      </div>
+    );
+  }
+}
 
 ProductContainer.propTypes = {
   addToCart: PropTypes.func.isRequired,
+  allProducts: PropTypes.array.isRequired,
   collections: PropTypes.array.isRequired,
   location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
-  products: PropTypes.array.isRequired,
 };
 
 export default ProductContainer;

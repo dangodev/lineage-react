@@ -3,29 +3,23 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import glamorous from 'glamorous';
 
-import { color, font, grid, layer } from '../lib/theme';
+import { color, font, grid, layer, transition } from '../lib/theme';
 import { formatPrice } from '../lib/tools';
 
 import speckle from '../assets/speckle.png';
-import bagGreen from '../assets/bag-green.jpg';
-import bagPink from '../assets/bag-pink.jpg';
-import bagWhite from '../assets/bag-white.jpg';
-import bagYellow from '../assets/bag-yellow.jpg';
-
-const bag = {
-  green: bagGreen,
-  pink: bagPink,
-  white: bagWhite,
-  yellow: bagYellow,
-};
 
 const ProductCard = (props) => {
   const productType = props.product.type.toLowerCase();
 
   return (
-    <Container flavor={props.product.metafields.color} to={`/product/${props.product.handle}`}>
+    <Container
+      flavor={props.product.metafields.color}
+      to={`/product/${props.product.handle}`}
+      isShowing={props.isShowing}
+      delay={props.delay}
+    >
       <Image>
-        <img alt={props.product.title} src={bag[props.product.metafields.color]} />
+        <img alt={props.product.title} src={props.product.featured_image} />
       </Image>
       <Inner>
         <Heading>{props.product.title}</Heading>
@@ -38,7 +32,7 @@ const ProductCard = (props) => {
           </Notes>
         }
         {(productType !== 'coffee' && productType !== 'coffee beans') &&
-          <p __dangerouslySetInnerHTML={props.product.content} />
+          <Content dangerouslySetInnerHTML={{ __html: props.product.content }} />
         }
         <Colophon>
           <Price>{formatPrice(props.product.price)}</Price>
@@ -50,6 +44,7 @@ const ProductCard = (props) => {
 };
 
 ProductCard.propTypes = {
+  isShowing: PropTypes.bool.isRequired,
   product: PropTypes.object.isRequired,
 };
 
@@ -60,7 +55,7 @@ ProductCard.propTypes = {
 const Container = glamorous(Link)(
   {
     backgroundImage: `url(${speckle})`,
-    backgroundSize: '400 auto',
+    backgroundSize: '400px auto',
     backgroundRepeat: 'repeat',
     boxShadow: `0 ${0.25 * grid}px ${0.5 * grid}px rgba(${color.black}, 0.1)`,
     color: `rgb(${color.black})`,
@@ -69,23 +64,34 @@ const Container = glamorous(Link)(
     paddingLeft: '25%',
     position: 'relative',
     textDecoration: 'none',
+
+    ':hover figure': {
+      transform: `translate(-${0.75 * grid}px, -${0.75 * grid}px) rotate(4deg)`,
+    },
   },
-  ({ flavor = 'pink' }) => ({
+  ({ flavor = 'pink', isShowing, delay }) => ({
     backgroundColor: `rgb(${color[flavor]})`,
+    opacity: isShowing ? 1 : 0,
+    transform: isShowing ? 'translateY(0)' : `translateY(${grid}px)`,
+    transition: `opacity 400ms ${delay}ms, transform 400ms ${transition.deceleration} ${delay}ms`,
   })
 );
 
-const Image = glamorous.div({
-  height: '100%',
+const Image = glamorous.figure({
+  borderRadius: 0.25 * grid,
+  boxShadow: `${0.25 * grid}px ${0.25 * grid}px ${grid}px rgba(${color.black}, 0.1)`,
   left: 0,
+  margin: 0,
+  overflow: 'hidden',
   position: 'absolute',
   top: 0,
+  transform: `translate(-${0.5 * grid}px, -${0.5 * grid}px)`,
+  transition: `transform 200ms ${transition.standard}`,
   width: '25%',
   zIndex: layer.base,
 
   '& img': {
     height: 'auto',
-    transform: `translate(-${0.5 * grid}px, -${0.5 * grid}px)`,
     maxWidth: '100%',
   },
 });
@@ -122,6 +128,21 @@ const Note = glamorous.p({
   margin: 0,
   textTransform: 'capitalize',
   lineHeight: 1.75,
+});
+
+const Content = glamorous.div({
+  fontSize: font.down2,
+  lineHeight: 1.5,
+  marginBottom: 0.5 * grid,
+  marginTop: 0.5 * grid,
+
+  '& p': {
+    margin: 0,
+
+    '& + p': {
+      marginTop: 0.5 * grid,
+    },
+  },
 });
 
 const HoverLink = glamorous.span({
