@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
-import { color, grid } from '../lib/theme';
+import { color, font, grid } from '../lib/theme';
 
 import CollectionHeader from './CollectionHeader';
-import ProductCard from './ProductCard';
+import ProductList from './ProductList';
 
 /**
  * Template
@@ -19,31 +19,25 @@ const Collection = (props) => {
   return (
     <div>
       <CollectionHeader collection={props.collection} />
+      {props.collection.handle === 'coffee' &&
+        <Subheading>Individual Bags</Subheading>
+      }
       <Container>
-        <Grid>
-          {collectionProducts.map((product, index) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              isShowing={props.isShowing}
-              delay={index * 100}
-            />
-          ))}
-        </Grid>
+        <ProductList products={collectionProducts} isShowing={props.isShowing} />
       </Container>
     </div>
   );
-};
-
-Collection.defaultProps = {
-  isShowing: false,
-  collection: undefined,
 };
 
 Collection.propTypes = {
   allProducts: PropTypes.array.isRequired,
   collection: PropTypes.object,
   isShowing: PropTypes.bool,
+};
+
+Collection.defaultProps = {
+  isShowing: false,
+  collection: undefined,
 };
 
 /**
@@ -53,16 +47,22 @@ Collection.propTypes = {
 const Container = glamorous.div({
   backgroundColor: `rgb(${color.offWhite})`,
   paddingBottom: 4 * grid,
-  paddingLeft: 2 * grid,
-  paddingRight: 2 * grid,
+  paddingLeft: grid,
+  paddingRight: grid,
   paddingTop: 2 * grid,
+
+  '@media (min-width: 600px)': {
+    paddingLeft: 2 * grid,
+    paddingRight: 2 * grid,
+  },
 });
 
-const Grid = glamorous.div({
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  gridColumnGap: grid,
-  gridRowGap: grid,
+const Subheading = glamorous.h3({
+  fontFamily: font.kaufmann,
+  fontSize: font.up4,
+  marginBottom: 0,
+  marginTop: grid,
+  textAlign: 'center',
 });
 
 export default Collection;

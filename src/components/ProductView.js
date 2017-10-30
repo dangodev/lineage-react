@@ -8,6 +8,7 @@ import parse from 'url-parse';
 import { color, font, grid, layer, transition } from '../lib/theme';
 import { formatPrice } from '../lib/tools';
 
+import Button from './Button';
 import CoffeeData from './CoffeeData';
 import Waves from './Waves';
 
@@ -487,25 +488,6 @@ const Actions = glamorous.menu({
   marginTop: grid,
   padding: 0,
   position: 'relative',
-});
-
-const Button = glamorous.button({
-  alignItems: 'center',
-  appearance: 'none',
-  borderRadius: 0,
-  backgroundColor: `rgb(${color.blueT})`,
-  border: 'none',
-  color: `rgb(${color.black})`,
-  cursor: 'pointer',
-  display: 'flex',
-  fontFamily: font.din,
-  fontSize: '1em',
-  fontWeight: 700,
-  height: 1.5 * grid,
-  justifyContent: 'center',
-  padding: 0,
-  textTransform: 'uppercase',
-  width: 6 * grid,
 });
 
 /* State */

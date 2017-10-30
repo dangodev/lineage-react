@@ -15,10 +15,10 @@ module.exports = merge.smart(common, {
         use: ExtractTextPlugin.extract({
           use: 'css-loader',
         }),
-      },
-      {
-        test: /\.(gif|jpe?g|png|svg|woff2?)$/i,
-        use: 'file-loader',
+        {
+          test: /\.(gif|jpe?g|mp4|png|svg|woff2?)$/i,
+          use: 'file-loader',
+        },
       },
     ],
   },
@@ -26,6 +26,7 @@ module.exports = merge.smart(common, {
     new HtmlWebpackPlugin({
       inject: false,
       template: '../src/index.ejs',
+      title: 'But First, ☕!',
       appMountId: 'app-root',
     }),
     new ExtractTextPlugin('[name].css'),

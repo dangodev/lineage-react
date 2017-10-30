@@ -10,6 +10,11 @@ css.global('html, body', {
   fontFamily: font.din,
   fontSize: '16px',
   lineHeight: 1.5,
+  margin: 0,
+});
+
+css.global('*', {
+  boxSizing: 'border-box',
 });
 
 /**
@@ -28,6 +33,7 @@ GlobalStyles.propTypes = {
 
 const Container = glamorous.div({
   backgroundColor: `rgb(${color.offwhite})`,
+  boxSizing: 'border-box',
 });
 
 export default GlobalStyles;

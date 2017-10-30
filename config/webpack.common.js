@@ -8,7 +8,6 @@ module.exports = {
     vendor: [
       'react',
       'react-dom',
-      'react-router',
       'react-router-dom',
       'glamorous',
       'shopify-buy',
@@ -25,27 +24,13 @@ module.exports = {
         test: /\.ejs$/i,
         use: 'ejs-loader',
       },
-      {
-        test: /\.mp4$/i,
-        use: 'file-loader',
-      },
     ],
   },
   output: {
-    path: path.resolve(__dirname, '..', 'dist'),
+    path: path.resolve(__dirname, '..', 'dist', 'assets'),
     filename: '[name].js',
     publicPath: '/',
   },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'runtime',
-    }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-  ],
   resolve: {
     extensions: ['.js'],
   },

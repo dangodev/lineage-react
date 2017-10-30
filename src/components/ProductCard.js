@@ -60,10 +60,15 @@ const Container = glamorous(Link)(
     boxShadow: `0 ${0.25 * grid}px ${0.5 * grid}px rgba(${color.black}, 0.1)`,
     color: `rgb(${color.black})`,
     display: 'grid',
+    fontSize: 14,
     lineHeight: 1,
     paddingLeft: '25%',
     position: 'relative',
     textDecoration: 'none',
+
+    '@media (min-width: 600px)': {
+      fontSize: 16,
+    },
 
     ':hover figure': {
       transform: `translate(-${0.75 * grid}px, -${0.75 * grid}px) rotate(4deg)`,
@@ -100,7 +105,11 @@ const Inner = glamorous.div({
   backgroundColor: `rgb(${color.white})`,
   display: 'grid',
   flexDirection: 'column',
-  padding: grid,
+  padding: 0.5 * grid,
+
+  '@media (min-width: 600px)': {
+    padding: grid,
+  },
 });
 
 const Heading = glamorous.h1({
@@ -120,8 +129,13 @@ const Meta = glamorous.aside({
 
 const Notes = glamorous.div({
   fontSize: font.down2,
-  marginBottom: 0.75 * grid,
-  marginTop: 0.75 * grid,
+  marginBottom: 0.5 * grid,
+  marginTop: 0.5 * grid,
+
+  '@media (min-width: 600px)': {
+    marginBottom: 0.75 * grid,
+    marginTop: 0.75 * grid,
+  },
 });
 
 const Note = glamorous.p({

@@ -4,42 +4,22 @@ import PropTypes from 'prop-types';
 
 import { color, font, grid } from '../lib/theme';
 
-const CollectionHeader = (props) => {
-  if (props.collection.handle === 'coffee') {
-    return (
-      <Container>
-        <Inner>
-          <Heading>Lineage Coffee</Heading>
-          <Description>
-            Enjoy our ethically-sourced, award-winning roasts at our coffee bar or at
-            home. Available by the bag, or as a convenient home delivery
-            subscription.
-          </Description>
-        </Inner>
-        <Subheading>Individual Bags</Subheading>
-      </Container>
-    );
-  } else if (props.collection.handle === 'gear') {
-    return (
-      <Container>
-        <Inner>
-          <Heading>Lineage Apparel & Gear</Heading>
-          <Description>
-            Enjoy our ethically-sourced, award-winning roasts at our coffee bar or at
-            home. Available by the bag, or as a convenient home delivery
-            subscription.
-          </Description>
-        </Inner>
-        <Subheading>All Items</Subheading>
-      </Container>
-    );
-  }
-  return false;
-};
+const CollectionHeader = (props) => (
+  <Container>
+    <Inner>
+      <Heading>{props.collection.title}</Heading>
+      <Description>{props.collection.description}</Description>
+    </Inner>
+  </Container>
+);
 
 CollectionHeader.propTypes = {
   collection: PropTypes.object,
 };
+
+/**
+ * Styles
+ */
 
 const Container = glamorous.div({
 });
