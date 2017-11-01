@@ -1,10 +1,10 @@
-/**
- * Home
- * …is where the call-to-action is?
- */
-
 import React from 'react';
+import glamorous from 'glamorous';
 
-export default () => (
+import { font } from '../lib/theme';
+
+const About = () => (
   <div>About page</div>
 );
+
+export default About;

@@ -15,10 +15,10 @@ module.exports = merge.smart(common, {
         use: ExtractTextPlugin.extract({
           use: 'css-loader',
         }),
-        {
-          test: /\.(gif|jpe?g|mp4|png|svg|woff2?)$/i,
-          use: 'file-loader',
-        },
+      },
+      {
+        test: /\.(gif|jpe?g|mp4|png|svg|woff2?)$/i,
+        use: 'file-loader',
       },
     ],
   },

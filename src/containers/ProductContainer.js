@@ -14,14 +14,27 @@ class ProductContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collection: undefined,
-      collectionTransitionOut: 200,
-      isChangingProduct: false,
-      isShowingCollection: false,
-      isShowingProduct: false,
+      current: 'collection',
+      collection: { handle: '' },
       product: undefined,
-      productTransitionOut: 200,
-      returnTo: '/',
+      flow: {
+        collection: {
+          on: {
+            CHANGE: 'loading',
+            SELECT: 'product',
+          },
+        },
+        loading: {
+          on: {
+            SUCCESS: 'collection',
+          },
+        },
+        product: {
+          on: {
+            CLOSE: 'collection',
+          },
+        },
+      },
     };
   }
 
@@ -33,51 +46,34 @@ class ProductContainer extends React.Component {
     this.route(nextProps);
   }
 
+  transition(action) {
+    const currentState = this.state.flow[this.state.current];
+    const nextState = currentState ? currentState.on[action] : false;
+    if (currentState && nextState) {
+      this.setState({ current: nextState });
+    }
+  }
+
   route(nextProps) {
     const request = nextProps.location.pathname.split('/');
     const subroute = request[request.length - 1];
-    const magicCSSTimeout = 30; // magic # to account for DOM writing (it’s OK if it’s not bullet-proof; it keeps things slick);
 
-    switch (nextProps.match.url) {
-      case '/collections': {
-        const nextCollection = nextProps.collections.find(({ handle }) => handle === subroute);
-        this.setState({ returnTo: `/collections/${nextCollection.handle}` });
+    if (nextProps.match.url === '/product') {
+      this.transition('SELECT');
+      const nextProduct = nextProps.allProducts.find(({ handle }) => handle === subroute);
+      this.setState({ product: nextProduct });
 
-        if (this.state.product) { // unload product
-          this.setState({ isShowingProduct: false });
-          setTimeout(() => this.setState({ product: undefined }), this.state.productTransitionOut);
-        }
-
-        if (this.state.collection && this.state.collection.handle !== subroute) { // animate between collections
-          this.setState({ isShowingCollection: false });
-          setTimeout(() => this.setState({ collection: nextCollection }), this.state.collectionTransitionOut);
-          setTimeout(() => this.setState({ isShowingCollection: true }), this.state.collectionTransitionOut + magicCSSTimeout);
-        }
-
-        else if (!this.state.collection) { // Load collection, if none
-          this.setState({ collection: nextCollection });
-          setTimeout(() => this.setState({ isShowingCollection: true }), magicCSSTimeout);
-        }
-        break;
+      if (!this.state.collection) {
+        this.setState({ collection: nextProps.collections.find(({ handle }) => handle === nextProduct.collections[0]) });
       }
-      case '/product': {
-        const nextProduct = nextProps.allProducts.find(({ handle }) => handle === subroute);
+    } else if (nextProps.match.url === '/collections') {
+      this.transition('CLOSE');
+      this.setState({ collection: nextProps.collections.find(({ handle }) => handle === subroute) });
 
-        if (!this.state.collection) { // set collection if none
-          const collection = nextProps.collections.find(({ handle }) => handle === nextProduct.collections[0]);
-          this.setState({
-            collection,
-            isShowingCollection: true,
-            returnTo: `/collections/${collection.handle}`,
-          });
-        }
-
-        this.setState({ product: nextProduct });
-        setTimeout(() => this.setState({ isShowingProduct: true }), magicCSSTimeout); // transition product in
-
-        break;
+      if (this.state.collection && this.state.collection.handle !== subroute) {
+        this.transition('CHANGE');
+        setTimeout(() => this.transition('SUCCESS'), 30);
       }
-      default: {}
     }
   }
 
@@ -87,13 +83,13 @@ class ProductContainer extends React.Component {
         <Collection
           allProducts={this.props.allProducts}
           collection={this.state.collection}
-          isShowing={this.state.isShowingCollection}
+          isShowing={this.state.current === 'collection' || this.state.current === 'product'}
         />
         <ProductView
           addToCart={this.props.addToCart}
-          isShowing={this.state.isShowingProduct}
+          isShowing={this.state.current === 'product'}
           product={this.state.product}
-          returnTo={this.state.returnTo}
+          returnTo={`/collections/${this.state.collection.handle}`}
         />
       </div>
     );

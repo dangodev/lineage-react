@@ -39,8 +39,8 @@ class ProductView extends React.Component {
   componentWillMount() {
     this.setDefaultVariant(this.props);
     this.updateViewport(this.props);
-    const goBack = this.goBack.bind(this);
-    window.addEventListener('keydown', e => goBack(e));
+    const keydownHandler = this.keydownHandler.bind(this);
+    window.addEventListener('keydown', e => keydownHandler(e));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -51,8 +51,8 @@ class ProductView extends React.Component {
 
   componentWillUnmount() {
     this.updateViewport(this.props);
-    const goBack = this.goBack.bind(this);
-    window.removeEventListener('keydown', e => goBack(e));
+    const keydownHandler = this.keydownHandler.bind(this);
+    window.removeEventListener('keydown', e => keydownHandler(e));
   }
 
   updateViewport(nextProps) {
@@ -112,15 +112,20 @@ class ProductView extends React.Component {
     });
   }
 
-  goBack(e) {
+  keydownHandler(e) {
     if (e.keyCode === 27) {
-      this.props.history.push(this.props.returnTo);
+      this.close(e);
     }
   }
 
   getFlavor() {
     if (!this.props.product || !this.props.product.metafields.color) return 'pink';
     return this.props.product.metafields.color;
+  }
+
+  close(e) {
+    e.preventDefault();
+    this.props.history.push(this.props.returnTo);
   }
 
   isCoffee() {
@@ -150,7 +155,7 @@ class ProductView extends React.Component {
                   src={this.props.product.images[0]}
                 />
               </Image>
-              <Close to={this.props.returnTo}>✕</Close>
+              <Close href={this.props.returnTo} onClick={(e) => this.close(e)}>✕</Close>
               <Info>
                 <CoreInfo>
                   <Heading>{this.props.product.title}</Heading>
@@ -235,14 +240,14 @@ class ProductView extends React.Component {
                   Add to Cart
                 </Button>
               </Actions>
-
             </Modal>
           </Grid>
         }
         <Overlay
-          to={this.props.returnTo}
-          isShowing={this.props.isShowing}
           flavor={this.getFlavor()}
+          href={this.props.returnTo}
+          isShowing={this.props.isShowing}
+          onClick={(e) => this.close(e)}
         />
       </Container>
     );
@@ -307,7 +312,7 @@ const Modal = glamorous.div(
   })
 );
 
-const Close = glamorous(Link)({
+const Close = glamorous.a({
   alignItems: 'center',
   color: `rgb(${color.black})`,
   display: 'grid',
@@ -324,7 +329,7 @@ const Close = glamorous(Link)({
   zIndex: layer.base,
 });
 
-const Overlay = glamorous(Link)(
+const Overlay = glamorous.a(
   {
     cursor: 'pointer',
     bottom: 0,

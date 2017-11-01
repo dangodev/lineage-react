@@ -23,7 +23,10 @@ const Collection = (props) => {
         <Subheading>Individual Bags</Subheading>
       }
       <Container>
-        <ProductList products={collectionProducts} isShowing={props.isShowing} />
+        <ProductList
+          products={collectionProducts}
+          isShowing={props.isShowing}
+        />
       </Container>
     </div>
   );
