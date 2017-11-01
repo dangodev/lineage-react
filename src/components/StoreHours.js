@@ -44,7 +44,7 @@ const format = (hours) => {
 const today = new Date();
 const offsetMin = today.getTimezoneOffset();
 const offsetHours = offsetMin / 60;
-let day = Math.floor(today.getUTCDay() * 1440 - offsetMin);
+let day = Math.floor(today.getUTCDay() - offsetHours / 24);
 day = day < 0 ? 6 : (day >= 7 ? 0 : day);
 
 const isOpen = (location) => {
@@ -60,10 +60,11 @@ const isOpen = (location) => {
     return 'Opening Soon';
   }
   // Return closing soon if within 30 min
-  let open = location.hours[day][0] + offsetHours;
+  let open = location.hours[day][0];
   open = open < 0 ? open + 24 : open;
-  let close = location.hours[day][1] + offsetHours;
+  let close = location.hours[day][1];
   close = close < 0 ? close + 24 : close;
+
   if ((hours + minutes / 60) >= (close - 0.5) && hours < close) {
     return 'Closing Soon';
   } else if (hours >= open && hours < close) {
