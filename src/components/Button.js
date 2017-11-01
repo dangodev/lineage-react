@@ -1,18 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import { color, font, grid } from '../lib/theme';
 
-const Button = props => (
-  <Container onClick={props.onClick} color={props.color}>
-    {props.children}
-  </Container>
-);
+const Button = props =>
+  props.to
+    ? <LinkButton to={props.to} color={props.color}>{props.children}</LinkButton>
+    : <ActionButton action={props.onClick} color={props.color}>{props.children}</ActionButton>;
+
+Button.defaultProps = {
+  action: () => {},
+  to: undefined,
+},
 
 Button.propTypes = {
+  action: PropTypes.func,
   color: PropTypes.string,
-  onClick: PropTypes.func,
+  to: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -28,7 +34,7 @@ const textColors = {
   white: `rgb(${color.black})`,
 };
 
-const Container = glamorous.button(
+const ActionButton = glamorous.button(
   {
     alignItems: 'center',
     appearance: 'none',
@@ -43,9 +49,9 @@ const Container = glamorous.button(
     justifyContent: 'center',
     minWidth: 6 * grid,
     paddingLeft: grid,
-    paddingRight: 0,
     paddingRight: grid,
     paddingTop: 0,
+    textDecoration: 'none',
     textTransform: 'uppercase',
   },
   props => ({
@@ -53,5 +59,7 @@ const Container = glamorous.button(
     color: textColors[props.color],
   })
 );
+
+const LinkButton = ActionButton.withComponent(Link);
 
 export default Button;

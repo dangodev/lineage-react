@@ -4,9 +4,13 @@ import PropTypes from 'prop-types';
 
 import { color, font, grid } from '../lib/theme';
 
-const CollectionHeader = (props) => (
+const CollectionHeader = props => (
   <Container>
-    <Inner>
+    <Inner
+      handle={props.collection.handle}
+      imgSm={props.collection.image.small}
+      imgLg={props.collection.image.large}
+    >
       <Heading>{props.collection.title}</Heading>
       <Description>{props.collection.description}</Description>
     </Inner>
@@ -24,11 +28,43 @@ CollectionHeader.propTypes = {
 const Container = glamorous.div({
 });
 
-const Inner = glamorous.div({
-  backgroundColor: `rgb(${color.white})`,
-  paddingTop: 2 * grid,
-  paddingBottom: 2 * grid,
-});
+const bgPositions = {
+  coffee: 'center top',
+  gear: 'center 75%',
+};
+
+const Inner = glamorous.div(
+  {
+    alignItems: 'center',
+    backgroundColor: `rgb(${color.cadet})`,
+    backgroundSize: 'cover',
+    display: 'flex',
+    flexDirection: 'column',
+    height: '75vh',
+    maxHeight: '30em',
+    minHeight: '20em',
+    position: 'relative',
+    paddingTop: 2 * grid,
+
+    '::after': {
+      backgroundImage: `linear-gradient(rgba(${color.offwhite}, 0), rgba(${color.offwhite}, 1))`,
+      bottom: 0,
+      content: '""',
+      height: 3 * grid,
+      left: 0,
+      position: 'absolute',
+      right: 0,
+    },
+  },
+  props => ({
+    backgroundImage: `url('${props.imgSm}')`,
+    backgroundPosition: bgPositions[props.handle] ? bgPositions[props.handle] : 'center center',
+
+    '@media (min-width: 1281px), @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-width: 641px)': {
+      backgroundImage: `url('${props.imgLg}')`,
+    },
+  }),
+);
 
 const Heading = glamorous.h1({
   fontFamily: font.kaufmann,

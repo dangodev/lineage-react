@@ -1,11 +1,6 @@
-/**
- * Product Container
- * @param {array} coffeeProducts
- * @param {array} gearProducts
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'glamor';
 
 import Collection from '../components/Collection';
 import ProductView from '../components/ProductView';
@@ -15,7 +10,7 @@ class ProductContainer extends React.Component {
     super(props);
     this.state = {
       current: 'collection',
-      collection: { handle: '' },
+      collection: undefined,
       product: undefined,
       flow: {
         collection: {
@@ -46,6 +41,12 @@ class ProductContainer extends React.Component {
     this.route(nextProps);
   }
 
+  getReturnTo() {
+    return this.state.collection
+      ? `/collections/${this.state.collection.handle}`
+      : '/';
+  }
+
   transition(action) {
     const currentState = this.state.flow[this.state.current];
     const nextState = currentState ? currentState.on[action] : false;
@@ -59,14 +60,20 @@ class ProductContainer extends React.Component {
     const subroute = request[request.length - 1];
 
     if (nextProps.match.url === '/product') {
+      document.body.classList.add(IsShowing);
       this.transition('SELECT');
       const nextProduct = nextProps.allProducts.find(({ handle }) => handle === subroute);
       this.setState({ product: nextProduct });
 
       if (!this.state.collection) {
-        this.setState({ collection: nextProps.collections.find(({ handle }) => handle === nextProduct.collections[0]) });
+        this.setState({
+          collection: nextProduct.collections[0] === 'subscriptions'
+            ? nextProps.collections.find(({ handle }) => handle === 'coffee')
+            : nextProps.collections.find(({ handle }) => handle === nextProduct.collections[0]),
+        });
       }
     } else if (nextProps.match.url === '/collections') {
+      document.body.classList.remove(IsShowing);
       this.transition('CLOSE');
       this.setState({ collection: nextProps.collections.find(({ handle }) => handle === subroute) });
 
@@ -74,6 +81,10 @@ class ProductContainer extends React.Component {
         this.transition('CHANGE');
         setTimeout(() => this.transition('SUCCESS'), 30);
       }
+    } else {
+      document.body.classList.remove(IsShowing);
+      this.transition('CLOSE');
+      this.setState({ collection: undefined, product: undefined });
     }
   }
 
@@ -89,7 +100,7 @@ class ProductContainer extends React.Component {
           addToCart={this.props.addToCart}
           isShowing={this.state.current === 'product'}
           product={this.state.product}
-          returnTo={`/collections/${this.state.collection.handle}`}
+          returnTo={this.getReturnTo()}
         />
       </div>
     );
@@ -103,5 +114,14 @@ ProductContainer.propTypes = {
   location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
 };
+
+/**
+ * Styles
+ */
+
+const IsShowing = css({
+  height: '100vw',
+  overflow: 'hidden',
+});
 
 export default ProductContainer;

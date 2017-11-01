@@ -6,6 +6,8 @@ import { color, font, grid } from '../lib/theme';
 
 import CollectionHeader from './CollectionHeader';
 import ProductList from './ProductList';
+import Subscriptions from './Subscriptions';
+import WholesaleBlock from './WholesaleBlock';
 
 /**
  * Template
@@ -14,7 +16,8 @@ import ProductList from './ProductList';
 const Collection = (props) => {
   if (!props.collection) return false;
 
-  const collectionProducts = props.allProducts.filter(product => product.collections.indexOf(props.collection.handle) !== -1);
+  const collectionProducts = props.allProducts.filter(product =>
+    product.collections.indexOf(props.collection.handle) !== -1);
 
   return (
     <div>
@@ -23,11 +26,14 @@ const Collection = (props) => {
         <Subheading>Individual Bags</Subheading>
       }
       <Container>
-        <ProductList
-          products={collectionProducts}
-          isShowing={props.isShowing}
-        />
+        <ProductList products={collectionProducts} isShowing={props.isShowing} />
+        {props.collection.handle === 'coffee' &&
+          <Subscriptions allProducts={props.allProducts} isShowing={props.isShowing} />
+        }
       </Container>
+      {props.collection.handle === 'coffee' &&
+        <WholesaleBlock />
+      }
     </div>
   );
 };
@@ -49,7 +55,7 @@ Collection.defaultProps = {
 
 const Container = glamorous.div({
   backgroundColor: `rgb(${color.offWhite})`,
-  paddingBottom: 4 * grid,
+  paddingBottom: 3 * grid,
   paddingLeft: grid,
   paddingRight: grid,
   paddingTop: 2 * grid,

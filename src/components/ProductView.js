@@ -38,29 +38,18 @@ class ProductView extends React.Component {
 
   componentWillMount() {
     this.setDefaultVariant(this.props);
-    this.updateViewport(this.props);
     const keydownHandler = this.keydownHandler.bind(this);
     window.addEventListener('keydown', e => keydownHandler(e));
   }
 
   componentWillReceiveProps(nextProps) {
     this.setDefaultVariant(nextProps);
-    this.updateViewport(nextProps);
     this.setState({ quantity: 1 }); // go back to 1 quantity on product change
   }
 
   componentWillUnmount() {
-    this.updateViewport(this.props);
     const keydownHandler = this.keydownHandler.bind(this);
     window.removeEventListener('keydown', e => keydownHandler(e));
-  }
-
-  updateViewport(nextProps) {
-    if (!nextProps.product || nextProps.isShowing === false) {
-      document.body.classList.remove(IsShowing);
-    } else if (nextProps.isShowing === true) {
-      document.body.classList.add(IsShowing);
-    }
   }
 
   setDefaultVariant(nextProps) {
@@ -493,13 +482,6 @@ const Actions = glamorous.menu({
   marginTop: grid,
   padding: 0,
   position: 'relative',
-});
-
-/* State */
-
-const IsShowing = css({
-  height: '100vw',
-  overflow: 'hidden',
 });
 
 export default withRouter(ProductView);

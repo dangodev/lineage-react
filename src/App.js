@@ -8,13 +8,13 @@ import ShopifyBuy from 'shopify-buy';
 
 import Cart from './components/Cart';
 import CartBlocker from './containers/CartBlocker';
-import GlobalStyles from './components/GlobalStyles';
 import Footer from './components/Footer';
+import GlobalStyles from './components/GlobalStyles';
 import Nav from './components/Nav';
+import Page from './components/Page';
 import ProductContainer from './containers/ProductContainer';
 
 import Home from './pages/Home';
-import About from './pages/About';
 
 /**
  * @section Config
@@ -40,9 +40,10 @@ class App extends React.PureComponent {
         domain,
       }),
       collections: window.lineageCollections.map(collection => ({
-        products: collection.products.map(product => product.id),
         description: collection.description,
         handle: collection.handle,
+        image: collection.image,
+        products: collection.products.map(product => product.id),
         title: collection.title,
       })),
     };
@@ -116,8 +117,7 @@ class App extends React.PureComponent {
           <Nav cartItems={this.state.cartItems} />
           <AppRouter>
             <Route exact path="/" render={() => <Home allProducts={this.state.allProducts} />} />
-            <Route exact path="/pages/learn" component={About} />
-            <Route exact path="/pages/about" component={About} />
+            <Route exact path="/pages/:slug" render={props => <Page {...props} />} />
             <Route
               path="/:route"
               render={props => (
