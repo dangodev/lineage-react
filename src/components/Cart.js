@@ -38,7 +38,7 @@ class Cart extends React.Component {
     if (this.props.history.action === 'PUSH') {
       this.props.history.goBack();
     } else {
-      this.props.history.push('/');
+      this.props.history.push('/collections/coffee');
     }
   }
 
@@ -60,6 +60,7 @@ class Cart extends React.Component {
     return (
       <div>
         <Inner isShowing={this.isShowing()}>
+          <Heading>Cart</Heading>
           <Close href="/" onClick={e => this.closeCart(e)}>✕</Close>
           {this.props.isLoading &&
             <div>
@@ -76,18 +77,34 @@ class Cart extends React.Component {
                     onChange={e => this.updateQuantity(e, lineItem.id)}
                     type="number"
                   />
-                  <Button color="red" small onClick={e => this.remove(e, lineItem.id)}>Remove</Button>
+                  <Button
+                    color="red"
+                    small
+                    onClick={e => this.remove(e, lineItem.id)}
+                  >
+                    Remove
+                  </Button>
                 </div>
               ))}
               {this.props.lineItems.length === 0 && (
-                <div>No Items</div>
+                <ZeroState>
+                  Cart Empty
+                  <small>Go get you somethin’!</small>
+                </ZeroState>
               )}
             </div>
           }
-          <Button to={this.props.checkoutUrl}>Check Out</Button>
-          <ShopButton href="/" onClick={e => this.closeCart(e)}>
-            Keep Shopping
-          </ShopButton>
+          <Actions>
+            <Button
+              to={this.props.checkoutUrl}
+              disabled={this.props.lineItems.length === 0}
+            >
+              Check Out
+            </Button>
+            <ShopButton href="/" onClick={e => this.closeCart(e)}>
+              Keep Shopping
+            </ShopButton>
+          </Actions>
           {this.props.featuredCartProduct &&
             <div>
               {this.props.featuredCartProduct.title}
@@ -134,7 +151,9 @@ const Inner = glamorous.div(
     maxWidth: '20em',
     overflowY: 'scroll',
     WebkitOverflowScrolling: 'touch',
-    padding: grid,
+    paddingBottom: grid,
+    paddingLeft: grid,
+    paddingRight: grid,
     position: 'fixed',
     right: 0,
     top: 0,
@@ -148,6 +167,18 @@ const Inner = glamorous.div(
     visibility: props.isShowing ? 'visible' : 'hidden',
   })
 );
+
+const Heading = glamorous.h1({
+  alignItems: 'center',
+  display: 'flex',
+  fontSize: font.down1,
+  fontWeight: 700,
+  height: 1.5 * grid,
+  justifyContent: 'center',
+  marginBottom: 0,
+  marginTop: 0,
+  textTransform: 'uppercase',
+});
 
 const Overlay = glamorous.div(
   {
@@ -167,6 +198,17 @@ const Overlay = glamorous.div(
   }),
 );
 
+const Actions = glamorous.menu({
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  marginBottom: 0,
+  marginLeft: 0,
+  marginRight: 0,
+  marginTop: grid,
+  padding: 0,
+});
+
 const ShopButton = glamorous.a({
   color: `rgb(${color.green})`,
   display: 'block',
@@ -175,6 +217,27 @@ const ShopButton = glamorous.a({
   marginTop: 0.5 * grid,
   textDecoration: 'none',
   textAlign: 'center',
+});
+
+const ZeroState = glamorous.div({
+  borderRadius: 0.5 * grid,
+  boxShadow: `0 0 0 1px rgba(${color.gray}, 0.25)`,
+  color: `rgb(${color.gray})`,
+  fontSize: font.up2,
+  fontWeight: '500',
+  marginBottom: grid,
+  paddingBottom: 2 * grid,
+  paddingTop: 2 * grid,
+  textAlign: 'center',
+  textTransform: 'uppercase',
+
+  '& small': {
+    display: 'block',
+    fontSize: font.down2,
+    fontWeight: 400,
+    marginTop: 0.25 * grid,
+    textTransform: 'none',
+  },
 });
 
 const Close = glamorous.a({

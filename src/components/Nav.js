@@ -20,10 +20,10 @@ const Nav = props => (
       <StyledLink to="/collections/gear">Gear</StyledLink>
       <StyledLink to="/pages/learn">Learn</StyledLink>
       <StyledLink to="/pages/about">About</StyledLink>
-      <CartLink to="/cart" empty={props.cartCount === 0} aria-label="Cart">
-        {props.cartCount}
-      </CartLink>
     </Links>
+    <CartLink to="/cart" empty={props.cartCount === 0} aria-label="Cart">
+      {props.cartCount}
+    </CartLink>
   </Container>
 );
 
@@ -52,6 +52,7 @@ const Container = glamorous.div({
 const Links = glamorous.nav({
   display: 'flex',
   fontSize: font.down1,
+  paddingRight: 0.5 * grid,
 });
 
 const CartLink = glamorous(Link)(
@@ -84,6 +85,8 @@ const StyledLink = glamorous(NavLink)({
   color: `rgb(${color.black})`,
   display: 'flex',
   fontWeight: 500,
+  paddingBottom: '1em',
+  paddingTop: '1em',
   position: 'relative',
   textDecoration: 'none',
   textTransform: 'uppercase',
@@ -95,7 +98,7 @@ const StyledLink = glamorous(NavLink)({
   '&::after': {
     backgroundColor: `rgb(${color.blue})`,
     borderRadius: '50%',
-    bottom: 0.25 * grid,
+    bottom: 0,
     content: '""',
     height: 6,
     left: '50%',

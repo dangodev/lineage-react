@@ -7,13 +7,14 @@ import { color, font, grid } from '../lib/theme';
 
 const Button = (props) => {
   if (props.to) {
-    return <LinkButton to={props.to} color={props.color} small={props.small}>{props.children}</LinkButton>;
+    return <LinkButton {...props}>{props.children}</LinkButton>;
   }
-  return <ActionButton onClick={props.onClick} color={props.color} small={props.small}>{props.children}</ActionButton>;
+  return <ActionButton {...props}>{props.children}</ActionButton>;
 };
 
 Button.propTypes = {
   color: PropTypes.string,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
   small: PropTypes.bool,
   to: PropTypes.string,
@@ -21,6 +22,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   color: 'blueT',
+  disabled: false,
   onClick: e => e.preventDefault(),
   small: false,
   to: undefined,
@@ -54,12 +56,13 @@ const ActionButton = glamorous.button(
     textTransform: 'uppercase',
   },
   props => ({
-    backgroundColor: `rgb(${color[props.color]})`,
-    color: textColors[props.color],
+    backgroundColor: props.disabled ? `rgba(${color.gray}, 0.25)` : `rgb(${color[props.color]})`,
+    color: props.disabled ? `rgba(${color.black}, 0.375)` : textColors[props.color],
     fontSize: props.small ? font.down1 : '1em',
     height: props.small ? grid : 1.5 * grid,
     paddingLeft: props.small ? 0.5 * grid : grid,
     paddingRight: props.small ? 0.5 * grid : grid,
+    pointerEvents: props.disabled ? 'none' : 'normal',
   })
 );
 
