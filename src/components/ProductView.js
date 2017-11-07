@@ -161,15 +161,7 @@ class ProductView extends React.Component {
                     </div>
                   }
                   <Subheading>Description</Subheading>
-                  {/* <div dangerouslySetInnerHTML={{ __html: this.props.product.content }} /> */}
-                  <Description>
-                    <p>
-                      Way to plant, Ann! What, so the guy we are meeting with can’t
-                      even grow his own hair? COME ON! Taste the happy, Michael.
-                      Taste it. It tastes kind of like sad. Everything they do is
-                      so dramatic and flamboyant.
-                    </p>
-                  </Description>
+                  <Description dangerouslySetInnerHTML={{ __html: this.props.product.content }} />
                 </CoreInfo>
                 {this.isCoffee() && <CoffeeData metafields={this.props.product.metafields} /> }
               </Info>

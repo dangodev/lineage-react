@@ -8,6 +8,8 @@ import { color, font, grid } from '../lib/theme';
 const Button = (props) => {
   if (props.to) {
     return <LinkButton {...props}>{props.children}</LinkButton>;
+  } else if (props.href) {
+    return <AnchorButton {...props}>{props.children}</AnchorButton>;
   }
   return <ActionButton {...props}>{props.children}</ActionButton>;
 };
@@ -15,6 +17,7 @@ const Button = (props) => {
 Button.propTypes = {
   color: PropTypes.string,
   disabled: PropTypes.bool,
+  href: PropTypes.string,
   onClick: PropTypes.func,
   small: PropTypes.bool,
   to: PropTypes.string,
@@ -23,7 +26,8 @@ Button.propTypes = {
 Button.defaultProps = {
   color: 'blueT',
   disabled: false,
-  onClick: e => e.preventDefault(),
+  href: undefined,
+  onClick: undefined,
   small: false,
   to: undefined,
 };
@@ -65,6 +69,8 @@ const ActionButton = glamorous.button(
     pointerEvents: props.disabled ? 'none' : 'normal',
   })
 );
+
+const AnchorButton = ActionButton.withComponent('a');
 
 const LinkButton = ActionButton.withComponent(Link);
 

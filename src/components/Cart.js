@@ -69,7 +69,7 @@ class Cart extends React.Component {
           }
           {this.props.isLoading === false &&
             <div>
-              {this.props.lineItems.map(lineItem => (
+              {this.props.lineItems.map(lineItem => {console.log(lineItem);return(
                 <div key={lineItem.id}>
                   {lineItem.title}
                   <input
@@ -85,7 +85,7 @@ class Cart extends React.Component {
                     Remove
                   </Button>
                 </div>
-              ))}
+              )})}
               {this.props.lineItems.length === 0 && (
                 <ZeroState>
                   Cart Empty
@@ -96,7 +96,8 @@ class Cart extends React.Component {
           }
           <Actions>
             <Button
-              to={this.props.checkoutUrl}
+              href={this.props.checkoutUrl}
+              rel="noopener"
               disabled={this.props.lineItems.length === 0}
             >
               Check Out
