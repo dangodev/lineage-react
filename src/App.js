@@ -34,7 +34,8 @@ class App extends React.PureComponent {
 
     this.state = {
       allProducts: this.formatProducts(),
-      cart: { lineItemCount: 0 },
+      cart: {},
+      cartLineItems: [],
       client: ShopifyBuy.buildClient({
         appId: '6', // '6' is for JS Buy Button (this app)
         accessToken,
@@ -47,6 +48,7 @@ class App extends React.PureComponent {
         products: collection.products.map(product => product.id),
         title: collection.title,
       })),
+      featuredCartProduct: this.getFeaturedCartProduct(),
     };
 
     this.addToCart = this.addToCart.bind(this);
@@ -57,7 +59,6 @@ class App extends React.PureComponent {
 
   componentWillMount() {
     this.getCart();
-    this.setFeaturedProduct();
   }
 
   componentDidMount() {
@@ -74,27 +75,33 @@ class App extends React.PureComponent {
     }
   }
 
-  setFeaturedProduct() {
-    this.setState({
-      featuredProduct: this.state.allProducts.find(product =>
-        product.id === this.state.collections.find(collection =>
-          collection.handle === 'cart').products[0]),
-    });
+  getFeaturedCartProduct() {
+    return window.lineageCollections
+      .find(collection => collection.handle === 'cart')
+      .products[0];
   }
 
   addToCart({ variant, quantity }) {
     this.state.cart.createLineItemsFromVariants({ variant, quantity })
-      .then(cart => this.setState({ cart }));
+      .then(cart => this.updateCart(cart));
   }
 
   removeFromCart(id) {
     this.state.cart.removeLineItem(id)
-      .then(cart => this.setState({ cart }));
+      .then(cart => this.updateCart(cart));
+  }
+
+  updateCart(cart) { // This helps React know when to update
+    this.setState({
+      cart,
+      cartLineItems: cart.lineItems,
+      checkoutUrl: cart.checkoutUrl,
+    });
   }
 
   updateQuantity(id, quantity) {
     this.state.cart.updateLineItem(id, quantity)
-      .then(cart => this.setState({ cart }));
+      .then(cart => this.updateCart(cart));
   }
 
   createCart() {
@@ -103,7 +110,7 @@ class App extends React.PureComponent {
       .then((cart) => {
         this.setState({ isLoading: false });
         if (cart) {
-          this.setState({ cart });
+          this.updateCart(cart);
           window.localStorage.setItem('lineageCart', cart.id);
         } else {
           setTimeout(() => this.getCart(), 1000); // If failed, try again
@@ -117,7 +124,7 @@ class App extends React.PureComponent {
       .then((cart) => {
         this.setState({ isLoading: false });
         if (cart) {
-          this.setState({ cart });
+          this.updateCart(cart);
         } else {
           this.createCart();
         }
@@ -148,7 +155,7 @@ class App extends React.PureComponent {
     return (
       <BrowserRouter>
         <GlobalStyles>
-          <Nav cartCount={this.state.cart.lineItemCount} />
+          <Nav cartCount={this.state.cartLineItems.length} />
           <AppRouter>
             <Route exact path="/" render={() => <Home allProducts={this.state.allProducts} />} />
             <Route exact path="/pages/:slug" render={props => <Page {...props} />} />
@@ -167,9 +174,10 @@ class App extends React.PureComponent {
           </AppRouter>
           <CartRouter
             addToCart={this.addToCart}
-            featuredProduct={this.state.featuredProduct}
+            checkoutUrl={this.state.checkoutUrl}
+            featuredCartProduct={this.state.featuredProduct}
             isLoading={this.state.isLoading}
-            lineItems={this.state.cart.lineItems}
+            lineItems={this.state.cartLineItems}
             products={this.state.products}
             removeFromCart={this.removeFromCart}
             updateQuantity={this.updateQuantity}

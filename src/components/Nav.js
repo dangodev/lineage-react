@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import glamorous from 'glamorous';
 
 import { color, font, grid, transition } from '../lib/theme';
@@ -20,10 +20,9 @@ const Nav = props => (
       <StyledLink to="/collections/gear">Gear</StyledLink>
       <StyledLink to="/pages/learn">Learn</StyledLink>
       <StyledLink to="/pages/about">About</StyledLink>
-      <StyledLink to="/cart">
-        Cart
+      <CartLink to="/cart" empty={props.cartCount === 0} aria-label="Cart">
         {props.cartCount}
-      </StyledLink>
+      </CartLink>
     </Links>
   </Container>
 );
@@ -46,12 +45,8 @@ const Container = glamorous.div({
   height: 2 * grid,
   lineHeight: 1,
   paddingLeft: grid / 2,
-  paddingRight: grid * 0.75,
+  paddingRight: 0,
   width: '100%',
-
-  '& a': {
-    display: 'block',
-  },
 });
 
 const Links = glamorous.nav({
@@ -59,12 +54,36 @@ const Links = glamorous.nav({
   fontSize: font.down1,
 });
 
+const CartLink = glamorous(Link)(
+  {
+    alignItems: 'center',
+    display: 'flex',
+    fontSize: font.up1,
+    fontWeight: 700,
+    height: 2 * grid,
+    justifyContent: 'center',
+    position: 'relative',
+    textDecoration: 'none',
+    transition: 'background-color 200ms, color 200ms',
+    width: 2 * grid,
+
+    ':hover': {
+      backgroundColor: `rgb(${color.blueT})`,
+      color: `rgb(${color.black})`,
+    },
+  },
+  ({ empty }) => ({
+    backgroundColor: empty ? `rgba(${color.offwhite}, 0.5)` : `rgb(${color.blue})`,
+    boxShadow: empty ? `inset 1px 0 rgb(${color.gray})` : 'none',
+    color: `rgb(${empty ? color.gray : color.white})`,
+  })
+);
+
 const StyledLink = glamorous(NavLink)({
+  alignItems: 'center',
   color: `rgb(${color.black})`,
-  display: 'block',
+  display: 'flex',
   fontWeight: 500,
-  paddingBottom: 0.5 * grid,
-  paddingTop: 0.5 * grid,
   position: 'relative',
   textDecoration: 'none',
   textTransform: 'uppercase',
@@ -76,7 +95,7 @@ const StyledLink = glamorous(NavLink)({
   '&::after': {
     backgroundColor: `rgb(${color.blue})`,
     borderRadius: '50%',
-    bottom: 0,
+    bottom: 0.25 * grid,
     content: '""',
     height: 6,
     left: '50%',

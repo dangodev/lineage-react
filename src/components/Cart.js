@@ -4,7 +4,7 @@ import glamorous from 'glamorous';
 
 import Button from './Button';
 
-import { color, grid, layer, transition } from '../lib/theme';
+import { color, font, grid, layer, transition } from '../lib/theme';
 
 class Cart extends React.Component {
   componentWillMount() {
@@ -26,10 +26,8 @@ class Cart extends React.Component {
   addToCart(e) {
     if (e) { e.preventDefault(); }
 
-    console.log(this.featuredItem());
-
     this.props.addToCart(e, {
-      variant: this.featuredItem().variants[0],
+      variant: this.props.featuredCartProduct,
       quantity: 1,
     });
   }
@@ -52,12 +50,6 @@ class Cart extends React.Component {
 
   updateQuantity(e, id) {
     this.props.updateQuantity(id, e.target.value);
-  }
-
-  featuredItem() {
-    return this.props.collections
-      .find(collection => collection.handle === 'cart')
-      .products[0];
   }
 
   isShowing() {
@@ -92,11 +84,15 @@ class Cart extends React.Component {
               )}
             </div>
           }
-          {this.props.featuredProduct &&
+          <Button to={this.props.checkoutUrl}>Check Out</Button>
+          <ShopButton href="/" onClick={e => this.closeCart(e)}>
+            Keep Shopping
+          </ShopButton>
+          {this.props.featuredCartProduct &&
             <div>
-              {this.props.featuredProduct.title}
+              {this.props.featuredCartProduct.title}
               <Button
-                to={`/product/${this.props.featuredProduct.handle}`}
+                to={`/product/${this.props.featuredCartProduct.handle}`}
                 onClick={e => this.addToCart(e)}
               >
                 Add To Cart
@@ -112,7 +108,8 @@ class Cart extends React.Component {
 
 Cart.propTypes = {
   addToCart: PropTypes.func.isRequired,
-  featuredProduct: PropTypes.object.isRequired,
+  checkoutUrl: PropTypes.string,
+  featuredCartProduct: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   lineItems: PropTypes.array,
@@ -122,6 +119,7 @@ Cart.propTypes = {
 };
 
 Cart.defaultProps = {
+  checkoutUrl: '/checkout',
   lineItems: [],
 };
 
@@ -168,6 +166,16 @@ const Overlay = glamorous.div(
     transition: props.isShowing ? 'opacity 200ms' :'opacity 200ms, visibility 0ms 200ms',
   }),
 );
+
+const ShopButton = glamorous.a({
+  color: `rgb(${color.green})`,
+  display: 'block',
+  fontSize: font.down2,
+  fontWeight: 700,
+  marginTop: 0.5 * grid,
+  textDecoration: 'none',
+  textAlign: 'center',
+});
 
 const Close = glamorous.a({
   alignItems: 'center',
