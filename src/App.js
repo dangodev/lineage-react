@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
+  Router,
   Route,
   withRouter,
 } from 'react-router-dom';
@@ -33,7 +34,7 @@ class App extends React.PureComponent {
 
     this.state = {
       allProducts: this.formatProducts(),
-      cartItems: [],
+      cart: { lineItemCount: 0 },
       client: ShopifyBuy.buildClient({
         appId: '6', // '6' is for JS Buy Button (this app)
         accessToken,
@@ -48,45 +49,78 @@ class App extends React.PureComponent {
       })),
     };
 
-    this.getCart = this.getCart.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.getCart = this.getCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
+    this.updateQuantity = this.updateQuantity.bind(this);
   }
 
   componentWillMount() {
     this.getCart();
+    this.setFeaturedProduct();
+  }
+
+  componentDidMount() {
+    setInterval(() => this.getCart(), 30000);
   }
 
   getCart() {
     const cartID = window.localStorage.getItem('lineageCart');
 
-    if (cartID) { // If returning visitor
-      this.state.client.fetchCart(cartID)
-        .then((cart) => {
-          this.setState({ isLoading: false });
-          if (cart) {
-            this.setState({ cart, cartItems: cart.lineItems });
-          } else {
-            setTimeout(() => this.getCart(), 1000); // If failed, try again
-          }
-        });
-    } else {      // If new visitor
-      this.state.client.createCart()
-        .then((cart) => {
-          this.setState({ isLoading: false });
-          if (cart) {
-            this.setState({ cart, cartItems: cart.lineItems });
-            window.localStorage.setItem('lineageCart', cart.id);
-          } else {
-            setTimeout(() => this.getCart(), 1000); // If failed, try again
-          }
-        });
+    if (cartID) {
+      this.loadCart(cartID);  // If returning visitor
+    } else {
+      this.createCart();      // If new visitor
     }
   }
 
-  addToCart(variantObject, quantity) {
-    this.state.cart.createLineItemsFromVariants({ variant: variantObject, quantity })
+  setFeaturedProduct() {
+    this.setState({
+      featuredProduct: this.state.allProducts.find(product =>
+        product.id === this.state.collections.find(collection =>
+          collection.handle === 'cart').products[0]),
+    });
+  }
+
+  addToCart({ variant, quantity }) {
+    this.state.cart.createLineItemsFromVariants({ variant, quantity })
+      .then(cart => this.setState({ cart }));
+  }
+
+  removeFromCart(id) {
+    this.state.cart.removeLineItem(id)
+      .then(cart => this.setState({ cart }));
+  }
+
+  updateQuantity(id, quantity) {
+    this.state.cart.updateLineItem(id, quantity)
+      .then(cart => this.setState({ cart }));
+  }
+
+  createCart() {
+    this.setState({ isLoading: true });
+    this.state.client.createCart()
       .then((cart) => {
-        this.setState({ cart, cartItems: cart.lineItems });
+        this.setState({ isLoading: false });
+        if (cart) {
+          this.setState({ cart });
+          window.localStorage.setItem('lineageCart', cart.id);
+        } else {
+          setTimeout(() => this.getCart(), 1000); // If failed, try again
+        }
+      });
+  }
+
+  loadCart(cartID) {
+    this.setState({ isLoading: true });
+    this.state.client.fetchCart(cartID)
+      .then((cart) => {
+        this.setState({ isLoading: false });
+        if (cart) {
+          this.setState({ cart });
+        } else {
+          this.createCart();
+        }
       });
   }
 
@@ -112,9 +146,9 @@ class App extends React.PureComponent {
 
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <GlobalStyles>
-          <Nav cartItems={this.state.cartItems} />
+          <Nav cartCount={this.state.cart.lineItemCount} />
           <AppRouter>
             <Route exact path="/" render={() => <Home allProducts={this.state.allProducts} />} />
             <Route exact path="/pages/:slug" render={props => <Page {...props} />} />
@@ -122,8 +156,8 @@ class App extends React.PureComponent {
               path="/:route"
               render={props => (
                 <ProductContainer
-                  addToCart={this.addToCart}
                   allProducts={this.state.allProducts}
+                  addToCart={this.addToCart}
                   collections={this.state.collections}
                   location={props.location}
                   match={props.match}
@@ -132,14 +166,17 @@ class App extends React.PureComponent {
             />
           </AppRouter>
           <CartRouter
-            cartItems={this.state.cartitems}
-            collections={this.state.collections}
-            isShowing={props => props.location.pathname === '/cart'}
+            addToCart={this.addToCart}
+            featuredProduct={this.state.featuredProduct}
+            isLoading={this.state.isLoading}
+            lineItems={this.state.cart.lineItems}
             products={this.state.products}
+            removeFromCart={this.removeFromCart}
+            updateQuantity={this.updateQuantity}
           />
           <Footer />
         </GlobalStyles>
-      </Router>
+      </BrowserRouter>
     );
   }
 }

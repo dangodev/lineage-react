@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import glamorous from 'glamorous';
 
@@ -7,7 +8,7 @@ import { color, font, grid, transition } from '../lib/theme';
 import logo from '../assets/lineage.svg';
 import speckle from '../assets/speckle.png';
 
-const Nav = () => (
+const Nav = props => (
   <Container>
     <Logo>
       <NavLink to="/">
@@ -19,10 +20,21 @@ const Nav = () => (
       <StyledLink to="/collections/gear">Gear</StyledLink>
       <StyledLink to="/pages/learn">Learn</StyledLink>
       <StyledLink to="/pages/about">About</StyledLink>
-      <StyledLink to="/cart">Cart</StyledLink>
+      <StyledLink to="/cart">
+        Cart
+        {props.cartCount}
+      </StyledLink>
     </Links>
   </Container>
 );
+
+Nav.propTypes = {
+  cartCount: PropTypes.number,
+};
+
+/**
+ * Styles
+ */
 
 const Container = glamorous.div({
   alignItems: 'center',

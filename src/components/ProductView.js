@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
-import { css } from 'glamor';
 import glamorous from 'glamorous';
 import parse from 'url-parse';
 
@@ -64,7 +63,11 @@ class ProductView extends React.Component {
       option1: selectedVariant.option1,
       option2: selectedVariant.option2,
       option3: selectedVariant.option3,
-      selectedVariant,
+      selectedVariant: {
+        productId: nextProps.product.id,
+        productTitle: nextProps.product.title,
+        ...selectedVariant,
+      },
     });
   }
 
@@ -93,23 +96,26 @@ class ProductView extends React.Component {
     this.setState({ quantity: quantity });
   }
 
+  getFlavor() {
+    if (!this.props.product || !this.props.product.metafields.color) return 'pink';
+    return this.props.product.metafields.color;
+  }
+
+
   addToCart(e) {
-    e.preventDefault();
+    if (e) { e.preventDefault(); }
+
     this.props.addToCart({
-      variant: this.state.selectedVariant,
       quantity: this.state.quantity,
+      variant: this.state.selectedVariant,
     });
+    this.props.history.push('/cart');
   }
 
   keydownHandler(e) {
     if (e.keyCode === 27) {
       this.close(e);
     }
-  }
-
-  getFlavor() {
-    if (!this.props.product || !this.props.product.metafields.color) return 'pink';
-    return this.props.product.metafields.color;
   }
 
   close(e) {
@@ -144,7 +150,7 @@ class ProductView extends React.Component {
                   src={this.props.product.images[0]}
                 />
               </Image>
-              <Close href={this.props.returnTo} onClick={(e) => this.close(e)}>✕</Close>
+              <Close href={this.props.returnTo} onClick={e => this.close(e)}>✕</Close>
               <Info>
                 <CoreInfo>
                   <Heading>{this.props.product.title}</Heading>
@@ -236,7 +242,7 @@ class ProductView extends React.Component {
           flavor={this.getFlavor()}
           href={this.props.returnTo}
           isShowing={this.props.isShowing}
-          onClick={(e) => this.close(e)}
+          onClick={e => this.close(e)}
         />
       </Container>
     );
@@ -249,9 +255,10 @@ ProductView.defaultProps = {
 };
 
 ProductView.propTypes = {
-  history: PropTypes.object,
+  addToCart: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
   isShowing: PropTypes.bool,
-  product: PropTypes.object,
+  product: PropTypes.object.isRequired,
   returnTo: PropTypes.string,
 };
 

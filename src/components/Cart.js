@@ -2,33 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
+import Button from './Button';
+
 import { color, grid, layer, transition } from '../lib/theme';
 
 class Cart extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      returnTo(e) { e.preventDefault(); this.props.history.push('/'); },
-      isShowing: this.props.location.pathname === '/cart',
-    };
-    this.keydownHandler.bind(this);
-  }
-
   componentWillMount() {
     const keydownHandler = this.keydownHandler.bind(this);
     window.addEventListener('keydown', keydownHandler);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.location.pathname !== this.props.location.pathname) {
-      const isShowing = nextProps.location.pathname === '/cart';
-
-      if (nextProps.history.action === 'PUSH') {
-        this.setState({ returnTo(e) { e.preventDefault(); nextProps.history.goBack(); } });
-      }
-
-      this.setState({ isShowing });
-    }
   }
 
   componentWillUnmount() {
@@ -37,37 +18,111 @@ class Cart extends React.Component {
   }
 
   keydownHandler(e) {
-    if (this.state.isShowing && e.keyCode === 27) {
-      this.state.returnTo();
+    if (this.isShowing() && e.keyCode === 27) {
+      this.closeCart();
     }
+  }
+
+  addToCart(e) {
+    if (e) { e.preventDefault(); }
+
+    console.log(this.featuredItem());
+
+    this.props.addToCart(e, {
+      variant: this.featuredItem().variants[0],
+      quantity: 1,
+    });
+  }
+
+  closeCart(e) {
+    if (e) { e.preventDefault(); }
+
+    if (this.props.history.action === 'PUSH') {
+      this.props.history.goBack();
+    } else {
+      this.props.history.push('/');
+    }
+  }
+
+  remove(e, id) {
+    if (e) { e.preventDefault(); }
+
+    this.props.removeFromCart(id);
+  }
+
+  updateQuantity(e, id) {
+    this.props.updateQuantity(id, e.target.value);
+  }
+
+  featuredItem() {
+    return this.props.collections
+      .find(collection => collection.handle === 'cart')
+      .products[0];
+  }
+
+  isShowing() {
+    return this.props.location.pathname === '/cart';
   }
 
   render() {
     return (
       <div>
-        <Inner isShowing={this.state.isShowing}>
-          <Close href="/" onClick={this.state.returnTo}>✕</Close>
-          {this.props.cartItems.map(lineItem => (
-            <div key={lineItem.id}>{lineItem.title}</div>
-          ))}
-          {this.props.cartItems.length === 0 && (
-            <div>No Items</div>
-          )}
+        <Inner isShowing={this.isShowing()}>
+          <Close href="/" onClick={e => this.closeCart(e)}>✕</Close>
+          {this.props.isLoading &&
+            <div>
+              Loading…
+            </div>
+          }
+          {this.props.isLoading === false &&
+            <div>
+              {this.props.lineItems.map(lineItem => (
+                <div key={lineItem.id}>
+                  {lineItem.title}
+                  <input
+                    defaultValue={lineItem.quantity}
+                    onChange={e => this.updateQuantity(e, lineItem.id)}
+                    type="number"
+                  />
+                  <Button color="red" small onClick={e => this.remove(e, lineItem.id)}>Remove</Button>
+                </div>
+              ))}
+              {this.props.lineItems.length === 0 && (
+                <div>No Items</div>
+              )}
+            </div>
+          }
+          {this.props.featuredProduct &&
+            <div>
+              {this.props.featuredProduct.title}
+              <Button
+                to={`/product/${this.props.featuredProduct.handle}`}
+                onClick={e => this.addToCart(e)}
+              >
+                Add To Cart
+              </Button>
+            </div>
+          }
         </Inner>
-        <Overlay isShowing={this.state.isShowing} onClick={this.state.returnTo} />
+        <Overlay isShowing={this.isShowing()} onClick={e => this.closeCart(e)} />
       </div>
     );
   }
 };
 
-Cart.defaultProps = {
-  cartItems: [],
+Cart.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+  featuredProduct: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  lineItems: PropTypes.array,
+  location: PropTypes.object.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+  updateQuantity: PropTypes.func.isRequired,
 };
 
-Cart.propTypes = {
-  cartItems: PropTypes.array,
-  history: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
+Cart.defaultProps = {
+  lineItems: [],
 };
 
 /**
