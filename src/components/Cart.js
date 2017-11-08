@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'glamor';
 import glamorous from 'glamorous';
 
 import Button from './Button';
+import CartItem from './CartItem';
+import FeaturedCartProduct from './FeaturedCartProduct';
+import Waves from './Waves';
 
 import { color, font, grid, layer, transition } from '../lib/theme';
 
@@ -10,6 +14,14 @@ class Cart extends React.Component {
   componentWillMount() {
     const keydownHandler = this.keydownHandler.bind(this);
     window.addEventListener('keydown', keydownHandler);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.isShowing(nextProps)) {
+      document.body.classList.add(scrollLock);
+    } else {
+      document.body.classList.remove(scrollLock);
+    }
   }
 
   componentWillUnmount() {
@@ -42,25 +54,20 @@ class Cart extends React.Component {
     }
   }
 
-  remove(e, id) {
-    if (e) { e.preventDefault(); }
-
-    this.props.removeFromCart(id);
-  }
-
-  updateQuantity(e, id) {
-    this.props.updateQuantity(id, e.target.value);
-  }
-
-  isShowing() {
-    return this.props.location.pathname === '/cart';
+  isShowing(nextProps = this.props) {
+    return nextProps.location.pathname === '/cart';
   }
 
   render() {
     return (
       <div>
         <Inner isShowing={this.isShowing()}>
-          <Heading>Cart</Heading>
+          <Heading>
+            Cart
+            <Count empty={this.props.lineItems.length === 0}>
+              {this.props.lineItems.length}
+            </Count>
+          </Heading>
           <Close href="/" onClick={e => this.closeCart(e)}>✕</Close>
           {this.props.isLoading &&
             <div>
@@ -69,23 +76,15 @@ class Cart extends React.Component {
           }
           {this.props.isLoading === false &&
             <div>
-              {this.props.lineItems.map(lineItem => {console.log(lineItem);return(
-                <div key={lineItem.id}>
-                  {lineItem.title}
-                  <input
-                    defaultValue={lineItem.quantity}
-                    onChange={e => this.updateQuantity(e, lineItem.id)}
-                    type="number"
-                  />
-                  <Button
-                    color="red"
-                    small
-                    onClick={e => this.remove(e, lineItem.id)}
-                  >
-                    Remove
-                  </Button>
-                </div>
-              )})}
+              {this.props.lineItems.map(lineItem => (
+                <CartItem
+                  key={lineItem.id}
+                  allProducts={this.props.allProducts}
+                  lineItem={lineItem}
+                  removeLineItem={this.props.removeLineItem}
+                  updateLineItem={this.props.updateLineItem}
+                />
+              ))}
               {this.props.lineItems.length === 0 && (
                 <ZeroState>
                   Cart Empty
@@ -94,29 +93,24 @@ class Cart extends React.Component {
               )}
             </div>
           }
+          {this.props.featuredCartProduct &&
+            <FeaturedCartProduct product={this.props.featuredCartProduct} />
+          }
           <Actions>
-            <Button
-              href={this.props.checkoutUrl}
-              rel="noopener"
-              disabled={this.props.lineItems.length === 0}
-            >
-              Check Out
-            </Button>
+            <WaveContainer>
+              <Waves width="55%" />
+              <Button
+                href={this.props.checkoutUrl}
+                rel="noopener"
+                disabled={this.props.lineItems.length === 0}
+              >
+                Check Out
+              </Button>
+            </WaveContainer>
             <ShopButton href="/" onClick={e => this.closeCart(e)}>
               Keep Shopping
             </ShopButton>
           </Actions>
-          {this.props.featuredCartProduct &&
-            <div>
-              {this.props.featuredCartProduct.title}
-              <Button
-                to={`/product/${this.props.featuredCartProduct.handle}`}
-                onClick={e => this.addToCart(e)}
-              >
-                Add To Cart
-              </Button>
-            </div>
-          }
         </Inner>
         <Overlay isShowing={this.isShowing()} onClick={e => this.closeCart(e)} />
       </div>
@@ -126,14 +120,15 @@ class Cart extends React.Component {
 
 Cart.propTypes = {
   addToCart: PropTypes.func.isRequired,
+  allProducts: PropTypes.array.isRequired,
   checkoutUrl: PropTypes.string,
   featuredCartProduct: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   lineItems: PropTypes.array,
   location: PropTypes.object.isRequired,
-  removeFromCart: PropTypes.func.isRequired,
-  updateQuantity: PropTypes.func.isRequired,
+  removeLineItem: PropTypes.func.isRequired,
+  updateLineItem: PropTypes.func.isRequired,
 };
 
 Cart.defaultProps = {
@@ -147,14 +142,15 @@ Cart.defaultProps = {
 
 const Inner = glamorous.div(
   {
-    backgroundColor: `rgb(${color.white})`,
+    backgroundImage: `linear-gradient(90deg, rgba(${color.white}, 0) ${grid}px, rgb(${color.white}) ${grid}px)`,
+    backgroundRepeat: 'repeat-y',
+    backgroundSize: '100% 100%',
     bottom: 0,
-    maxWidth: '20em',
+    maxWidth: '30em',
     overflowY: 'scroll',
     WebkitOverflowScrolling: 'touch',
     paddingBottom: grid,
     paddingLeft: grid,
-    paddingRight: grid,
     position: 'fixed',
     right: 0,
     top: 0,
@@ -166,6 +162,24 @@ const Inner = glamorous.div(
     transform: props.isShowing ? 'translateX(0)' : 'translateX(100%)',
     transition: props.isShowing ? `transform 200ms ${transition.standard}` : `transform 200ms ${transition.standard}, visibility 0ms 200ms`,
     visibility: props.isShowing ? 'visible' : 'hidden',
+  })
+);
+
+const Count = glamorous.div(
+  {
+    alignItems: 'center',
+    borderRadius: '50%',
+    display: 'flex',
+    fontSize: font.down2,
+    height: 0.625 * grid,
+    justifyContent: 'center',
+    lineHeight: 1,
+    marginLeft: 0.125 * grid,
+    width: 0.625 * grid,
+  },
+  props => ({
+    backgroundColor: props.empty ? `rgba(${color.black}, 0.1)` : `rgb(${color.red})`,
+    color: props.empty ? `rgb(${color.black}, 0.4)` : `rgb(${color.white})`,
   })
 );
 
@@ -200,14 +214,22 @@ const Overlay = glamorous.div(
 );
 
 const Actions = glamorous.menu({
-  alignItems: 'center',
+  alignItems: 'flex-end',
   display: 'flex',
   flexDirection: 'column',
   marginBottom: 0,
   marginLeft: 0,
   marginRight: 0,
   marginTop: grid,
-  padding: 0,
+  paddingLeft: 0,
+  paddingRight: grid,
+});
+
+const WaveContainer = glamorous.div({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  position: 'relative',
+  width: '100%',
 });
 
 const ShopButton = glamorous.a({
@@ -227,6 +249,8 @@ const ZeroState = glamorous.div({
   fontSize: font.up2,
   fontWeight: '500',
   marginBottom: grid,
+  marginLeft: grid,
+  marginRight: grid,
   paddingBottom: 2 * grid,
   paddingTop: 2 * grid,
   textAlign: 'center',
@@ -255,6 +279,12 @@ const Close = glamorous.a({
   textDecoration: 'none',
   top: 0,
   width: 1.5 * grid,
+});
+
+/* State */
+
+const scrollLock = css({
+  overflow: 'hidden',
 });
 
 export default Cart;

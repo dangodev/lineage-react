@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   BrowserRouter,
-  Router,
   Route,
   withRouter,
 } from 'react-router-dom';
@@ -48,13 +47,13 @@ class App extends React.PureComponent {
         products: collection.products.map(product => product.id),
         title: collection.title,
       })),
-      featuredCartProduct: this.getFeaturedCartProduct(),
     };
 
     this.addToCart = this.addToCart.bind(this);
+    this.featuredCartProduct = this.featuredCartProduct.bind(this);
     this.getCart = this.getCart.bind(this);
-    this.removeFromCart = this.removeFromCart.bind(this);
-    this.updateQuantity = this.updateQuantity.bind(this);
+    this.removeLineItem = this.removeLineItem.bind(this);
+    this.updateLineItem = this.updateLineItem.bind(this);
   }
 
   componentWillMount() {
@@ -75,18 +74,12 @@ class App extends React.PureComponent {
     }
   }
 
-  getFeaturedCartProduct() {
-    return window.lineageCollections
-      .find(collection => collection.handle === 'cart')
-      .products[0];
-  }
-
   addToCart({ variant, quantity }) {
     this.state.cart.createLineItemsFromVariants({ variant, quantity })
       .then(cart => this.updateCart(cart));
   }
 
-  removeFromCart(id) {
+  removeLineItem(id) {
     this.state.cart.removeLineItem(id)
       .then(cart => this.updateCart(cart));
   }
@@ -99,9 +92,16 @@ class App extends React.PureComponent {
     });
   }
 
-  updateQuantity(id, quantity) {
+  updateLineItem(id, quantity) {
     this.state.cart.updateLineItem(id, quantity)
       .then(cart => this.updateCart(cart));
+  }
+
+  featuredCartProduct() {
+    if (!this.state.allProducts) return undefined;
+
+    return this.state.allProducts
+      .find(product => product.collections.indexOf('cart') !== -1);
   }
 
   createCart() {
@@ -173,14 +173,14 @@ class App extends React.PureComponent {
             />
           </AppRouter>
           <CartRouter
-            addToCart={this.addToCart}
+            allProducts={this.state.allProducts}
             checkoutUrl={this.state.checkoutUrl}
-            featuredCartProduct={this.state.featuredProduct}
+            featuredCartProduct={this.featuredCartProduct()}
             isLoading={this.state.isLoading}
             lineItems={this.state.cartLineItems}
             products={this.state.products}
-            removeFromCart={this.removeFromCart}
-            updateQuantity={this.updateQuantity}
+            removeLineItem={this.removeLineItem}
+            updateLineItem={this.updateLineItem}
           />
           <Footer />
         </GlobalStyles>

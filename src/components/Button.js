@@ -38,6 +38,7 @@ Button.defaultProps = {
 
 const textColors = {
   blue: `rgb(${color.black})`,
+  blueT: `rgb(${color.black})`,
   red: `rgb(${color.white})`,
   white: `rgb(${color.black})`,
 };
@@ -57,6 +58,7 @@ const ActionButton = glamorous.button(
     paddingBottom: 0,
     paddingTop: 0,
     textDecoration: 'none',
+    transition: 'background-color 200ms',
     textTransform: 'uppercase',
   },
   props => ({
@@ -67,6 +69,10 @@ const ActionButton = glamorous.button(
     paddingLeft: props.small ? 0.5 * grid : grid,
     paddingRight: props.small ? 0.5 * grid : grid,
     pointerEvents: props.disabled ? 'none' : 'normal',
+
+    ':hover': {
+      backgroundColor: `rgba(${color[props.color]}, 0.6)`,
+    },
   })
 );
 

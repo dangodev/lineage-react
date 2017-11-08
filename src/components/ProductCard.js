@@ -115,6 +115,7 @@ const Inner = glamorous.div({
 const Heading = glamorous.h1({
   fontSize: font.up1,
   fontWeight: 700,
+  lineHeight: 0.8,
   margin: 0,
   textTransform: 'uppercase',
 });
