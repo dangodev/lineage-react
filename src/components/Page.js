@@ -1,18 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
 
-import About from '../pages/About';
-import FourOhFour from '../pages/404';
-import Learn from '../pages/Learn';
-import Wholesale from '../pages/Wholesale';
+import { grid } from '../lib/theme';
 
-const pages = {
-  wholesale: Wholesale,
-  about: About,
+const Page = props => <Container>{props.children}</Container>;
+
+Page.propTypes = {
+  children: PropTypes.node,
 };
 
-const Page = props =>
-  pages[props.match.params.slug]
-    ? React.createElement(pages[props.match.params.slug])
-    : <FourOhFour />;
+/**
+ * Style
+ */
+
+const Container = glamorous.div({
+  paddingLeft: 2 * grid,
+  paddingRight: 2 * grid,
+});
 
 export default Page;

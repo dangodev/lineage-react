@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 import glamorous from 'glamorous';
 
-import { color, font, grid, transition } from '../lib/theme';
+import { color, font, grid, layer, transition } from '../lib/theme';
 
 import logo from '../assets/lineage.svg';
 import speckle from '../assets/speckle.png';
@@ -22,6 +22,7 @@ const Nav = props => (
       <StyledLink to="/pages/about">About</StyledLink>
     </Links>
     <CartLink to="/cart" empty={props.cartCount === 0} aria-label="Cart">
+      <span>Cart</span>
       {props.cartCount}
     </CartLink>
   </Container>
@@ -52,21 +53,40 @@ const Container = glamorous.div({
 const Links = glamorous.nav({
   display: 'flex',
   fontSize: font.down1,
-  paddingRight: 0.5 * grid,
+  paddingRight: 2.5 * grid,
 });
 
 const CartLink = glamorous(Link)(
   {
     alignItems: 'center',
     display: 'flex',
+    flexDirection: 'column',
     fontSize: font.up1,
     fontWeight: 700,
     height: 2 * grid,
     justifyContent: 'center',
-    position: 'relative',
+    position: 'fixed',
+    right: 0,
     textDecoration: 'none',
+    top: 0,
     transition: 'background-color 200ms, color 200ms',
     width: 2 * grid,
+    zIndex: layer.cart,
+
+    '& span': {
+      alignItems: 'center',
+      display: 'flex',
+      fontSize: font.down4,
+      fontWeight: 500,
+      height: 0.75 * grid,
+      justifyContent: 'center',
+      left: 0,
+      letterSpacing: '0.05em',
+      position: 'absolute',
+      textTransform: 'uppercase',
+      top: 0.125 * grid,
+      width: '100%',
+    },
 
     ':hover': {
       backgroundColor: `rgb(${color.blueT})`,
@@ -74,7 +94,7 @@ const CartLink = glamorous(Link)(
     },
   },
   ({ empty }) => ({
-    backgroundColor: empty ? `rgba(${color.offwhite}, 0.5)` : `rgb(${color.blue})`,
+    backgroundColor: empty ? `rgba(${color.offwhite}, 0.5)` : `rgb(${color.black})`,
     boxShadow: empty ? `inset 1px 0 rgb(${color.gray})` : 'none',
     color: `rgb(${empty ? color.gray : color.white})`,
   })

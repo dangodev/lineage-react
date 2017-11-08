@@ -17,11 +17,16 @@ const CartItem = (props) => {
         <Thumb src={product.featured_image} alt={product.title} />
       </ThumbContainer>
       <ProductInfo>
-        <Heading>{product.title}</Heading>
+        <Heading>
+          {product.title}
+          {props.lineItem.variant_title !== 'Default Title' &&
+            ` (${productType === 'coffee subscription' ? 'Every ' : ''}${props.lineItem.variant_title})`
+          }
+        </Heading>
         <ProductType>{product.type}</ProductType>
         <Description>
           {(productType === 'coffee' || productType === 'coffee beans') &&
-            product.tags.join(' / ')
+            <Notes>{product.tags.join(' / ')}</Notes>
           }
         </Description>
         <Price>{formatPrice(props.lineItem.price)}</Price>
@@ -31,8 +36,8 @@ const CartItem = (props) => {
           defaultValue={props.lineItem.quantity}
           min="0"
           onChange={(e) => {
-            if (parseInt(e.target.value, 10) === 0) {
-              confirm(`Remove ${product.title}?`, () => props.updateLineItem(props.lineItem.id, e.target.value));
+            if (parseInt(e.target.value, 10) === 0 && confirm(`Remove ${product.title}?`)) {
+              props.removeLineItem(props.lineItem.id);
             } else if (e.target.value) {
               props.updateLineItem(props.lineItem.id, e.target.value);
             }
@@ -130,6 +135,7 @@ const Quantity = glamorous.input({
   border: 'none',
   borderRadius: '50%',
   boxShadow: `0 0 0 2px rgb(${color.blue})`,
+  cursor: 'pointer',
   fontSize: font.up3,
   fontWeight: 500,
   height: grid,
@@ -138,7 +144,12 @@ const Quantity = glamorous.input({
   outline: 'none',
   padding: 0,
   textAlign: 'center',
+  transition: 'background-color 200ms',
   width: grid,
+
+  ':hover': {
+    backgroundColor: `rgba(${color.blue}, 0.2)`,
+  },
 
   '::-webkit-inner-spin-button, ::-webkit-inner-spin-button': {
     appearance: 'none',
@@ -152,7 +163,7 @@ const Description = glamorous.div({
   marginTop: 0.25 * grid,
 });
 
-const Note = glamorous.div({
+const Notes = glamorous.div({
   lineHeight: 1.5,
   textTransform: 'capitalize',
 });

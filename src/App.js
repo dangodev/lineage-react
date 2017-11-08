@@ -11,7 +11,7 @@ import CartBlocker from './containers/CartBlocker';
 import Footer from './components/Footer';
 import GlobalStyles from './components/GlobalStyles';
 import Nav from './components/Nav';
-import Page from './components/Page';
+import PageContainer from './containers/PageContainer';
 import ProductContainer from './containers/ProductContainer';
 
 import Home from './pages/Home';
@@ -158,7 +158,7 @@ class App extends React.PureComponent {
           <Nav cartCount={this.state.cartLineItems.length} />
           <AppRouter>
             <Route exact path="/" render={() => <Home allProducts={this.state.allProducts} />} />
-            <Route exact path="/pages/:slug" render={props => <Page {...props} />} />
+            <Route exact path="/pages/:slug" render={props => <PageContainer {...props} />} />
             <Route
               path="/:route"
               render={props => (

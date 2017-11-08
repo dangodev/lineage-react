@@ -76,9 +76,10 @@ module.exports = merge.smart(common, {
     }),
     new NameAllModulesPlugin(),
     new CopyWebpackPlugin([                        // copy /public dir
-      { from: '../src/static', to: './' },
-      { from: '../src/shopify-templates', to: '../templates' },
+      { from: '../src/shopify-assets', to: './' },
+      { from: '../src/shopify-config', to: '../config' },
       { from: '../src/shopify-snippets', to: '../snippets' },
+      { from: '../src/shopify-templates', to: '../templates' },
     ]),
   ],
 });
