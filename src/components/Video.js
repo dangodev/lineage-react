@@ -58,8 +58,7 @@ class Video extends React.Component {
 
 const Container = glamorous.div({
   backgroundColor: `rgb(${color.pink})`,
-  height: `calc(100vh - ${2 * grid}px)`,
-  minHeight: '50vw',
+  height: '56vw',
   overflow: 'hidden',
   position: 'relative',
 });
@@ -105,8 +104,12 @@ const BigLogo = glamorous.img({
   top: '50%',
   opacity: 0,
   transform: 'translate(-50%, -25%)',
-  width: 8 * grid,
+  width: 5 * grid,
   zIndex: layer.base + 1,
+
+  '@media (min-width: 600px)': {
+    width: 8 * grid,
+  },
 });
 
 const Stretch = glamorous.div({

@@ -53,8 +53,13 @@ const Container = glamorous.div({
 
 const Content = glamorous.div({
   backgroundColor: color.white,
-  gridColumnEnd: 10,
-  gridColumnStart: 5,
+  gridColumnEnd: 11,
+  gridColumnStart: 3,
+
+  '@media (min-width: 600px)': {
+    gridColumnEnd: 10,
+    gridColumnStart: 4,
+  }
 });
 
 const Grid = glamorous.div({
@@ -66,11 +71,15 @@ const Grid = glamorous.div({
 
 const Heading = glamorous.h1({
   fontFamily: font.kaufmann,
-  fontSize: font.up5,
+  fontSize: font.up3,
   lineHeight: 1,
   marginTop: 0,
   marginBottom: grid,
   textAlign: 'center',
+
+  '@media (min-width: 600px)': {
+    fontSize: font.up5,
+  },
 
   ' & small': {
     display: 'block',

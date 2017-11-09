@@ -31,8 +31,9 @@ class ProductView extends React.Component {
       selectedVariant: {},
     };
 
-    this.setOption.bind(this);
-    this.setQuantity.bind(this);
+    this.isCoffee = this.isCoffee.bind(this);
+    this.setOption = this.setOption.bind(this);
+    this.setQuantity = this.setQuantity.bind(this);
   }
 
   componentWillMount() {
@@ -129,7 +130,7 @@ class ProductView extends React.Component {
     return [
       'coffee',
       'coffee beans',
-    ].indexOf(this.props.product.type.toLowerCase());
+    ].indexOf(this.props.product.type.toLowerCase()) !== -1;
   }
 
   shouldShowVariants() {
@@ -163,7 +164,7 @@ class ProductView extends React.Component {
                   <Subheading>Description</Subheading>
                   <Description dangerouslySetInnerHTML={{ __html: this.props.product.content }} />
                 </CoreInfo>
-                {this.isCoffee() && <CoffeeData metafields={this.props.product.metafields} /> }
+                {this.isCoffee() && <CoffeeData metafields={this.props.product.metafields} />}
               </Info>
               <Selections>
                 {this.shouldShowVariants() &&
@@ -281,8 +282,12 @@ const Grid = glamorous.div({
   marginRight: 'auto',
   marginTop: 2 * grid,
   maxWidth: `calc(100vw - ${grid}px)`,
-  width: '75vw',
+  width: '100vw',
   zIndex: layer.modal + 1,
+
+  '@media (min-width: 600px)': {
+    width: '75vw',
+  },
 });
 
 const Modal = glamorous.div(
@@ -308,13 +313,19 @@ const Close = glamorous.a({
   fontWeight: 500,
   height: 2 * grid,
   justifyContent: 'center',
+  left: 0,
   lineHeight: 1,
-  position: 'absolute',
-  right: 0,
+  position: 'fixed',
   textDecoration: 'none',
   top: 0,
   width: 2 * grid,
-  zIndex: layer.base,
+  zIndex: layer.modal,
+
+  '@media (min-width: 600px)': {
+    left: 'auto',
+    position: 'absolute',
+    right: 0,
+  },
 });
 
 const Overlay = glamorous.a(
@@ -339,20 +350,30 @@ const Heading = glamorous.h1({
   lineHeight: 1,
   marginBottom: 0.5 * grid,
   marginTop: 0,
-  paddingTop: grid,
   textTransform: 'uppercase',
+
+  '@media (min-width: 600px)': {
+    paddingTop: grid,
+  },
 });
 
 const Image = glamorous.figure({
   borderRadius: 0.5 * grid,
   boxShadow: `${0.25 * grid}px ${0.25 * grid}px ${grid}px rgba(${color.black}, 0.1)`,
-  left: 0,
-  margin: 0,
+  marginLeft: 'auto',
+  marginRight: 'auto',
   overflow: 'hidden',
-  position: 'absolute',
-  top: 0,
-  transform: `translate(-${2 * grid}px, -${grid}px)`,
-  width: '28%',
+  transform: `translateY(-${grid}px)`,
+  width: '87.5%',
+
+  '@media (min-width: 600px)': {
+    left: 0,
+    margin: 0,
+    position: 'absolute',
+    top: 0,
+    transform: `translate(-${2 * grid}px, -${grid}px)`,
+    width: 6 * grid,
+  },
 
   '& img': {
     display: 'block',
@@ -376,7 +397,13 @@ const Description = glamorous.div({
 });
 
 const Selections = glamorous.div({
-  paddingLeft: '25%',
+  paddingLeft: grid,
+  paddingRight: grid,
+
+  '@media (min-width: 600px)': {
+    paddingLeft: '25%',
+    paddingRight: 0,
+  },
 });
 
 const Subheading = glamorous.h3({
@@ -397,19 +424,28 @@ const Notes = glamorous.p({
 
 const Options = glamorous.div({
   display: 'flex',
-  marginTop: 0.25 * grid,
   flexWrap: 'wrap',
+  marginTop: 0.25 * grid,
+  width: '100%',
 
-  '> * + *': {
-    marginLeft: 0.25 * grid,
+  '@media (min-width: 600px)': {
+
+    '> * + *': {
+      marginLeft: 0.25 * grid,
+    },
   },
 });
 
 const Option = glamorous.div({
   display: 'block',
+  flexGrow: 1,
   lineHeight: 1,
   overflow: 'hidden',
   position: 'relative',
+
+  '@media (min-width: 600px)': {
+    flexGrow: 0,
+  },
 
   '& input': {
     position: 'absolute',
@@ -428,7 +464,10 @@ const Option = glamorous.div({
     justifyContent: 'center',
     padding: 0,
     transition: 'background-color 200ms, box-shadow 200ms, color 200ms',
-    width: 2 * grid,
+
+    '@media (min-width: 600px)': {
+      width: 2 * grid,
+    },
   },
 
   '& input:checked + label': {
@@ -440,12 +479,24 @@ const Option = glamorous.div({
 
 const Info = glamorous.div({
   display: 'flex',
-  paddingLeft: '25%',
+  flexDirection: 'column',
+
+  '@media (min-width: 600px)': {
+    flexDirection: 'row',
+    paddingLeft: '25%',
+  },
 });
 
 const CoreInfo = glamorous.div({
   flex: 5,
+  marginBottom: grid,
+  paddingLeft: grid,
   paddingRight: grid,
+
+  '@media (min-width: 600px)': {
+    marginBottom: 0,
+    paddingLeft: 0,
+  },
 });
 
 
@@ -463,12 +514,22 @@ const Quantity = glamorous.div({
 const QuantityWholesale = glamorous.div({
   alignItems: 'center',
   display: 'flex',
+  flex: '0 0 100%',
   fontSize: font.down2,
+  height: grid,
+  justifyContent: 'center',
+
+  '@media (min-width: 600px)': {
+    flex: '1 0 auto',
+    height: 'auto',
+    justifyContent: 'flex-start',
+  },
 
   '& a': {
     color: `rgb(${color.green})`,
     fontWeight: 500,
     textDecoration: 'none',
+    width: 'auto',
   },
 });
 

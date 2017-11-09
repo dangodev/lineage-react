@@ -155,8 +155,12 @@ const Inner = glamorous.div(
     right: 0,
     top: 0,
     transform: 'translateX(100%, 0)',
-    width: '50vw',
+    width: '100%',
     zIndex: layer.cart + 1,
+
+    '@media (min-width: 600px)': {
+      widtH: '50vw',
+    },
   },
   props => ({
     transform: props.isShowing ? 'translateX(0)' : 'translateX(100%)',

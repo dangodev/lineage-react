@@ -118,14 +118,27 @@ const Heading = glamorous.h1({
 });
 
 const Grid = glamorous.div({
-  display: 'grid',
-  gridColumnGap: grid,
-  gridTemplateColumns: 'repeat(12, 1fr)',
+  display: 'block',
+
+  '@media (min-width: 600px)': {
+    display: 'grid',
+    gridColumnGap: grid,
+    gridTemplateColumns: 'repeat(12, 1fr)',
+  },
 });
 
 const Location = glamorous.div({
-  marginTop: grid,
   gridColumn: '8 / span 2',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  marginTop: grid,
+  maxWidth: '20em',
+  width: `calc(100vw - ${2 * grid}px)`,
+
+  '@media (min-width: 600px)': {
+    marginLeft: 0,
+    marginRight: 0,
+  },
 
   '&:nth-of-type(odd)': {
     gridColumn: '4 / span 2',

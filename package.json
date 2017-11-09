@@ -6,7 +6,7 @@
   "main": "src/main.js",
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production PLATFORM=web webpack -p --config config/webpack.prod.js",
-    "start": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js"
+    "start": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --hot --host 0.0.0.0"
   },
   "license": "ISC",
   "dependencies": {

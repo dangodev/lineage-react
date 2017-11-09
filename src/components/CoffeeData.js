@@ -48,21 +48,32 @@ const Inner = glamorous.dl({
   display: 'flex',
   flexWrap: 'wrap',
   lineHeight: 1,
-  paddingTop: 0.5 * grid,
+  margin: 0,
+  paddingTop: 0,
+
+  '@media (min-width: 600px)': {
+    paddingTop: 0.5 * grid,
+  },
 });
 
 const Key = glamorous.dt({
   fontWeight: 500,
   margin: 0,
-  paddingTop: 0.5 * grid,
   width: '50%',
+
+  '& ~ dt': {
+    paddingTop: 0.5 * grid,
+  },
 });
 
 const Value = glamorous.dd({
   margin: 0,
-  paddingTop: 0.5 * grid,
   textAlign: 'right',
   width: '50%',
+
+  '& ~ dd': {
+    paddingTop: 0.5 * grid,
+  },
 });
 
 export default CoffeeData;
