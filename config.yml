@@ -1,0 +1,5 @@
+development:
+  directory: dist
+  password:
+  store: lineage-coffee-roasting.myshopify.com
+  theme_id:

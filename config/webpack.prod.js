@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const path = require('path');
 const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -10,9 +9,6 @@ const NameAllModulesPlugin = require('name-all-modules-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge.smart(common, {
-  output: {
-    filename: '[name].[chunkhash].js',
-  },
   module: {
     rules: [
       {
@@ -47,8 +43,8 @@ module.exports = merge.smart(common, {
     }),
     new HtmlWebpackPlugin({
       inject: false,
-      filename: '../layout/theme.ejs',
-      template: `../src/index.ejs`,
+      filename: '../layout/theme.liquid',
+      template: '../src/index.ejs',
       appMountId: 'app-root',
       minify: {
         collapseWhitespace: true,
@@ -58,14 +54,6 @@ module.exports = merge.smart(common, {
     }),
     new ExtractTextPlugin({ filename: 'fonts.css' }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.NamedChunksPlugin((chunk) => {     // ¯\_(ツ)_/¯  https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31
-      if (chunk.name) {
-        return chunk.name;
-      }
-      return chunk.modules.map(m => path.relative(m.context, m.request)).join("_");
-    }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HashedModuleIdsPlugin(),           // build hashes
     new ManifestPlugin(),                          // make manifest.json file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
