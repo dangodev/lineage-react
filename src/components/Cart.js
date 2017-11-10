@@ -118,8 +118,12 @@ class Cart extends React.Component {
   }
 };
 
+Cart.defaultProps = {
+  addToCart: undefined,
+};
+
 Cart.propTypes = {
-  addToCart: PropTypes.func.isRequired,
+  addToCart: PropTypes.func,
   allProducts: PropTypes.array.isRequired,
   checkoutUrl: PropTypes.string,
   featuredCartProduct: PropTypes.object.isRequired,
@@ -181,9 +185,9 @@ const Count = glamorous.div(
     marginLeft: 0.125 * grid,
     width: 0.625 * grid,
   },
-  props => ({
-    backgroundColor: props.empty ? `rgba(${color.black}, 0.1)` : `rgb(${color.red})`,
-    color: props.empty ? `rgb(${color.black}, 0.4)` : `rgb(${color.white})`,
+  ({ empty = true }) => ({
+    backgroundColor: empty ? `rgba(${color.black}, 0.1)` : `rgb(${color.red})`,
+    color: empty ? `rgb(${color.black}, 0.4)` : `rgb(${color.white})`,
   })
 );
 

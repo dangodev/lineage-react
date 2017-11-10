@@ -158,7 +158,7 @@ class App extends React.PureComponent {
           <Nav cartCount={this.state.cartLineItems.length} />
           <AppRouter>
             <Route exact path="/" render={() => <Home allProducts={this.state.allProducts} />} />
-            <Route exact path="/pages/:slug" render={props => <PageContainer {...props} />} />
+            <Route exact path="/pages/:slug" render={props => <PageContainer allProducts={this.state.allProducts} {...props} />} />
             <Route
               path="/:route"
               render={props => (

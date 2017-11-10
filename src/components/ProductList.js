@@ -24,13 +24,13 @@ const ProductList = props => (
   </Grid>
 );
 
+ProductList.defaultProps = {
+  products: [],
+};
+
 ProductList.propTypes = {
   isShowing: PropTypes.bool.isRequired,
   products: PropTypes.array,
-};
-
-ProductList.defaultProps = {
-  products: [],
 };
 
 /**

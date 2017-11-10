@@ -43,9 +43,16 @@ const ProductCard = (props) => {
   );
 };
 
+ProductCard.defaultProps = {
+  delay: 0,
+  isShowing: true,
+  product: undefined,
+};
+
 ProductCard.propTypes = {
-  isShowing: PropTypes.bool.isRequired,
-  product: PropTypes.object.isRequired,
+  delay: PropTypes.number,
+  isShowing: PropTypes.bool,
+  product: PropTypes.object,
 };
 
 /**

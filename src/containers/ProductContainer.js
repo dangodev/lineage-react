@@ -39,6 +39,10 @@ class ProductContainer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.route(nextProps);
+
+    if(this.props.location.pathname !== nextProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
   }
 
   getReturnTo() {

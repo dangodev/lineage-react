@@ -244,6 +244,7 @@ class ProductView extends React.Component {
 
 ProductView.defaultProps = {
   isShowing: false,
+  product: undefined,
   returnTo: '\\',
 };
 
@@ -251,7 +252,7 @@ ProductView.propTypes = {
   addToCart: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   isShowing: PropTypes.bool,
-  product: PropTypes.object.isRequired,
+  product: PropTypes.object,
   returnTo: PropTypes.string,
 };
 
@@ -339,7 +340,7 @@ const Overlay = glamorous.a(
     transition: 'opacity 200ms',
     zIndex: layer.modal,
   },
-  ({ flavor, isShowing }) => ({
+  ({ flavor, isShowing = false }) => ({
     backgroundColor: flavor === 'white' ? `rgba(${color.black}, 0.7)` : `rgba(${color[flavor]}, 0.7)`,
     opacity: isShowing ? 1 : 0,
   })

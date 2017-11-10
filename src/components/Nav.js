@@ -84,13 +84,13 @@ class Nav extends React.Component {
   }
 }
 
+Nav.defaultProps = {
+  cartCount: 0,
+};
+
 Nav.propTypes = {
   cartCount: PropTypes.number,
   location: PropTypes.object.isRequired,
-};
-
-Nav.defaultProps = {
-  cartCount: 0,
 };
 
 /**
@@ -263,9 +263,9 @@ const CartLink = glamorous(Link)(
       color: `rgb(${color.black})`,
     },
   },
-  ({ empty }) => ({
-    backgroundColor: empty ? `rgba(${color.offwhite}, 0.9)` : `rgb(${color.black})`,
-    color: `rgb(${empty ? color.gray : color.white})`,
+  props => ({
+    backgroundColor: props.empty ? `rgba(${color.offwhite}, 0.9)` : `rgb(${color.black})`,
+    color: `rgb(${props.empty ? color.gray : color.white})`,
   })
 );
 

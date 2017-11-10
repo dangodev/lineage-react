@@ -27,7 +27,7 @@ const FeaturedProduct = props => (
     <Grid>
       <Content>
         <Heading>Featured Product <small>{thisMonth} {thisYear}</small></Heading>
-        <ProductCard product={props.featuredProduct} isShowing={true} />
+        <ProductCard product={props.featuredProduct} />
       </Content>
     </Grid>
   </Container>

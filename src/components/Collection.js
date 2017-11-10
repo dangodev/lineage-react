@@ -38,15 +38,15 @@ const Collection = (props) => {
   );
 };
 
+Collection.defaultProps = {
+  isShowing: true,
+  collection: undefined,
+};
+
 Collection.propTypes = {
   allProducts: PropTypes.array.isRequired,
   collection: PropTypes.object,
   isShowing: PropTypes.bool,
-};
-
-Collection.defaultProps = {
-  isShowing: false,
-  collection: undefined,
 };
 
 /**

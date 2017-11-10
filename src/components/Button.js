@@ -28,7 +28,7 @@ Button.defaultProps = {
   disabled: false,
   href: undefined,
   onClick: undefined,
-  small: false,
+  small: undefined,
   to: undefined,
 };
 
