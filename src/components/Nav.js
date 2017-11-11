@@ -24,10 +24,8 @@ class Nav extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname !== this.props.location.pathname) {
-      this.restrictScroll();
-      this.setState({ isOpen: false });
-    } else {
       this.relaxScroll();
+      this.setState({ isOpen: false });
     }
   }
 
@@ -72,6 +70,7 @@ class Nav extends React.Component {
           <MobileClose onClick={e => this.closeNav(e)} aria-label="Close Mobile Menu" />
           <StyledLink to="/collections/coffee">Coffee</StyledLink>
           <StyledLink to="/collections/gear">Gear</StyledLink>
+          <MobileLink to="/pages/wholesale">Wholesale</MobileLink>
           <StyledLink to="/pages/learn">Learn</StyledLink>
           <StyledLink to="/pages/about">About</StyledLink>
         </Links>
@@ -309,6 +308,14 @@ const StyledLink = glamorous(NavLink)({
       opacity: 1,
       transform: 'translate(-50%, 0)',
     },
+  },
+});
+
+const MobileLink = glamorous(StyledLink)({
+  display: 'block',
+
+  [`@media (min-width: ${breakpoint.sm})`]: {
+    display: 'none',
   },
 });
 

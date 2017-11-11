@@ -9,12 +9,12 @@ import { color, font, grid } from '../lib/theme';
 const WholesaleBlock = () => (
   <Container>
     <Content>
-      <h1>Wholesale</h1>
-      <p>
+      <Heading>Wholesale</Heading>
+      <Body>
         Every month we ship hundreds of pounds of our just-roasted gourmet
         coffee to offices and restaurants around the state. Ready to make
         Lineage part of your workday?
-      </p>
+      </Body>
     </Content>
     <Actions>
       <Waves width={`${3 * grid}px`} />
@@ -31,26 +31,26 @@ const Container = glamorous.div({
   backgroundColor: `rgb(${color.blue})`,
   paddingTop: 3 * grid,
   paddingBottom: 2 * grid,
-
-  '& h1': {
-    fontSize: font.up4,
-    marginBottom: 0,
-    marginTop: 0,
-    textTransform: 'uppercase',
-  },
-
-  '& p': {
-    fontSize: font.up1,
-    lineHeight: 1.8,
-    marginBottom: grid,
-    marginTop: grid,
-  },
 });
 
 const Content = glamorous.div({
   maxWidth: '35em',
   paddingLeft: 2 * grid,
   width: '50%',
+});
+
+const Heading = glamorous.h3({
+  fontSize: font.up4,
+  marginBottom: 0,
+  marginTop: 0,
+  textTransform: 'uppercase',
+});
+
+const Body = glamorous.p({
+  fontSize: font.up1,
+  lineHeight: 1.8,
+  marginBottom: grid,
+  marginTop: grid,
 });
 
 const Actions = glamorous.menu({

@@ -94,7 +94,7 @@ class ProductView extends React.Component {
   }
 
   setQuantity(quantity) {
-    this.setState({ quantity: quantity });
+    this.setState({ quantity });
   }
 
   getFlavor() {
@@ -114,9 +114,7 @@ class ProductView extends React.Component {
   }
 
   keydownHandler(e) {
-    if (e.keyCode === 27) {
-      this.close(e);
-    }
+    if (e.keyCode === 27) { this.close(e); }
   }
 
   close(e) {
@@ -126,11 +124,7 @@ class ProductView extends React.Component {
 
   isCoffee() {
     if (!this.props.product) return false;
-
-    return [
-      'coffee',
-      'coffee beans',
-    ].indexOf(this.props.product.type.toLowerCase()) !== -1;
+    return ['coffee', 'coffee beans'].indexOf(this.props.product.type.toLowerCase()) !== -1;
   }
 
   shouldShowVariants() {
@@ -252,6 +246,7 @@ ProductView.propTypes = {
   addToCart: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   isShowing: PropTypes.bool,
+  location: PropTypes.object.isRequired,
   product: PropTypes.object,
   returnTo: PropTypes.string,
 };
