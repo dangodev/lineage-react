@@ -4,24 +4,9 @@ import glamorous from 'glamorous';
 
 import { color, grid, layer, transition } from '../lib/theme';
 
-import bgReel from '../assets/home-reel.mp4';
 import bigLogo from '../assets/lineage-full.svg';
 
 class Video extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeSource: bgReel,
-    };
-  }
-
-  componentWillMount() {
-    if (typeof window !== 'undefined' && window.screen.width && window.screen.width >= 680) {
-      this.setState({ activeSource: bgReel });
-    }
-  }
-
   componentDidMount() {
     if (this.video) {
       this.video.play();
@@ -42,10 +27,11 @@ class Video extends React.Component {
             loop
             autoPlay
             playsInline
+            poster="https://cdn.shopify.com/s/files/1/0746/4367/files/home-reel-poster.jpg?2238910942592067902"
             muted
             ref={(el) => { this.video = el; }}
           >
-            <source src={this.state.activeSource} type="video/mp4" />
+            <source src="https://cdn.shopify.com/s/files/1/0746/4367/files/homepage-720.mp4?15396948752035854437" type="video/mp4" />
           </video>
         </Stretch>
         <Pink />

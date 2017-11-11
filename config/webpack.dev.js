@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const common = require('./webpack.common.js');
 
@@ -29,6 +30,7 @@ module.exports = merge.smart(common, {
       title: 'But First, ☕!',
       appMountId: 'app-root',
     }),
+    new BundleAnalyzerPlugin(),
     new ExtractTextPlugin('[name].css'),
   ],
 });

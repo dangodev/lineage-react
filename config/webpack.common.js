@@ -31,6 +31,15 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/',
   },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({      // helps make vendor bundle more cacheable-r
+      name: 'runtime',                             // -> https://webpack.js.org/guides/caching/
+    }),
+  ],
   resolve: {
     extensions: ['.js'],
   },

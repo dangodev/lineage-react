@@ -17,8 +17,8 @@ const LineageAcademyBlock = () => (
     </Content>
     <Actions>
       <Waves width={`${3 * grid}px`} />
-      <Button color="blue" href="/pages/wholesale">Lineage Academy on Medium</Button>
-      <Button color="blue" href="/pages/wholesale">Follow on Instagram</Button>
+      <Button color="blue" href="https://medium.com/lineage-academy/" rel="noopener" target="_blank">Lineage Academy on Medium</Button>
+      <Button color="blue" href="https://instagram.com/lineageacademy" rel="noopener" target="_blank">Lineage Academy on Instagram</Button>
     </Actions>
   </Container>
 );

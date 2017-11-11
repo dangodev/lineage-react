@@ -54,7 +54,7 @@ const Thumb = glamorous.div({
   borderTopRightRadius: 0.25 * grid,
   height: 0,
   overflow: 'hidden',
-  paddingTop: '37.5%',
+  paddingTop: '56.25%',
   position: 'relative',
   width: '100%',
 

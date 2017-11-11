@@ -10,7 +10,6 @@ import { color, font, grid } from '../lib/theme';
 
 import ProductCard from './ProductCard';
 
-import clipPath from '../assets/bag-clip.svg';
 import speckle from '../assets/speckle.png';
 
 /**

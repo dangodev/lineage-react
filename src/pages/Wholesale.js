@@ -28,14 +28,14 @@ const Wholesale = (props) => {
             established roasters in national competitions, and gained access
             to unique, world-class strains of coffee few other roasters can
             match. We take pride in our pursuit, and we’re not content until
-            we’re the best roaster in the country.
+            we’re the best roaster in the country.
           </p>
           <p>
             That same roast quality doesn’t diminish with higher wholesale
             volume. We also work with you on a regular basis to make sure you
             have the perfect type of coffee experience for you, in the amount
             you need. Nothing goes to waste, and you have access to some of
-            the finest coffees on planet earth.
+            the finest coffees on planet earth.
           </p>
         </Content>
         <Photo>
@@ -51,12 +51,12 @@ const Wholesale = (props) => {
             exporters in South American and African nations. All of our
             coffee comes from cartel-free laborers in safe working conditions
             that we’ve either inspected for ourselves or are partners with
-            those we trust.
+            those we trust.
           </p>
           <p>
             We pay far above fair trade value for coffee to ensure our
             partner farms make livable wages and stay in business as long as
-            we do.
+            we do.
           </p>
         </Content>
         <Photo>

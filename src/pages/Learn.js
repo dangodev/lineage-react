@@ -98,7 +98,7 @@ const BrewHeading = glamorous.h1({
   fontFamily: font.kaufmann,
   fontSize: font.up6,
   marginBottom: 0,
-  marginTop: 3 * grid,
+  marginTop: 2 * grid,
   textAlign: 'center',
 });
 

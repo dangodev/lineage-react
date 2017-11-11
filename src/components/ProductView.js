@@ -140,10 +140,7 @@ class ProductView extends React.Component {
           <Grid>
             <Modal isShowing={this.props.isShowing}>
               <Image>
-                <img
-                  alt={this.props.product.title}
-                  src={this.props.product.images[0]}
-                />
+                <img alt={this.props.product.title} src={this.props.product.images[0]} />
               </Image>
               <Close href={this.props.returnTo} onClick={e => this.close(e)}>✕</Close>
               <Info>
@@ -218,9 +215,7 @@ class ProductView extends React.Component {
               <Price>{formatPrice(this.state.selectedVariant.price)}</Price>
               <Actions>
                 <Waves width="42.5%" />
-                <Button onClick={e => this.addToCart(e)}>
-                  Add to Cart
-                </Button>
+                <Button onClick={e => this.addToCart(e)}>Add to Cart</Button>
               </Actions>
             </Modal>
           </Grid>

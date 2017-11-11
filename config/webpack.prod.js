@@ -55,13 +55,6 @@ module.exports = merge.smart(common, {
     new ExtractTextPlugin({ filename: 'fonts.css' }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new ManifestPlugin(),                          // make manifest.json file
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({      // helps make vendor bundle more cacheable-r
-      name: 'runtime',                             // -> https://webpack.js.org/guides/caching/
-    }),
     new NameAllModulesPlugin(),
     new CopyWebpackPlugin([                        // copy /public dir
       { from: '../src/shopify-assets', to: './' },
