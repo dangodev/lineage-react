@@ -14,7 +14,7 @@ const ProductCard = (props) => {
   return (
     <Container
       flavor={props.product.metafields.color}
-      to={`/product/${props.product.handle}`}
+      to={`/products/${props.product.handle}`}
       isShowing={props.isShowing}
       delay={props.delay}
     >

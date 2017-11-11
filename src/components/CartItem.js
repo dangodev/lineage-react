@@ -45,6 +45,9 @@ const CartItem = (props) => {
           type="number"
         />
         {(productType === 'coffee' || productType === 'coffee beans') ? 'bags' : 'count' }
+        <Remove onClick={(e) => {if (confirm(`Remove ${product.title}?`)) { props.removeLineItem(props.lineItem.id); }}}>
+          Remove
+        </Remove>
       </QuantityLabel>
     </Container>
   );
@@ -154,6 +157,21 @@ const Quantity = glamorous.input({
   '::-webkit-inner-spin-button, ::-webkit-inner-spin-button': {
     appearance: 'none',
   },
+});
+
+const Remove = glamorous.button({
+  appearance: 'none',
+  background: 'none',
+  border: 'none',
+  color: `rgb(${color.red})`,
+  cursor: 'pointer',
+  fontSize: font.down2,
+  fontWeight: 400,
+  marginTop: 0.25 * grid,
+  outline: 'none',
+  padding: 0,
+  textAlign: 'center',
+  textTransform: 'uppercase',
 });
 
 const Description = glamorous.div({

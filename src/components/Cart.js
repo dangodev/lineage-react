@@ -5,6 +5,7 @@ import glamorous from 'glamorous';
 
 import Button from './Button';
 import CartItem from './CartItem';
+import CartZero from './CartZero';
 import FeaturedCartProduct from './FeaturedCartProduct';
 import Waves from './Waves';
 
@@ -85,12 +86,7 @@ class Cart extends React.Component {
                   updateLineItem={this.props.updateLineItem}
                 />
               ))}
-              {this.props.lineItems.length === 0 && (
-                <ZeroState>
-                  Cart Empty
-                  <small>Go get you somethin’!</small>
-                </ZeroState>
-              )}
+              {this.props.lineItems.length === 0 && <CartZero />}
             </div>
           }
           {this.props.featuredCartProduct &&
@@ -248,29 +244,6 @@ const ShopButton = glamorous.a({
   marginTop: 0.5 * grid,
   textDecoration: 'none',
   textAlign: 'center',
-});
-
-const ZeroState = glamorous.div({
-  borderRadius: 0.5 * grid,
-  boxShadow: `0 0 0 1px rgba(${color.gray}, 0.25)`,
-  color: `rgb(${color.gray})`,
-  fontSize: font.up2,
-  fontWeight: '500',
-  marginBottom: grid,
-  marginLeft: grid,
-  marginRight: grid,
-  paddingBottom: 2 * grid,
-  paddingTop: 2 * grid,
-  textAlign: 'center',
-  textTransform: 'uppercase',
-
-  '& small': {
-    display: 'block',
-    fontSize: font.down2,
-    fontWeight: 400,
-    marginTop: 0.25 * grid,
-    textTransform: 'none',
-  },
 });
 
 const Close = glamorous.a({

@@ -1,4 +1,4 @@
-import React from 'react';
+ismport React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
@@ -23,7 +23,7 @@ const FeaturedCartProduct = (props) => {
           }
           <Price>{formatPrice(props.product.price)}</Price>
         </ProductInfo>
-        <ViewProduct to={`/product/${props.product.handle}`}>View</ViewProduct>
+        <ViewProduct to={`/products/${props.product.handle}`}>View</ViewProduct>
       </Grid>
     </Container>
   );
