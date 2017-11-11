@@ -42,6 +42,7 @@ const Container = glamorous.div(
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    maxHeight: '56.25vw',
     minHeight: '62.5vh',
     paddingBottom: 2 * grid,
     paddingLeft: grid,
