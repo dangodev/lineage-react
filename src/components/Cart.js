@@ -159,7 +159,7 @@ const Inner = glamorous.div(
     zIndex: layer.cart + 1,
 
     '@media (min-width: 600px)': {
-      widtH: '50vw',
+      width: '50vw',
     },
   },
   props => ({

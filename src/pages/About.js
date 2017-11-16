@@ -3,6 +3,7 @@ import glamorous from 'glamorous';
 
 import PageHeading from '../components/PageHeading';
 import TimelineEvent from '../components/TimelineEvent';
+import StoreHours from '../components/StoreHours';
 
 import { font, grid } from '../lib/theme';
 
@@ -101,6 +102,7 @@ const About = () => (
         />
       ))}
     </Grid>
+    <StoreHours />
   </div>
 );
 

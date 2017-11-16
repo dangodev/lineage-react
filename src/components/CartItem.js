@@ -134,7 +134,6 @@ const QuantityLabel = glamorous.div({
 });
 
 const Quantity = glamorous.input({
-  appearance: 'none',
   border: 'none',
   borderRadius: '50%',
   boxShadow: `0 0 0 2px rgb(${color.blue})`,
@@ -149,6 +148,8 @@ const Quantity = glamorous.input({
   textAlign: 'center',
   transition: 'background-color 200ms',
   width: grid,
+  WebkitAppearance: 'none',
+  MozAppearance: 'textfield',
 
   ':hover': {
     backgroundColor: `rgba(${color.blue}, 0.2)`,
