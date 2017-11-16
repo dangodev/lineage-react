@@ -5,10 +5,14 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const NameAllModulesPlugin = require('name-all-modules-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 const common = require('./webpack.common.js');
 
 module.exports = merge.smart(common, {
+  entry: {
+    main: ['./lib/offline-sw.js'],
+  },
   module: {
     rules: [
       {
@@ -62,5 +66,18 @@ module.exports = merge.smart(common, {
       { from: '../src/shopify-snippets', to: '../snippets' },
       { from: '../src/shopify-templates', to: '../templates' },
     ]),
+    new OfflinePlugin({
+      AppCache: false,                             // AppCache is deprecated, so disable
+      autoUpdate: 1000 * 60 * 60,                  // 1 hour
+      caches: {
+        main: [':rest:'],
+        additional: ['*.jpg', '*.gif', '*.png'],
+        optional: [':externals:', '*.mp4'],
+      },
+      externals: [
+        '/',
+      ],
+      ServiceWorker: { events: true },
+    }),
   ],
 });
