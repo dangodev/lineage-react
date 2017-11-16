@@ -9,24 +9,24 @@ class ProductContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 'collection',
+      current: 'collections',
       collection: undefined,
       product: undefined,
       flow: {
-        collection: {
+        collections: {
           on: {
             CHANGE: 'loading',
-            SELECT: 'product',
+            SELECT: 'products',
           },
         },
         loading: {
           on: {
-            SUCCESS: 'collection',
+            SUCCESS: 'collections',
           },
         },
-        product: {
+        products: {
           on: {
-            CLOSE: 'collection',
+            CLOSE: 'collections',
           },
         },
       },
@@ -63,7 +63,7 @@ class ProductContainer extends React.Component {
     const request = nextProps.location.pathname.split('/');
     const subroute = request[request.length - 1];
 
-    if (nextProps.match.url === '/product') {
+    if (nextProps.match.url === '/products') {
       document.body.classList.add(IsShowing);
       this.transition('SELECT');
       const nextProduct = nextProps.allProducts.find(({ handle }) => handle === subroute);
@@ -98,11 +98,11 @@ class ProductContainer extends React.Component {
         <Collection
           allProducts={this.props.allProducts}
           collection={this.state.collection}
-          isShowing={this.state.current === 'collection' || this.state.current === 'product'}
+          isShowing={this.state.current === 'collections' || this.state.current === 'products'}
         />
         <ProductView
           addToCart={this.props.addToCart}
-          isShowing={this.state.current === 'product'}
+          isShowing={this.state.current === 'products'}
           product={this.state.product}
           returnTo={this.getReturnTo()}
         />

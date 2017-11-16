@@ -37,7 +37,7 @@ CoffeeData.propTypes = {
 };
 
 const Metafields = glamorous.div({
-  backgroundColor: `rgb(${color.offwhite})`,
+  backgroundColor: `rgb(${color.white})`,
   flex: 2,
   fontSize: font.down2,
   margin: 0,
@@ -52,7 +52,7 @@ const Inner = glamorous.dl({
   paddingTop: 0,
 
   '@media (min-width: 600px)': {
-    paddingTop: 0.5 * grid,
+    paddingTop: grid,
   },
 });
 
@@ -62,7 +62,7 @@ const Key = glamorous.dt({
   width: '50%',
 
   '& ~ dt': {
-    paddingTop: 0.5 * grid,
+    paddingTop: 0.375 * grid,
   },
 });
 
@@ -72,7 +72,7 @@ const Value = glamorous.dd({
   width: '50%',
 
   '& ~ dd': {
-    paddingTop: 0.5 * grid,
+    paddingTop: 0.375 * grid,
   },
 });
 
