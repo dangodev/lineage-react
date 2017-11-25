@@ -63,12 +63,14 @@ export default {
     width: `calc(100vw - ${2 * grid}px)`,
 
     '@media (min-width: 600px)': {
+      gridColumn: '4 / span 3',
       marginLeft: 0,
       marginRight: 0,
-    },
+      width: 'auto',
 
-    '&:nth-of-type(odd)': {
-      gridColumn: '4 / span 2',
+      '&:nth-of-type(even)': {
+        gridColumnStart: '7',
+      },
     },
   }),
 
