@@ -7,6 +7,7 @@
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production PLATFORM=web webpack -p --config config/webpack.prod.js",
     "start": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --hot --host 0.0.0.0",
+    "debug": "/Applications/Google\\ Chrome\\ Canary.app/Contents/MacOS/Google\\ Chrome\\ Canary localhost:8080 --remote-debugging-port=9222",
     "deploy": "npm run build && theme upload"
   },
   "license": "ISC",

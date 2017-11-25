@@ -18,6 +18,18 @@ yarn start
 
 and it will be available at `localhost:8080`, with mock data.
 
+#### Debugging
+
+If on VSCode and using [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome),
+open a new Terminal tab and run the following to allow breakpoints in VSCode:
+
+```
+yarn debug
+```
+
+_Note: it’s configured for Chrome Canary. Remove `\\ Canary` in `launch.json` to
+configure for Chrome (stable)._
+
 # Deploy
 
 Easy deployment is made possible via
