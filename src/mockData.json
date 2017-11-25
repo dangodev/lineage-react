@@ -1,0 +1,1275 @@
+{
+  "metafields": [
+    {
+      "id": 399243769,
+      "metafields": {
+        "altitude": 1100,
+        "color": "green",
+        "country": "Brazil",
+        "grower": "Paulo Piancastelli",
+        "opposite_product": "ethiopia-ardi",
+        "peak_flavor": "3 days",
+        "processing_method": "Pulped Natural Dried 100%",
+        "region": "Cerrado",
+        "related_product_1": "ethiopia-ardi",
+        "related_product_2": "modern-american",
+        "score": 98,
+        "variety": "IAC-125"
+      }
+    },
+    {
+      "id": 215725408286,
+      "metafields": {
+        "altitude": 2000,
+        "color": "green",
+        "country": "Ethiopia",
+        "peak_flavor": "3 days",
+        "processing_method": "Dry processed",
+        "region": "Yirgacheffe, Aricha \"Mist Valley\""
+      }
+    },
+    {
+      "id": 10071801217,
+      "metafields": {
+        "altitude": 1900,
+        "color": "yellow",
+        "country": "Ethiopia",
+        "grower": "Kercha Cooperative",
+        "peak_flavor": "3 days",
+        "processing_method": "Dry process",
+        "region": "Guji \/ Sidamo",
+        "score": "92",
+        "variety": "Heirloom"
+      }
+    },
+    {
+      "id": 6409369025,
+      "metafields": {
+        "altitude": "1800",
+        "color": "white",
+        "country": "Guatemala",
+        "grower": "Xejuyu",
+        "peak_flavor": "2 days",
+        "region": "Chimaltenango- Central Guatemala",
+        "variety": "Bourbon"
+      }
+    },
+    {
+      "id": 399245693,
+      "metafields": {
+        "altitude": 1750,
+        "color": "yellow",
+        "country": "Kenya",
+        "grower": "Kagumoini",
+        "peak_flavor": "3 days",
+        "processing_method": "Wet process",
+        "region": "Muranga",
+        "score": 95,
+        "variety": "SL28 \/ SL34 \/ RUIRI 11 \/ BATIAN"
+      }
+    }
+  ],
+  "collections": [
+    {
+      "title": "Individual Bags",
+      "handle": "coffee",
+      "image": {
+        "small": "//cdn.shopify.com/s/files/1/0746/4367/collections/coffee_2x_76766986-4cb4-49df-89b9-a8c60d8a9223_1280x1280.jpg?v=1509504551",
+        "large": "//cdn.shopify.com/s/files/1/0746/4367/collections/coffee_2x_76766986-4cb4-49df-89b9-a8c60d8a9223_2560x2560.jpg?v=1509504551"
+      },
+      "description": "",
+      "products": [
+        {
+          "id": 399243769,
+          "title": "431°",
+          "handle": "northern-italian-espresso",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Colombia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Antioquia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: La Loma\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Caturra\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: De pulped in Penagos pulpers and fully washed and fermented for 16 hours depending on temperature. Lastly the coffee is sun dried in parabolic dryers for 14 days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAntioquia is a place we have come to truly love and are now very much invested in.  This region is also home to the first coffees to ever be planted in Colombia.  Since first visiting Antioquia in the early part of 2015 we felt an immediate draw to the culture and coffees of this region.  We have made it our goal to purchase these coffees as a staple in our lineup and work alongside the growers with open communication channels to make ongoing improvements. We believe this will be the key for growing sustainably in both quality and efficiency all the way through the supply chain. \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eDue to the drug conflict that took place in the 1980’s, the infrastructure of coffee was almost non existent, until very recently where steps from the governor of Antioquia have revitalized the city of Medellin as well as the quality of coffee. The underdog mentality makes the growers of this region, thirsty for change. This drive,  In conjunction with the high elevation terroir makes these coffees so amazing and also a very rare gem in this up and coming area.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis year we are happy to work alongside the lovely folks of De Los Andes to both mill and move these lots.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLa Loma is a farm super high up in the mountains with very rough roads to it.  As we were leaving the farm in April of this year, heavy rains made it quite difficult with some roads closing due to high waters.  La Loma was an amazingly beautiful farm with organic produce growing amongst the coffee trees that worked together to balance the soil while feeding the family (and us on our visit).\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRoasted as our classic 431 espresso, this coffee shows its high elevation by remaining dense and sweet despite the heavier roasting technique.  I believe this is a very special coffee that has flavors of raisin, overripe pear and balanced apple like acidity. On the finish is graham cracker and milk chocolate.  \u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2015-01-15T15:44:00-05:00",
+          "created_at": "2015-01-15T15:46:41-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "Almond",
+            "Cherry",
+            "Chocolate"
+          ],
+          "price": 1550,
+          "price_min": 1550,
+          "price_max": 1550,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1040970625,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "431°",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1550,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -207,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/431espressobadge.png?v=1508611866"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/431espressobadge.png?v=1508611866",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Colombia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Antioquia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: La Loma\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Caturra\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: De pulped in Penagos pulpers and fully washed and fermented for 16 hours depending on temperature. Lastly the coffee is sun dried in parabolic dryers for 14 days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAntioquia is a place we have come to truly love and are now very much invested in.  This region is also home to the first coffees to ever be planted in Colombia.  Since first visiting Antioquia in the early part of 2015 we felt an immediate draw to the culture and coffees of this region.  We have made it our goal to purchase these coffees as a staple in our lineup and work alongside the growers with open communication channels to make ongoing improvements. We believe this will be the key for growing sustainably in both quality and efficiency all the way through the supply chain. \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eDue to the drug conflict that took place in the 1980’s, the infrastructure of coffee was almost non existent, until very recently where steps from the governor of Antioquia have revitalized the city of Medellin as well as the quality of coffee. The underdog mentality makes the growers of this region, thirsty for change. This drive,  In conjunction with the high elevation terroir makes these coffees so amazing and also a very rare gem in this up and coming area.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis year we are happy to work alongside the lovely folks of De Los Andes to both mill and move these lots.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLa Loma is a farm super high up in the mountains with very rough roads to it.  As we were leaving the farm in April of this year, heavy rains made it quite difficult with some roads closing due to high waters.  La Loma was an amazingly beautiful farm with organic produce growing amongst the coffee trees that worked together to balance the soil while feeding the family (and us on our visit).\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRoasted as our classic 431 espresso, this coffee shows its high elevation by remaining dense and sweet despite the heavier roasting technique.  I believe this is a very special coffee that has flavors of raisin, overripe pear and balanced apple like acidity. On the finish is graham cracker and milk chocolate.  \u003c\/span\u003e\u003c\/p\u003e"
+        },
+        {
+          "id": 215725408286,
+          "title": "Ethiopia Aricha",
+          "handle": "ethiopia-aricha",
+          "description": "\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Yirgacheffe, Aricha \"Mist Valley\"\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Small holders\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Ethiopia Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Dry Processed\u003c\/span\u003e\u003c\/p\u003e\n\u003cbr\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAricha is one of the most dependable and quality oriented washing stations in the Yirgacheffe region.  Producing both wet and dry processed coffees at different points in the year, this has been our favorite natural of the year.  The coffee is sorted to 'grade one' standards, which means that the coffee has been hand sorted on raised screen beds to remove any underripe or overripe fruit.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOne the biggest issues with Dry processed coffee is the lack of sorting, which can often result in a very dirty cup with muddy flavors of over-ripe ferment or even kernel like dryness.  When the coffee is run through such rigorous inspection such as this lot, it produces clean flavors that are transparent but balanced out by a big juicy kick.  This cup begins with the most intense blackberry depth of sweetness but, unlike a lot of other naturals, has a floral component that is reminiscent of coffee blossom or jasmine.\u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2017-08-24T17:52:55-04:00",
+          "created_at": "2017-10-18T17:33:34-04:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "blackberry",
+            "jasmine"
+          ],
+          "price": 1850,
+          "price_min": 1850,
+          "price_max": 1850,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 4156169355294,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "Ethiopia Aricha",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1850,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -73,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiaarichabadge.png?v=1508362500"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiaarichabadge.png?v=1508362500",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Yirgacheffe, Aricha \"Mist Valley\"\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Small holders\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Ethiopia Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Dry Processed\u003c\/span\u003e\u003c\/p\u003e\n\u003cbr\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAricha is one of the most dependable and quality oriented washing stations in the Yirgacheffe region.  Producing both wet and dry processed coffees at different points in the year, this has been our favorite natural of the year.  The coffee is sorted to 'grade one' standards, which means that the coffee has been hand sorted on raised screen beds to remove any underripe or overripe fruit.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOne the biggest issues with Dry processed coffee is the lack of sorting, which can often result in a very dirty cup with muddy flavors of over-ripe ferment or even kernel like dryness.  When the coffee is run through such rigorous inspection such as this lot, it produces clean flavors that are transparent but balanced out by a big juicy kick.  This cup begins with the most intense blackberry depth of sweetness but, unlike a lot of other naturals, has a floral component that is reminiscent of coffee blossom or jasmine.\u003c\/span\u003e\u003c\/p\u003e"
+        },
+        {
+          "id": 10071801217,
+          "title": "Ethiopia Kochere",
+          "handle": "copy-of-ethiopia-kochere",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Gedeo Zone\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Kochere \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000-2200 Meters Above Sea Level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: This coffee is pulped same day as harvest and fermented up to 48 hours before scrubbing the mucilage off and drying on raised beds for not less than eight days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEthiopia is a unique country and is home to the first coffee trees in existence.  The somewhat undeveloped heirloom varietals are known to produce intense citrus and floral character not seen anywhere else.  These heirloom varietals thrive at elevations up to 2,400 meters above sea level and the oxygen starvation produces dense small beans loaded with flavor.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEthiopia utilizes central mills to process fresh cherries and it seems synonymous that quality of coffee is determined by good management practices at the washing stations. Fresh Cherry arrives daily and is immediately put through disc pulpers and pumped into large concrete washing tanks.  The cleanliness of these tanks will ultimately determine the cleanliness of the coffee.  The depulped mucilage coffee is put into these tanks with water for up to 48 hours where fermentation of the sugars begins to break down the pectin of the fruit.  Following the 48 hour soak, the drain at the bottom of these tanks is released, allowing the water and cherry to flow into large washing channels where it can be scrubbed clean, removing all sticky mucilage.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThe last step of the processing is to dry the coffee on raised beds for a minimum of 8 days before being sent to the dry mill to remove parchment and separate according to size and quality of the coffee.  In ethiopia the top quality is simply deemed Grade 1.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eKochere is both the name of the of the district, as well as the particular mill where this coffee comes from.  This coffee immediately struck me as wildly different simply because of the size beans.  When we receive a sample of coffee, the first step is to measure the moisture, volatility through water activity and lastly the density of beans by just taking a 5 gram sample and seeing how many beans it takes to equal these five grams.  This helps to give an indication to how long the development of the coffee should need to be in order to fully develop sugars and yet allow balance of pleasant acids in the cup.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLighter mouthfeel with tight citric acidity and aromatic florals make this Kochere a coffee we are proud to offer. \u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2017-05-19T11:38:04-04:00",
+          "created_at": "2017-08-24T17:55:00-04:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "citrus",
+            "Floral"
+          ],
+          "price": 1900,
+          "price_min": 1900,
+          "price_max": 1900,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 37404688961,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "Ethiopia Kochere",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1900,
+              "weight": 227,
+              "compare_at_price": null,
+              "inventory_quantity": -118,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiakocherebadge.png?v=1503611906"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiakocherebadge.png?v=1503611906",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Gedeo Zone\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Kochere \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000-2200 Meters Above Sea Level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: This coffee is pulped same day as harvest and fermented up to 48 hours before scrubbing the mucilage off and drying on raised beds for not less than eight days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEthiopia is a unique country and is home to the first coffee trees in existence.  The somewhat undeveloped heirloom varietals are known to produce intense citrus and floral character not seen anywhere else.  These heirloom varietals thrive at elevations up to 2,400 meters above sea level and the oxygen starvation produces dense small beans loaded with flavor.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEthiopia utilizes central mills to process fresh cherries and it seems synonymous that quality of coffee is determined by good management practices at the washing stations. Fresh Cherry arrives daily and is immediately put through disc pulpers and pumped into large concrete washing tanks.  The cleanliness of these tanks will ultimately determine the cleanliness of the coffee.  The depulped mucilage coffee is put into these tanks with water for up to 48 hours where fermentation of the sugars begins to break down the pectin of the fruit.  Following the 48 hour soak, the drain at the bottom of these tanks is released, allowing the water and cherry to flow into large washing channels where it can be scrubbed clean, removing all sticky mucilage.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThe last step of the processing is to dry the coffee on raised beds for a minimum of 8 days before being sent to the dry mill to remove parchment and separate according to size and quality of the coffee.  In ethiopia the top quality is simply deemed Grade 1.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eKochere is both the name of the of the district, as well as the particular mill where this coffee comes from.  This coffee immediately struck me as wildly different simply because of the size beans.  When we receive a sample of coffee, the first step is to measure the moisture, volatility through water activity and lastly the density of beans by just taking a 5 gram sample and seeing how many beans it takes to equal these five grams.  This helps to give an indication to how long the development of the coffee should need to be in order to fully develop sugars and yet allow balance of pleasant acids in the cup.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLighter mouthfeel with tight citric acidity and aromatic florals make this Kochere a coffee we are proud to offer. \u003c\/span\u003e\u003c\/p\u003e"
+        },
+        {
+          "id": 6409369025,
+          "title": "Guatemala Xejuyu",
+          "handle": "guatemala-xejuyu",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin : Guatemala\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Chimaltenango- Central Guatemala\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Xejuyu\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eGrowers Name: Jorge Del Carmen\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Bourbon\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1750-1900 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Full Washed, Depulped and then 17 hour fermentation in tanks with mechanical washing through delvas. Raised Bed drying for 15-20 days.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEvery year we try to visit Guatemala, and we honestly think this is one of the top coffees from the country. We purchased this coffee through red fox importers who has been buying the coffee from Jorge Del Carmen since he took over the farm in 2009.  Although the farm had been in Jorge’s family since three generations past, it had been left for years due to the volatility of the coffee market.  Since rejuvenating the farm in 2009 the coffees have consistently improved and scored higher and higher which is why we are very excited to become the first right of refusal on this coffee.   This right is what helps us to bridge the gap between producer and roaster.  We have plans to build a relationship with this coffee and farm that run deeper than just a quality level, but really planning to make this lot a consistent Lineage offering year after year.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis coffee is a true showcase of Guatemala at its best.  Scoring high on the cupping table due to a nice tight but balanced acidity, this coffee boasts of a clean mouthfeel that would reminisce of the best riesling wine.  In years past this coffee is up front with loads of acidity, but this year we feel especially strong that the sweetness all the way through the cup makes this such an incredible coffee.  \u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2017-08-24T17:52:55-04:00",
+          "created_at": "2016-05-28T15:33:13-04:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "wine"
+          ],
+          "price": 1850,
+          "price_min": 1850,
+          "price_max": 1850,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 20095041089,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "Guatemala Xejuyu",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1850,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -72,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/guatemalaxejuyubadge.png?v=1464894166"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/guatemalaxejuyubadge.png?v=1464894166",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin : Guatemala\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Chimaltenango- Central Guatemala\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Xejuyu\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eGrowers Name: Jorge Del Carmen\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Bourbon\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1750-1900 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Full Washed, Depulped and then 17 hour fermentation in tanks with mechanical washing through delvas. Raised Bed drying for 15-20 days.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEvery year we try to visit Guatemala, and we honestly think this is one of the top coffees from the country. We purchased this coffee through red fox importers who has been buying the coffee from Jorge Del Carmen since he took over the farm in 2009.  Although the farm had been in Jorge’s family since three generations past, it had been left for years due to the volatility of the coffee market.  Since rejuvenating the farm in 2009 the coffees have consistently improved and scored higher and higher which is why we are very excited to become the first right of refusal on this coffee.   This right is what helps us to bridge the gap between producer and roaster.  We have plans to build a relationship with this coffee and farm that run deeper than just a quality level, but really planning to make this lot a consistent Lineage offering year after year.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis coffee is a true showcase of Guatemala at its best.  Scoring high on the cupping table due to a nice tight but balanced acidity, this coffee boasts of a clean mouthfeel that would reminisce of the best riesling wine.  In years past this coffee is up front with loads of acidity, but this year we feel especially strong that the sweetness all the way through the cup makes this such an incredible coffee.  \u003c\/span\u003e\u003c\/p\u003e"
+        },
+        {
+          "id": 399245693,
+          "title": "Modern American",
+          "handle": "modern-american",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eOrigin: Ethiopia\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Sidamo\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eElevation: 1600-1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVarietal:  Native Heirloom Varietals\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcess: Fully Washed\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProfile: Sweeter and more full bodied than our other filter roast Ethiopia offerings with more depth of caramel and molasses type flavors in the yielded espresso\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American espresso is one of our favorite projects we do.  Every year we travel around the globe searching for not only the perfect cup or perfect coffee, but the perfect and most balanced coffee to feature in this espresso.  This seasonal offering will always be changing to reflect the seasonality of coffee growing regions at their peak of harvest.  Unlike a Florida orange however, there are many steps that a coffee must go through before it can be used.  This series of steps includes harvest, processing, milling, bagging, exporting, importing and lastly roasting.  In an effort to ensure the integrity of this Modern American espresso we have to plan our calendar very carefully to always have freshly harvested coffees to feature in this flagship espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American is more than just a great coffee for espresso, it is our brand.   Our search for the world's most unique and quality coffees is reflected by this seasonal espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis installment is a Washed Sidamo from Ethiopia.  Known for its rich stone fruit flavors and high peach like sweetness, Sidamo varies from its more popular neighbor Yirgacheffe that tend to be a bit more citrus and floral.  We really liked the sweetness and depth this coffee had as soon as we cupped it, but when we began pulling shots we got to see its full potential.  Due to the high elevation this coffee is grown at, it is very dense which allows more options in profile setting when it comes to both roasting as well as extracting this espresso.  We like this coffee because of its versatility in espresso, whether you are looking for a ristretto with denser sweetness, or a longer shot and extraction with acidity, this coffee has great potential.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cbr\u003e\u003cbr\u003e\u003c\/p\u003e",
+          "published_at": "2015-01-15T15:49:00-05:00",
+          "created_at": "2015-01-15T15:51:58-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "Berry",
+            "Caramel"
+          ],
+          "price": 1700,
+          "price_min": 1700,
+          "price_max": 1700,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1040976949,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "Modern American",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1700,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -157,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/modernamericanbadge.png?v=1481653490"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/modernamericanbadge.png?v=1481653490",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eOrigin: Ethiopia\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Sidamo\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eElevation: 1600-1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVarietal:  Native Heirloom Varietals\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcess: Fully Washed\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProfile: Sweeter and more full bodied than our other filter roast Ethiopia offerings with more depth of caramel and molasses type flavors in the yielded espresso\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American espresso is one of our favorite projects we do.  Every year we travel around the globe searching for not only the perfect cup or perfect coffee, but the perfect and most balanced coffee to feature in this espresso.  This seasonal offering will always be changing to reflect the seasonality of coffee growing regions at their peak of harvest.  Unlike a Florida orange however, there are many steps that a coffee must go through before it can be used.  This series of steps includes harvest, processing, milling, bagging, exporting, importing and lastly roasting.  In an effort to ensure the integrity of this Modern American espresso we have to plan our calendar very carefully to always have freshly harvested coffees to feature in this flagship espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American is more than just a great coffee for espresso, it is our brand.   Our search for the world's most unique and quality coffees is reflected by this seasonal espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis installment is a Washed Sidamo from Ethiopia.  Known for its rich stone fruit flavors and high peach like sweetness, Sidamo varies from its more popular neighbor Yirgacheffe that tend to be a bit more citrus and floral.  We really liked the sweetness and depth this coffee had as soon as we cupped it, but when we began pulling shots we got to see its full potential.  Due to the high elevation this coffee is grown at, it is very dense which allows more options in profile setting when it comes to both roasting as well as extracting this espresso.  We like this coffee because of its versatility in espresso, whether you are looking for a ristretto with denser sweetness, or a longer shot and extraction with acidity, this coffee has great potential.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cbr\u003e\u003cbr\u003e\u003c\/p\u003e"
+        }
+      ]
+    },
+    {
+      "title": "Coffee",
+      "handle": "frontpage",
+      "image": {
+        "small": "//cdn.shopify.com/s/files/1/0746/4367/collections/coffee_2x_76766986-4cb4-49df-89b9-a8c60d8a9223_small.jpg?v=1509504551",
+        "large": "//cdn.shopify.com/s/files/1/0746/4367/collections/coffee_2x_76766986-4cb4-49df-89b9-a8c60d8a9223_small.jpg?v=1509504551"
+      },
+      "description": "",
+      "products": [
+        {
+          "id": 3652195265,
+          "title": "Roasters Choice (Single Origin)",
+          "handle": "roasters-choice-single-origin",
+          "description": "\u003cp\u003eAccording to your scheduling selections, you'll be shipped freshly roasted coffee of one (or several) of our 'Single Origin' coffees. This includes all of our coffees except for the Modern American and the 431.\u003c\/p\u003e\n\u003cp\u003e \u003c\/p\u003e",
+          "published_at": "2015-12-06T20:30:00-05:00",
+          "created_at": "2015-12-06T20:32:33-05:00",
+          "vendor": "Lineage Roasting",
+          "type": "",
+          "tags": [],
+          "price": 1600,
+          "price_min": 1600,
+          "price_max": 1600,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 10675407297,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Roasters Choice (Single Origin)",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1600,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -674,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/sosubscriptionbadge.png?v=1449451954"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/sosubscriptionbadge.png?v=1449451954",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cp\u003eAccording to your scheduling selections, you'll be shipped freshly roasted coffee of one (or several) of our 'Single Origin' coffees. This includes all of our coffees except for the Modern American and the 431.\u003c\/p\u003e\n\u003cp\u003e \u003c\/p\u003e"
+        },
+        {
+          "id": 6409369025,
+          "title": "Guatemala Xejuyu",
+          "handle": "guatemala-xejuyu",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin : Guatemala\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Chimaltenango- Central Guatemala\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Xejuyu\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eGrowers Name: Jorge Del Carmen\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Bourbon\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1750-1900 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Full Washed, Depulped and then 17 hour fermentation in tanks with mechanical washing through delvas. Raised Bed drying for 15-20 days.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEvery year we try to visit Guatemala, and we honestly think this is one of the top coffees from the country. We purchased this coffee through red fox importers who has been buying the coffee from Jorge Del Carmen since he took over the farm in 2009.  Although the farm had been in Jorge’s family since three generations past, it had been left for years due to the volatility of the coffee market.  Since rejuvenating the farm in 2009 the coffees have consistently improved and scored higher and higher which is why we are very excited to become the first right of refusal on this coffee.   This right is what helps us to bridge the gap between producer and roaster.  We have plans to build a relationship with this coffee and farm that run deeper than just a quality level, but really planning to make this lot a consistent Lineage offering year after year.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis coffee is a true showcase of Guatemala at its best.  Scoring high on the cupping table due to a nice tight but balanced acidity, this coffee boasts of a clean mouthfeel that would reminisce of the best riesling wine.  In years past this coffee is up front with loads of acidity, but this year we feel especially strong that the sweetness all the way through the cup makes this such an incredible coffee.  \u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2017-08-24T17:52:55-04:00",
+          "created_at": "2016-05-28T15:33:13-04:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "wine"
+          ],
+          "price": 1850,
+          "price_min": 1850,
+          "price_max": 1850,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 20095041089,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "Guatemala Xejuyu",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1850,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -72,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/guatemalaxejuyubadge.png?v=1464894166"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/guatemalaxejuyubadge.png?v=1464894166",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin : Guatemala\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Chimaltenango- Central Guatemala\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Xejuyu\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eGrowers Name: Jorge Del Carmen\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Bourbon\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1750-1900 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Full Washed, Depulped and then 17 hour fermentation in tanks with mechanical washing through delvas. Raised Bed drying for 15-20 days.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEvery year we try to visit Guatemala, and we honestly think this is one of the top coffees from the country. We purchased this coffee through red fox importers who has been buying the coffee from Jorge Del Carmen since he took over the farm in 2009.  Although the farm had been in Jorge’s family since three generations past, it had been left for years due to the volatility of the coffee market.  Since rejuvenating the farm in 2009 the coffees have consistently improved and scored higher and higher which is why we are very excited to become the first right of refusal on this coffee.   This right is what helps us to bridge the gap between producer and roaster.  We have plans to build a relationship with this coffee and farm that run deeper than just a quality level, but really planning to make this lot a consistent Lineage offering year after year.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis coffee is a true showcase of Guatemala at its best.  Scoring high on the cupping table due to a nice tight but balanced acidity, this coffee boasts of a clean mouthfeel that would reminisce of the best riesling wine.  In years past this coffee is up front with loads of acidity, but this year we feel especially strong that the sweetness all the way through the cup makes this such an incredible coffee.  \u003c\/span\u003e\u003c\/p\u003e"
+        },
+        {
+          "id": 215725408286,
+          "title": "Ethiopia Aricha",
+          "handle": "ethiopia-aricha",
+          "description": "\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Yirgacheffe, Aricha \"Mist Valley\"\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Small holders\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Ethiopia Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Dry Processed\u003c\/span\u003e\u003c\/p\u003e\n\u003cbr\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAricha is one of the most dependable and quality oriented washing stations in the Yirgacheffe region.  Producing both wet and dry processed coffees at different points in the year, this has been our favorite natural of the year.  The coffee is sorted to 'grade one' standards, which means that the coffee has been hand sorted on raised screen beds to remove any underripe or overripe fruit.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOne the biggest issues with Dry processed coffee is the lack of sorting, which can often result in a very dirty cup with muddy flavors of over-ripe ferment or even kernel like dryness.  When the coffee is run through such rigorous inspection such as this lot, it produces clean flavors that are transparent but balanced out by a big juicy kick.  This cup begins with the most intense blackberry depth of sweetness but, unlike a lot of other naturals, has a floral component that is reminiscent of coffee blossom or jasmine.\u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2017-08-24T17:52:55-04:00",
+          "created_at": "2017-10-18T17:33:34-04:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "blackberry",
+            "jasmine"
+          ],
+          "price": 1850,
+          "price_min": 1850,
+          "price_max": 1850,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 4156169355294,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "Ethiopia Aricha",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1850,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -73,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiaarichabadge.png?v=1508362500"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiaarichabadge.png?v=1508362500",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Yirgacheffe, Aricha \"Mist Valley\"\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Small holders\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Ethiopia Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Dry Processed\u003c\/span\u003e\u003c\/p\u003e\n\u003cbr\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAricha is one of the most dependable and quality oriented washing stations in the Yirgacheffe region.  Producing both wet and dry processed coffees at different points in the year, this has been our favorite natural of the year.  The coffee is sorted to 'grade one' standards, which means that the coffee has been hand sorted on raised screen beds to remove any underripe or overripe fruit.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOne the biggest issues with Dry processed coffee is the lack of sorting, which can often result in a very dirty cup with muddy flavors of over-ripe ferment or even kernel like dryness.  When the coffee is run through such rigorous inspection such as this lot, it produces clean flavors that are transparent but balanced out by a big juicy kick.  This cup begins with the most intense blackberry depth of sweetness but, unlike a lot of other naturals, has a floral component that is reminiscent of coffee blossom or jasmine.\u003c\/span\u003e\u003c\/p\u003e"
+        },
+        {
+          "id": 10071801217,
+          "title": "Ethiopia Kochere",
+          "handle": "copy-of-ethiopia-kochere",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Gedeo Zone\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Kochere \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000-2200 Meters Above Sea Level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: This coffee is pulped same day as harvest and fermented up to 48 hours before scrubbing the mucilage off and drying on raised beds for not less than eight days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEthiopia is a unique country and is home to the first coffee trees in existence.  The somewhat undeveloped heirloom varietals are known to produce intense citrus and floral character not seen anywhere else.  These heirloom varietals thrive at elevations up to 2,400 meters above sea level and the oxygen starvation produces dense small beans loaded with flavor.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEthiopia utilizes central mills to process fresh cherries and it seems synonymous that quality of coffee is determined by good management practices at the washing stations. Fresh Cherry arrives daily and is immediately put through disc pulpers and pumped into large concrete washing tanks.  The cleanliness of these tanks will ultimately determine the cleanliness of the coffee.  The depulped mucilage coffee is put into these tanks with water for up to 48 hours where fermentation of the sugars begins to break down the pectin of the fruit.  Following the 48 hour soak, the drain at the bottom of these tanks is released, allowing the water and cherry to flow into large washing channels where it can be scrubbed clean, removing all sticky mucilage.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThe last step of the processing is to dry the coffee on raised beds for a minimum of 8 days before being sent to the dry mill to remove parchment and separate according to size and quality of the coffee.  In ethiopia the top quality is simply deemed Grade 1.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eKochere is both the name of the of the district, as well as the particular mill where this coffee comes from.  This coffee immediately struck me as wildly different simply because of the size beans.  When we receive a sample of coffee, the first step is to measure the moisture, volatility through water activity and lastly the density of beans by just taking a 5 gram sample and seeing how many beans it takes to equal these five grams.  This helps to give an indication to how long the development of the coffee should need to be in order to fully develop sugars and yet allow balance of pleasant acids in the cup.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLighter mouthfeel with tight citric acidity and aromatic florals make this Kochere a coffee we are proud to offer. \u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2017-05-19T11:38:04-04:00",
+          "created_at": "2017-08-24T17:55:00-04:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "citrus",
+            "Floral"
+          ],
+          "price": 1900,
+          "price_min": 1900,
+          "price_max": 1900,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 37404688961,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "Ethiopia Kochere",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1900,
+              "weight": 227,
+              "compare_at_price": null,
+              "inventory_quantity": -118,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiakocherebadge.png?v=1503611906"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiakocherebadge.png?v=1503611906",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Gedeo Zone\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Kochere \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000-2200 Meters Above Sea Level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: This coffee is pulped same day as harvest and fermented up to 48 hours before scrubbing the mucilage off and drying on raised beds for not less than eight days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEthiopia is a unique country and is home to the first coffee trees in existence.  The somewhat undeveloped heirloom varietals are known to produce intense citrus and floral character not seen anywhere else.  These heirloom varietals thrive at elevations up to 2,400 meters above sea level and the oxygen starvation produces dense small beans loaded with flavor.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eEthiopia utilizes central mills to process fresh cherries and it seems synonymous that quality of coffee is determined by good management practices at the washing stations. Fresh Cherry arrives daily and is immediately put through disc pulpers and pumped into large concrete washing tanks.  The cleanliness of these tanks will ultimately determine the cleanliness of the coffee.  The depulped mucilage coffee is put into these tanks with water for up to 48 hours where fermentation of the sugars begins to break down the pectin of the fruit.  Following the 48 hour soak, the drain at the bottom of these tanks is released, allowing the water and cherry to flow into large washing channels where it can be scrubbed clean, removing all sticky mucilage.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThe last step of the processing is to dry the coffee on raised beds for a minimum of 8 days before being sent to the dry mill to remove parchment and separate according to size and quality of the coffee.  In ethiopia the top quality is simply deemed Grade 1.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eKochere is both the name of the of the district, as well as the particular mill where this coffee comes from.  This coffee immediately struck me as wildly different simply because of the size beans.  When we receive a sample of coffee, the first step is to measure the moisture, volatility through water activity and lastly the density of beans by just taking a 5 gram sample and seeing how many beans it takes to equal these five grams.  This helps to give an indication to how long the development of the coffee should need to be in order to fully develop sugars and yet allow balance of pleasant acids in the cup.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLighter mouthfeel with tight citric acidity and aromatic florals make this Kochere a coffee we are proud to offer. \u003c\/span\u003e\u003c\/p\u003e"
+        },
+        {
+          "id": 399243769,
+          "title": "431°",
+          "handle": "northern-italian-espresso",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Colombia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Antioquia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: La Loma\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Caturra\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: De pulped in Penagos pulpers and fully washed and fermented for 16 hours depending on temperature. Lastly the coffee is sun dried in parabolic dryers for 14 days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAntioquia is a place we have come to truly love and are now very much invested in.  This region is also home to the first coffees to ever be planted in Colombia.  Since first visiting Antioquia in the early part of 2015 we felt an immediate draw to the culture and coffees of this region.  We have made it our goal to purchase these coffees as a staple in our lineup and work alongside the growers with open communication channels to make ongoing improvements. We believe this will be the key for growing sustainably in both quality and efficiency all the way through the supply chain. \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eDue to the drug conflict that took place in the 1980’s, the infrastructure of coffee was almost non existent, until very recently where steps from the governor of Antioquia have revitalized the city of Medellin as well as the quality of coffee. The underdog mentality makes the growers of this region, thirsty for change. This drive,  In conjunction with the high elevation terroir makes these coffees so amazing and also a very rare gem in this up and coming area.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis year we are happy to work alongside the lovely folks of De Los Andes to both mill and move these lots.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLa Loma is a farm super high up in the mountains with very rough roads to it.  As we were leaving the farm in April of this year, heavy rains made it quite difficult with some roads closing due to high waters.  La Loma was an amazingly beautiful farm with organic produce growing amongst the coffee trees that worked together to balance the soil while feeding the family (and us on our visit).\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRoasted as our classic 431 espresso, this coffee shows its high elevation by remaining dense and sweet despite the heavier roasting technique.  I believe this is a very special coffee that has flavors of raisin, overripe pear and balanced apple like acidity. On the finish is graham cracker and milk chocolate.  \u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2015-01-15T15:44:00-05:00",
+          "created_at": "2015-01-15T15:46:41-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "Almond",
+            "Cherry",
+            "Chocolate"
+          ],
+          "price": 1550,
+          "price_min": 1550,
+          "price_max": 1550,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1040970625,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "431°",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1550,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -207,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/431espressobadge.png?v=1508611866"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/431espressobadge.png?v=1508611866",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Colombia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Antioquia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: La Loma\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Caturra\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: De pulped in Penagos pulpers and fully washed and fermented for 16 hours depending on temperature. Lastly the coffee is sun dried in parabolic dryers for 14 days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAntioquia is a place we have come to truly love and are now very much invested in.  This region is also home to the first coffees to ever be planted in Colombia.  Since first visiting Antioquia in the early part of 2015 we felt an immediate draw to the culture and coffees of this region.  We have made it our goal to purchase these coffees as a staple in our lineup and work alongside the growers with open communication channels to make ongoing improvements. We believe this will be the key for growing sustainably in both quality and efficiency all the way through the supply chain. \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eDue to the drug conflict that took place in the 1980’s, the infrastructure of coffee was almost non existent, until very recently where steps from the governor of Antioquia have revitalized the city of Medellin as well as the quality of coffee. The underdog mentality makes the growers of this region, thirsty for change. This drive,  In conjunction with the high elevation terroir makes these coffees so amazing and also a very rare gem in this up and coming area.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis year we are happy to work alongside the lovely folks of De Los Andes to both mill and move these lots.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLa Loma is a farm super high up in the mountains with very rough roads to it.  As we were leaving the farm in April of this year, heavy rains made it quite difficult with some roads closing due to high waters.  La Loma was an amazingly beautiful farm with organic produce growing amongst the coffee trees that worked together to balance the soil while feeding the family (and us on our visit).\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRoasted as our classic 431 espresso, this coffee shows its high elevation by remaining dense and sweet despite the heavier roasting technique.  I believe this is a very special coffee that has flavors of raisin, overripe pear and balanced apple like acidity. On the finish is graham cracker and milk chocolate.  \u003c\/span\u003e\u003c\/p\u003e"
+        },
+        {
+          "id": 399245693,
+          "title": "Modern American",
+          "handle": "modern-american",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eOrigin: Ethiopia\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Sidamo\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eElevation: 1600-1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVarietal:  Native Heirloom Varietals\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcess: Fully Washed\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProfile: Sweeter and more full bodied than our other filter roast Ethiopia offerings with more depth of caramel and molasses type flavors in the yielded espresso\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American espresso is one of our favorite projects we do.  Every year we travel around the globe searching for not only the perfect cup or perfect coffee, but the perfect and most balanced coffee to feature in this espresso.  This seasonal offering will always be changing to reflect the seasonality of coffee growing regions at their peak of harvest.  Unlike a Florida orange however, there are many steps that a coffee must go through before it can be used.  This series of steps includes harvest, processing, milling, bagging, exporting, importing and lastly roasting.  In an effort to ensure the integrity of this Modern American espresso we have to plan our calendar very carefully to always have freshly harvested coffees to feature in this flagship espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American is more than just a great coffee for espresso, it is our brand.   Our search for the world's most unique and quality coffees is reflected by this seasonal espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis installment is a Washed Sidamo from Ethiopia.  Known for its rich stone fruit flavors and high peach like sweetness, Sidamo varies from its more popular neighbor Yirgacheffe that tend to be a bit more citrus and floral.  We really liked the sweetness and depth this coffee had as soon as we cupped it, but when we began pulling shots we got to see its full potential.  Due to the high elevation this coffee is grown at, it is very dense which allows more options in profile setting when it comes to both roasting as well as extracting this espresso.  We like this coffee because of its versatility in espresso, whether you are looking for a ristretto with denser sweetness, or a longer shot and extraction with acidity, this coffee has great potential.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cbr\u003e\u003cbr\u003e\u003c\/p\u003e",
+          "published_at": "2015-01-15T15:49:00-05:00",
+          "created_at": "2015-01-15T15:51:58-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "Berry",
+            "Caramel"
+          ],
+          "price": 1700,
+          "price_min": 1700,
+          "price_max": 1700,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1040976949,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "Modern American",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1700,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -157,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/modernamericanbadge.png?v=1481653490"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/modernamericanbadge.png?v=1481653490",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eOrigin: Ethiopia\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Sidamo\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eElevation: 1600-1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVarietal:  Native Heirloom Varietals\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcess: Fully Washed\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProfile: Sweeter and more full bodied than our other filter roast Ethiopia offerings with more depth of caramel and molasses type flavors in the yielded espresso\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American espresso is one of our favorite projects we do.  Every year we travel around the globe searching for not only the perfect cup or perfect coffee, but the perfect and most balanced coffee to feature in this espresso.  This seasonal offering will always be changing to reflect the seasonality of coffee growing regions at their peak of harvest.  Unlike a Florida orange however, there are many steps that a coffee must go through before it can be used.  This series of steps includes harvest, processing, milling, bagging, exporting, importing and lastly roasting.  In an effort to ensure the integrity of this Modern American espresso we have to plan our calendar very carefully to always have freshly harvested coffees to feature in this flagship espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American is more than just a great coffee for espresso, it is our brand.   Our search for the world's most unique and quality coffees is reflected by this seasonal espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis installment is a Washed Sidamo from Ethiopia.  Known for its rich stone fruit flavors and high peach like sweetness, Sidamo varies from its more popular neighbor Yirgacheffe that tend to be a bit more citrus and floral.  We really liked the sweetness and depth this coffee had as soon as we cupped it, but when we began pulling shots we got to see its full potential.  Due to the high elevation this coffee is grown at, it is very dense which allows more options in profile setting when it comes to both roasting as well as extracting this espresso.  We like this coffee because of its versatility in espresso, whether you are looking for a ristretto with denser sweetness, or a longer shot and extraction with acidity, this coffee has great potential.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cbr\u003e\u003cbr\u003e\u003c\/p\u003e"
+        }
+      ]
+    },
+    {
+      "title": "Gear",
+      "handle": "gear",
+      "image": {
+        "small": "//cdn.shopify.com/s/files/1/0746/4367/collections/LNG_BREW_METHOD-3_1280x1280.jpg",
+        "large": "//cdn.shopify.com/s/files/1/0746/4367/collections/LNG_BREW_METHOD-3_2560x2560.jpg"
+      },
+      "description": "",
+      "products": [
+        {
+          "id": 412593929,
+          "title": "Kalita Wave Dripper",
+          "handle": "kalita-wave-dripper",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\r\n\u003cp\u003eThe Kalita Wave drippers feature a flat-bottomed brew bed for even extraction, and a filter design that reduces contact between the brewing space and the dripper itself.\u003c\/p\u003e",
+          "published_at": "2015-02-13T20:41:00-05:00",
+          "created_at": "2015-02-13T20:42:55-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Equipment",
+          "tags": [],
+          "price": 3995,
+          "price_min": 3995,
+          "price_max": 3995,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1080080945,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Kalita Wave Dripper",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 3995,
+              "weight": 227,
+              "compare_at_price": null,
+              "inventory_quantity": -1,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/dripper.jpg?v=1423880061"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/dripper.jpg?v=1423880061",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\r\n\u003cp\u003eThe Kalita Wave drippers feature a flat-bottomed brew bed for even extraction, and a filter design that reduces contact between the brewing space and the dripper itself.\u003c\/p\u003e"
+        },
+        {
+          "id": 412600261,
+          "title": "Kalita Wave Server",
+          "handle": "kalita-wave-server",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\r\n\u003cp\u003e \u003c\/p\u003e",
+          "published_at": "2015-02-13T21:09:00-05:00",
+          "created_at": "2015-02-13T21:09:16-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Equipment",
+          "tags": [],
+          "price": 2250,
+          "price_min": 2250,
+          "price_max": 2250,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1080090845,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Kalita Wave Server",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 2250,
+              "weight": 170,
+              "compare_at_price": null,
+              "inventory_quantity": 0,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/server_5ae037f8-1e21-42fb-b51d-dbc98bdfd967.jpg?v=1423881342"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/server_5ae037f8-1e21-42fb-b51d-dbc98bdfd967.jpg?v=1423881342",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\r\n\u003cp\u003e \u003c\/p\u003e"
+        },
+        {
+          "id": 412608925,
+          "title": "Kalita Wave Filters",
+          "handle": "kalita-wave-filters",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\r\n\u003cp\u003e Pack of 100.\u003c\/p\u003e",
+          "published_at": "2015-02-13T21:40:00-05:00",
+          "created_at": "2015-02-13T21:40:22-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Equipment",
+          "tags": [],
+          "price": 1200,
+          "price_min": 1200,
+          "price_max": 1200,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1080113661,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Kalita Wave Filters",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1200,
+              "weight": 170,
+              "compare_at_price": null,
+              "inventory_quantity": -3,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/filter.jpg?v=1423881734"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/filter.jpg?v=1423881734",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\r\n\u003cp\u003e Pack of 100.\u003c\/p\u003e"
+        },
+        {
+          "id": 406099901,
+          "title": "Baratza Encore",
+          "handle": "baratza-encore",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cspan\u003eThe Encore is lauded by coffee experts as THE go-to entry level grinder for those brewing coffee at home.  The Encore gives a great grind for drip\/manual brew and also grinds fine enough for espresso.\u003c\/span\u003e",
+          "published_at": "2015-01-30T13:08:00-05:00",
+          "created_at": "2015-01-30T13:14:04-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Equipment",
+          "tags": [],
+          "price": 12900,
+          "price_min": 12900,
+          "price_max": 12900,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1060475049,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Baratza Encore",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 12900,
+              "weight": 4082,
+              "compare_at_price": null,
+              "inventory_quantity": -2,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/6922413977_da329bc6bc_o.jpg?v=1423779713"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/6922413977_da329bc6bc_o.jpg?v=1423779713",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cspan\u003eThe Encore is lauded by coffee experts as THE go-to entry level grinder for those brewing coffee at home.  The Encore gives a great grind for drip\/manual brew and also grinds fine enough for espresso.\u003c\/span\u003e"
+        },
+        {
+          "id": 406115181,
+          "title": "Baratza Virtuoso",
+          "handle": "baratza-virtuoso",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\r\n\u003cp\u003eThe \u003cstrong\u003eVirtuoso\u003c\/strong\u003e lives up to its name by providing technical skill, classic style and a consistent, quality grind.\u003c\/p\u003e\r\n\u003cp\u003eGrinding for espresso? Let the \u003cstrong\u003eVirtuoso’s\u003c\/strong\u003e professional-grade 40mm conical burrs perform their magic for a consistent, fine grind. How about a French Press? The \u003cstrong\u003eVirtuoso\u003c\/strong\u003e can handle that too, with a particle size uniformity that gives you consistency from cup to cup.\u003c\/p\u003e",
+          "published_at": "2015-01-30T13:40:00-05:00",
+          "created_at": "2015-01-30T13:42:24-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Equipment",
+          "tags": [],
+          "price": 22900,
+          "price_min": 22900,
+          "price_max": 22900,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1060506561,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Baratza Virtuoso",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 22900,
+              "weight": 4536,
+              "compare_at_price": null,
+              "inventory_quantity": 1,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/6128785604_d4ea2f08cb_o.jpg?v=1423779756"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/6128785604_d4ea2f08cb_o.jpg?v=1423779756",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\r\n\u003cp\u003eThe \u003cstrong\u003eVirtuoso\u003c\/strong\u003e lives up to its name by providing technical skill, classic style and a consistent, quality grind.\u003c\/p\u003e\r\n\u003cp\u003eGrinding for espresso? Let the \u003cstrong\u003eVirtuoso’s\u003c\/strong\u003e professional-grade 40mm conical burrs perform their magic for a consistent, fine grind. How about a French Press? The \u003cstrong\u003eVirtuoso\u003c\/strong\u003e can handle that too, with a particle size uniformity that gives you consistency from cup to cup.\u003c\/p\u003e"
+        }
+      ]
+    },
+    {
+      "title": "Cart",
+      "handle": "cart",
+      "image": {
+        "small": "//cdn.shopify.com/s/assets/no-image-100-c91dd4bdb56513f2cbf4fc15436ca35e9d4ecd014546c8d421b1aece861dfecf_small.gif",
+        "large": "//cdn.shopify.com/s/assets/no-image-100-c91dd4bdb56513f2cbf4fc15436ca35e9d4ecd014546c8d421b1aece861dfecf_small.gif"
+      },
+      "description": "",
+      "products": [
+        {
+          "id": 215725408286,
+          "title": "Ethiopia Aricha",
+          "handle": "ethiopia-aricha",
+          "description": "\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Yirgacheffe, Aricha \"Mist Valley\"\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Small holders\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Ethiopia Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Dry Processed\u003c\/span\u003e\u003c\/p\u003e\n\u003cbr\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAricha is one of the most dependable and quality oriented washing stations in the Yirgacheffe region.  Producing both wet and dry processed coffees at different points in the year, this has been our favorite natural of the year.  The coffee is sorted to 'grade one' standards, which means that the coffee has been hand sorted on raised screen beds to remove any underripe or overripe fruit.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOne the biggest issues with Dry processed coffee is the lack of sorting, which can often result in a very dirty cup with muddy flavors of over-ripe ferment or even kernel like dryness.  When the coffee is run through such rigorous inspection such as this lot, it produces clean flavors that are transparent but balanced out by a big juicy kick.  This cup begins with the most intense blackberry depth of sweetness but, unlike a lot of other naturals, has a floral component that is reminiscent of coffee blossom or jasmine.\u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2017-08-24T17:52:55-04:00",
+          "created_at": "2017-10-18T17:33:34-04:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "blackberry",
+            "jasmine"
+          ],
+          "price": 1850,
+          "price_min": 1850,
+          "price_max": 1850,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 4156169355294,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "Ethiopia Aricha",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1850,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -73,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiaarichabadge.png?v=1508362500"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/ethiopiaarichabadge.png?v=1508362500",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Ethiopia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Yirgacheffe, Aricha \"Mist Valley\"\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: Small holders\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Ethiopia Heirloom\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 2000 masl\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: Dry Processed\u003c\/span\u003e\u003c\/p\u003e\n\u003cbr\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAricha is one of the most dependable and quality oriented washing stations in the Yirgacheffe region.  Producing both wet and dry processed coffees at different points in the year, this has been our favorite natural of the year.  The coffee is sorted to 'grade one' standards, which means that the coffee has been hand sorted on raised screen beds to remove any underripe or overripe fruit.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOne the biggest issues with Dry processed coffee is the lack of sorting, which can often result in a very dirty cup with muddy flavors of over-ripe ferment or even kernel like dryness.  When the coffee is run through such rigorous inspection such as this lot, it produces clean flavors that are transparent but balanced out by a big juicy kick.  This cup begins with the most intense blackberry depth of sweetness but, unlike a lot of other naturals, has a floral component that is reminiscent of coffee blossom or jasmine.\u003c\/span\u003e\u003c\/p\u003e"
+        }
+      ]
+    },
+    {
+      "title": "Wholesale",
+      "handle": "wholesale",
+      "image": {
+        "small": "//cdn.shopify.com/s/assets/no-image-100-c91dd4bdb56513f2cbf4fc15436ca35e9d4ecd014546c8d421b1aece861dfecf_small.gif",
+        "large": "//cdn.shopify.com/s/assets/no-image-100-c91dd4bdb56513f2cbf4fc15436ca35e9d4ecd014546c8d421b1aece861dfecf_small.gif"
+      },
+      "description": "",
+      "products": [
+        {
+          "id": 399243769,
+          "title": "431°",
+          "handle": "northern-italian-espresso",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Colombia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Antioquia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: La Loma\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Caturra\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: De pulped in Penagos pulpers and fully washed and fermented for 16 hours depending on temperature. Lastly the coffee is sun dried in parabolic dryers for 14 days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAntioquia is a place we have come to truly love and are now very much invested in.  This region is also home to the first coffees to ever be planted in Colombia.  Since first visiting Antioquia in the early part of 2015 we felt an immediate draw to the culture and coffees of this region.  We have made it our goal to purchase these coffees as a staple in our lineup and work alongside the growers with open communication channels to make ongoing improvements. We believe this will be the key for growing sustainably in both quality and efficiency all the way through the supply chain. \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eDue to the drug conflict that took place in the 1980’s, the infrastructure of coffee was almost non existent, until very recently where steps from the governor of Antioquia have revitalized the city of Medellin as well as the quality of coffee. The underdog mentality makes the growers of this region, thirsty for change. This drive,  In conjunction with the high elevation terroir makes these coffees so amazing and also a very rare gem in this up and coming area.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis year we are happy to work alongside the lovely folks of De Los Andes to both mill and move these lots.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLa Loma is a farm super high up in the mountains with very rough roads to it.  As we were leaving the farm in April of this year, heavy rains made it quite difficult with some roads closing due to high waters.  La Loma was an amazingly beautiful farm with organic produce growing amongst the coffee trees that worked together to balance the soil while feeding the family (and us on our visit).\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRoasted as our classic 431 espresso, this coffee shows its high elevation by remaining dense and sweet despite the heavier roasting technique.  I believe this is a very special coffee that has flavors of raisin, overripe pear and balanced apple like acidity. On the finish is graham cracker and milk chocolate.  \u003c\/span\u003e\u003c\/p\u003e",
+          "published_at": "2015-01-15T15:44:00-05:00",
+          "created_at": "2015-01-15T15:46:41-05:00",
+          "vendor": "Lineage Coffee Roasting",
+          "type": "Coffee Beans",
+          "tags": [
+            "Almond",
+            "Cherry",
+            "Chocolate"
+          ],
+          "price": 1550,
+          "price_min": 1550,
+          "price_max": 1550,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 1040970625,
+              "title": "Default Title",
+              "option1": "Default Title",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": false,
+              "featured_image": null,
+              "available": true,
+              "name": "431°",
+              "public_title": null,
+              "options": [
+                "Default Title"
+              ],
+              "price": 1550,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": -207,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/431espressobadge.png?v=1508611866"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/431espressobadge.png?v=1508611866",
+          "options": [
+            "Title"
+          ],
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eOrigin: Colombia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Antioquia\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eFarm: La Loma\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVariety: Caturra\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAltitude: 1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcessing Method: De pulped in Penagos pulpers and fully washed and fermented for 16 hours depending on temperature. Lastly the coffee is sun dried in parabolic dryers for 14 days\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eAntioquia is a place we have come to truly love and are now very much invested in.  This region is also home to the first coffees to ever be planted in Colombia.  Since first visiting Antioquia in the early part of 2015 we felt an immediate draw to the culture and coffees of this region.  We have made it our goal to purchase these coffees as a staple in our lineup and work alongside the growers with open communication channels to make ongoing improvements. We believe this will be the key for growing sustainably in both quality and efficiency all the way through the supply chain. \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eDue to the drug conflict that took place in the 1980’s, the infrastructure of coffee was almost non existent, until very recently where steps from the governor of Antioquia have revitalized the city of Medellin as well as the quality of coffee. The underdog mentality makes the growers of this region, thirsty for change. This drive,  In conjunction with the high elevation terroir makes these coffees so amazing and also a very rare gem in this up and coming area.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis year we are happy to work alongside the lovely folks of De Los Andes to both mill and move these lots.  \u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eLa Loma is a farm super high up in the mountains with very rough roads to it.  As we were leaving the farm in April of this year, heavy rains made it quite difficult with some roads closing due to high waters.  La Loma was an amazingly beautiful farm with organic produce growing amongst the coffee trees that worked together to balance the soil while feeding the family (and us on our visit).\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRoasted as our classic 431 espresso, this coffee shows its high elevation by remaining dense and sweet despite the heavier roasting technique.  I believe this is a very special coffee that has flavors of raisin, overripe pear and balanced apple like acidity. On the finish is graham cracker and milk chocolate.  \u003c\/span\u003e\u003c\/p\u003e"
+        }
+      ]
+    },
+    {
+      "title": "Coffee Subscriptions",
+      "handle": "subscriptions",
+      "image": {
+        "small": "//cdn.shopify.com/s/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c_1280x1280.gif",
+        "large": "//cdn.shopify.com/s/assets/no-image-100-c91dd4bdb56513f2cbf4fc15436ca35e9d4ecd014546c8d421b1aece861dfecf_small.gif"
+      },
+      "description": "",
+      "products": [
+        {
+          "id": 8474004545,
+          "title": "Roaster’s Choice Subscription",
+          "handle": "subscription",
+          "description": "\u003cp\u003eYou select how often you want a delivery, we do the rest. One flat price: \u003cstrong\u003e$16\u003c\/strong\u003e\/bag (plus shipping). We give you a new, unique coffee from our selection that’s hot off the roaster. You get it delivered straight to your door at peak roast time.\u003c\/p\u003e\n\u003cp\u003eSubscribers will get to sample \u003cstrong\u003eall 8\u003c\/strong\u003e of our current roasts, as well as our super special, limited-edition roasts as they become available. All at no charge to you.\u003c\/p\u003e\n\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eFor freshness, we recommend getting shipments as frequently as possible. Cancel or change your subscription any time, no charge (you’ll receive instructions via email).\u003c\/p\u003e",
+          "published_at": "2016-11-25T22:21:00-05:00",
+          "created_at": "2016-11-25T22:21:25-05:00",
+          "vendor": "Lineage Roasting",
+          "type": "Coffee Subscription",
+          "tags": [],
+          "price": 1600,
+          "price_min": 1600,
+          "price_max": 1600,
+          "available": true,
+          "price_varies": false,
+          "compare_at_price": null,
+          "compare_at_price_min": 0,
+          "compare_at_price_max": 0,
+          "compare_at_price_varies": false,
+          "variants": [
+            {
+              "id": 28598849985,
+              "title": "1 Week",
+              "option1": "1 Week",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Roaster’s Choice Subscription - 1 Week",
+              "public_title": "1 Week",
+              "options": [
+                "1 Week"
+              ],
+              "price": 1600,
+              "weight": 354,
+              "compare_at_price": null,
+              "inventory_quantity": 1,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            },
+            {
+              "id": 28598882433,
+              "title": "2 Weeks",
+              "option1": "2 Weeks",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Roaster’s Choice Subscription - 2 Weeks",
+              "public_title": "2 Weeks",
+              "options": [
+                "2 Weeks"
+              ],
+              "price": 1600,
+              "weight": 354,
+              "compare_at_price": null,
+              "inventory_quantity": 1,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            },
+            {
+              "id": 28598882497,
+              "title": "3 Weeks",
+              "option1": "3 Weeks",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Roaster’s Choice Subscription - 3 Weeks",
+              "public_title": "3 Weeks",
+              "options": [
+                "3 Weeks"
+              ],
+              "price": 1600,
+              "weight": 354,
+              "compare_at_price": null,
+              "inventory_quantity": 1,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            },
+            {
+              "id": 28598882561,
+              "title": "4 Weeks",
+              "option1": "4 Weeks",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Roaster’s Choice Subscription - 4 Weeks",
+              "public_title": "4 Weeks",
+              "options": [
+                "4 Weeks"
+              ],
+              "price": 1600,
+              "weight": 354,
+              "compare_at_price": null,
+              "inventory_quantity": -3,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            }
+          ],
+          "images": [
+            "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/Death_to_stock_Marzocco_Coffee_9.jpg?v=1480130520"
+          ],
+          "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/Death_to_stock_Marzocco_Coffee_9.jpg?v=1480130520",
+          "options": [
+            "Cycle"
+          ],
+          "content": "\u003cp\u003eYou select how often you want a delivery, we do the rest. One flat price: \u003cstrong\u003e$16\u003c\/strong\u003e\/bag (plus shipping). We give you a new, unique coffee from our selection that’s hot off the roaster. You get it delivered straight to your door at peak roast time.\u003c\/p\u003e\n\u003cp\u003eSubscribers will get to sample \u003cstrong\u003eall 8\u003c\/strong\u003e of our current roasts, as well as our super special, limited-edition roasts as they become available. All at no charge to you.\u003c\/p\u003e\n\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eFor freshness, we recommend getting shipments as frequently as possible. Cancel or change your subscription any time, no charge (you’ll receive instructions via email).\u003c\/p\u003e"
+        }
+      ]
+    }
+  ]
+}

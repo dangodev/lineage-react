@@ -20,7 +20,7 @@ class AppContainer extends React.PureComponent {
         accessToken,
         domain,
       }),
-      collections: window.lineageCollections.map(collection => ({
+      collections: props.collections.map(collection => ({
         description: collection.description,
         handle: collection.handle,
         image: collection.image,
@@ -127,13 +127,13 @@ class AppContainer extends React.PureComponent {
 
   formatProducts() {
     const all = [];
-    window.lineageCollections.forEach(collection =>
+    this.props.collections.forEach(collection =>
       collection.products.forEach((collectionProduct) => {
         const existingProduct = all.find(product => collectionProduct.id === product.id);
         if (existingProduct) {
           existingProduct.collections.push(collection.handle);
         } else {
-          const metafields = window.lineageMetafields.find(metafield => metafield.id === collectionProduct.id);
+          const metafields = this.props.metafields.find(metafield => metafield.id === collectionProduct.id);
           all.push({
             ...collectionProduct,
             collections: [collection.handle],

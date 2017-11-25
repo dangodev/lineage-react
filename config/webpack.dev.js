@@ -6,6 +6,8 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const common = require('./webpack.common.js');
 
+const mockData = require('../src/mockData.json');
+
 module.exports = merge.smart(common, {
   devServer: {
     historyApiFallback: true,
@@ -35,6 +37,7 @@ module.exports = merge.smart(common, {
       template: '../src/index.ejs',
       title: 'But First, ☕!',
       appMountId: 'app-root',
+      mockData,
     }),
     new BundleAnalyzerPlugin(),
     new ExtractTextPlugin('[name].css'),
