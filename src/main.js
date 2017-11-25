@@ -1,11 +1,6 @@
-/**
- * Lineage Main Entry
- */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
-import fonts from './assets/fonts/fonts.css';
+import AppContainer from 'containers/AppContainer';
 
-ReactDOM.render(<App />, document.getElementById('app-root'));
+ReactDOM.render(<AppContainer />, document.getElementById('app-root'));
