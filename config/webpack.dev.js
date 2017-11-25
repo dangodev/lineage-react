@@ -6,7 +6,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const common = require('./webpack.common.js');
 
-const mockData = require('../src/mockData.json');
+const mockData = require('../src/data/mockData.json');
 
 module.exports = merge.smart(common, {
   devServer: {
