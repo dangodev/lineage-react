@@ -28,13 +28,17 @@ class FAQ extends React.Component {
   }
 
   componentWillMount() {
-    this.resize$ = Observable.fromEvent(window, 'resize')
-      .debounceTime(16)
-      .subscribe(() => this.resizeHandler);
+    if (typeof window !== 'undefined') {
+      this.resize$ = Observable.fromEvent(window, 'resize')
+        .debounceTime(16)
+        .subscribe(() => this.resizeHandler);
+    }
   }
 
   componentWillUnmount() {
-    this.resize$.unsubscribe();
+    if (this.resize$) {
+      this.resize$.unsubscribe();
+    }
   }
 
   resizeHandler() {

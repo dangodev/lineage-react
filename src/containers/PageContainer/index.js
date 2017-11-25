@@ -14,7 +14,6 @@ const pages = {
 
 class PageContainer extends React.Component {
   componentWillReceiveUpdate(nextProps) {
-    console.log(this.props.location.pathname, nextProps.location.pathname);
     if (this.props.location.pathname !== nextProps.location.pathname) {
       window.scrollTo(0, 0);
     }

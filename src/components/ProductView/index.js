@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import parse from 'url-parse';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/throttleTime';
 
 import { formatPrice } from 'lib/tools';
 
@@ -28,14 +31,18 @@ class ProductView extends React.Component {
     };
 
     this.isCoffee = this.isCoffee.bind(this);
+    this.keydownHandler = this.keydownHandler.bind(this);
     this.setOption = this.setOption.bind(this);
     this.setQuantity = this.setQuantity.bind(this);
   }
 
   componentWillMount() {
     this.setDefaultVariant(this.props);
-    const keydownHandler = this.keydownHandler.bind(this);
-    window.addEventListener('keydown', e => keydownHandler(e));
+    if (typeof window !== 'undefined') {
+      this.keydown$ = Observable.fromEvent(window, 'keydown')
+        .throttleTime(16)
+        .subscribe(e => this.keydownHandler(e));
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -44,8 +51,9 @@ class ProductView extends React.Component {
   }
 
   componentWillUnmount() {
-    const keydownHandler = this.keydownHandler.bind(this);
-    window.removeEventListener('keydown', e => keydownHandler(e));
+    if (this.keydown$) {
+      this.keydown$.unsubscribe();
+    }
   }
 
   setDefaultVariant(nextProps) {
@@ -96,7 +104,6 @@ class ProductView extends React.Component {
     if (!this.props.product || !this.props.product.metafields.color) return 'pink';
     return this.props.product.metafields.color;
   }
-
 
   addToCart(e) {
     if (e) { e.preventDefault(); }

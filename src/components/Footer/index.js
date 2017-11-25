@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import lineageLg from 'assets/lineage-full-black.svg';
 import Styled from './styles';
 
+const thisYear = typeof window !== 'undefined' ? new window.Date().getUTCFullYear() : '2017';
+
 const Footer = () => (
   <Styled.Container>
     <Styled.Nav>
@@ -30,9 +32,9 @@ const Footer = () => (
       <Styled.Logo src={lineageLg} alt="Lineage Coffee Roasters, Orlando, FL" />
       <Styled.Contact href="mailto:hello@lineageroasting.com?subject=Hello!">hello@lineageroasting.com</Styled.Contact>
       <Styled.Copyright>
-        © {new window.Date().getUTCFullYear()} Lineage Coffee Roasting. We do not
-        share your information without your
-        permission. <Link to="/pages/privacy-policy">View our privacy policy</Link>.
+        © {thisYear} Lineage Coffee Roasting. We do not share your information
+        without your permission. <Link to="/pages/privacy-policy">View our
+        privacy policy</Link>.
       </Styled.Copyright>
     </Styled.Colophon>
   </Styled.Container>

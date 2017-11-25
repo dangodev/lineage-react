@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/throttleTime';
 
 import Button from 'components/Button';
 import CartItem from 'components/CartItem';
@@ -10,9 +13,17 @@ import Waves from 'components/Waves';
 import Styled from './styles';
 
 class Cart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.keydownHandler = this.keydownHandler.bind(this);
+  }
+
   componentWillMount() {
-    const keydownHandler = this.keydownHandler.bind(this);
-    window.addEventListener('keydown', keydownHandler);
+    if (typeof window !== 'undefined') {
+      this.keydown$ = Observable.fromEvent(window, 'keydown')
+        .throttleTime(16)
+        .subscribe(e => this.keydownHandler(e));
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,8 +35,9 @@ class Cart extends React.Component {
   }
 
   componentWillUnmount() {
-    const keydownHandler = this.keydownHandler.bind(this);
-    window.removeEventListener('keydown', keydownHandler);
+    if (this.keydown$) {
+      this.keydown$.unsubscribe();
+    }
   }
 
   keydownHandler(e) {
