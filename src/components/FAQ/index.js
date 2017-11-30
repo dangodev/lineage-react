@@ -66,7 +66,7 @@ class FAQ extends React.Component {
           isMeasuring={this.state.isMeasuring}
           isOpen={this.state.isOpen}
         >
-          <AnswerInner>{this.props.faq.answer}</AnswerInner>
+          <Styled.AnswerInner>{this.props.faq.answer}</Styled.AnswerInner>
         </Styled.Answer>
       </Styled.Container>
     );

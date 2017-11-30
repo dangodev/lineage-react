@@ -29,19 +29,13 @@ const brewGuides = [
     link: 'https://medium.com/lineage-academy/tagged/coffee-brewing',
   },
   {
-    title: 'Aeropress',
+    title: 'Cold Brew',
     description: 'This quick, aerating brewing method doesn’t sacrifice flavor. Ideal for light-to-medium roasts.',
     image: 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-8.jpg?13474976391752750718',
     time: '4 – 6 min',
     link: 'https://medium.com/lineage-academy/tagged/coffee-brewing',
   },
-  {
-    title: 'Syphon',
-    description: 'This strange contraption certainly doesn’t dissappoint. While it’s challenging to master, it can also produce some of the most complex flavors.',
-    image: 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-5.jpg?13474976391752750718',
-    time: '15 – 20 min',
-    link: 'https://medium.com/lineage-academy/tagged/coffee-brewing',
-  },
+
 ];
 
 const Learn = () => (
