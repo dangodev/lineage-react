@@ -3,14 +3,15 @@ import { BrowserRouter, Route, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import glamorous from 'glamorous';
+import Async from 'react-code-splitting';
 
 import CartBlocker from 'containers/CartBlocker';
-import PageContainer from 'containers/PageContainer';
-import ProductContainer from 'containers/ProductContainer';
 import Cart from 'components/Cart';
 import Footer from 'components/Footer';
 import Nav from 'components/Nav';
-import Home from 'pages/Home';
+const Home = props => <Async load={import('pages/Home')} componentProps={props} />;
+const PageContainer = props => <Async load={import('containers/PageContainer')} componentProps={props} />;
+const ProductContainer = props => <Async load={import('containers/ProductContainer')} componentProps={props} />;
 
 import fonts from 'assets/fonts/fonts.css';
 import { color, font } from 'lib/theme';

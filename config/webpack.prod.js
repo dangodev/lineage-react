@@ -39,6 +39,10 @@ module.exports = merge.smart(common, {
       },
     ],
   },
+  output: {
+    filename: '[name].[chunkhash].js',
+    publicPath: 'https://cdn.shopify.com/s/files/1/0746/4367/t/8/assets/',
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

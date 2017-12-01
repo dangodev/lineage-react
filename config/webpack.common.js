@@ -11,6 +11,8 @@ module.exports = {
       'react-router-dom',
       'glamorous',
       'shopify-buy',
+      './lib/theme',
+      './lib/tools',
     ],
   },
   module: {
@@ -27,8 +29,9 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, '..', 'dist', 'assets'),
+    crossOriginLoading: 'anonymous',
     filename: '[name].js',
+    path: path.resolve(__dirname, '..', 'dist', 'assets'),
     publicPath: '/',
   },
   plugins: [
