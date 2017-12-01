@@ -20,10 +20,18 @@ const pageTitles = {
 };
 
 class PageContainer extends React.Component {
+  componentWillMount() {
+    this.scrollUp();
+  }
+
   componentWillReceiveUpdate(nextProps) {
     if (this.props.location.pathname !== nextProps.location.pathname) {
-      window.scrollTo(0, 0);
+      this.scrollUp();
     }
+  }
+
+  scrollUp() {
+    window.scrollTo(0, 0);
   }
 
   render() {
