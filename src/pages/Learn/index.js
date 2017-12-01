@@ -35,7 +35,7 @@ const Learn = () => (
   <div>
     <PageHeading
       backgroundImage="https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-3.jpg?13474976391752750718"
-      backgroundPosition="center bottom"
+      backgroundPosition="center 90%"
     />
     <Styled.BrewHeading>Brew Guides</Styled.BrewHeading>
     <Styled.Grid>

@@ -5,6 +5,7 @@ import Styled from './styles';
 
 const CoffeeData = props => (
   <Styled.Metafields>
+    <Styled.Heading>Deets</Styled.Heading>
     <Styled.Inner>
       {props.metafields.elevation && [
         <Styled.Key key="elevation">Elevation</Styled.Key>,
@@ -33,6 +34,10 @@ const CoffeeData = props => (
       {props.metafields.peak_flavor && [
         <Styled.Key key="freshness">Freshness Peak</Styled.Key>,
         <Styled.Value key={props.metafields.peak_flavor}>{props.metafields.peak_flavor}</Styled.Value>,
+      ]}
+      {props.metafields.additional_notes && [
+        <Styled.Key key="additional_notes">Additional Notes</Styled.Key>,
+        <Styled.Value full key={props.metafields.additional_notes}>{props.metafields.additional_notes}</Styled.Value>,
       ]}
     </Styled.Inner>
   </Styled.Metafields>

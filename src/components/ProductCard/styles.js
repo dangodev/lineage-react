@@ -125,7 +125,7 @@ export default {
 
   NoteHeading: glamorous.h3({
     fontSize: font.down3,
-    fontWeight: 500,
+    fontWeight: 700,
     letterSpacing: '0.05em',
     marginBottom: 0.125 * grid,
     marginTop: 0.5 * grid,

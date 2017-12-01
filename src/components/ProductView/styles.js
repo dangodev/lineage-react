@@ -55,7 +55,7 @@ export default {
   ),
 
   CoreInfo: glamorous.div({
-    flex: 5,
+    flex: 4,
     marginBottom: grid,
     paddingLeft: grid,
     paddingRight: grid,
