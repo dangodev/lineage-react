@@ -47,6 +47,19 @@ class Cart extends React.Component {
     }
   }
 
+  getCheckoutUrl() {
+    if (this.props.allProducts.find(product =>
+      product.type.toLowerCase() === 'coffee subscription'
+      && this.props.lineItems.map(({ attrs }) => attrs.product_id).indexOf(product.id) !== -1)) {
+      // -> http://support.rechargepayments.com/article/91-recharge-integration-guide
+      const cartToken = document.cookie.match('(^|; )cart=([^;]*)');
+      return cartToken
+        ? `https://checkout.rechargeapps.com/r/checkout?myshopify_domain=lineage-coffee-roasting.myshopify.com&cart_token=${cartToken[2]}`
+        : 'https://www.lineageroasting.com/checkout';
+    }
+    return 'https://www.lineageroasting.com/checkout';
+  }
+
   closeCart(e) {
     if (e) { e.preventDefault(); }
 
@@ -101,7 +114,7 @@ class Cart extends React.Component {
             <Styled.WaveContainer>
               <Waves width="55%" />
               <Button
-                href={this.props.checkoutUrl}
+                href={this.getCheckoutUrl()}
                 rel="noopener"
                 disabled={this.props.lineItems.length === 0}
               >
@@ -125,7 +138,6 @@ Cart.defaultProps = {
 
 Cart.propTypes = {
   allProducts: PropTypes.array.isRequired,
-  checkoutUrl: PropTypes.string.isRequired,
   featuredCartProduct: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,

@@ -115,9 +115,12 @@ export default {
     backgroundSize: '400px auto',
     display: 'flex',
     height: 2 * grid,
+    left: 0,
     lineHeight: 1,
     paddingLeft: 0,
     paddingRight: 2.5 * grid,
+    position: 'absolute',
+    top: 0,
     width: '100%',
 
     [`@media (min-width: ${breakpoint.sm})`]: {

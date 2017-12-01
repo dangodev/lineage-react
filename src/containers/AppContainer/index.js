@@ -1,6 +1,5 @@
 import React from 'react';
 import ShopifyBuy from 'shopify-buy';
-import parse from 'url-parse';
 
 import App from 'components/App';
 
@@ -45,26 +44,7 @@ class AppContainer extends React.PureComponent {
   }
 
   getCart() {
-    const cartID = window.localStorage.getItem('lineageCart');
-
-    if (cartID) {
-      this.loadCart(cartID);  // If returning visitor
-    } else {
-      this.createCart();      // If new visitor
-    }
-  }
-
-  getCheckoutUrl() {
-    if (this.state.allProducts.find(product =>
-      product.type.toLowerCase() === 'coffee subscription'
-      && this.state.cartLineItems.map(({ attrs }) => attrs.product_id).indexOf(product.id) !== -1)) {
-      // -> http://support.rechargepayments.com/article/91-recharge-integration-guide
-      const cartToken = document.cookie.match('(^|; )cart=([^;]*)');
-      return cartToken
-        ? `https://checkout.rechargeapps.com/r/checkout?myshopify_domain=${domain}&cart_token=${cartToken[2]}`
-        : `https://${domain}/checkout`;
-    }
-    return this.state.cart.checkoutUrl || `https://${domain}/checkout`;
+    this.state.client.fetchRecentCart().then(cart => this.updateCart(cart));
   }
 
   getFeaturedCartProduct() {
@@ -96,33 +76,6 @@ class AppContainer extends React.PureComponent {
       .then(cart => this.updateCart(cart));
   }
 
-  createCart() {
-    this.setState({ isLoading: true });
-    this.state.client.createCart()
-      .then((cart) => {
-        this.setState({ isLoading: false });
-        if (cart) {
-          this.updateCart(cart);
-          window.localStorage.setItem('lineageCart', cart.id);
-        } else {
-          setTimeout(() => this.getCart(), 1000); // If failed, try again
-        }
-      });
-  }
-
-  loadCart(cartID) {
-    this.setState({ isLoading: true });
-    this.state.client.fetchCart(cartID)
-      .then((cart) => {
-        this.setState({ isLoading: false });
-        if (cart) {
-          this.updateCart(cart);
-        } else {
-          this.createCart();
-        }
-      });
-  }
-
   formatProducts() {
     const all = [];
     this.props.collections.forEach(collection =>
@@ -150,7 +103,6 @@ class AppContainer extends React.PureComponent {
         allProducts={this.state.allProducts}
         cart={this.state.cart}
         cartLineItems={this.state.cartLineItems}
-        checkoutUrl={this.getCheckoutUrl()}
         collections={this.state.collections}
         featuredCartProduct={this.getFeaturedCartProduct()}
         removeLineItem={this.removeLineItem}

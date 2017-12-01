@@ -14,7 +14,7 @@ const PageContainer = props => <Async load={import('containers/PageContainer')} 
 const ProductContainer = props => <Async load={import('containers/ProductContainer')} componentProps={props} />;
 
 import fonts from 'assets/fonts/fonts.css';
-import { color, font } from 'lib/theme';
+import { color, font, grid, } from 'lib/theme';
 
 css.global('html, body', {
   backgroundColor: `rgb(${color.white})`,
@@ -22,6 +22,10 @@ css.global('html, body', {
   fontSize: '16px',
   lineHeight: 1.5,
   margin: 0,
+});
+
+css.global('body', {
+  paddingTop: 2 * grid,
 });
 
 css.global('*', {
@@ -58,7 +62,6 @@ const App = props => (
       </AppRouter>
       <CartRouter
         allProducts={props.allProducts}
-        checkoutUrl={props.checkoutUrl}
         featuredCartProduct={props.featuredCartProduct}
         isLoading={props.isLoading}
         lineItems={props.cartLineItems}
@@ -81,7 +84,6 @@ App.propTypes = {
   addToCart: PropTypes.func.isRequired,
   allProducts: PropTypes.array,
   cartLineItems: PropTypes.array,
-  checkoutUrl: PropTypes.string.isRequired,
   collections: PropTypes.array,
   featuredCartProduct: PropTypes.object,
   isLoading: PropTypes.bool,
