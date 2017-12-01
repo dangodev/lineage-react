@@ -4,6 +4,7 @@ import { color, font, grid } from 'lib/theme';
 
 export default {
   Container: glamorous.div({
+    backgroundColor: '#e7cbc7',
     backgroundImage: 'url(https://cdn.shopify.com/s/files/1/0746/4367/files/Cafe_Sneak-12.jpg?7295630232810353631)',
     backgroundPosition: 'center bottom',
     backgroundSize: 'cover',

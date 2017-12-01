@@ -18,7 +18,7 @@ const Wholesale = (props) => {
         <Styled.Content>
           <h2>Wholesale Partnership</h2>
           <p>
-            We are passionate about producing the worlds best coffee and we
+            We are passionate about producing the world’s best coffee and we
             will always be pushing the limits of what coffee can be. Since
             our inception in 2012 we have worked tirelessly to establish
             relationships with like minded growers. The seasonality of coffee
@@ -36,10 +36,10 @@ const Wholesale = (props) => {
           <p>
             Our unique approach to education and coffee allows our wholesale
             partners to showcase the best coffees on earth while reflecting
-            their own brand.
+            their own brand.
           </p>
           <p>
-            Email us! We want to work with you!
+            Please email us. We want to work with you!
           </p>
         </Styled.Content>
         <Styled.Photo>

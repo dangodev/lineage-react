@@ -56,6 +56,17 @@ module.exports = merge.smart(common, {
         minifyJS: true,
       },
     }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      filename: '../templates/404.liquid',
+      template: '../src/index.ejs',
+      appMountId: 'app-root',
+      minify: {
+        collapseWhitespace: true,
+        minifyCSS: true,
+        minifyJS: true,
+      },
+    }),
     new ExtractTextPlugin({ filename: 'fonts.css' }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new ManifestPlugin(),                          // make manifest.json file

@@ -14,11 +14,13 @@ export default {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    paddingLeft: grid,
-    paddingRight: grid,
+    paddingLeft: 0.5 * grid,
+    paddingRight: 0.5 * grid,
 
     '@media (min-width: 780px)': {
       flexDirection: 'row',
+      paddingLeft: grid,
+      paddingRight: grid,
     },
   }),
 
@@ -34,7 +36,7 @@ export default {
     fontFamily: font.din,
     fontSize: font.down1,
     fontWeight: 500,
-    marginLeft: 0.375 * grid,
+    marginLeft: 0.25 * grid,
     marginRight: 0.25 * grid,
     textDecoration: 'none',
     textTransform: 'uppercase',
