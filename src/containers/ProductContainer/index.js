@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 
+import Meta from 'containers/Meta';
 import Collection from 'components/Collection';
 import ProductView from 'components/ProductView';
 
@@ -43,6 +44,15 @@ class ProductContainer extends React.Component {
     if(this.props.location.pathname !== nextProps.location.pathname) {
       window.scrollTo(0, 0);
     }
+  }
+
+  getPageTitle() {
+    if (this.state.current === 'collections' && this.state.collection) {
+      return `${this.state.collection.title} • Lineage Coffee Roasting`;
+    } else if (this.state.current === 'products' && this.state.product) {
+      return `${this.state.product.title} • Lineage Coffee Roasting`;
+    }
+    return undefined;
   }
 
   getReturnTo() {
@@ -95,6 +105,7 @@ class ProductContainer extends React.Component {
   render() {
     return (
       <div>
+        <Meta title={this.getPageTitle()} />
         <Collection
           allProducts={this.props.allProducts}
           collection={this.state.collection}

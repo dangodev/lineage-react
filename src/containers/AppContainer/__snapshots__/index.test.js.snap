@@ -28,7 +28,7 @@ exports[`It didn’t blow up 1`] = `
         style={undefined}
       >
         <img
-          alt="Lineage Coffee Roasters, Orlando"
+          alt="Lineage Coffee Roasting, Orlando"
           src="test-file-stub"
         />
       </a>
@@ -299,7 +299,7 @@ exports[`It didn’t blow up 1`] = `
       className="css-cf8zkh"
     >
       <img
-        alt="Lineage Coffee Roasters, Orlando, FL"
+        alt="Lineage Coffee Roasting, Orlando, FL"
         className="css-14ttdmg"
         src="test-file-stub"
       />
@@ -312,9 +312,9 @@ exports[`It didn’t blow up 1`] = `
       <aside
         className="css-t7emvx"
       >
-        © 
+        ©
         2017
-         Lineage Coffee Roasting. We do not share your information without your permission. 
+         Lineage Coffee Roasting. We do not share your information without your permission.
         <a
           href="/pages/privacy-policy"
           onClick={[Function]}

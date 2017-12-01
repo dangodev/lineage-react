@@ -30,7 +30,7 @@ export default {
 
     '@media (min-width: 600px)': {
       display: 'grid',
-      gridColumnGap: grid,
+      gridColumnGap: 1.5 * grid,
       gridTemplateColumns: 'repeat(12, 1fr)',
     },
   }),

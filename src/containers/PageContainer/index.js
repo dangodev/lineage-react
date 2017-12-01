@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Meta from 'containers/Meta';
 import About from 'pages/About';
 import FourOhFour from 'pages/404';
 import Learn from 'pages/Learn';
@@ -10,6 +11,12 @@ const pages = {
   about: About,
   learn: Learn,
   wholesale: Wholesale,
+};
+
+const pageTitles = {
+  about: "About Us • Lineage Coffee Roasting",
+  learn: "Brew guides & Education • Lineage Coffee Roasting",
+  wholesale: "Wholesale Partners • Lineage Coffee Roasting",
 };
 
 class PageContainer extends React.Component {
@@ -23,7 +30,10 @@ class PageContainer extends React.Component {
     const page = pages[this.props.match.params.slug];
 
     if (page) {
-      return React.createElement(page, this.props);
+      return [
+        <Meta title={pageTitles[this.props.match.params.slug]} />,
+        React.createElement(page, this.props),
+      ];
     }
     return <FourOhFour />;
   }

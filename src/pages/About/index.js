@@ -53,33 +53,38 @@ const timeline = [
   {
     month: 'Jan',
     year: 2015,
-    event: 'First direct sourcing trip to Colombia',
+    event: 'First sourcing trip to Colombia',
   },
   {
-    month: 'Jun',
+    month: 'Jul',
     year: 2015,
     event: 'Began to open up direct trade relationships in Guatemala, Colombia, Kenya, and Brazil',
+  },
+  {
+    inBetween: true,
+    event: 'Built grower relationships throughout Africa and Central America',
   },
   {
     month: 'Mar',
     year: 2017,
     event: 'Began work to open our second location in Mills/50',
   },
+  {
+    month: 'Dec',
+    year: 2017,
+    event: 'Opened our second location in Downtown Orlando!',
+  },
 ];
 
 const About = () => (
   <div>
-    <PageHeading
-      backgroundImage="https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-3.jpg?13474976391752750718"
-      heading="About"
-      subheading="Lineage’s Lineal Legacy"
-    />
-    <Styled.SectionHeading>Awards / Recognition</Styled.SectionHeading>
+    <PageHeading backgroundImage="https://cdn.shopify.com/s/files/1/0746/4367/files/Cafe_Sneak-9.jpg?1220134621319934851" />
+    {/* <Styled.SectionHeading>Awards / Recognition</Styled.SectionHeading>
     <Styled.AwardList>
       <Styled.Award href="http://www.goodfoodawards.org/winners/" rel="noopener" target="_blank">
         <img src="https://cdn.shopify.com/s/files/1/0746/4367/files/2017-good-food-winner.png?5579671480418304637" alt="Good Food™ Award Winner 2017: Coffee" title="Good Food™ Award Winner 2017: Coffee" />
       </Styled.Award>
-    </Styled.AwardList>
+    </Styled.AwardList> */}
     <Styled.SectionHeading>About</Styled.SectionHeading>
     <Styled.Content>
       <p>

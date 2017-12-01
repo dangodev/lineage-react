@@ -72,11 +72,11 @@ export default {
     width: '100%',
 
     '& img': {
+      bottom: 0,
       height: 'auto',
       left: '50%',
       position: 'absolute',
-      top: '50%',
-      transform: 'translate(-50%, -50%)',
+      transform: 'translate(-50%, 0)',
       width: '100%',
     },
   }),

@@ -60,7 +60,7 @@ class Nav extends React.Component {
         </Styled.MobileOpen>
         <Styled.Logo>
           <NavLink to="/">
-            <img src={logo} alt="Lineage Coffee Roasters, Orlando" />
+            <img src={logo} alt="Lineage Coffee Roasting, Orlando" />
           </NavLink>
         </Styled.Logo>
         <Styled.LinkList isOpen={this.state.isOpen}>

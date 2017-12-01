@@ -7,14 +7,13 @@ const PageHeader = props => (
   <Styled.Container
     backgroundColor={props.backgroundColor}
     backgroundImage={props.backgroundImage}
-  >
-    <Styled.Heading>{props.heading}</Styled.Heading>
-    <Styled.Subheading>{props.subheading}</Styled.Subheading>
-  </Styled.Container>
+    backgroundPosition={props.backgroundPosition}
+  />
 );
 
 PageHeader.defaultProps = {
   backgroundColor: 'rgb(212, 224, 236)',
+  backgroundPosition: 'center center',
   backgroundImage: '',
   heading: '',
   subheading: '',
@@ -22,6 +21,7 @@ PageHeader.defaultProps = {
 
 PageHeader.propTypes = {
   backgroundColor: PropTypes.string,
+  backgroundPosition: PropTypes.string,
   backgroundImage: PropTypes.string,
   heading: PropTypes.string,
   subheading: PropTypes.string,

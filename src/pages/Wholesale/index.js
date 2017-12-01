@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ProductList from 'components/ProductList';
 import PageHeading from 'components/PageHeading';
 import WholesaleFAQ from 'components/WholesaleFAQ';
 
@@ -14,52 +13,37 @@ const Wholesale = (props) => {
 
   return (
     <div>
-      <PageHeading
-        backgroundImage="https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-1.jpg?13474976391752750718"
-        heading="Wholesale"
-        subheading="Good things come in bulk"
-      />
+      <PageHeading backgroundImage="https://cdn.shopify.com/s/files/1/0746/4367/files/Cafe_Sneak-13.jpg?1677585792213040243" />
       <Styled.Grid>
         <Styled.Content>
           <h2>Wholesale Partnership</h2>
           <p>
-            In the 4 short years we’ve been around, we’ve beaten more
-            established roasters in national competitions, and gained access
-            to unique, world-class strains of coffee few other roasters can
-            match. We take pride in our pursuit, and we’re not content until
-            we’re the best roaster in the country.
+            We are passionate about producing the worlds best coffee and we
+            will always be pushing the limits of what coffee can be. Since
+            our inception in 2012 we have worked tirelessly to establish
+            relationships with like minded growers. The seasonality of coffee
+            and microclimates is reflected in our rotating menu as we seek to
+            only serve the most freshly harvested coffee available. We are
+            all about the details that must be perfect in order to achieve
+            our vision to become the best roaster in the nation.
           </p>
           <p>
-            That same roast quality doesn’t diminish with higher wholesale
-            volume. We also work with you on a regular basis to make sure you
-            have the perfect type of coffee experience for you, in the amount
-            you need. Nothing goes to waste, and you have access to some of
-            the finest coffees on planet earth.
+            We roast small lots that are sourced and picked by hand, we cup
+            and dial in every coffee we serve all in the effort to create the
+            perfect coffee. We want to work with people who share our passion
+            for incredible coffees and the mission to be better.
+          </p>
+          <p>
+            Our unique approach to education and coffee allows our wholesale
+            partners to showcase the best coffees on earth while reflecting
+            their own brand.
+          </p>
+          <p>
+            Email us! We want to work with you!
           </p>
         </Styled.Content>
         <Styled.Photo>
-          <img src="https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-1.jpg?18319206570450494323" />
-        </Styled.Photo>
-      </Styled.Grid>
-      <Styled.Grid>
-        <Styled.Content>
-          <h2>Supporting Lineage is supporting sustainable coffee</h2>
-          <p>
-            Lineage’s dedication to quality coffee doesn’t stop at our
-            borders. We’ve built face-to-face relationships with farmers and
-            exporters in South American and African nations. All of our
-            coffee comes from cartel-free laborers in safe working conditions
-            that we’ve either inspected for ourselves or are partners with
-            those we trust.
-          </p>
-          <p>
-            We pay far above fair trade value for coffee to ensure our
-            partner farms make livable wages and stay in business as long as
-            we do.
-          </p>
-        </Styled.Content>
-        <Styled.Photo>
-          <img src="https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-1.jpg?18319206570450494323" />
+          <img src="https://cdn.shopify.com/s/files/1/0746/4367/files/Cafe_Sneak-22.jpg?4543001485930765123" />
         </Styled.Photo>
       </Styled.Grid>
       <Styled.FAQHeading>Additional Info</Styled.FAQHeading>
@@ -74,12 +58,6 @@ const Wholesale = (props) => {
           you‘re ready to get an estimate.
         </p>
       </Styled.CTA>
-      <Styled.ProductWrapper>
-        <Styled.ProductHeading>
-          Test out a 5lb bag of our most popular wholesale coffees:
-        </Styled.ProductHeading>
-        <ProductList products={wholesaleProducts} isShowing />
-      </Styled.ProductWrapper>
     </div>
   );
 };

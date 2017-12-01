@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/throttleTime';
 
+import Meta from 'containers/Meta';
 import Button from 'components/Button';
 import CartItem from 'components/CartItem';
 import CartZero from 'components/CartZero';
@@ -63,6 +64,9 @@ class Cart extends React.Component {
   render() {
     return (
       <div>
+        {this.isShowing() &&
+          <Meta title="Cart • Lineage Coffee Roasting" />
+        }
         <Styled.Inner isShowing={this.isShowing()}>
           <Styled.Heading>
             Cart

@@ -33,7 +33,7 @@ class Video extends React.Component {
         </Styled.Stretch>
         <Styled.Pink />
         <Styled.Pink2 />
-        <Styled.BigLogo src={bigLogo} alt="Lineage Coffee Roasters, Orlando" />
+        <Styled.BigLogo src={bigLogo} alt="Lineage Coffee Roasting, Orlando" />
       </Styled.Container>
     );
   }

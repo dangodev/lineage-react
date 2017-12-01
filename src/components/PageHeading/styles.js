@@ -7,7 +7,6 @@ export default {
     {
       alignItems: 'center',
       backgroundColor: '',
-      backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       display: 'flex',
@@ -23,6 +22,7 @@ export default {
     props => ({
       backgroundColor: props.backgroundColor,
       backgroundImage: `url(${props.backgroundImage})`,
+      backgroundPosition: props.backgroundPosition,
     }),
   ),
 

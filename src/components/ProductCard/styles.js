@@ -111,7 +111,7 @@ export default {
 
   Meta: glamorous.aside({
     display: 'block',
-    fontSize: font.down1,
+    fontSize: font.down2,
     fontWeight: 400,
     marginTop: 0.25 * grid,
     marginBottom: 0,
@@ -123,14 +123,26 @@ export default {
     lineHeight: 1.75,
   }),
 
-  NoteList: glamorous.div({
-    fontSize: font.down2,
-    marginBottom: 0.5 * grid,
+  NoteHeading: glamorous.h3({
+    fontSize: font.down3,
+    fontWeight: 500,
+    letterSpacing: '0.05em',
+    marginBottom: 0.125 * grid,
     marginTop: 0.5 * grid,
+    textTransform: 'uppercase',
+
+    '@media (min-width: 600px)': {
+      marginTop: 0.75 * grid,
+    },
+  }),
+
+  NoteList: glamorous.div({
+    fontSize: font.down1,
+    marginBottom: 0.5 * grid,
+    marginTop: 0,
 
     '@media (min-width: 600px)': {
       marginBottom: 0.75 * grid,
-      marginTop: 0.75 * grid,
     },
   }),
 

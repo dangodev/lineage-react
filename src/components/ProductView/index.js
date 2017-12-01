@@ -206,11 +206,11 @@ class ProductView extends React.Component {
                         <label htmlFor={`quantity-${quantity}`}>{quantity}</label>
                       </Styled.Option>
                     ))}
-                    {this.isCoffee() &&
+                    {/* {this.isCoffee() &&
                       <Styled.QuantityWholesale>
                         Need more? Try 5lb bags, or <Link to="/pages/wholesale">wholesale</Link>.
                       </Styled.QuantityWholesale>
-                    }
+                    } */}
                   </Styled.OptionList>
                 </Styled.Quantity>
               </Styled.Selections>

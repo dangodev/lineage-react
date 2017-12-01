@@ -6,28 +6,28 @@ import Styled from './styles';
 
 const faqs = [
   {
-    question: 'What is the minimum order?',
-    answer: 'Each week, on FRIDAYS, we confirm orders with wholesale vendors. SATURDAY morning we ship your order, and we bill you using your information on file when your order ships. Cancellations for the week are no charge as long as you let us know by FRIDAY, 5p',
+    question: 'What is the minimum order?',
+    answer: 'There’s no minimum, but all wholesale orders are in 5lb increments.',
   },
   {
-    question: 'How am I billed?',
-    answer: 'It’s a flat rate for coffee + shipping, and we only bill your credit card when a shipment is on the way. Every now and then we even ship specialty roasts that are more expensive than what you pay, at no cost to you!',
+    question: 'How am I billed?',
+    answer: 'As a wholesale customer, you can choose between weekly and monthly online invoicing. The higher your order, the more flexibility you have on pricing.',
   },
   {
-    question: 'When do shipments go out?',
-    answer: 'Each week, on FRIDAYS, we confirm orders with wholesale vendors. SATURDAY morning we ship your order, and we bill you using your information on file when your order ships. Cancellations for the week are no charge as long as you let us know by FRIDAY, 5p',
+    question: 'Can I change up my order?',
+    answer: 'As a wholesale customer, we talk with you every week to confirm your needs for the upcoming week.',
   },
   {
-    question: 'What is the minimum commitment?',
-    answer: 'Each week, on FRIDAYS, we confirm orders with wholesale vendors. SATURDAY morning we ship your order, and we bill you using your information on file when your order ships. Cancellations for the week are no charge as long as you let us know by FRIDAY, 5p',
+    question: 'When do shipments go out?',
+    answer: 'MONDAYS are when shipments go out, or are made available for pickup. This is because we roast on Saturday and taste test / package on Sunday. We ship to FL overnight. Local deliveries are also available.',
   },
   {
-    question: 'What if I decide to cancel my order for the week?',
-    answer: 'Each week, on FRIDAYS, we confirm orders with wholesale vendors. SATURDAY morning we ship your order, and we bill you using your information on file when your order ships. Cancellations for the week are no charge as long as you let us know by FRIDAY, 5p',
+    question: 'What is the minimum wholesale contract length?',
+    answer: 'We believe our coffee is the best, and therefore we don’t work on contracts.',
   },
   {
-    question: 'What if I decide to cancel altogether?',
-    answer: 'Each week, on FRIDAYS, we confirm orders with wholesale vendors. SATURDAY morning we ship your order, and we bill you using your information on file when your order ships. Cancellations for the week are no charge as long as you let us know by FRIDAY, 5p',
+    question: 'Will you help me find equipment?',
+    answer: 'We’d love to! Not only will we recommend equipment; we have relationships with many high-end equipment manufacturers, and can purchase the equipment at below-retail prices.',
   },
 ];
 

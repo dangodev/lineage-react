@@ -8,32 +8,25 @@ import Styled from './styles';
 
 const brewGuides = [
   {
-    title: 'French Press',
-    description: 'French Press draws out the deep chocolate and smoky notes of roasts. Perfect for darker and medium roasts.',
-    image: 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-7.jpg?13474976391752750718',
-    time: '8 – 12 min',
-    link: 'https://medium.com/lineage-academy/tagged/coffee-brewing',
-  },
-  {
-    title: 'Pourover',
-    description: 'The pourover method is perfect for highlighting brighter floral and citrus notes in light roasts.',
+    title: 'Pour-over',
+    description: 'No other brewing method can match the pour-over’s control and flexibility.',
     image: 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-6.jpg?13474976391752750718',
     time: '5 – 8 min',
-    link: 'https://medium.com/lineage-academy/tagged/coffee-brewing',
+    link: 'https://medium.com/@LineageAcademy/how-to-make-perfect-pour-over-coffee-5f3200a6ac3b',
   },
   {
     title: 'Chemex',
-    description: 'A well-rounded brewing method, chemex balances the bright and dark notes in any roast.',
+    description: 'Great for brewing larger amounts of coffee without sacrificing flavor',
     image: 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-5.jpg?13474976391752750718',
     time: '10 – 15 min',
     link: 'https://medium.com/lineage-academy/tagged/coffee-brewing',
   },
   {
     title: 'Cold Brew',
-    description: 'This quick, aerating brewing method doesn’t sacrifice flavor. Ideal for light-to-medium roasts.',
+    description: 'The best way to get chilled coffee with full-bodied flavor and low acidity.',
     image: 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-8.jpg?13474976391752750718',
-    time: '4 – 6 min',
-    link: 'https://medium.com/lineage-academy/tagged/coffee-brewing',
+    time: '12 – 16 hours',
+    link: 'https://medium.com/@LineageAcademy/how-to-make-cold-brew-coffee-at-home-d5b372f780ad',
   },
 
 ];
@@ -42,8 +35,7 @@ const Learn = () => (
   <div>
     <PageHeading
       backgroundImage="https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-3.jpg?13474976391752750718"
-      heading="Learn"
-      subheading="Expand your knowledge and your palette"
+      backgroundPosition="center bottom"
     />
     <Styled.BrewHeading>Brew Guides</Styled.BrewHeading>
     <Styled.Grid>

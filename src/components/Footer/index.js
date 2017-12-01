@@ -29,7 +29,7 @@ const Footer = () => (
       </Styled.SocialNav>
     </Styled.Nav>
     <Styled.Colophon>
-      <Styled.Logo src={lineageLg} alt="Lineage Coffee Roasters, Orlando, FL" />
+      <Styled.Logo src={lineageLg} alt="Lineage Coffee Roasting, Orlando, FL" />
       <Styled.Contact href="mailto:hello@lineageroasting.com?subject=Hello!">hello@lineageroasting.com</Styled.Contact>
       <Styled.Copyright>
         © {thisYear} Lineage Coffee Roasting. We do not share your information

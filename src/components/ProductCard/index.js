@@ -23,11 +23,12 @@ const ProductCard = (props) => {
         {(productType === 'coffee' || productType === 'coffee beans') &&
           <Styled.Meta>{props.product.metafields.country} / {props.product.metafields.altitude}m</Styled.Meta>
         }
-        {(productType === 'coffee' || productType === 'coffee beans') &&
+        {(productType === 'coffee' || productType === 'coffee beans') && [
+          <Styled.NoteHeading>Tasting Notes</Styled.NoteHeading>,
           <Styled.NoteList>
             {props.product.tags.map(note => <Styled.Note key={note}>{note}</Styled.Note>)}
-          </Styled.NoteList>
-        }
+          </Styled.NoteList>,
+        ]}
         {(productType !== 'coffee' && productType !== 'coffee beans') &&
           <Styled.Content dangerouslySetInnerHTML={{ __html: props.product.content }} />
         }

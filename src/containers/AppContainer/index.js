@@ -55,17 +55,15 @@ class AppContainer extends React.PureComponent {
   }
 
   getCheckoutUrl() {
-    // // If there’s at least 1 coffee subscription, send user to ReCharge URL
-    // if (this.state.allProducts.find(product =>
-    //   product.type.toLowerCase() === 'coffee subscription'
-    //   && this.state.cartLineItems.map(({ attrs }) => attrs.product_id).indexOf(product.id) !== -1)) {
-    //   const urlSplit = this.state.cart.checkoutUrl.split('/');
-    //   console.log(urlSplit[urlSplit.length - 1]);
-    //   const token = urlSplit[urlSplit.length - 1].substr(0, urlSplit.indexOf('?'));
-    //   return `https://checkout.rechargeapps.com/r/checkout?myshopify_domain=${domain}&cart_token=${token}`;
-    // }
-
-    // Otherwise, check out as usual
+    if (this.state.allProducts.find(product =>
+      product.type.toLowerCase() === 'coffee subscription'
+      && this.state.cartLineItems.map(({ attrs }) => attrs.product_id).indexOf(product.id) !== -1)) {
+      // -> http://support.rechargepayments.com/article/91-recharge-integration-guide
+      const cartToken = document.cookie.match('(^|; )cart=([^;]*)');
+      return cartToken
+        ? `https://checkout.rechargeapps.com/r/checkout?myshopify_domain=${domain}&cart_token=${cartToken[2]}`
+        : `https://${domain}/checkout`;
+    }
     return this.state.cart.checkoutUrl || `https://${domain}/checkout`;
   }
 
