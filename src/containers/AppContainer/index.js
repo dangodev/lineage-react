@@ -12,13 +12,14 @@ class AppContainer extends React.PureComponent {
 
     this.state = {
       allProducts: this.formatProducts(),
-      cart: {},
+      cart: { },
       cartLineItems: [],
       client: ShopifyBuy.buildClient({
         appId: '6', // '6' is for JS Buy Button (this app)
         accessToken,
         domain,
       }),
+      checkoutUrl: `https://${domain}/checkout`,
       collections: props.collections.map(collection => ({
         description: collection.description,
         handle: collection.handle,
@@ -44,7 +45,10 @@ class AppContainer extends React.PureComponent {
   }
 
   getCart() {
-    this.state.client.fetchRecentCart().then(cart => this.updateCart(cart));
+    const cartID = window.localStorage.getItem('lineageCart');
+
+    if (cartID) return this.loadCart(cartID);
+    return this.createCart();
   }
 
   getFeaturedCartProduct() {
@@ -55,19 +59,8 @@ class AppContainer extends React.PureComponent {
   }
 
   addToCart({ variant, quantity }) {
-    const add = lineItem =>
-      this.state.cart.createLineItemsFromVariants({ variant: lineItem.variant, quantity: lineItem.quantity })
-        .then(cart => this.updateCart(cart));
-
-    if (!this.state.allProducts) {
-      return add({ variant, quantity });
-    }
-    const product = this.state.allProducts.find(({ id }) => id === variant.productId);
-    console.log(this.state.allProducts, variant, product);
-    if (!product) return false;
-    return product.type.toLowerCase() === 'coffee subscription'
-      ? add({ variant: product.metafields.subscriptions.discount_product_id, quantity })
-      : add({ variant, quantity });
+    this.state.cart.createLineItemsFromVariants({ variant, quantity })
+      .then(cart => this.updateCart(cart));
   }
 
   removeLineItem(id) {
@@ -79,7 +72,35 @@ class AppContainer extends React.PureComponent {
     this.setState({
       cart,
       cartLineItems: cart.lineItems,
+      checkoutUrl: cart.checkoutUrl,
     });
+  }
+
+  createCart() {
+    this.setState({ isLoading: true });
+    this.state.client.createCart()
+      .then((cart) => {
+        this.setState({ isLoading: false });
+        if (cart) {
+          this.updateCart(cart);
+          window.localStorage.setItem('lineageCart', cart.id);
+        } else {
+          setTimeout(() => this.getCart(), 1000); // If failed, try again
+        }
+      });
+  }
+
+  loadCart(cartID) {
+    this.setState({ isLoading: true });
+    this.state.client.fetchCart(cartID)
+      .then((cart) => {
+        this.setState({ isLoading: false });
+        if (cart) {
+          this.updateCart(cart);
+        } else {
+          this.createCart();
+        }
+      });
   }
 
   updateLineItem(id, quantity) {
@@ -114,6 +135,7 @@ class AppContainer extends React.PureComponent {
         allProducts={this.state.allProducts}
         cart={this.state.cart}
         cartLineItems={this.state.cartLineItems}
+        checkoutUrl={this.state.checkoutUrl}
         collections={this.state.collections}
         featuredCartProduct={this.getFeaturedCartProduct()}
         removeLineItem={this.removeLineItem}

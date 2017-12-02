@@ -84,6 +84,7 @@ App.propTypes = {
   addToCart: PropTypes.func.isRequired,
   allProducts: PropTypes.array,
   cartLineItems: PropTypes.array,
+  checkoutUrl: PropTypes.string.isRequired,
   collections: PropTypes.array,
   featuredCartProduct: PropTypes.object,
   isLoading: PropTypes.bool,

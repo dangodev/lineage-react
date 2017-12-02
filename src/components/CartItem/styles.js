@@ -24,6 +24,7 @@ export default {
   Heading: glamorous.h3({
     fontSize: '1em',
     fontWeight: 700,
+    lineHeight: 1.2,
     marginBottom: 0,
     marginTop: 0,
     textTransform: 'uppercase',

@@ -101,8 +101,12 @@ class ProductView extends React.Component {
   }
 
   getFlavor() {
-    if (!this.props.product || !this.props.product.metafields.color) return 'pink';
-    return this.props.product.metafields.color;
+    if (
+      !this.props.product
+      || !this.props.product.metafields.c_f
+      || !this.props.product.metafields.c_f.color
+    ) return 'pink';
+    return this.props.product.metafields.c_f.color;
   }
 
   addToCart(e) {

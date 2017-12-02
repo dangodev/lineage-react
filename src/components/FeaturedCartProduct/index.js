@@ -10,7 +10,7 @@ const FeaturedCartProduct = (props) => {
 
   return (
     <Styled.Container>
-      <Styled.Label color={props.product.metafields.color}>Featured Item</Styled.Label>
+      <Styled.Label color={props.product.metafields.c_f.color}>Featured Item</Styled.Label>
       <Styled.Grid>
         <Styled.ProductInfo>
           <Styled.Image src={props.product.featured_image} alt={props.product.title} />

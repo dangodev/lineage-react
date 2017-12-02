@@ -7,7 +7,14 @@ import Styled from './styles';
 
 const CartItem = (props) => {
   const product = props.allProducts.find(({ id }) => id === props.lineItem.product_id);
+  if (!product) {
+    console.log(props);
+    props.removeLineItem(props.lineItem.id);
+    return false;
+  }
   const productType = product.type.toLowerCase();
+
+  const { color } = product.metafields.c_f || '';
 
   const clickHandler = (e) => {
     e.preventDefault();
@@ -18,7 +25,7 @@ const CartItem = (props) => {
 
   return (
     <Styled.Container>
-      <Styled.ThumbContainer color={product.metafields.color}>
+      <Styled.ThumbContainer color={color}>
         <Styled.Thumb src={product.featured_image} alt={product.title} />
       </Styled.ThumbContainer>
       <Styled.ProductInfo>

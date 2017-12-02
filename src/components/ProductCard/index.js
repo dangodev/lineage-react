@@ -7,10 +7,15 @@ import Styled from './styles';
 
 const ProductCard = (props) => {
   const productType = props.product.type.toLowerCase();
+  const {
+    altitude,
+    color,
+    country,
+  } = props.product.metafields.c_f || '';
 
   return (
     <Styled.Container
-      flavor={props.product.metafields.color}
+      flavor={color}
       to={`/products/${props.product.handle}`}
       isShowing={props.isShowing}
       delay={props.delay}
@@ -20,8 +25,8 @@ const ProductCard = (props) => {
       </Styled.Image>
       <Styled.Inner>
         <Styled.Heading>{props.product.title}</Styled.Heading>
-        {(productType === 'coffee' || productType === 'coffee beans') &&
-          <Styled.Meta>{props.product.metafields.country} / {props.product.metafields.altitude}m</Styled.Meta>
+        {(productType === 'coffee' || productType === 'coffee beans') && country && altitude &&
+          <Styled.Meta>{country} / {altitude}m</Styled.Meta>
         }
         {(productType === 'coffee' || productType === 'coffee beans') && [
           <Styled.NoteHeading key="notes-heading">Tasting Notes</Styled.NoteHeading>,

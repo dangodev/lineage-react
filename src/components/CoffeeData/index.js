@@ -7,37 +7,37 @@ const CoffeeData = props => (
   <Styled.Metafields>
     <Styled.Heading>Deets</Styled.Heading>
     <Styled.Inner>
-      {props.metafields.elevation && [
-        <Styled.Key key="elevation">Elevation</Styled.Key>,
-        <Styled.Value key={props.metafields.elevation}>{props.metafields.elevation}</Styled.Value>,
+      {props.metafields.c_f.altitude && [
+        <Styled.Key key="altitude">Elevation</Styled.Key>,
+        <Styled.Value key={props.metafields.c_f.altitude}>{props.metafields.c_f.altitude}m</Styled.Value>,
       ]}
-      {props.metafields.country && [
+      {props.metafields.c_f.country && [
         <Styled.Key key="country">Origin</Styled.Key>,
-        <Styled.Value key={props.metafields.country}>{props.metafields.country}</Styled.Value>,
+        <Styled.Value key={props.metafields.c_f.country}>{props.metafields.c_f.country}</Styled.Value>,
       ]}
-      {props.metafields.grower && [
+      {props.metafields.c_f.grower && [
         <Styled.Key key="farm">Farm</Styled.Key>,
-        <Styled.Value key={props.metafields.grower}>{props.metafields.grower}</Styled.Value>,
+        <Styled.Value key={props.metafields.c_f.grower}>{props.metafields.c_f.grower}</Styled.Value>,
       ]}
-      {props.metafields.variety && [
+      {props.metafields.c_f.variety && [
         <Styled.Key key="variety">Variety</Styled.Key>,
-        <Styled.Value key={props.metafields.variety}>{props.metafields.variety}</Styled.Value>,
+        <Styled.Value key={props.metafields.c_f.variety}>{props.metafields.c_f.variety}</Styled.Value>,
       ]}
-      {props.metafields.size && [
+      {props.metafields.c_f.size && [
         <Styled.Key key="size">Size</Styled.Key>,
-        <Styled.Value key={props.metafields.size}>{props.metafields.size}</Styled.Value>,
+        <Styled.Value key={props.metafields.c_f.size}>{props.metafields.c_f.size}</Styled.Value>,
       ]}
-      {props.metafields.process && [
+      {props.metafields.c_f.process && [
         <Styled.Key key="process">Process</Styled.Key>,
-        <Styled.Value key={props.metafields.processing_method}>{props.metafields.processing_method}</Styled.Value>,
+        <Styled.Value key={props.metafields.c_f.processing_method}>{props.metafields.c_f.processing_method}</Styled.Value>,
       ]}
-      {props.metafields.peak_flavor && [
+      {props.metafields.c_f.peak_flavor && [
         <Styled.Key key="freshness">Freshness Peak</Styled.Key>,
-        <Styled.Value key={props.metafields.peak_flavor}>{props.metafields.peak_flavor}</Styled.Value>,
+        <Styled.Value key={props.metafields.c_f.peak_flavor}>{props.metafields.c_f.peak_flavor}</Styled.Value>,
       ]}
-      {props.metafields.additional_notes && [
+      {props.metafields.c_f.additional_notes && [
         <Styled.Key key="additional_notes">Additional Notes</Styled.Key>,
-        <Styled.Value full key={props.metafields.additional_notes}>{props.metafields.additional_notes}</Styled.Value>,
+        <Styled.Value full key={props.metafields.c_f.additional_notes}>{props.metafields.c_f.additional_notes}</Styled.Value>,
       ]}
     </Styled.Inner>
   </Styled.Metafields>

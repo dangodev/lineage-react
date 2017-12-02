@@ -81,6 +81,76 @@
           "subscription_id": "9568"
         }
       }
+    },
+    {
+      "id": 365217611812,
+      "metafields": {
+        "c_f": {
+          "altitude": "1800",
+          "color": "white",
+          "country": "Guatemala",
+          "grower": "Xejuyu",
+          "peak_flavor": "2 days",
+          "region": "Chimaltenango- Central Guatemala",
+          "variety": "Bourbon"
+        },
+        "subscriptions": {}
+      }
+    },
+    {
+      "id": 395627593764,
+      "metafields": {
+        "c_f": {},
+        "subscriptions": {}
+      }
+    },
+    {
+      "id": 395628609572,
+      "metafields": {
+        "c_f": {},
+        "subscriptions": {}
+      }
+    },
+    {
+      "id": 399243769,
+      "metafields": {
+        "c_f": {
+          "additional_notes": "On our trip to Mexico in April of 2017 we fell in love with the coffees of Mexico. The uniqueness coming from this country was so surprising. Every single coffee was so unique but on these community lots we would see such a trend of this underlying theme of chocolate, toffee and a very pleasant acidity that was sweet and soft. We are proud to present the next chapter of our 431 from Mexico.",
+          "altitude": "1200–1800",
+          "color": "green",
+          "country": "Mexico",
+          "grower": "Paulo Piancastelli",
+          "peak_flavor": "3 days",
+          "processing_method": "Fully Washed",
+          "region": "Chiapas",
+          "score": 98,
+          "variety": "Typica, Caturra, Catuai"
+        },
+        "subscriptions": {
+          "discount_percentage": "0E-10",
+          "discount_product_id": "6409488769",
+          "has_subscription": "True",
+          "is_subscription_only": "false",
+          "shipping_interval_frequency": "1,2,3,4",
+          "shipping_interval_unit_type": "Weeks",
+          "subscription_id": "9568"
+        }
+      }
+    },
+    {
+      "id": 3652195265,
+      "metafields": {
+        "c_f": {},
+        "subscriptions": {
+          "discount_percentage": "0E-10",
+          "discount_product_id": "9701444033",
+          "has_subscription": "True",
+          "is_subscription_only": "true",
+          "shipping_interval_frequency": "1,2,3,4",
+          "shipping_interval_unit_type": "Weeks",
+          "subscription_id": "9570"
+        }
+      }
     }
   ],
   "collections": [
@@ -104,8 +174,8 @@
           "type": "Coffee Beans",
           "tags": [
             "Almond",
-            "Cherry",
-            "Chocolate"
+            "Chocolate",
+            "Toffee"
           ],
           "price": 1550,
           "price_min": 1550,
@@ -217,7 +287,7 @@
           "vendor": "Lineage Coffee Roasting",
           "type": "Coffee Beans",
           "tags": [
-            "wine"
+            "citrus"
           ],
           "price": 1850,
           "price_min": 1850,
@@ -267,14 +337,15 @@
           "id": 399245693,
           "title": "Modern American",
           "handle": "modern-american",
-          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eOrigin: Ethiopia\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Sidamo\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eElevation: 1600-1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVarietal:  Native Heirloom Varietals\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcess: Fully Washed\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProfile: Sweeter and more full bodied than our other filter roast Ethiopia offerings with more depth of caramel and molasses type flavors in the yielded espresso\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American espresso is one of our favorite projects we do.  Every year we travel around the globe searching for not only the perfect cup or perfect coffee, but the perfect and most balanced coffee to feature in this espresso.  This seasonal offering will always be changing to reflect the seasonality of coffee growing regions at their peak of harvest.  Unlike a Florida orange however, there are many steps that a coffee must go through before it can be used.  This series of steps includes harvest, processing, milling, bagging, exporting, importing and lastly roasting.  In an effort to ensure the integrity of this Modern American espresso we have to plan our calendar very carefully to always have freshly harvested coffees to feature in this flagship espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American is more than just a great coffee for espresso, it is our brand.   Our search for the world's most unique and quality coffees is reflected by this seasonal espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis installment is a Washed Sidamo from Ethiopia.  Known for its rich stone fruit flavors and high peach like sweetness, Sidamo varies from its more popular neighbor Yirgacheffe that tend to be a bit more citrus and floral.  We really liked the sweetness and depth this coffee had as soon as we cupped it, but when we began pulling shots we got to see its full potential.  Due to the high elevation this coffee is grown at, it is very dense which allows more options in profile setting when it comes to both roasting as well as extracting this espresso.  We like this coffee because of its versatility in espresso, whether you are looking for a ristretto with denser sweetness, or a longer shot and extraction with acidity, this coffee has great potential.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cbr\u003e\u003cbr\u003e\u003c\/p\u003e",
+          "description": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eProfile: Sweeter and more full bodied than our other filter roast Ethiopia offerings with more depth of caramel and molasses type flavors in the yielded espresso\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American espresso is one of our favorite projects we do. Every year we travel around the globe searching for not only the perfect cup or perfect coffee, but the perfect and most balanced coffee to feature in this espresso. This seasonal offering will always be changing to reflect the seasonality of coffee growing regions at their peak of harvest. Unlike a Florida orange however, there are many steps that a coffee must go through before it can be used. This series of steps includes harvest, processing, milling, bagging, exporting, importing and lastly roasting. In an effort to ensure the integrity of this Modern American espresso we have to plan our calendar very carefully to always have freshly harvested coffees to feature in this flagship espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American is more than just a great coffee for espresso, it is our brand. Our search for the world's most unique and quality coffees is reflected by this seasonal espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis installment is a Washed Sidamo from Ethiopia. Known for its rich stone fruit flavors and high peach like sweetness, Sidamo varies from its more popular neighbor Yirgacheffe that tend to be a bit more citrus and floral. We really liked the sweetness and depth this coffee had as soon as we cupped it, but when we began pulling shots we got to see its full potential. Due to the high elevation this coffee is grown at, it is very dense which allows more options in profile setting when it comes to both roasting as well as extracting this espresso. We like this coffee because of its versatility in espresso, whether you are looking for a ristretto with denser sweetness, or a longer shot and extraction with acidity, this coffee has great potential.\u003c\/span\u003e\u003c\/p\u003e",
           "published_at": "2015-01-15T15:49:00-05:00",
           "created_at": "2015-01-15T15:51:58-05:00",
           "vendor": "Lineage Coffee Roasting",
           "type": "Coffee Beans",
           "tags": [
             "Berry",
-            "Caramel"
+            "Caramel",
+            "Molasses"
           ],
           "price": 1700,
           "price_min": 1700,
@@ -318,7 +389,7 @@
           "options": [
             "Title"
           ],
-          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eOrigin: Ethiopia\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eRegion: Sidamo\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eElevation: 1600-1900 meters above sea level\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eVarietal:  Native Heirloom Varietals\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProcess: Fully Washed\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eProfile: Sweeter and more full bodied than our other filter roast Ethiopia offerings with more depth of caramel and molasses type flavors in the yielded espresso\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e \u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American espresso is one of our favorite projects we do.  Every year we travel around the globe searching for not only the perfect cup or perfect coffee, but the perfect and most balanced coffee to feature in this espresso.  This seasonal offering will always be changing to reflect the seasonality of coffee growing regions at their peak of harvest.  Unlike a Florida orange however, there are many steps that a coffee must go through before it can be used.  This series of steps includes harvest, processing, milling, bagging, exporting, importing and lastly roasting.  In an effort to ensure the integrity of this Modern American espresso we have to plan our calendar very carefully to always have freshly harvested coffees to feature in this flagship espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American is more than just a great coffee for espresso, it is our brand.   Our search for the world's most unique and quality coffees is reflected by this seasonal espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis installment is a Washed Sidamo from Ethiopia.  Known for its rich stone fruit flavors and high peach like sweetness, Sidamo varies from its more popular neighbor Yirgacheffe that tend to be a bit more citrus and floral.  We really liked the sweetness and depth this coffee had as soon as we cupped it, but when we began pulling shots we got to see its full potential.  Due to the high elevation this coffee is grown at, it is very dense which allows more options in profile setting when it comes to both roasting as well as extracting this espresso.  We like this coffee because of its versatility in espresso, whether you are looking for a ristretto with denser sweetness, or a longer shot and extraction with acidity, this coffee has great potential.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cbr\u003e\u003cbr\u003e\u003c\/p\u003e"
+          "content": "\u003cmeta charset=\"utf-8\"\u003e\u003cmeta charset=\"utf-8\"\u003e\n\u003cp\u003eProfile: Sweeter and more full bodied than our other filter roast Ethiopia offerings with more depth of caramel and molasses type flavors in the yielded espresso\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American espresso is one of our favorite projects we do. Every year we travel around the globe searching for not only the perfect cup or perfect coffee, but the perfect and most balanced coffee to feature in this espresso. This seasonal offering will always be changing to reflect the seasonality of coffee growing regions at their peak of harvest. Unlike a Florida orange however, there are many steps that a coffee must go through before it can be used. This series of steps includes harvest, processing, milling, bagging, exporting, importing and lastly roasting. In an effort to ensure the integrity of this Modern American espresso we have to plan our calendar very carefully to always have freshly harvested coffees to feature in this flagship espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eModern American is more than just a great coffee for espresso, it is our brand. Our search for the world's most unique and quality coffees is reflected by this seasonal espresso.\u003c\/span\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eThis installment is a Washed Sidamo from Ethiopia. Known for its rich stone fruit flavors and high peach like sweetness, Sidamo varies from its more popular neighbor Yirgacheffe that tend to be a bit more citrus and floral. We really liked the sweetness and depth this coffee had as soon as we cupped it, but when we began pulling shots we got to see its full potential. Due to the high elevation this coffee is grown at, it is very dense which allows more options in profile setting when it comes to both roasting as well as extracting this espresso. We like this coffee because of its versatility in espresso, whether you are looking for a ristretto with denser sweetness, or a longer shot and extraction with acidity, this coffee has great potential.\u003c\/span\u003e\u003c\/p\u003e"
         }
       ]
     },
@@ -341,7 +412,7 @@
           "vendor": "Lineage Coffee Roasting",
           "type": "Coffee Beans",
           "tags": [
-            "wine"
+            "citrus"
           ],
           "price": 1850,
           "price_min": 1850,
@@ -634,8 +705,8 @@
           "type": "Coffee Beans",
           "tags": [
             "Almond",
-            "Cherry",
-            "Chocolate"
+            "Chocolate",
+            "Toffee"
           ],
           "price": 1550,
           "price_min": 1550,
@@ -713,9 +784,9 @@
           "compare_at_price_varies": false,
           "variants": [
             {
-              "id": 10675407297,
-              "title": "Default Title",
-              "option1": "Default Title",
+              "id": 5112606064676,
+              "title": "1 Week",
+              "option1": "1 Week",
               "option2": null,
               "option3": null,
               "sku": "",
@@ -723,15 +794,87 @@
               "taxable": true,
               "featured_image": null,
               "available": true,
-              "name": "Roasters Choice (Single Origin)",
-              "public_title": null,
+              "name": "Roasters Choice (Single Origin) - 1 Week",
+              "public_title": "1 Week",
               "options": [
-                "Default Title"
+                "1 Week"
               ],
               "price": 1600,
               "weight": 340,
               "compare_at_price": null,
-              "inventory_quantity": -725,
+              "inventory_quantity": 1,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            },
+            {
+              "id": 5112614223908,
+              "title": "2 Weeks",
+              "option1": "2 Weeks",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Roasters Choice (Single Origin) - 2 Weeks",
+              "public_title": "2 Weeks",
+              "options": [
+                "2 Weeks"
+              ],
+              "price": 1600,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": 1,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            },
+            {
+              "id": 5112618352676,
+              "title": "3 Weeks",
+              "option1": "3 Weeks",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Roasters Choice (Single Origin) - 3 Weeks",
+              "public_title": "3 Weeks",
+              "options": [
+                "3 Weeks"
+              ],
+              "price": 1600,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": 1,
+              "inventory_management": null,
+              "inventory_policy": "deny",
+              "barcode": ""
+            },
+            {
+              "id": 5112623333412,
+              "title": "4 Weeks",
+              "option1": "4 Weeks",
+              "option2": null,
+              "option3": null,
+              "sku": "",
+              "requires_shipping": true,
+              "taxable": true,
+              "featured_image": null,
+              "available": true,
+              "name": "Roasters Choice (Single Origin) - 4 Weeks",
+              "public_title": "4 Weeks",
+              "options": [
+                "4 Weeks"
+              ],
+              "price": 1600,
+              "weight": 340,
+              "compare_at_price": null,
+              "inventory_quantity": 1,
               "inventory_management": null,
               "inventory_policy": "deny",
               "barcode": ""
@@ -742,7 +885,7 @@
           ],
           "featured_image": "\/\/cdn.shopify.com\/s\/files\/1\/0746\/4367\/products\/sosubscriptionbadge.png?v=1449451954",
           "options": [
-            "Title"
+            "Ship Every"
           ],
           "content": "\u003cp\u003eYou select how often you want a delivery, we do the rest. One flat price plus shipping. We give you a new, unique single-origin coffee from our selection that’s hot off the roaster. You get it delivered straight to your door at peak roast time.\u003cbr\u003e\u003cbr\u003eSubscribers will get to sample \u003cstrong\u003eall\u003c\/strong\u003e of our current roasts, except for our Modern American and 431. In addition, we’ll include our \u003cstrong\u003elimited-edition roasts\u003c\/strong\u003e in your subscription at no extra charge to you. Most of the time these never make the online store, and are only in our shop for a short period.\u003cbr\u003e\u003cbr\u003eFor freshness, we recommend getting shipments as frequently as possible. Cancel or change your subscription any time, no charge (you’ll receive instructions via email).\u003c\/p\u003e"
         }
