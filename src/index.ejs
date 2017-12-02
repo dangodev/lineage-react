@@ -46,6 +46,7 @@
     <script type="text/javascript">
       window.lineageMetafields=<%= JSON.stringify(htmlWebpackPlugin.options.mockData.metafields) %>;
       window.lineageCollections=<%= JSON.stringify(htmlWebpackPlugin.options.mockData.collections) %>;
+      window.lineagePrivacyPolicy=<%= JSON.stringify(htmlWebpackPlugin.options.mockData.privacyPolicy) %>;
     </script>
     <% } %>
     <% if (htmlWebpackPlugin.options.appMountId) { %><div id="<%= htmlWebpackPlugin.options.appMountId %>"></div><% } %>
