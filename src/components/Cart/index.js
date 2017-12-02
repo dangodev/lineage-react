@@ -115,7 +115,7 @@ class Cart extends React.Component {
               <Waves width="55%" />
               <Button
                 href={this.getCheckoutUrl()}
-                rel="noopener"
+                rel="noopener noreferrer"
                 disabled={this.props.lineItems.length === 0}
               >
                 Check Out

@@ -5,6 +5,7 @@ import Styled from './styles';
 const locations = [
   {
     name: 'East End Market',
+    address: '3201 Corrine Dr',
     opening: 20130901,
     militaryHours: [
       [8, 18], [8, 19], [8, 19], [8, 19], [8, 19], [8, 19], [8, 19],
@@ -12,6 +13,7 @@ const locations = [
   },
   {
     name: 'Mills/50',
+    address: '1011 E Colonial Dr',
     opening: 20171202,
     militaryHours: [
       [7, 18], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19],
@@ -69,6 +71,13 @@ const StoreHours = () => (
         return (
           <Styled.Location key={location.name}>
             <Styled.LocationName>{location.name}</Styled.LocationName>
+            <Styled.LocationAddress
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.address)},+Orlando+FL`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {location.address}
+            </Styled.LocationAddress>
             <Styled.Status status={status}>{status}</Styled.Status>
             {status !== 'Opening Soon' &&
               <div>

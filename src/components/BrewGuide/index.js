@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Styled from './styles';
 
 const BrewGuide = props => (
-  <Styled.Container href={props.link} rel="noopener" target="_blank">
+  <Styled.Container href={props.link} rel="noopener noreferrer" target="_blank">
     <Styled.Thumb>
       <img src={props.image} alt={props.title} />
     </Styled.Thumb>

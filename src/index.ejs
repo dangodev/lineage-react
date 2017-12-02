@@ -35,9 +35,9 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZT37ZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <% if (process.env.NODE_ENV === 'production') { /* Shopify template code (updates on page refresh) */ %>
     <script type="text/javascript">
-      window.lineageMetafields=[{% for product in collections.coffee.products %}{id:{{ product.id }},metafields:{{ product.metafields.c_f | json }}},{% endfor %}];
+      window.lineageMetafields=[{% for product in collections.coffee.products %}{"id": {{ product.id }}, "metafields": { "c_f": {{ product.metafields.c_f | json }}, "subscriptions": {{ product.metafields.subscriptions | json }} } },{% endfor %}];
       window.lineageCollections=[<% for (collection of ['coffee', 'frontpage', 'gear', 'cart', 'wholesale', 'subscriptions']) { %>
-        {title:{{ collections.<%= collection %>.title | json }},handle:'<%= collection %>',image:{small:'{{ collections.<%= collection %>.image | img_url: '1280x1280' }}',large:'{{ collections.<%= collection %>.image | img_url: '2048x2048' }}'},description:{{ collections.<%= collection %>.description | json }},products:{{ collections.<%= collection %>.products | json }}},<% } %>
+        {"title": {{ collections.<%= collection %>.title | json }}, "handle": "<%= collection %>", "image": { "small": '{{ collections.<%= collection %>.image | img_url: '1280x1280' }}', "large": '{{ collections.<%= collection %>.image | img_url: '2048x2048' }}'}, "description": {{ collections.<%= collection %>.description | json }}, "products": {{ collections.<%= collection %>.products | json }}},<% } %>
       ];
     </script>
     {{ content_for_layout }}

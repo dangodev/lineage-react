@@ -55,8 +55,19 @@ class AppContainer extends React.PureComponent {
   }
 
   addToCart({ variant, quantity }) {
-    this.state.cart.createLineItemsFromVariants({ variant, quantity })
-      .then(cart => this.updateCart(cart));
+    const add = lineItem =>
+      this.state.cart.createLineItemsFromVariants({ variant: lineItem.variant, quantity: lineItem.quantity })
+        .then(cart => this.updateCart(cart));
+
+    if (!this.state.allProducts) {
+      return add({ variant, quantity });
+    }
+    const product = this.state.allProducts.find(({ id }) => id === variant.productId);
+    console.log(this.state.allProducts, variant, product);
+    if (!product) return false;
+    return product.type.toLowerCase() === 'coffee subscription'
+      ? add({ variant: product.metafields.subscriptions.discount_product_id, quantity })
+      : add({ variant, quantity });
   }
 
   removeLineItem(id) {

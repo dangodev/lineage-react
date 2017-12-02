@@ -15,8 +15,13 @@ const colorState = (status) => {
 
 export default {
   Container: glamorous.div({
+    fontSize: font.down1,
     paddingBottom: 2 * grid,
     paddingTop: grid,
+
+    '@media (min-width: 600px)': {
+      fontSize: '1em',
+    },
   }),
 
   Days: glamorous.dt({
@@ -26,12 +31,13 @@ export default {
   }),
 
   Grid: glamorous.div({
-    display: 'block',
+    boxSizing: 'border-box',
+    display: 'grid',
+    gridColumnGap: 0.5 * grid,
+    gridTemplateColumns: 'repeat(12, 1fr)',
 
     '@media (min-width: 600px)': {
-      display: 'grid',
       gridColumnGap: 1.5 * grid,
-      gridTemplateColumns: 'repeat(12, 1fr)',
     },
   }),
 
@@ -55,23 +61,31 @@ export default {
   ),
 
   Location: glamorous.div({
-    gridColumn: '8 / span 2',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    gridColumn: '2 / span 5',
     marginTop: grid,
     maxWidth: '20em',
-    width: `calc(100vw - ${2 * grid}px)`,
+
+    '&:nth-of-type(even)': {
+      gridColumnStart: '7',
+    },
 
     '@media (min-width: 600px)': {
       gridColumn: '4 / span 3',
       marginLeft: 0,
       marginRight: 0,
-      width: 'auto',
 
       '&:nth-of-type(even)': {
         gridColumnStart: '7',
       },
     },
+  }),
+
+  LocationAddress: glamorous.a({
+    color: `rgb(${color.blue})`,
+    display: 'block',
+    fontSize: font.down1,
+    marginTop: 0.125 * grid,
+    textDecoration: 'none',
   }),
 
   LocationName: glamorous.h2({
