@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ShopifyBuy from 'shopify-buy';
 
 import App from 'components/App';
@@ -68,7 +69,7 @@ class AppContainer extends React.PureComponent {
       .then(cart => this.updateCart(cart));
   }
 
-  updateCart(cart) { // This helps React know when to update
+  updateCart(cart) {
     this.setState({
       cart,
       cartLineItems: cart.lineItems,
@@ -146,5 +147,13 @@ class AppContainer extends React.PureComponent {
     );
   }
 }
+
+AppContainer.defaultProps = {
+  privacyPolicy: '',
+};
+
+AppContainer.propTypes = {
+  privacyPolicy: PropTypes.string,
+};
 
 export default AppContainer;

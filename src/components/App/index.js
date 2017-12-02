@@ -70,6 +70,7 @@ const App = props => (
       </AppRouter>
       <CartRouter
         allProducts={props.allProducts}
+        checkoutUrl={props.checkoutUrl}
         featuredCartProduct={props.featuredCartProduct}
         isLoading={props.isLoading}
         lineItems={props.cartLineItems}
