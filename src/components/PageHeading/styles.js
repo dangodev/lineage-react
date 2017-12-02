@@ -13,11 +13,15 @@ export default {
       flexDirection: 'column',
       justifyContent: 'center',
       maxHeight: '56.25vw',
-      minHeight: '62.5vh',
+      minHeight: '37.5vh',
       paddingBottom: 2 * grid,
       paddingLeft: grid,
       paddingRight: grid,
       paddingTop: 2 * grid,
+
+      '@media (min-width: 600px)': {
+        minHeight: '62.5vh',
+      },
     },
     props => ({
       backgroundColor: props.backgroundColor,
