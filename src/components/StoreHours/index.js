@@ -33,7 +33,7 @@ const format = (hours) => {
 const today = new Date();
 const offsetMin = today.getTimezoneOffset();
 const offsetHours = offsetMin / 60;
-let day = Math.floor(today.getUTCDay() - offsetHours / 24);
+let day = Math.floor(today.getUTCDay() + ((today.getUTCHours() - offsetHours) / 24));
 day = day < 0 ? 6 : (day >= 7 ? 0 : day);
 
 const isOpen = (location) => {

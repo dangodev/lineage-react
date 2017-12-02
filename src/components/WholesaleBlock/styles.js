@@ -25,14 +25,25 @@ export default {
 
   Container: glamorous.div({
     backgroundColor: `rgb(${color.blue})`,
-    paddingTop: 3 * grid,
-    paddingBottom: 2 * grid,
+    paddingTop: 1.25 * grid,
+    paddingBottom: grid,
+
+    '@media (min-width: 600px)': {
+      paddingTop: 3 * grid,
+      paddingBottom: 2 * grid,
+    },
   }),
 
   Content: glamorous.div({
     maxWidth: '35em',
-    paddingLeft: 2 * grid,
-    width: '50%',
+    paddingLeft: grid,
+    paddingRight: grid,
+
+    '@media (min-width: 600px)': {
+      paddingLeft: 2 * grid,
+      paddingRight: 0,
+      width: '50%',
+    },
   }),
 
   Heading: glamorous.h3({
