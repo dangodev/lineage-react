@@ -7,6 +7,7 @@ ReactDOM.render(
   <AppContainer
     collections={window.lineageCollections}
     metafields={window.lineageMetafields}
+    privacyPolicy={window.lineagePrivacyPolicy}
   />,
   document.getElementById('app-root'),
 );

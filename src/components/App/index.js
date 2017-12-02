@@ -46,7 +46,15 @@ const App = props => (
       <Nav cartCount={props.cartLineItems.length} />
       <AppRouter>
         <Route exact path="/" render={() => <Home allProducts={props.allProducts} />} />
-        <Route exact path="/pages/:slug" render={pageProps => <PageContainer allProducts={props.allProducts} {...pageProps} />} />
+        <Route exact path="/pages/:slug" render={
+          pageProps =>
+            <PageContainer
+              allProducts={props.allProducts}
+              privacyPolicy={props.privacyPolicy}
+              {...pageProps}
+            />
+        }
+        />
         <Route
           path="/:route"
           render={({ location, match }) => (
@@ -78,6 +86,7 @@ App.defaultProps = {
   cartLineItems: [],
   featuredCartProduct: undefined,
   isLoading: false,
+  privacyPolicy: '',
 };
 
 App.propTypes = {
@@ -88,6 +97,7 @@ App.propTypes = {
   collections: PropTypes.array,
   featuredCartProduct: PropTypes.object,
   isLoading: PropTypes.bool,
+  privacyPolicy: PropTypes.string,
   removeLineItem: PropTypes.func.isRequired,
   updateLineItem: PropTypes.func.isRequired,
 };

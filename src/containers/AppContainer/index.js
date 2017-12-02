@@ -138,6 +138,7 @@ class AppContainer extends React.PureComponent {
         checkoutUrl={this.state.checkoutUrl}
         collections={this.state.collections}
         featuredCartProduct={this.getFeaturedCartProduct()}
+        privacyPolicy={this.props.privacyPolicy}
         removeLineItem={this.removeLineItem}
         updateCart={cart => this.cart(cart)}
         updateLineItem={this.updateLineItem}
