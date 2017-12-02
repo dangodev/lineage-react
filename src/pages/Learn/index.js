@@ -19,7 +19,7 @@ const brewGuides = [
     description: 'Great for brewing larger amounts of coffee without sacrificing flavor',
     image: 'https://cdn.shopify.com/s/files/1/0746/4367/files/LNG_BREW_METHOD-5.jpg?13474976391752750718',
     time: '10 – 15 min',
-    link: 'https://medium.com/lineage-academy/tagged/coffee-brewing',
+    link: 'https://medium.com/@LineageAcademy/how-to-brew-chemex-coffee-69bd2fb216f7',
   },
   {
     title: 'Cold Brew',
