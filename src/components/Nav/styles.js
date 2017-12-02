@@ -56,10 +56,10 @@ const StyledLink = glamorous(NavLink)(
       },
     },
   },
-  props => ({
-    opacity: props.isOpen ? 1 : 0,
-    transform: props.isOpen ? 'translateY(0)' : `translateY(${0.5 * grid}px)`,
-    transition: `opacity 200ms ${props.delay}ms, transform 200ms ${transition.standard} ${props.delay}ms`,
+  ({ isOpen, delay }) => ({
+    opacity: isOpen ? 1 : 0,
+    transform: isOpen ? 'translateY(0)' : `translateY(${0.5 * grid}px)`,
+    transition: `opacity 200ms ${delay}ms, transform 200ms ${transition.standard} ${delay}ms`,
   }),
 );
 

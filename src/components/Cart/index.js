@@ -133,12 +133,13 @@ class Cart extends React.Component {
 }
 
 Cart.defaultProps = {
+  featuredCartProduct: undefined,
   lineItems: [],
 };
 
 Cart.propTypes = {
   allProducts: PropTypes.array.isRequired,
-  featuredCartProduct: PropTypes.object.isRequired,
+  featuredCartProduct: PropTypes.object,
   history: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   lineItems: PropTypes.array,

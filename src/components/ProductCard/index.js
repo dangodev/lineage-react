@@ -24,8 +24,8 @@ const ProductCard = (props) => {
           <Styled.Meta>{props.product.metafields.country} / {props.product.metafields.altitude}m</Styled.Meta>
         }
         {(productType === 'coffee' || productType === 'coffee beans') && [
-          <Styled.NoteHeading>Tasting Notes</Styled.NoteHeading>,
-          <Styled.NoteList>
+          <Styled.NoteHeading key="notes-heading">Tasting Notes</Styled.NoteHeading>,
+          <Styled.NoteList key="notes">
             {props.product.tags.map(note => <Styled.Note key={note}>{note}</Styled.Note>)}
           </Styled.NoteList>,
         ]}

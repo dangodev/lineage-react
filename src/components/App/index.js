@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import glamorous from 'glamorous';
@@ -41,36 +41,34 @@ const AppRouter = withRouter(CartBlocker);
 const CartRouter = withRouter(Cart);
 
 const App = props => (
-  <BrowserRouter>
-    <Container>
-      <Nav cartCount={props.cartLineItems.length} />
-      <AppRouter>
-        <Route exact path="/" render={() => <Home allProducts={props.allProducts} />} />
-        <Route exact path="/pages/:slug" render={pageProps => <PageContainer allProducts={props.allProducts} {...pageProps} />} />
-        <Route
-          path="/:route"
-          render={({ location, match }) => (
-            <ProductContainer
-              allProducts={props.allProducts}
-              addToCart={props.addToCart}
-              collections={props.collections}
-              location={location}
-              match={match}
-            />
-          )}
-        />
-      </AppRouter>
-      <CartRouter
-        allProducts={props.allProducts}
-        featuredCartProduct={props.featuredCartProduct}
-        isLoading={props.isLoading}
-        lineItems={props.cartLineItems}
-        removeLineItem={props.removeLineItem}
-        updateLineItem={props.updateLineItem}
+  <Container>
+    <Nav cartCount={props.cartLineItems.length} />
+    <AppRouter>
+      <Route exact path="/" render={() => <Home allProducts={props.allProducts} />} />
+      <Route exact path="/pages/:slug" render={pageProps => <PageContainer allProducts={props.allProducts} {...pageProps} />} />
+      <Route
+        path="/:route"
+        render={({ location, match }) => (
+          <ProductContainer
+            allProducts={props.allProducts}
+            addToCart={props.addToCart}
+            collections={props.collections}
+            location={location}
+            match={match}
+          />
+        )}
       />
-      <Footer />
-    </Container>
-  </BrowserRouter>
+    </AppRouter>
+    <CartRouter
+      allProducts={props.allProducts}
+      featuredCartProduct={props.featuredCartProduct}
+      isLoading={props.isLoading}
+      lineItems={props.cartLineItems}
+      removeLineItem={props.removeLineItem}
+      updateLineItem={props.updateLineItem}
+    />
+    <Footer />
+  </Container>
 );
 
 App.defaultProps = {

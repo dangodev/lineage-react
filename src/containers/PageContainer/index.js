@@ -39,8 +39,8 @@ class PageContainer extends React.Component {
 
     if (page) {
       return [
-        <Meta title={pageTitles[this.props.match.params.slug]} />,
-        React.createElement(page, this.props),
+        <Meta title={pageTitles[this.props.match.params.slug]} key="meta" />,
+        React.createElement(page, { ...this.props, key: 'page' }),
       ];
     }
     return <FourOhFour />;

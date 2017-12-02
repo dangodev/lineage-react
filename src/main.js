@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import AppContainer from 'containers/AppContainer';
 
-ReactDOM.render(
-  <AppContainer
-    collections={window.lineageCollections}
-    metafields={window.lineageMetafields}
-  />,
-  document.getElementById('app-root'),
+const App = () => (
+  <BrowserRouter>
+    <AppContainer
+      collections={window.lineageCollections}
+      metafields={window.lineageMetafields}
+    />
+  </BrowserRouter>
 );
+
+ReactDOM.render(<App />, document.getElementById('app-root'));
