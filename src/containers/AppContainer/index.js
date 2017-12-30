@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ShopifyBuy from 'shopify-buy';
+import React from "react";
+import PropTypes from "prop-types";
+import ShopifyBuy from "shopify-buy";
 
-import App from 'components/App';
+import App from "components/App";
 
-const accessToken = '8b97d4f794c051c78b3f00e8da03ef19'; // Read-only. It’s cool if it’s in the client JS.
-const domain = 'lineage-coffee-roasting.myshopify.com';
+const accessToken = "8b97d4f794c051c78b3f00e8da03ef19"; // Read-only. It’s cool if it’s in the client JS.
+const domain = "lineage-coffee-roasting.myshopify.com";
 
 class AppContainer extends React.PureComponent {
   constructor(props) {
@@ -13,12 +13,12 @@ class AppContainer extends React.PureComponent {
 
     this.state = {
       allProducts: this.formatProducts(),
-      cart: { },
+      cart: {},
       cartLineItems: [],
       client: ShopifyBuy.buildClient({
-        appId: '6', // '6' is for JS Buy Button (this app)
+        appId: "6", // '6' is for JS Buy Button (this app)
         accessToken,
-        domain,
+        domain
       }),
       checkoutUrl: `https://${domain}/checkout`,
       collections: props.collections.map(collection => ({
@@ -26,8 +26,8 @@ class AppContainer extends React.PureComponent {
         handle: collection.handle,
         image: collection.image,
         products: collection.products.map(product => product.id),
-        title: collection.title,
-      })),
+        title: collection.title
+      }))
     };
 
     this.addToCart = this.addToCart.bind(this);
@@ -46,7 +46,7 @@ class AppContainer extends React.PureComponent {
   }
 
   getCart() {
-    const cartID = window.localStorage.getItem('lineageCart');
+    const cartID = window.localStorage.getItem("lineageCart");
 
     if (cartID) return this.loadCart(cartID);
     return this.createCart();
@@ -55,73 +55,77 @@ class AppContainer extends React.PureComponent {
   getFeaturedCartProduct() {
     if (!this.state.allProducts) return undefined;
 
-    return this.state.allProducts
-      .find(product => product.collections.indexOf('cart') !== -1);
+    return this.state.allProducts.find(
+      product => product.collections.indexOf("cart") !== -1
+    );
   }
 
   addToCart({ variant, quantity }) {
-    this.state.cart.createLineItemsFromVariants({ variant, quantity })
+    this.state.cart
+      .createLineItemsFromVariants({ variant, quantity })
       .then(cart => this.updateCart(cart));
   }
 
   removeLineItem(id) {
-    this.state.cart.removeLineItem(id)
-      .then(cart => this.updateCart(cart));
+    this.state.cart.removeLineItem(id).then(cart => this.updateCart(cart));
   }
 
   updateCart(cart) {
     this.setState({
       cart,
       cartLineItems: cart.lineItems,
-      checkoutUrl: cart.checkoutUrl,
+      checkoutUrl: cart.checkoutUrl
     });
   }
 
   createCart() {
     this.setState({ isLoading: true });
-    this.state.client.createCart()
-      .then((cart) => {
-        this.setState({ isLoading: false });
-        if (cart) {
-          this.updateCart(cart);
-          window.localStorage.setItem('lineageCart', cart.id);
-        } else {
-          setTimeout(() => this.getCart(), 1000); // If failed, try again
-        }
-      });
+    this.state.client.createCart().then(cart => {
+      this.setState({ isLoading: false });
+      if (cart) {
+        this.updateCart(cart);
+        window.localStorage.setItem("lineageCart", cart.id);
+      } else {
+        setTimeout(() => this.getCart(), 1000); // If failed, try again
+      }
+    });
   }
 
   loadCart(cartID) {
     this.setState({ isLoading: true });
-    this.state.client.fetchCart(cartID)
-      .then((cart) => {
-        this.setState({ isLoading: false });
-        if (cart) {
-          this.updateCart(cart);
-        } else {
-          this.createCart();
-        }
-      });
+    this.state.client.fetchCart(cartID).then(cart => {
+      this.setState({ isLoading: false });
+      if (cart) {
+        this.updateCart(cart);
+      } else {
+        this.createCart();
+      }
+    });
   }
 
   updateLineItem(id, quantity) {
-    this.state.cart.updateLineItem(id, quantity)
+    this.state.cart
+      .updateLineItem(id, quantity)
       .then(cart => this.updateCart(cart));
   }
 
   formatProducts() {
     const all = [];
     this.props.collections.forEach(collection =>
-      collection.products.forEach((collectionProduct) => {
-        const existingProduct = all.find(product => collectionProduct.id === product.id);
+      collection.products.forEach(collectionProduct => {
+        const existingProduct = all.find(
+          product => collectionProduct.id === product.id
+        );
         if (existingProduct) {
           existingProduct.collections.push(collection.handle);
         } else {
-          const metafields = this.props.metafields.find(metafield => metafield.id === collectionProduct.id);
+          const metafields = this.props.metafields.find(
+            metafield => metafield.id === collectionProduct.id
+          );
           all.push({
             ...collectionProduct,
             collections: [collection.handle],
-            metafields: metafields ? metafields.metafields : {},
+            metafields: metafields ? metafields.metafields : {}
           });
         }
       })
@@ -149,11 +153,11 @@ class AppContainer extends React.PureComponent {
 }
 
 AppContainer.defaultProps = {
-  privacyPolicy: '',
+  privacyPolicy: ""
 };
 
 AppContainer.propTypes = {
-  privacyPolicy: PropTypes.string,
+  privacyPolicy: PropTypes.string
 };
 
 export default AppContainer;
