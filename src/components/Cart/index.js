@@ -1,27 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/throttleTime';
+import React from "react";
+import PropTypes from "prop-types";
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/observable/fromEvent";
+import "rxjs/add/operator/throttleTime";
 
-import Meta from 'containers/Meta';
-import Button from 'components/Button';
-import CartItem from 'components/CartItem';
-import CartZero from 'components/CartZero';
-import FeaturedCartProduct from 'components/FeaturedCartProduct';
-import Waves from 'components/Waves';
+import Meta from "containers/Meta";
+import Button from "components/Button";
+import CartItem from "components/CartItem";
+import CartZero from "components/CartZero";
+import FeaturedCartProduct from "components/FeaturedCartProduct";
+import Waves from "components/Waves";
 
-import Styled from './styles';
+import Styled from "./styles";
 
 class Cart extends React.Component {
   constructor(props) {
     super(props);
     this.keydownHandler = this.keydownHandler.bind(this);
+    this.fetchAdditionalInfo = this.fetchAdditionalInfo.bind(this);
   }
 
   componentWillMount() {
-    if (typeof window !== 'undefined') {
-      this.keydown$ = Observable.fromEvent(window, 'keydown')
+    if (typeof window !== "undefined") {
+      this.keydown$ = Observable.fromEvent(window, "keydown")
         .throttleTime(16)
         .subscribe(e => this.keydownHandler(e));
     }
@@ -47,26 +48,47 @@ class Cart extends React.Component {
     }
   }
 
-  closeCart(e) {
-    if (e) { e.preventDefault(); }
+  fetchAdditionalInfo(lineItem) {
+    const product = this.props.allProducts.find(
+      product => product.title === lineItem.title
+    );
+    if (!product)
+      return {
+        ...lineItem,
+        images: [{ src: "" }],
+        metafields: {},
+        productType: "",
+        tags: []
+      };
+    return {
+      ...lineItem,
+      images: product.images,
+      metafields: product.metafields,
+      productType: product.productType,
+      tags: product.tags
+    };
+  }
 
-    if (this.props.history.action === 'PUSH') {
+  closeCart(e) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    if (this.props.history.action === "PUSH") {
       this.props.history.goBack();
     } else {
-      this.props.history.push('/collections/coffee');
+      this.props.history.push("/collections/coffee");
     }
   }
 
   isShowing(nextProps = this.props) {
-    return nextProps.location.pathname === '/cart';
+    return nextProps.location.pathname === "/cart";
   }
 
   render() {
     return (
       <div>
-        {this.isShowing() &&
-          <Meta title="Cart • Lineage Coffee Roasting" />
-        }
+        {this.isShowing() && <Meta title="Cart • Lineage Coffee Roasting" />}
         <Styled.Inner isShowing={this.isShowing()}>
           <Styled.Heading>
             Cart
@@ -74,34 +96,31 @@ class Cart extends React.Component {
               {this.props.lineItems.length}
             </Styled.Count>
           </Styled.Heading>
-          <Styled.Close href="/" onClick={e => this.closeCart(e)}>✕</Styled.Close>
-          {this.props.isLoading &&
-            <div>
-              Loading…
-            </div>
-          }
-          {this.props.isLoading === false &&
+          <Styled.Close href="/" onClick={e => this.closeCart(e)}>
+            ✕
+          </Styled.Close>
+          {this.props.isLoading && <div>Loading…</div>}
+          {this.props.isLoading === false && (
             <div>
               {this.props.lineItems.map(lineItem => (
                 <CartItem
                   key={lineItem.id}
-                  allProducts={this.props.allProducts}
-                  lineItem={lineItem}
+                  lineItem={this.fetchAdditionalInfo(lineItem)}
                   removeLineItem={this.props.removeLineItem}
                   updateLineItem={this.props.updateLineItem}
                 />
               ))}
               {this.props.lineItems.length === 0 && <CartZero />}
             </div>
-          }
-          {this.props.featuredCartProduct &&
-            <FeaturedCartProduct product={this.props.featuredCartProduct} />
-          }
+          )}
+          {this.props.featuredProduct && (
+            <FeaturedCheckoutProduct product={this.props.featuredProduct} />
+          )}
           <Styled.Actions>
             <Styled.WaveContainer>
               <Waves width="55%" />
               <Button
-                href={this.props.checkoutUrl}
+                href={this.props.webUrl}
                 rel="noopener noreferrer"
                 disabled={this.props.lineItems.length === 0}
               >
@@ -113,28 +132,32 @@ class Cart extends React.Component {
             </Styled.ShopButton>
           </Styled.Actions>
         </Styled.Inner>
-        <Styled.Overlay isShowing={this.isShowing()} onClick={e => this.closeCart(e)} />
+        <Styled.Overlay
+          isShowing={this.isShowing()}
+          onClick={e => this.closeCart(e)}
+        />
       </div>
     );
   }
 }
 
 Cart.defaultProps = {
-  checkoutUrl: '/checkout',
-  featuredCartProduct: undefined,
+  allProducts: [],
   lineItems: [],
+  featuredProduct: undefined,
+  webUrl: "/checkout"
 };
 
 Cart.propTypes = {
-  allProducts: PropTypes.array.isRequired,
-  featuredCartProduct: PropTypes.object,
-  history: PropTypes.object.isRequired,
-  checkoutUrl: PropTypes.string,
-  isLoading: PropTypes.bool.isRequired,
+  allProducts: PropTypes.array,
   lineItems: PropTypes.array,
+  featuredProduct: PropTypes.object,
+  history: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
   removeLineItem: PropTypes.func.isRequired,
   updateLineItem: PropTypes.func.isRequired,
+  webUrl: PropTypes.string
 };
 
 export default Cart;

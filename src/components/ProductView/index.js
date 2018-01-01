@@ -2,12 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import parse from "url-parse";
-import axios from "axios";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/observable/fromEvent";
 import "rxjs/add/operator/throttleTime";
-
-import { formatPrice } from "lib/tools";
 
 import Button from "components/Button";
 import CoffeeData from "components/CoffeeData";
@@ -32,10 +29,12 @@ class ProductView extends React.Component {
       selectedVariant: {}
     };
 
+    this.getSubscriptionIntervals = this.getSubscriptionIntervals.bind(this);
     this.isCoffee = this.isCoffee.bind(this);
     this.keydownHandler = this.keydownHandler.bind(this);
     this.setOption = this.setOption.bind(this);
     this.setQuantity = this.setQuantity.bind(this);
+    this.shouldShowSubscriptions = this.shouldShowSubscriptions.bind(this);
   }
 
   componentWillMount() {
@@ -61,6 +60,10 @@ class ProductView extends React.Component {
   setDefaultVariant(nextProps) {
     if (!nextProps.product) return false;
 
+    if (nextProps.product.variants.length === 1) {
+      return this.setState({ selectedVariant: nextProps.product.variants[0] });
+    }
+
     const variantID = parse(window.location.href, true).query.variant;
     const selectedVariant =
       nextProps.product.variants.find(
@@ -68,34 +71,45 @@ class ProductView extends React.Component {
       ) || nextProps.product.variants[0];
 
     this.setState({
-      option1: selectedVariant.option1,
-      option2: selectedVariant.option2,
-      option3: selectedVariant.option3,
-      selectedVariant: {
-        productId: nextProps.product.id,
-        productTitle: nextProps.product.title,
-        ...selectedVariant
-      }
+      selectedVariant: selectedVariant || nextProps.product.variants[0]
     });
   }
 
-  setOption(key, value) {
-    const newOptions = {
-      option1: this.state.option1,
-      option2: this.state.option2,
-      option3: this.state.option3,
-      [key]: value
+  setOption(name, value) {
+    function isShallowEqual(v, o) {
+      for (var key in v) {
+        if (!(key in o) || v[key] !== o[key]) {
+          return false;
+        }
+      }
+
+      for (var key in o) {
+        if (!(key in v) || v[key] !== o[key]) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    const options = {
+      ...this.state.selectedOptions,
+      key: value
     };
 
-    const selectedVariant = this.props.product.variants.find(
-      variant =>
-        variant.option1 === newOptions.option1 &&
-        variant.option2 === newOptions.option2 &&
-        variant.option3 === newOptions.option3
-    );
+    const selectedVariant =
+      this.props.product.variants.find(variant =>
+        isShallowEqual(
+          options,
+          variant.selectedOptions.reduce(
+            (a, b) => ({ ...a, [b.name]: b.value }),
+            {}
+          )
+        )
+      ) || this.props.product.variants[0];
 
     this.setState({
-      [key]: value,
+      selectedOptions: options,
       selectedVariant
     });
 
@@ -122,30 +136,44 @@ class ProductView extends React.Component {
     return this.props.product.metafields.c_f.color;
   }
 
-  addToCart(e) {
+  getSubscriptionIntervals() {
+    return (
+      this.props.product.metafields.subscriptions["shipping_interval_frequency"]
+        .replace(/\s/g, "")
+        .split(",") || []
+    );
+  }
+
+  addLineItem(e) {
     if (e) {
       e.preventDefault();
     }
 
+    let lineItem = {
+      variantId: this.state.selectedVariant.id,
+      quantity: this.state.quantity
+    };
+
     if (this.shouldShowSubscriptions()) {
-      axios
-        .post("/cart/add.js", {
-          quantity: this.state.quantity,
-          id: this.state.selectedVariant,
-          "properties[shipping_interval_frequency]": this.props.product
-            .metafields.subscriptions.shipping_interval_frequency,
-          "properties[shipping_interval_unit_type]": this.props.product
-            .metafields.subscriptions.shipping_interval_unit_type,
-          "properties[subscription_id]": this.props.product.metafields
-            .subscriptions.subscription_id
-        })
-        .then(response => {});
-    } else {
-      this.props.addToCart({
-        quantity: this.state.quantity,
-        variant: this.state.selectedVariant
-      });
+      lineItem.customAttributes = [
+        {
+          key: "properties[shipping_interval_frequency]",
+          value: this.props.product.metafields.subscriptions
+            .shipping_interval_frequency
+        },
+        {
+          key: "properties[shipping_interval_unit_type]",
+          value: this.props.product.metafields.subscriptions
+            .shipping_interval_unit_type
+        },
+        {
+          key: "properties[subscription_id]",
+          value: this.props.product.metafields.subscriptions.subscription_id
+        }
+      ];
     }
+
+    this.props.addLineItem(lineItem);
     this.props.history.push("/cart");
   }
 
@@ -164,8 +192,16 @@ class ProductView extends React.Component {
     if (!this.props.product) return false;
     return (
       ["coffee", "coffee beans"].indexOf(
-        this.props.product.type.toLowerCase()
+        this.props.product.productType.toLowerCase()
       ) !== -1
+    );
+  }
+
+  isSelectedOption({ name, value }) {
+    if (!this.props.product) return false;
+
+    return this.state.selectedVariant.selectedOptions.find(
+      option => option.name === name && option.value === value
     );
   }
 
@@ -174,17 +210,20 @@ class ProductView extends React.Component {
 
     return (
       this.props.product.options.length > 0 &&
-      this.props.product.options[0] !== "Title"
+      this.props.product.options[0].values.length > 1
     );
   }
 
   shouldShowSubscriptions() {
-    return (
-      this.props.product.metafields.subscription["has_subscription"] &&
-      this.props.product.metafields.subscription[
-        "has_subscription"
-      ].toLowerCase() === "true"
-    );
+    return false;
+    // return (
+    //   this.props.product &&
+    //   this.props.product.productType.toLowerCase().indexOf("subscription") >=
+    //     0 &&
+    //   this.props.product.metafields.subscriptions.has_subscription &&
+    //   this.props.product.metafields.subscriptions.has_subscription.toLowerCase() ===
+    //     "true"
+    // );
   }
 
   render() {
@@ -196,7 +235,7 @@ class ProductView extends React.Component {
               <Styled.Image>
                 <img
                   alt={this.props.product.title}
-                  src={this.props.product.images[0]}
+                  src={this.props.product.images[0].src}
                 />
               </Styled.Image>
               <Styled.Close
@@ -212,14 +251,16 @@ class ProductView extends React.Component {
                     <div>
                       <Styled.Subheading>Notes</Styled.Subheading>
                       <Styled.Notes>
-                        {this.props.product.tags.join(", ")}
+                        {this.props.product.tags
+                          .map(note => note.value)
+                          .join(", ")}
                       </Styled.Notes>
                     </div>
                   )}
                   <Styled.Subheading>Description</Styled.Subheading>
                   <Styled.Description
                     dangerouslySetInnerHTML={{
-                      __html: this.props.product.content
+                      __html: this.props.product.descriptionHtml
                     }}
                   />
                 </Styled.CoreInfo>
@@ -229,57 +270,38 @@ class ProductView extends React.Component {
               </Styled.Info>
               <Styled.Selections>
                 {this.shouldShowVariants() &&
-                  this.props.product.options.map((option, index) => {
-                    const optionIndex = index + 1;
-                    return (
-                      <div key={option}>
-                        <Styled.Subheading>{option}</Styled.Subheading>
-                        <Styled.OptionList>
-                          {this.props.product.variants
-                            .filter(
-                              variant =>
-                                variant[`option${optionIndex}`].length > 0
-                            )
-                            .map((variant, vIndex) => (
-                              <Styled.Option
-                                key={variant[`option${optionIndex}`]}
-                              >
-                                <input
-                                  type="radio"
-                                  id={`option${optionIndex}-${vIndex}`}
-                                  name={`option${optionIndex}`}
-                                  defaultChecked={
-                                    variant[`option${optionIndex}`] ===
-                                    this.state.selectedVariant[
-                                      `option${optionIndex}`
-                                    ]
-                                  }
-                                  onChange={() =>
-                                    this.setOption(
-                                      `option${optionIndex}`,
-                                      variant[`option${optionIndex}`]
-                                    )
-                                  }
-                                  value={variant.id}
-                                />
-                                <label
-                                  htmlFor={`option${optionIndex}-${vIndex}`}
-                                >
-                                  {variant[`option${optionIndex}`]}
-                                </label>
-                              </Styled.Option>
-                            ))}
-                        </Styled.OptionList>
-                      </div>
-                    );
-                  })}
+                  this.props.product.options.map(option => (
+                    <div key={option.id}>
+                      <Styled.Subheading>{option.name}</Styled.Subheading>
+                      <Styled.OptionList>
+                        {option.values.map((value, index) => (
+                          <Styled.Option key={value}>
+                            <input
+                              type="radio"
+                              id={`${option.id}-${index}`}
+                              name={option.id}
+                              defaultChecked={this.isSelectedOption({
+                                name: option.name,
+                                value: option.value
+                              })}
+                              onChange={() =>
+                                this.setOption(option.name, option.value)
+                              }
+                              value={`{ ${option.id}: ${option.value} }`}
+                            />
+                            <label htmlFor={`${option.id}-${index}`}>
+                              {value.value}
+                            </label>
+                          </Styled.Option>
+                        ))}
+                      </Styled.OptionList>
+                    </div>
+                  ))}
                 {this.shouldShowSubscriptions() && (
                   <div>
                     <Styled.Subheading>Ship Every:</Styled.Subheading>
-                    {this.props.product.metafield.subscriptions.shipping_interval_frequency
-                      .replace(/\s/g, "")
-                      .split(",")
-                      .map(interval => (
+                    <Styled.OptionList>
+                      {this.getSubscriptionIntervals().map(interval => (
                         <Styled.Option key={`week-${interval}`}>
                           <input
                             type="radio"
@@ -296,6 +318,7 @@ class ProductView extends React.Component {
                           </label>
                         </Styled.Option>
                       ))}
+                    </Styled.OptionList>
                   </div>
                 )}
                 <Styled.Subheading>Quantity</Styled.Subheading>
@@ -324,12 +347,10 @@ class ProductView extends React.Component {
                   </Styled.OptionList>
                 </Styled.Quantity>
               </Styled.Selections>
-              <Styled.Price>
-                {formatPrice(this.state.selectedVariant.price)}
-              </Styled.Price>
+              <Styled.Price>${this.state.selectedVariant.price}</Styled.Price>
               <Styled.Actions>
                 <Waves width="42.5%" />
-                <Button onClick={e => this.addToCart(e)}>Add to Cart</Button>
+                <Button onClick={e => this.addLineItem(e)}>Add to Cart</Button>
               </Styled.Actions>
             </Styled.Modal>
           </Styled.Grid>
@@ -352,7 +373,7 @@ ProductView.defaultProps = {
 };
 
 ProductView.propTypes = {
-  addToCart: PropTypes.func.isRequired,
+  addLineItem: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   isShowing: PropTypes.bool,
   location: PropTypes.object.isRequired,

@@ -35,18 +35,12 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZT37ZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <% if (process.env.NODE_ENV === 'production') { /* Shopify template code (updates on page refresh) */ %>
     <script type="text/javascript">
-      window.lineageMetafields=[<% for (collection of ['coffee', 'frontpage', 'gear', 'cart', 'wholesale', 'subscriptions']) { %>{% for product in collections.<%= collection %>.products %}{"id": {{ product.id }}, "metafields": { "c_f": {{ product.metafields.c_f | json }}, "subscriptions": {{ product.metafields.subscriptions | json }} } },{% endfor %}<% } %>];
-      window.lineageCollections=[<% for (collection of ['coffee', 'frontpage', 'gear', 'cart', 'wholesale', 'subscriptions']) { %>
-        {"title": {{ collections.<%= collection %>.title | json }}, "handle": "<%= collection %>", "image": { "small": "{{ collections.<%= collection %>.image | img_url: '1280x1280' }}", "large": "{{ collections.<%= collection %>.image | img_url: '2048x2048' }}"}, "description": {{ collections.<%= collection %>.description | json }}, "products": {{ collections.<%= collection %>.products | json }}},<% } %>
-      ];
-      window.lineagePrivacyPolicy={{ pages['privacy-policy'].content | json }};
+      window.lineageMetafields=[<% for (collection of ['coffee', 'frontpage', 'gear', 'cart', 'wholesale', 'subscriptions']) { %>{% for product in collections.<%= collection %>.products %}{"id": {{ product.id }}, "handle": {{ product.handle }}, "metafields": { "c_f": {{ product.metafields.c_f | json }}, "subscriptions": {{ product.metafields.subscriptions | json }} } },{% endfor %}<% } %>];
     </script>
     {{ content_for_layout }}
     <% } else { %>
     <script type="text/javascript">
       window.lineageMetafields=<%= JSON.stringify(htmlWebpackPlugin.options.mockData.metafields) %>;
-      window.lineageCollections=<%= JSON.stringify(htmlWebpackPlugin.options.mockData.collections) %>;
-      window.lineagePrivacyPolicy=<%= JSON.stringify(htmlWebpackPlugin.options.mockData.privacyPolicy) %>;
     </script>
     <% } %>
     <% if (htmlWebpackPlugin.options.appMountId) { %><div id="<%= htmlWebpackPlugin.options.appMountId %>"></div><% } %>

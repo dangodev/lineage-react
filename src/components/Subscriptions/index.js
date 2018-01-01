@@ -1,24 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import ProductList from 'components/ProductList';
-import Styled from './styles';
+import ProductList from "components/ProductList";
+import Styled from "./styles";
 
-const Subscriptions = (props) => {
-  const subscriptionProducts = props.allProducts.filter(product =>
-    product.collections.indexOf('subscriptions') !== -1);
-
+const Subscriptions = props => {
   return (
     <Styled.Container>
       <Styled.Subheading>Coffee Subscriptions</Styled.Subheading>
-      <ProductList products={subscriptionProducts} isShowing={props.isShowing} />
+      <ProductList products={props.products} isShowing={props.isShowing} />
     </Styled.Container>
   );
 };
 
+Subscriptions.defaultProps = {
+  products: []
+};
+
 Subscriptions.propTypes = {
-  allProducts: PropTypes.array.isRequired,
   isShowing: PropTypes.bool.isRequired,
+  products: PropTypes.array
 };
 
 export default Subscriptions;

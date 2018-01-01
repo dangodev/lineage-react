@@ -1,34 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import CollectionHeader from 'components/CollectionHeader';
-import ProductList from 'components/ProductList';
-import Subscriptions from 'components//Subscriptions';
-import WholesaleBlock from 'components/WholesaleBlock';
+import CollectionHeader from "components/CollectionHeader";
+import ProductList from "components/ProductList";
+import Subscriptions from "components/Subscriptions";
+import WholesaleBlock from "components/WholesaleBlock";
 
-import Styled from './styles';
+import Styled from "./styles";
 
-const Collection = (props) => {
+const Collection = props => {
   if (!props.collection) return false;
-
-  const collectionProducts = props.allProducts.filter(product =>
-    product.collections.indexOf(props.collection.handle) !== -1);
 
   return (
     <div>
       <CollectionHeader collection={props.collection} />
-      {props.collection.handle === 'coffee' &&
+      {props.collection.handle === "coffee" && (
         <Styled.Subheading>Individual Bags</Styled.Subheading>
-      }
+      )}
       <Styled.Container>
-        <ProductList products={collectionProducts} isShowing={props.isShowing} />
-        {props.collection.handle === 'coffee' &&
-          <Subscriptions allProducts={props.allProducts} isShowing={props.isShowing} />
-        }
+        <ProductList
+          products={props.collection.products}
+          isShowing={props.isShowing}
+        />
+        {props.collection.handle === "coffee" && (
+          <Subscriptions
+            products={props.subscriptionProducts}
+            isShowing={props.isShowing}
+          />
+        )}
       </Styled.Container>
-      {props.collection.handle === 'coffee' &&
-        <WholesaleBlock />
-      }
+      {props.collection.handle === "coffee" && <WholesaleBlock />}
     </div>
   );
 };
@@ -36,13 +37,13 @@ const Collection = (props) => {
 Collection.defaultProps = {
   isShowing: true,
   collection: undefined,
+  subscriptionProducts: undefined
 };
 
 Collection.propTypes = {
-  allProducts: PropTypes.array.isRequired,
   collection: PropTypes.object,
   isShowing: PropTypes.bool,
+  subscriptionProducts: PropTypes.array
 };
-
 
 export default Collection;

@@ -1,40 +1,39 @@
-import React from 'react';
-import { BrowserRouter, Route, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { css } from 'glamor';
-import glamorous from 'glamorous';
-import Async from 'react-code-splitting';
+import React from "react";
+import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { css } from "glamor";
+import glamorous from "glamorous";
 
-import CartBlocker from 'containers/CartBlocker';
-import Cart from 'components/Cart';
-import Footer from 'components/Footer';
-import Nav from 'components/Nav';
-const Home = props => <Async load={import('pages/Home')} componentProps={props} />;
-const PageContainer = props => <Async load={import('containers/PageContainer')} componentProps={props} />;
-const ProductContainer = props => <Async load={import('containers/ProductContainer')} componentProps={props} />;
+import CartBlocker from "containers/CartBlocker";
+import PageContainer from "containers/PageContainer";
+import ProductContainer from "containers/ProductContainer";
+import Cart from "components/Cart";
+import Footer from "components/Footer";
+import Nav from "components/Nav";
+import Home from "pages/Home";
 
-import fonts from 'assets/fonts/fonts.css';
-import { color, font, grid, } from 'lib/theme';
+import fonts from "assets/fonts/fonts.css";
+import { color, font, grid } from "lib/theme";
 
-css.global('html, body', {
+css.global("html, body", {
   backgroundColor: `rgb(${color.white})`,
   fontFamily: font.din,
-  fontSize: '16px',
+  fontSize: "16px",
   lineHeight: 1.5,
-  margin: 0,
+  margin: 0
 });
 
-css.global('body', {
-  paddingTop: 2 * grid,
+css.global("body", {
+  paddingTop: 2 * grid
 });
 
-css.global('*', {
-  boxSizing: 'border-box',
+css.global("*", {
+  boxSizing: "border-box"
 });
 
 const Container = glamorous.div({
   backgroundColor: `rgb(${color.offwhite})`,
-  boxSizing: 'border-box',
+  boxSizing: "border-box"
 });
 
 const AppRouter = withRouter(CartBlocker);
@@ -43,39 +42,42 @@ const CartRouter = withRouter(Cart);
 const App = props => (
   <BrowserRouter>
     <Container>
-      <Nav cartCount={props.cartLineItems.length} />
+      <Nav cartCount={props.checkoutLineItems.length} />
       <AppRouter>
-        <Route exact path="/" render={() => <Home allProducts={props.allProducts} />} />
-        <Route exact path="/pages/:slug" render={
-          pageProps =>
-            <PageContainer
-              allProducts={props.allProducts}
-              privacyPolicy={props.privacyPolicy}
-              {...pageProps}
-            />
-        }
+        <Route
+          exact
+          path="/"
+          render={() => <Home featuredProduct={props.featuredHomeProduct} />}
+        />
+        <Route
+          exact
+          path="/pages/:slug"
+          render={pageProps => (
+            <PageContainer privacyPolicy={props.privacyPolicy} {...pageProps} />
+          )}
         />
         <Route
           path="/:route"
           render={({ location, match }) => (
             <ProductContainer
+              addLineItem={props.addLineItem}
               allProducts={props.allProducts}
-              addToCart={props.addToCart}
               collections={props.collections}
               location={location}
               match={match}
+              subscriptionProducts={props.subscriptionProducts}
             />
           )}
         />
       </AppRouter>
       <CartRouter
         allProducts={props.allProducts}
-        checkoutUrl={props.checkoutUrl}
-        featuredCartProduct={props.featuredCartProduct}
+        lineItems={props.checkoutLineItems}
+        featuredProduct={props.featuredCheckoutProduct}
         isLoading={props.isLoading}
-        lineItems={props.cartLineItems}
         removeLineItem={props.removeLineItem}
         updateLineItem={props.updateLineItem}
+        webUrl={props.webUrl}
       />
       <Footer />
     </Container>
@@ -84,23 +86,27 @@ const App = props => (
 
 App.defaultProps = {
   allProducts: [],
-  cartLineItems: [],
-  featuredCartProduct: undefined,
+  collections: [],
+  featuredCheckoutProduct: undefined,
+  featuredHomeProduct: undefined,
   isLoading: false,
-  privacyPolicy: '',
+  privacyPolicy: "",
+  subscriptionProducts: []
 };
 
 App.propTypes = {
-  addToCart: PropTypes.func.isRequired,
+  addLineItem: PropTypes.func.isRequired,
   allProducts: PropTypes.array,
-  cartLineItems: PropTypes.array,
-  checkoutUrl: PropTypes.string.isRequired,
+  checkoutLineItems: PropTypes.array,
   collections: PropTypes.array,
-  featuredCartProduct: PropTypes.object,
+  featuredCheckoutProduct: PropTypes.object,
+  featuredHomeProduct: PropTypes.object,
   isLoading: PropTypes.bool,
   privacyPolicy: PropTypes.string,
   removeLineItem: PropTypes.func.isRequired,
+  subscriptionProducts: PropTypes.array,
   updateLineItem: PropTypes.func.isRequired,
+  webUrl: PropTypes.string.isRequired
 };
 
 export default App;

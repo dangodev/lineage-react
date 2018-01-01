@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ShopifyBuy from "shopify-buy";
+import Client from "shopify-buy";
 
 import App from "components/App";
 
-const accessToken = "8b97d4f794c051c78b3f00e8da03ef19"; // Read-only. It’s cool if it’s in the client JS.
+const storefrontAccessToken = "8b97d4f794c051c78b3f00e8da03ef19"; // Read-only. It’s cool if it’s in the client JS.
 const domain = "lineage-coffee-roasting.myshopify.com";
 
 class AppContainer extends React.PureComponent {
@@ -12,152 +12,188 @@ class AppContainer extends React.PureComponent {
     super(props);
 
     this.state = {
-      allProducts: this.formatProducts(),
-      cart: {},
-      cartLineItems: [],
-      client: ShopifyBuy.buildClient({
+      allProducts: [],
+      checkout: undefined,
+      checkoutLineItems: [],
+      client: Client.buildClient({
         appId: "6", // '6' is for JS Buy Button (this app)
-        accessToken,
+        storefrontAccessToken,
         domain
       }),
-      checkoutUrl: `https://${domain}/checkout`,
-      collections: props.collections.map(collection => ({
-        description: collection.description,
-        handle: collection.handle,
-        image: collection.image,
-        products: collection.products.map(product => product.id),
-        title: collection.title
-      }))
+      collections: [],
+      privacyPolicy: undefined,
+      webUrl: `https://${domain}/checkout`
     };
 
-    this.addToCart = this.addToCart.bind(this);
-    this.getCart = this.getCart.bind(this);
-    this.getFeaturedCartProduct = this.getFeaturedCartProduct.bind(this);
+    this.addLineItem = this.addLineItem.bind(this);
+    this.fetchProducts = this.fetchProducts.bind(this);
+    this.getCheckout = this.getCheckout.bind(this);
+    this.getFeaturedCheckoutProduct = this.getFeaturedCheckoutProduct.bind(
+      this
+    );
+    this.getFeaturedHomeProduct = this.getFeaturedHomeProduct.bind(this);
+    this.getPrivacyPolicy = this.getPrivacyPolicy.bind(this);
     this.removeLineItem = this.removeLineItem.bind(this);
     this.updateLineItem = this.updateLineItem.bind(this);
   }
 
   componentWillMount() {
-    this.getCart();
+    this.getCheckout();
+    this.fetchProducts();
+    this.getPrivacyPolicy();
   }
 
   componentDidMount() {
-    setInterval(() => this.getCart(), 30000);
+    setInterval(() => this.getCheckout(), 30000);
   }
 
-  getCart() {
-    const cartID = window.localStorage.getItem("lineageCart");
-
-    if (cartID) return this.loadCart(cartID);
-    return this.createCart();
+  addLineItem({ variantId, quantity, customAttributes = undefined }) {
+    this.state.client.checkout
+      .addLineItems(this.state.checkoutID, [
+        { variantId, quantity, customAttributes }
+      ])
+      .then(
+        checkout => {
+          this.updateCheckout(checkout);
+        },
+        error => console.log(error)
+      );
   }
 
-  getFeaturedCartProduct() {
-    if (!this.state.allProducts) return undefined;
+  createCheckout() {
+    this.setState({ isLoading: true });
+    this.state.client.checkout.create().then(checkout => {
+      this.setState({ isLoading: false });
+      if (checkout) {
+        this.updateCheckout(checkout);
+        window.localStorage.setItem("lineageCheckout", checkout.id);
+      } else {
+        setTimeout(() => this.getCheckout(), 1000); // If failed, try again
+      }
+    });
+  }
 
-    return this.state.allProducts.find(
-      product => product.collections.indexOf("cart") !== -1
+  getCheckout() {
+    const checkoutID = window.localStorage.getItem("lineageCheckout");
+
+    if (checkoutID) {
+      return this.fetchCheckout(checkoutID);
+    }
+    return this.createCheckout();
+  }
+
+  getFeaturedCheckoutProduct() {
+    if (!this.state.collections.length) return undefined;
+
+    return this.state.collections.find(
+      collection => collection.handle === "cart"
+    ).products[0];
+  }
+
+  getFeaturedHomeProduct() {
+    if (!this.state.collections.length) return undefined;
+
+    return this.state.collections.find(
+      collection => collection.handle === "frontpage"
+    ).products[0];
+  }
+
+  getPrivacyPolicy() {
+    this.state.client.shop
+      .fetchPolicies()
+      .then(policies =>
+        this.setState({ privacyPolicy: policies.privacyPolicy })
+      );
+  }
+
+  getSubscriptionProducts() {
+    if (this.state.allProducts.length <= 0) return undefined;
+
+    return this.state.allProducts.filter(
+      product => product.productType.toLowerCase().indexOf("subscription") >= 0
     );
   }
 
-  addToCart({ variant, quantity }) {
-    this.state.cart
-      .createLineItemsFromVariants({ variant, quantity })
-      .then(cart => this.updateCart(cart));
+  fetchCheckout(checkoutID) {
+    this.setState({ isLoading: true });
+    this.state.client.checkout.fetch(checkoutID).then(checkout => {
+      this.setState({ isLoading: false });
+      if (checkout) {
+        this.updateCheckout(checkout);
+      } else {
+        this.createCheckout();
+      }
+    });
+  }
+
+  fetchProducts() {
+    const getMetafields = handle => {
+      const metafields = this.props.metafields.find(
+        metafield => metafield.handle === handle
+      );
+      return metafields ? metafields.metafields : {};
+    };
+
+    this.state.client.collection.fetchAllWithProducts().then(collections => {
+      this.setState({
+        collections: collections.map(collection => ({
+          ...collection,
+          products: collection.products.map(product => ({
+            ...product,
+            metafields: getMetafields(product.handle)
+          }))
+        }))
+      });
+    });
+
+    this.state.client.product.fetchAll().then(products => {
+      this.setState({
+        allProducts: products.map(product => ({
+          ...product,
+          metafields: getMetafields(product.handle)
+        }))
+      });
+    });
   }
 
   removeLineItem(id) {
-    this.state.cart.removeLineItem(id).then(cart => this.updateCart(cart));
+    this.state.client.checkout
+      .removeLineItems(this.state.checkoutID, [id])
+      .then(checkout => this.updateCheckout(checkout));
   }
 
-  updateCart(cart) {
+  updateCheckout(checkout) {
     this.setState({
-      cart,
-      cartLineItems: cart.lineItems,
-      checkoutUrl: cart.checkoutUrl
+      checkoutID: checkout.id,
+      checkoutLineItems: checkout.lineItems,
+      webUrl: checkout.webUrl
     });
   }
 
-  createCart() {
-    this.setState({ isLoading: true });
-    this.state.client.createCart().then(cart => {
-      this.setState({ isLoading: false });
-      if (cart) {
-        this.updateCart(cart);
-        window.localStorage.setItem("lineageCart", cart.id);
-      } else {
-        setTimeout(() => this.getCart(), 1000); // If failed, try again
-      }
-    });
-  }
-
-  loadCart(cartID) {
-    this.setState({ isLoading: true });
-    this.state.client.fetchCart(cartID).then(cart => {
-      this.setState({ isLoading: false });
-      if (cart) {
-        this.updateCart(cart);
-      } else {
-        this.createCart();
-      }
-    });
-  }
-
-  updateLineItem(id, quantity) {
-    this.state.cart
-      .updateLineItem(id, quantity)
-      .then(cart => this.updateCart(cart));
-  }
-
-  formatProducts() {
-    const all = [];
-    this.props.collections.forEach(collection =>
-      collection.products.forEach(collectionProduct => {
-        const existingProduct = all.find(
-          product => collectionProduct.id === product.id
-        );
-        if (existingProduct) {
-          existingProduct.collections.push(collection.handle);
-        } else {
-          const metafields = this.props.metafields.find(
-            metafield => metafield.id === collectionProduct.id
-          );
-          all.push({
-            ...collectionProduct,
-            collections: [collection.handle],
-            metafields: metafields ? metafields.metafields : {}
-          });
-        }
-      })
-    );
-    return all;
+  updateLineItem({ id, quantity }) {
+    this.state.client.checkout
+      .updateLineItems(this.state.checkoutID, [{ id, quantity }])
+      .then(checkout => this.updateCheckout(checkout));
   }
 
   render() {
     return (
       <App
-        addToCart={this.addToCart}
+        addLineItem={this.addLineItem}
         allProducts={this.state.allProducts}
-        cart={this.state.cart}
-        cartLineItems={this.state.cartLineItems}
-        checkoutUrl={this.state.checkoutUrl}
+        checkoutLineItems={this.state.checkoutLineItems}
         collections={this.state.collections}
-        featuredCartProduct={this.getFeaturedCartProduct()}
-        privacyPolicy={this.props.privacyPolicy}
+        collections={this.state.collections}
+        featuredCheckoutProduct={this.getFeaturedCheckoutProduct()}
+        featuredHomeProduct={this.getFeaturedHomeProduct()}
+        privacyPolicy={this.state.privacyPolicy}
         removeLineItem={this.removeLineItem}
-        updateCart={cart => this.cart(cart)}
+        subscriptionProducts={this.getSubscriptionProducts()}
         updateLineItem={this.updateLineItem}
+        webUrl={this.state.webUrl}
       />
     );
   }
 }
-
-AppContainer.defaultProps = {
-  privacyPolicy: ""
-};
-
-AppContainer.propTypes = {
-  privacyPolicy: PropTypes.string
-};
 
 export default AppContainer;
