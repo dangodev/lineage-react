@@ -57,6 +57,84 @@ class ProductView extends React.Component {
     }
   }
 
+  addLineItem(e) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    let lineItem = {
+      variantId: this.state.selectedVariant.id,
+      quantity: this.state.quantity
+    };
+
+    if (this.shouldShowSubscriptions()) {
+      lineItem.customAttributes = [
+        {
+          key: "shipping_interval_frequency",
+          value: this.state.selectedInterval
+        },
+        {
+          key: "shipping_interval_unit_type",
+          value: this.props.product.metafields.subscriptions
+            .shipping_interval_unit_type
+        },
+        {
+          key: "subscription_id",
+          value: this.props.product.metafields.subscriptions.subscription_id
+        }
+      ];
+    }
+
+    this.props.addLineItem(lineItem);
+    this.props.history.push("/cart");
+  }
+
+  close(e) {
+    e.preventDefault();
+    this.props.history.push(this.props.returnTo);
+  }
+
+  getFlavor() {
+    if (
+      !this.props.product ||
+      !this.props.product.metafields.c_f ||
+      !this.props.product.metafields.c_f.color
+    )
+      return "pink";
+    return this.props.product.metafields.c_f.color;
+  }
+
+  getSubscriptionIntervals() {
+    return (
+      this.props.product.metafields.subscriptions["shipping_interval_frequency"]
+        .replace(/\s/g, "")
+        .split(",") || []
+    );
+  }
+
+  isCoffee() {
+    if (!this.props.product) return false;
+    return (
+      ["coffee", "coffee beans"].indexOf(
+        this.props.product.productType.toLowerCase()
+      ) !== -1
+    );
+  }
+
+  isSelectedOption({ name, value }) {
+    if (!this.props.product || !this.state.selectedVariant) return false;
+
+    return this.state.selectedVariant.selectedOptions.find(
+      option => option.name === name && option.value === value
+    );
+  }
+
+  keydownHandler(e) {
+    if (e.keyCode === 27) {
+      this.close(e);
+    }
+  }
+
   setDefaultVariant(nextProps) {
     if (!nextProps.product) return false;
 
@@ -94,7 +172,7 @@ class ProductView extends React.Component {
 
     const options = {
       ...this.state.selectedOptions,
-      key: value
+      [name]: value
     };
 
     const selectedVariant =
@@ -126,85 +204,6 @@ class ProductView extends React.Component {
     this.setState({ selectedInterval: `${interval}` });
   }
 
-  getFlavor() {
-    if (
-      !this.props.product ||
-      !this.props.product.metafields.c_f ||
-      !this.props.product.metafields.c_f.color
-    )
-      return "pink";
-    return this.props.product.metafields.c_f.color;
-  }
-
-  getSubscriptionIntervals() {
-    return (
-      this.props.product.metafields.subscriptions["shipping_interval_frequency"]
-        .replace(/\s/g, "")
-        .split(",") || []
-    );
-  }
-
-  addLineItem(e) {
-    if (e) {
-      e.preventDefault();
-    }
-
-    let lineItem = {
-      variantId: this.state.selectedVariant.id,
-      quantity: this.state.quantity
-    };
-
-    if (this.shouldShowSubscriptions()) {
-      lineItem.customAttributes = [
-        {
-          key: "properties[shipping_interval_frequency]",
-          value: this.props.product.metafields.subscriptions
-            .shipping_interval_frequency
-        },
-        {
-          key: "properties[shipping_interval_unit_type]",
-          value: this.props.product.metafields.subscriptions
-            .shipping_interval_unit_type
-        },
-        {
-          key: "properties[subscription_id]",
-          value: this.props.product.metafields.subscriptions.subscription_id
-        }
-      ];
-    }
-
-    this.props.addLineItem(lineItem);
-    this.props.history.push("/cart");
-  }
-
-  keydownHandler(e) {
-    if (e.keyCode === 27) {
-      this.close(e);
-    }
-  }
-
-  close(e) {
-    e.preventDefault();
-    this.props.history.push(this.props.returnTo);
-  }
-
-  isCoffee() {
-    if (!this.props.product) return false;
-    return (
-      ["coffee", "coffee beans"].indexOf(
-        this.props.product.productType.toLowerCase()
-      ) !== -1
-    );
-  }
-
-  isSelectedOption({ name, value }) {
-    if (!this.props.product) return false;
-
-    return this.state.selectedVariant.selectedOptions.find(
-      option => option.name === name && option.value === value
-    );
-  }
-
   shouldShowVariants() {
     if (!this.props.product) return false;
 
@@ -215,15 +214,10 @@ class ProductView extends React.Component {
   }
 
   shouldShowSubscriptions() {
-    return false;
-    // return (
-    //   this.props.product &&
-    //   this.props.product.productType.toLowerCase().indexOf("subscription") >=
-    //     0 &&
-    //   this.props.product.metafields.subscriptions.has_subscription &&
-    //   this.props.product.metafields.subscriptions.has_subscription.toLowerCase() ===
-    //     "true"
-    // );
+    return (
+      this.props.product &&
+      this.props.product.productType.toLowerCase().indexOf("subscription") >= 0
+    );
   }
 
   render() {
@@ -282,12 +276,12 @@ class ProductView extends React.Component {
                               name={option.id}
                               defaultChecked={this.isSelectedOption({
                                 name: option.name,
-                                value: option.value
+                                value: value.value
                               })}
                               onChange={() =>
-                                this.setOption(option.name, option.value)
+                                this.setOption(option.name, value.value)
                               }
-                              value={`{ ${option.id}: ${option.value} }`}
+                              value={value.value}
                             />
                             <label htmlFor={`${option.id}-${index}`}>
                               {value.value}
@@ -306,7 +300,7 @@ class ProductView extends React.Component {
                           <input
                             type="radio"
                             id={`week-${interval}`}
-                            name={`week-${interval}`}
+                            name="subscription-interval"
                             defaultChecked={
                               interval === this.state.selectedInterval
                             }

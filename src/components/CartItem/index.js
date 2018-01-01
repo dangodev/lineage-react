@@ -13,6 +13,20 @@ const CartItem = ({ lineItem, ...props }) => {
 
   const { color } = lineItem.metafields.c_f || "";
 
+  let subscriptionInterval = "";
+  let subscriptionUnit = "";
+
+  if (productType.indexOf("subscription") >= 0) {
+    const interval = lineItem.customAttributes.find(
+      attr => attr.key === "shipping_interval_frequency"
+    );
+    const unit = lineItem.customAttributes.find(
+      attr => attr.key === "shipping_interval_unit_type"
+    );
+    if (interval) subscriptionInterval = interval.value;
+    if (unit) subscriptionUnit = unit.value;
+  }
+
   const clickHandler = e => {
     e.preventDefault();
     if (confirm(`Remove ${lineItem.title}?`)) {
@@ -26,7 +40,15 @@ const CartItem = ({ lineItem, ...props }) => {
         <Styled.Thumb src={featuredImage} alt={lineItem.title} />
       </Styled.ThumbContainer>
       <Styled.ProductInfo>
-        <Styled.Heading>{lineItem.title}</Styled.Heading>
+        <Styled.Heading>
+          {lineItem.title}
+          {productType.indexOf("subscription") >= 0 &&
+            ` (Every ${subscriptionInterval} ${
+              subscriptionInterval === "1"
+                ? subscriptionUnit.substr(0, subscriptionUnit.length - 1)
+                : subscriptionUnit
+            })`}
+        </Styled.Heading>
         <Styled.ProductType>{lineItem.productType}</Styled.ProductType>
         <Styled.Description>
           {(productType === "coffee" || productType === "coffee beans") && (

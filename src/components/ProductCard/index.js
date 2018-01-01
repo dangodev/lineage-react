@@ -39,7 +39,9 @@ const ProductCard = props => {
         {productType !== "coffee" &&
           productType !== "coffee beans" && (
             <Styled.Content
-              dangerouslySetInnerHTML={{ __html: props.product.content }}
+              dangerouslySetInnerHTML={{
+                __html: props.product.descriptionHtml
+              }}
             />
           )}
         <Styled.Colophon>

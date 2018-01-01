@@ -120,7 +120,7 @@ class Cart extends React.Component {
             <Styled.WaveContainer>
               <Waves width="55%" />
               <Button
-                href={this.props.webUrl}
+                href={this.props.checkoutURL}
                 rel="noopener noreferrer"
                 disabled={this.props.lineItems.length === 0}
               >

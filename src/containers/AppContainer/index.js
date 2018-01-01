@@ -15,23 +15,24 @@ class AppContainer extends React.PureComponent {
       allProducts: [],
       checkout: undefined,
       checkoutLineItems: [],
+      checkoutURL: `https://${domain}/checkout`,
       client: Client.buildClient({
         appId: "6", // '6' is for JS Buy Button (this app)
         storefrontAccessToken,
         domain
       }),
       collections: [],
+      featuredCheckoutProduct: undefined,
+      featuredHomeProduct: undefined,
       privacyPolicy: undefined,
-      webUrl: `https://${domain}/checkout`
+      rechargeURL: undefined,
+      shopifyURL: `https://${domain}/checkout`,
+      subscriptionProducts: []
     };
 
     this.addLineItem = this.addLineItem.bind(this);
     this.fetchProducts = this.fetchProducts.bind(this);
     this.getCheckout = this.getCheckout.bind(this);
-    this.getFeaturedCheckoutProduct = this.getFeaturedCheckoutProduct.bind(
-      this
-    );
-    this.getFeaturedHomeProduct = this.getFeaturedHomeProduct.bind(this);
     this.getPrivacyPolicy = this.getPrivacyPolicy.bind(this);
     this.removeLineItem = this.removeLineItem.bind(this);
     this.updateLineItem = this.updateLineItem.bind(this);
@@ -82,36 +83,12 @@ class AppContainer extends React.PureComponent {
     return this.createCheckout();
   }
 
-  getFeaturedCheckoutProduct() {
-    if (!this.state.collections.length) return undefined;
-
-    return this.state.collections.find(
-      collection => collection.handle === "cart"
-    ).products[0];
-  }
-
-  getFeaturedHomeProduct() {
-    if (!this.state.collections.length) return undefined;
-
-    return this.state.collections.find(
-      collection => collection.handle === "frontpage"
-    ).products[0];
-  }
-
   getPrivacyPolicy() {
     this.state.client.shop
       .fetchPolicies()
       .then(policies =>
         this.setState({ privacyPolicy: policies.privacyPolicy })
       );
-  }
-
-  getSubscriptionProducts() {
-    if (this.state.allProducts.length <= 0) return undefined;
-
-    return this.state.allProducts.filter(
-      product => product.productType.toLowerCase().indexOf("subscription") >= 0
-    );
   }
 
   fetchCheckout(checkoutID) {
@@ -131,7 +108,9 @@ class AppContainer extends React.PureComponent {
       const metafields = this.props.metafields.find(
         metafield => metafield.handle === handle
       );
-      return metafields ? metafields.metafields : {};
+      return metafields
+        ? metafields.metafields
+        : { c_f: {}, subscriptions: {} };
     };
 
     this.state.client.collection.fetchAllWithProducts().then(collections => {
@@ -142,7 +121,13 @@ class AppContainer extends React.PureComponent {
             ...product,
             metafields: getMetafields(product.handle)
           }))
-        }))
+        })),
+        featuredCheckoutProduct: collections.find(
+          collection => collection.handle === "cart"
+        ).products[0],
+        featuredHomeProduct: collections.find(
+          collection => collection.handle === "frontpage"
+        ).products[0]
       });
     });
 
@@ -151,9 +136,29 @@ class AppContainer extends React.PureComponent {
         allProducts: products.map(product => ({
           ...product,
           metafields: getMetafields(product.handle)
-        }))
+        })),
+        subscriptionProducts: products
+          .filter(
+            product =>
+              product.productType.toLowerCase().indexOf("subscription") >= 0
+          )
+          .map(product => ({
+            ...product,
+            metafields: getMetafields(product.handle)
+          }))
       });
     });
+  }
+
+  hasSubscription(lineItems) {
+    return (
+      lineItems.findIndex(
+        lineItem =>
+          lineItem.customAttributes.findIndex(
+            attr => attr.key === "subscription_id"
+          ) >= 0
+      ) >= 0
+    );
   }
 
   removeLineItem(id) {
@@ -163,16 +168,26 @@ class AppContainer extends React.PureComponent {
   }
 
   updateCheckout(checkout) {
+    console.log(checkout);
+    const shopifyURL = checkout.webUrl;
+    const cartToken = shopifyURL.split("?key=")[1];
+    const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?myshopify_domain=${domain}&cart_token=${cartToken}`;
     this.setState({
       checkoutID: checkout.id,
       checkoutLineItems: checkout.lineItems,
-      webUrl: checkout.webUrl
+      checkoutURL: this.hasSubscription(checkout.lineItems)
+        ? rechargeURL
+        : shopifyURL,
+      rechargeURL,
+      shopifyURL
     });
   }
 
   updateLineItem({ id, quantity }) {
     this.state.client.checkout
-      .updateLineItems(this.state.checkoutID, [{ id, quantity }])
+      .updateLineItems(this.state.checkoutID, [
+        { id, quantity: parseInt(quantity) }
+      ])
       .then(checkout => this.updateCheckout(checkout));
   }
 
@@ -182,15 +197,14 @@ class AppContainer extends React.PureComponent {
         addLineItem={this.addLineItem}
         allProducts={this.state.allProducts}
         checkoutLineItems={this.state.checkoutLineItems}
+        checkoutURL={this.state.checkoutURL}
         collections={this.state.collections}
-        collections={this.state.collections}
-        featuredCheckoutProduct={this.getFeaturedCheckoutProduct()}
-        featuredHomeProduct={this.getFeaturedHomeProduct()}
+        featuredCheckoutProduct={this.state.featuredCheckoutProduct}
+        featuredHomeProduct={this.state.featuredHomeProduct}
         privacyPolicy={this.state.privacyPolicy}
         removeLineItem={this.removeLineItem}
-        subscriptionProducts={this.getSubscriptionProducts()}
+        subscriptionProducts={this.state.subscriptionProducts}
         updateLineItem={this.updateLineItem}
-        webUrl={this.state.webUrl}
       />
     );
   }

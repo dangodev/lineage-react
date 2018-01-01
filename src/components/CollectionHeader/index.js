@@ -3,18 +3,24 @@ import PropTypes from "prop-types";
 
 import Styled from "./styles";
 
-const CollectionHeader = props => (
-  <Styled.Container>
-    <Styled.Inner
-      handle={props.collection.handle}
-      imgSm={props.collection.image}
-      imgLg={props.collection.image}
-    >
-      <Styled.Heading>{props.collection.title}</Styled.Heading>
-      <Styled.Description>{props.collection.description}</Styled.Description>
-    </Styled.Inner>
-  </Styled.Container>
-);
+const CollectionHeader = props => {
+  if (!props.collection) return false;
+
+  const image = props.collection.image ? props.collection.image.src : "";
+
+  return (
+    <Styled.Container>
+      <Styled.Inner
+        handle={props.collection.handle}
+        imgSm={image}
+        imgLg={image}
+      >
+        <Styled.Heading>{props.collection.title}</Styled.Heading>
+        <Styled.Description>{props.collection.description}</Styled.Description>
+      </Styled.Inner>
+    </Styled.Container>
+  );
+};
 
 CollectionHeader.propTypes = {
   collection: PropTypes.object

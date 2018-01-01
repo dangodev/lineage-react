@@ -72,12 +72,12 @@ const App = props => (
       </AppRouter>
       <CartRouter
         allProducts={props.allProducts}
-        lineItems={props.checkoutLineItems}
+        checkoutURL={props.checkoutURL}
         featuredProduct={props.featuredCheckoutProduct}
         isLoading={props.isLoading}
+        lineItems={props.checkoutLineItems}
         removeLineItem={props.removeLineItem}
         updateLineItem={props.updateLineItem}
-        webUrl={props.webUrl}
       />
       <Footer />
     </Container>
@@ -98,6 +98,7 @@ App.propTypes = {
   addLineItem: PropTypes.func.isRequired,
   allProducts: PropTypes.array,
   checkoutLineItems: PropTypes.array,
+  checkoutURL: PropTypes.string.isRequired,
   collections: PropTypes.array,
   featuredCheckoutProduct: PropTypes.object,
   featuredHomeProduct: PropTypes.object,
@@ -105,8 +106,7 @@ App.propTypes = {
   privacyPolicy: PropTypes.string,
   removeLineItem: PropTypes.func.isRequired,
   subscriptionProducts: PropTypes.array,
-  updateLineItem: PropTypes.func.isRequired,
-  webUrl: PropTypes.string.isRequired
+  updateLineItem: PropTypes.func.isRequired
 };
 
 export default App;
