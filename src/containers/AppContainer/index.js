@@ -169,7 +169,7 @@ class AppContainer extends React.PureComponent {
 
   updateCheckout(checkout) {
     const shopifyURL = checkout.webUrl;
-    const cartToken = shopifyURL.split("?key=")[1];
+    const cartToken = shopifyURL.split("/checkouts/")[1].split("?key=")[0];
     const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?myshopify_domain=${domain}&cart_token=${cartToken}`;
     this.setState({
       checkoutID: checkout.id,
