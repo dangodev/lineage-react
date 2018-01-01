@@ -144,9 +144,8 @@ class ProductView extends React.Component {
 
     const variantID = parse(window.location.href, true).query.variant;
     const selectedVariant =
-      nextProps.product.variants.find(
-        ({ id }) => id === parseInt(variantID, 10)
-      ) || nextProps.product.variants[0];
+      nextProps.product.variants.find(variant => variant.id === variantID) ||
+      nextProps.product.variants[0];
 
     this.setState({
       selectedVariant: selectedVariant || nextProps.product.variants[0]
@@ -279,6 +278,9 @@ class ProductView extends React.Component {
                                 value: value.value
                               })}
                               onChange={() =>
+                                this.setOption(option.name, value.value)
+                              }
+                              onClickange={() =>
                                 this.setOption(option.name, value.value)
                               }
                               value={value.value}

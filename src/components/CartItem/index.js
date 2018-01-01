@@ -13,6 +13,10 @@ const CartItem = ({ lineItem, ...props }) => {
 
   const { color } = lineItem.metafields.c_f || "";
 
+  const shouldShowVariant =
+    ["default title", "title"].indexOf(lineItem.variant.title.toLowerCase()) ===
+    -1;
+
   let subscriptionInterval = "";
   let subscriptionUnit = "";
 
@@ -48,6 +52,7 @@ const CartItem = ({ lineItem, ...props }) => {
                 ? subscriptionUnit.substr(0, subscriptionUnit.length - 1)
                 : subscriptionUnit
             })`}
+          {shouldShowVariant && ` (${lineItem.variant.title})`}
         </Styled.Heading>
         <Styled.ProductType>{lineItem.productType}</Styled.ProductType>
         <Styled.Description>

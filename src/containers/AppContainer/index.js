@@ -51,7 +51,7 @@ class AppContainer extends React.PureComponent {
   addLineItem({ variantId, quantity, customAttributes = undefined }) {
     this.state.client.checkout
       .addLineItems(this.state.checkoutID, [
-        { variantId, quantity, customAttributes }
+        { variantId, quantity: parseInt(quantity), customAttributes }
       ])
       .then(
         checkout => {
@@ -168,7 +168,6 @@ class AppContainer extends React.PureComponent {
   }
 
   updateCheckout(checkout) {
-    console.log(checkout);
     const shopifyURL = checkout.webUrl;
     const cartToken = shopifyURL.split("?key=")[1];
     const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?myshopify_domain=${domain}&cart_token=${cartToken}`;
