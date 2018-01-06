@@ -9,6 +9,7 @@ import PageContainer from "containers/PageContainer";
 import ProductContainer from "containers/ProductContainer";
 import Cart from "components/Cart";
 import Footer from "components/Footer";
+import Loading from "components/Loading";
 import Nav from "components/Nav";
 import Home from "pages/Home";
 
@@ -43,6 +44,7 @@ const App = props => (
   <BrowserRouter>
     <Container>
       <Nav cartCount={props.checkoutLineItems.length} />
+      <Loading isLoading={props.isLoading} />
       <AppRouter>
         <Route
           exact
@@ -72,7 +74,7 @@ const App = props => (
       </AppRouter>
       <CartRouter
         allProducts={props.allProducts}
-        checkoutURL={props.checkoutURL}
+        checkout={props.checkout}
         featuredProduct={props.featuredCheckoutProduct}
         isLoading={props.isLoading}
         lineItems={props.checkoutLineItems}
@@ -97,8 +99,8 @@ App.defaultProps = {
 App.propTypes = {
   addLineItem: PropTypes.func.isRequired,
   allProducts: PropTypes.array,
+  checkout: PropTypes.func.isRequired,
   checkoutLineItems: PropTypes.array,
-  checkoutURL: PropTypes.string.isRequired,
   collections: PropTypes.array,
   featuredCheckoutProduct: PropTypes.object,
   featuredHomeProduct: PropTypes.object,

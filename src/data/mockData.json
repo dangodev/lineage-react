@@ -3,6 +3,8 @@
     {
       "id": 399243769,
       "handle": "northern-italian-espresso",
+      "title": "431°",
+      "variants": [{ "id": 1040970625, "title": "Default Title" }],
       "metafields": {
         "c_f": {
           "additional_notes":
@@ -28,6 +30,8 @@
     {
       "id": 215725408286,
       "handle": "ethiopia-aricha",
+      "title": "Ethiopia Aricha",
+      "variants": [{ "id": 4156169355294, "title": "Default Title" }],
       "metafields": {
         "c_f": {
           "altitude": "2000",
@@ -41,40 +45,10 @@
       }
     },
     {
-      "id": 10071801217,
-      "handle": "copy-of-ethiopia-kochere",
-      "metafields": {
-        "c_f": {
-          "altitude": "2000-2200",
-          "color": "white",
-          "country": "Gedeo Zone, Ethiopia",
-          "processing_method": "Washed",
-          "score": "92",
-          "variety": "Native Heirloom"
-        },
-        "subscriptions": {}
-      }
-    },
-    {
-      "id": 6409369025,
-      "handle": "guatemala-xejuyu",
-      "metafields": {
-        "c_f": {
-          "additional_notes":
-            "Processing method: Full Washed, Depulped and then 17 hour fermentation in tanks with mechanical washing through delvas. Raised Bed drying for 15-20 days.",
-          "altitude": "1750-1900",
-          "color": "white",
-          "country": "Chimaltenango, Guatemala",
-          "grower": "Jorge Del Carmen",
-          "processing_method": "Washed",
-          "variety": "Bourbon"
-        },
-        "subscriptions": {}
-      }
-    },
-    {
       "id": 399245693,
       "handle": "modern-american",
+      "title": "Modern American",
+      "variants": [{ "id": 1040976949, "title": "Default Title" }],
       "metafields": {
         "c_f": {
           "altitude": "1600-1900",
@@ -98,6 +72,8 @@
     {
       "id": 215725408286,
       "handle": "ethiopia-aricha",
+      "title": "Ethiopia Aricha",
+      "variants": [{ "id": 4156169355294, "title": "Default Title" }],
       "metafields": {
         "c_f": {
           "altitude": "2000",
@@ -113,16 +89,28 @@
     {
       "id": 395627593764,
       "handle": "the-lineage-dad-hat",
+      "title": "The Lineage Dad Hat",
+      "variants": [{ "id": 5078443425828, "title": "Default Title" }],
       "metafields": { "c_f": {}, "subscriptions": {} }
     },
     {
       "id": 395628609572,
       "handle": "circle-logo-tee",
+      "title": "Circle Logo Tee",
+      "variants": [
+        { "id": 5078489071652, "title": "XS" },
+        { "id": 5078489137188, "title": "S" },
+        { "id": 5078489202724, "title": "M" },
+        { "id": 5078489235492, "title": "L" },
+        { "id": 5078489301028, "title": "XL" }
+      ],
       "metafields": { "c_f": {}, "subscriptions": {} }
     },
     {
       "id": 399243769,
       "handle": "northern-italian-espresso",
+      "title": "431°",
+      "variants": [{ "id": 1040970625, "title": "Default Title" }],
       "metafields": {
         "c_f": {
           "additional_notes":
@@ -148,6 +136,8 @@
     {
       "id": 3652195265,
       "handle": "roasters-choice-single-origin",
+      "title": "Roasters Choice (Single Origin)",
+      "variants": [{ "id": 5304483184676, "title": "Default Title" }],
       "metafields": {
         "c_f": {},
         "subscriptions": {

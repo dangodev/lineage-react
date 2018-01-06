@@ -4,6 +4,6 @@ import ReactDOM from "react-dom";
 import AppContainer from "containers/AppContainer";
 
 ReactDOM.render(
-  <AppContainer metafields={window.lineageMetafields} />,
+  <AppContainer metafields={window.shopifyData} />,
   document.getElementById("app-root")
 );

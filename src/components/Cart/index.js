@@ -16,8 +16,12 @@ import Styled from "./styles";
 class Cart extends React.Component {
   constructor(props) {
     super(props);
-    this.keydownHandler = this.keydownHandler.bind(this);
+
+    this.state = { isLoading: false };
+
+    this.buttonHandler = this.buttonHandler.bind(this);
     this.fetchAdditionalInfo = this.fetchAdditionalInfo.bind(this);
+    this.keydownHandler = this.keydownHandler.bind(this);
   }
 
   componentWillMount() {
@@ -67,6 +71,14 @@ class Cart extends React.Component {
       productType: product.productType,
       tags: product.tags
     };
+  }
+
+  buttonHandler(e) {
+    e.preventDefault();
+    this.setState({ isLoading: true });
+    if (this.props.checkout() === false) {
+      this.setState({ isLoading: false });
+    }
   }
 
   closeCart(e) {
@@ -122,7 +134,10 @@ class Cart extends React.Component {
               <Button
                 href={this.props.checkoutURL}
                 rel="noopener noreferrer"
-                disabled={this.props.lineItems.length === 0}
+                disabled={
+                  this.props.lineItems.length === 0 || this.state.isLoading
+                }
+                onClick={this.buttonHandler}
               >
                 Check Out
               </Button>
@@ -144,20 +159,19 @@ class Cart extends React.Component {
 Cart.defaultProps = {
   allProducts: [],
   lineItems: [],
-  featuredProduct: undefined,
-  webUrl: "/checkout"
+  featuredProduct: undefined
 };
 
 Cart.propTypes = {
   allProducts: PropTypes.array,
+  checkout: PropTypes.func.isRequired,
   lineItems: PropTypes.array,
   featuredProduct: PropTypes.object,
   history: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
   removeLineItem: PropTypes.func.isRequired,
-  updateLineItem: PropTypes.func.isRequired,
-  webUrl: PropTypes.string
+  updateLineItem: PropTypes.func.isRequired
 };
 
 export default Cart;
