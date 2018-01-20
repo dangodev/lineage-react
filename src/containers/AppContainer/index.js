@@ -52,6 +52,7 @@ class AppContainer extends React.PureComponent {
   }
 
   addLineItem({ variantId, quantity, customAttributes = undefined }) {
+    this.renewCart();
     this.state.client.checkout
       .addLineItems(this.state.checkoutID, [
         { variantId, quantity: parseInt(quantity), customAttributes }
@@ -71,6 +72,7 @@ class AppContainer extends React.PureComponent {
     if (this.state.checkoutLineItems.length === 0) return false;
 
     if (this.hasSubscription(this.state.checkoutLineItems) === false) {
+      this.expireCart();
       return (window.location = this.state.shopifyURL);
     }
 
@@ -92,6 +94,7 @@ class AppContainer extends React.PureComponent {
         } else if (
           result.data.item_count === this.state.checkoutLineItems.length
         ) {
+          this.expireCart();
           redirectToRecharge();
         }
       });
@@ -118,7 +121,9 @@ class AppContainer extends React.PureComponent {
         });
     };
 
-    const redirectToRecharge = () => (window.location = this.state.rechargeURL);
+    const redirectToRecharge = () => {
+      window.location = this.state.rechargeURL;
+    };
 
     getLegacyCart(true);
   }
@@ -138,10 +143,21 @@ class AppContainer extends React.PureComponent {
 
   getCheckout() {
     const checkoutID = window.localStorage.getItem("lineageCheckout");
+    const lastUpdated = parseInt(
+      window.localStorage.getItem("lineageCheckoutDate"),
+      10
+    );
+    const threeDays = 259200000;
 
-    if (checkoutID) {
+    if (
+      checkoutID &&
+      lastUpdated &&
+      lastUpdated > Math.floor(Date.now() - threeDays)
+    ) {
+      this.renewCart();
       return this.fetchCheckout(checkoutID);
     }
+    this.renewCart();
     return this.createCheckout();
   }
 
@@ -151,6 +167,16 @@ class AppContainer extends React.PureComponent {
       .then(policies =>
         this.setState({ privacyPolicy: policies.privacyPolicy })
       );
+  }
+
+  expireCart() {
+    // Don’t expire directly, expire in 5 min, as their cart will be gone if
+    // they go back to add something
+    const almostThreeDays = 258900000;
+    window.localStorage.setItem(
+      "lineageCheckoutDate",
+      Date.now() - almostThreeDays
+    );
   }
 
   fetchCheckout(checkoutID) {
@@ -259,6 +285,10 @@ class AppContainer extends React.PureComponent {
     this.state.client.checkout
       .removeLineItems(this.state.checkoutID, [id])
       .then(checkout => this.updateCheckout(checkout));
+  }
+
+  renewCart() {
+    window.localStorage.setItem("lineageCheckoutDate", Date.now());
   }
 
   updateCheckout(checkout) {
