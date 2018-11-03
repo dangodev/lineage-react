@@ -1,15 +1,3 @@
 {
-  "presets": [
-    ["env", "react"]
-  ],
-  "plugins": [
-    "syntax-dynamic-import",
-    "transform-object-rest-spread",
-    "transform-react-jsx"
-  ],
-  "env": {
-    "test": {
-      "plugins": ["dynamic-import-node", "transform-es2015-modules-commonjs"]
-    }
-  }
+  "plugins": ["emotion"]
 }

@@ -1,14 +1,12 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const NameAllModulesPlugin = require('name-all-modules-plugin');
 
 const common = require('./webpack.common.js');
 
 module.exports = merge.smart(common, {
+  mode: 'production',
   module: {
     rules: [
       {
@@ -40,11 +38,6 @@ module.exports = merge.smart(common, {
     publicPath: 'https://cdn.shopify.com/s/files/1/0746/4367/t/8/assets/',
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-      },
-    }),
     new HtmlWebpackPlugin({
       inject: false,
       filename: '../layout/theme.liquid',
@@ -67,11 +60,8 @@ module.exports = merge.smart(common, {
         minifyJS: true,
       },
     }),
-    new ExtractTextPlugin({ filename: 'fonts.css' }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new ManifestPlugin(),                          // make manifest.json file
-    new NameAllModulesPlugin(),
-    new CopyWebpackPlugin([                        // copy /public dir
+    new CopyWebpackPlugin([
+      // copy /public dir
       { from: '../src/shopify-assets', to: './' },
       { from: '../src/shopify-config', to: '../config' },
       { from: '../src/shopify-snippets', to: '../snippets' },

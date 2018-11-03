@@ -7,47 +7,68 @@
 <% htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || [] %>
 
 <!doctype html>
-<html lang="en" <% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>>
-  <head>
-    <meta charset="utf-8">
-    <meta content="ie=edge" http-equiv="x-ua-compatible">
-    <meta name="theme-color" content="#FEFEFE">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+<html lang="en" <% if (htmlWebpackPlugin.files.manifest) { %> manifest="
+<%= htmlWebpackPlugin.files.manifest %>"
+<% } %>>
 
-    <% if (process.env.NODE_ENV === 'production') { %>
-    <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}">
-    <title>{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} / {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} / {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} / {{ shop.name }}{% endunless %}</title>
-    {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
-    {% include 'social-meta-tags' %}
-    <link rel="canonical" href="{{ canonical_url }}">
-    <link rel="stylesheet" type="text/css" href="{{ 'fonts.css' | asset_url }}">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{{ 'fonts.css' | asset_url }}">
-    {{ content_for_header }}
-    <% } else { %>
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <% for (key in htmlWebpackPlugin.files.css) { %><link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet"><% } %>
-    <% } %>
-  </head>
-  <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZT37ZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <% if (process.env.NODE_ENV === 'production') { /* Shopify template code (updates on page refresh) */ %>
-    <script type="text/javascript">
-      window.shopifyData=[<% for (collection of ['coffee', 'frontpage', 'gear', 'cart', 'wholesale', 'subscriptions']) { %>{% for product in collections.<%= collection %>.products %}{"id": {{ product.id | json }}, "handle": {{ product.handle | json }}, "title": {{ product.title | json }}, "variants": [{% for variant in product.variants %}{ "id": {{ variant.id | json }}, "title": {{ variant.title | json }} },{% endfor %}], "metafields": { "c_f": {{ product.metafields.c_f | json }}, "subscriptions": {{ product.metafields.subscriptions | json }} } },{% endfor %}<% } %>];
-    </script>
-    {{ content_for_layout }}
-    <% } else { %>
-    <script type="text/javascript">
-      window.shopifyData=<%= JSON.stringify(htmlWebpackPlugin.options.mockData.metafields) %>;
-    </script>
-    <% } %>
-    <% if (htmlWebpackPlugin.options.appMountId) { %><div id="<%= htmlWebpackPlugin.options.appMountId %>"></div><% } %>
-    <% for (item of htmlWebpackPlugin.options.appMountIds) { %><div id="<%= item %>"></div><% } %>
-    <% if (htmlWebpackPlugin.options.inlineManifestWebpackName) { %><%= htmlWebpackPlugin.files[htmlWebpackPlugin.options.inlineManifestWebpackName] %><% } %>
-    <% for (key in htmlWebpackPlugin.files.chunks) { %><script src="<%= htmlWebpackPlugin.files.chunks[key].entry %>" type="text/javascript"></script><% } %>
-    <% if (htmlWebpackPlugin.options.devServer) { %><script src="<%= htmlWebpackPlugin.options.devServer %>/webpack-dev-server.js" type="text/javascript"></script><% } %>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NZT37ZP');</script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta content="ie=edge" http-equiv="x-ua-compatible">
+  <meta name="theme-color" content="#FEFEFE">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+
+  <% if (process.env.NODE_ENV === 'production') { %>
+  <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}">
+  <title>{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} / {{
+    'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} / {{ 'general.meta.page' | t:
+    page: current_page }}{% endif %}{% unless page_title contains shop.name %} / {{ shop.name }}{% endunless %}</title>
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  {% include 'social-meta-tags' %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="stylesheet" type="text/css" href="{{ 'fonts.css' | asset_url }}">
+  <link rel="stylesheet" type="text/css" href="{{ 'styles.css' | asset_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  {{ content_for_header }}
+  <% } else { %>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <% for (key in htmlWebpackPlugin.files.css) { %>
+  <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
+  <% } %>
+  <% } %>
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZT37ZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <% if (process.env.NODE_ENV === 'production') { /* Shopify template code (updates on page refresh) */ %>
+  <script type="text/javascript">
+    window.shopifyData = [<% for (collection of ['coffee', 'frontpage', 'gear', 'cart', 'wholesale', 'subscriptions']) { %> {% for product in collections.<%= collection %>.products %} { "id": { { product.id | json } }, "handle": { { product.handle | json } }, "title": { { product.title | json } }, "variants": [{% for variant in product.variants %} { "id": { { variant.id | json } }, "title": { { variant.title | json } } }, {% endfor %}], "metafields": { "c_f": { { product.metafields.c_f | json } }, "subscriptions": { { product.metafields.subscriptions | json } } } }, {% endfor %}<% } %>];
+  </script>
+  {{ content_for_layout }}
+  <% } else { %>
+  <script type="text/javascript">
+    window.shopifyData =<%= JSON.stringify(htmlWebpackPlugin.options.mockData.metafields) %>;
+  </script>
+  <% } %>
+  <% if (htmlWebpackPlugin.options.appMountId) { %>
+  <div id="<%= htmlWebpackPlugin.options.appMountId %>"></div>
+  <% } %>
+  <% for (item of htmlWebpackPlugin.options.appMountIds) { %>
+  <div id="<%= item %>"></div>
+  <% } %>
+  <% if (htmlWebpackPlugin.options.inlineManifestWebpackName) { %>
+  <%= htmlWebpackPlugin.files[htmlWebpackPlugin.options.inlineManifestWebpackName] %>
+  <% } %>
+  <% for (key in htmlWebpackPlugin.files.chunks) { %>
+  <script src="<%= htmlWebpackPlugin.files.chunks[key].entry %>" type="text/javascript"></script>
+  <% } %>
+  <% if (htmlWebpackPlugin.options.devServer) { %>
+  <script src="<%= htmlWebpackPlugin.options.devServer %>/webpack-dev-server.js" type="text/javascript"></script>
+  <% } %>
+  <script>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', 'GTM-NZT37ZP');</script>
+</body>
+
 </html>

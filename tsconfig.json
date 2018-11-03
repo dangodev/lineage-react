@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "lib": ["dom", "es2015"],
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es5",
+    "paths": {
+      "assets/*": ["assets/*"],
+      "components/*": ["components/*"],
+      "containers/*": ["containers/*"],
+      "lib/*": ["lib/*"],
+      "pages/*": ["pages/*"],
+      "types/*": ["types/*"],
+      "Routes": ["Routes.tsx"]
+    }
+  },
+  "include": ["./src/**/*"]
+}
