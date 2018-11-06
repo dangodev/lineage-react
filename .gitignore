@@ -4,3 +4,5 @@ dist/
 node_modules/
 theme.lock
 tmp/
+yarn.lock
+yarn-error.log

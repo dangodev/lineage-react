@@ -1,95 +1,92 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { color, font, transition } from 'lib/theme';
 
-import { color, font, grid, transition } from 'lib/theme';
+export const Container = styled.a`
+  border-radius: 0.25rem;
+  box-shadow: 0.25rem 0.25rem 0.375px rgba(${color.black}, 0.1);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: box-shadow 300ms linear, transform 300ms ${transition.deceleration};
 
-export default {
-  Container: glamorous.a({
-    borderRadius: 0.25 * grid,
-    boxShadow: `${0.25 * grid}px ${0.25 * grid}px ${0.375 * grid}px rgba(${color.black}, 0.1)`,
-    display: 'flex',
-    flexDirection: 'column',
-    textDecoration: 'none',
-    transition: `box-shadow 300ms, transform 300ms ${transition.deceleration}`,
+  &:hover {
+    transform: translate(-0.25rem, -0.5rem);
+    box-shadow: 0.375rem 0.375rem 1rem rgba(${color.black}, 0.05);
 
-    ':hover': {
-      transform: `translate(-${0.25 * grid}px, -${0.5 * grid}px)`,
-      boxShadow: `${0.375 * grid}px ${0.375 * grid}px ${grid}px rgba(${color.black}, 0.05)`,
+    & div div {
+      color: rgb(${color.blue});
+    }
+  }
+`;
 
-      '& div div': {
-        color: `rgb(${color.blue})`,
-      },
-    },
-  }),
+export const Content = styled.div`
+  background-color: rgb(${color.white});
+  border-bottom-left-radius: 0.25 rem;
+  border-bottom-right-radius: 0.25 rem;
+  color: rgb(${color.black});
+  flex: 0 1 100%;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  position: relative;
+`;
 
-  Content: glamorous.div({
-    backgroundColor: `rgb(${color.white})`,
-    borderBottomLeftRadius: 0.25 * grid,
-    borderBottomRightRadius: 0.25 * grid,
-    color: `rgb(${color.black})`,
-    flex: '0 1 100%',
-    paddingBottom: grid,
-    paddingLeft: grid,
-    paddingRight: grid,
-    paddingTop: 0.5 * grid,
-    position: 'relative',
-  }),
+export const Description = styled.p`
+  font-size: ${font.down1};
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-right: 2rem;
+`;
 
-  Description: glamorous.p({
-    fontSize: font.down1,
-    marginBottom: 0,
-    marginTop: 0,
-    paddingRight: 2 * grid,
-  }),
+export const Heading = styled.h3`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up4};
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-right: 2rem;
+`;
 
-  Heading: glamorous.h3({
-    fontFamily: font.kaufmann,
-    fontSize: font.up4,
-    marginBottom: 0,
-    marginTop: 0,
-    paddingRight: 2 * grid,
-  }),
+export const LinkText = styled.div`
+  bottom: 1rem;
+  display: block;
+  font-size: 1em;
+  font-weight: 700;
+  position: absolute;
+  right: 1rem;
+  text-align: right;
+  text-transform: uppercase;
+  transition: color 200ms;
+`;
 
-  LinkText: glamorous.div({
-    bottom: grid,
-    display: 'block',
-    fontSize: '1em',
-    fontWeight: 700,
-    position: 'absolute',
-    right: grid,
-    textAlign: 'right',
-    textTransform: 'uppercase',
-    transition: 'color 200ms',
-  }),
+export const Thumb = styled.div`
+  background-color: rgb(203, 221, 233);
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+  width: 100%;
 
-  Thumb: glamorous.div({
-    backgroundColor: 'rgb(203, 221, 233)',
-    borderTopLeftRadius: 0.25 * grid,
-    borderTopRightRadius: 0.25 * grid,
-    height: 0,
-    overflow: 'hidden',
-    paddingTop: '56.25%',
-    position: 'relative',
-    width: '100%',
+  & img: {
+    bottom: 0;
+    height: auto;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, 0);
+    width: 100%;
+  }
+`;
 
-    '& img': {
-      bottom: 0,
-      height: 'auto',
-      left: '50%',
-      position: 'absolute',
-      transform: 'translate(-50%, 0)',
-      width: '100%',
-    },
-  }),
-
-  Time: glamorous.small({
-    alignItems: 'center',
-    display: 'flex',
-    fontSize: font.down2,
-    fontWeight: 500,
-    height: 0.875 * grid,
-    position: 'absolute',
-    right: grid,
-    textTransform: 'uppercase',
-    top: 0.75 * grid,
-  }),
-};
+export const Time = styled.small`
+  align-items: center;
+  display: flex;
+  font-size: ${font.down2};
+  font-weight: 500;
+  height: 0.875rem;
+  position: absolute;
+  right: 1rem;
+  text-transform: uppercase;
+  top: 0.75rem;
+`;

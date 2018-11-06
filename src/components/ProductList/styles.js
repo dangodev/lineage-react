@@ -1,21 +1,17 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 
-import { grid } from 'lib/theme';
+export const Grid = styled.div`
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
 
-export default {
-  Grid: glamorous.div({
-    display: 'grid',
-    gridColumnGap: grid,
-    gridRowGap: grid,
+  @media (min-width: 920px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 
-    '@media (min-width: 920px)': {
-      gridTemplateColumns: '1fr 1fr',
-    },
-  }),
-
-  Zero: glamorous.div({
-    paddingBottom: grid,
-    paddingTop: grid,
-    textAlign: 'center',
-  }),
-};
+export const Zero = styled.div`
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  text-align: center;
+`;

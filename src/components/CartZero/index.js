@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Styled from './styles';
+import * as Styled from './styles';
 
 const CartZero = () => (
   <Styled.Container>

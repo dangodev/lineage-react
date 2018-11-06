@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["react", "prettier", "prettier/react"],
+  "plugins": ["emotion", "prettier", "import"],
+  "rules": {
+    "curly": "error",
+    "no-irregular-whitespace": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "config/webpack.dev.js"
+      }
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}

@@ -1,41 +1,23 @@
-import React from "react";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { css } from "glamor";
-import glamorous from "glamorous";
+import React from 'react';
+import { BrowserRouter, Route, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styled from 'react-emotion';
 
-import CartBlocker from "containers/CartBlocker";
-import PageContainer from "containers/PageContainer";
-import ProductContainer from "containers/ProductContainer";
-import Cart from "components/Cart";
-import Footer from "components/Footer";
-import Loading from "components/Loading";
-import Nav from "components/Nav";
-import Home from "pages/Home";
+import CartBlocker from 'containers/CartBlocker';
+import PageContainer from 'containers/PageContainer';
+import ProductContainer from 'containers/ProductContainer';
+import Cart from 'components/Cart';
+import Footer from 'components/Footer';
+import Loading from 'components/Loading';
+import Nav from 'components/Nav';
+import Home from 'pages/Home';
 
-import fonts from "assets/fonts/fonts.css";
-import { color, font, grid } from "lib/theme";
+import { color } from 'lib/theme';
 
-css.global("html, body", {
-  backgroundColor: `rgb(${color.white})`,
-  fontFamily: font.din,
-  fontSize: "16px",
-  lineHeight: 1.5,
-  margin: 0
-});
-
-css.global("body", {
-  paddingTop: 2 * grid
-});
-
-css.global("*", {
-  boxSizing: "border-box"
-});
-
-const Container = glamorous.div({
-  backgroundColor: `rgb(${color.offwhite})`,
-  boxSizing: "border-box"
-});
+const Container = styled.div`
+  background-color: rgb(${color.offwhite});
+  font-size: 16px;
+`;
 
 const AppRouter = withRouter(CartBlocker);
 const CartRouter = withRouter(Cart);
@@ -46,17 +28,11 @@ const App = props => (
       <Nav cartCount={props.checkoutLineItems.length} />
       <Loading isLoading={props.isLoading} />
       <AppRouter>
-        <Route
-          exact
-          path="/"
-          render={() => <Home featuredProduct={props.featuredHomeProduct} />}
-        />
+        <Route exact path="/" render={() => <Home featuredProduct={props.featuredHomeProduct} />} />
         <Route
           exact
           path="/pages/:slug"
-          render={pageProps => (
-            <PageContainer privacyPolicy={props.privacyPolicy} {...pageProps} />
-          )}
+          render={pageProps => <PageContainer privacyPolicy={props.privacyPolicy} {...pageProps} />}
         />
         <Route
           path="/:route"
@@ -92,8 +68,8 @@ App.defaultProps = {
   featuredCheckoutProduct: undefined,
   featuredHomeProduct: undefined,
   isLoading: false,
-  privacyPolicy: "",
-  subscriptionProducts: []
+  privacyPolicy: '',
+  subscriptionProducts: [],
 };
 
 App.propTypes = {
@@ -108,7 +84,7 @@ App.propTypes = {
   privacyPolicy: PropTypes.string,
   removeLineItem: PropTypes.func.isRequired,
   subscriptionProducts: PropTypes.array,
-  updateLineItem: PropTypes.func.isRequired
+  updateLineItem: PropTypes.func.isRequired,
 };
 
 export default App;

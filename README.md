@@ -2,10 +2,8 @@
 
 # Setup
 
-Install [Yarn](https://yarnpkg.com/en/). Then run:
-
 ```
-yarn
+npm i
 ```
 
 # Development
@@ -13,7 +11,7 @@ yarn
 Start the development server with
 
 ```
-yarn start
+npm run start
 ```
 
 and it will be available at `localhost:8080`, with mock data.
@@ -24,7 +22,7 @@ If on VSCode and using [Debugger for Chrome](https://marketplace.visualstudio.co
 open a new Terminal tab and run the following to allow breakpoints in VSCode:
 
 ```
-yarn debug
+npm run debug
 ```
 
 _Note: it’s configured for Chrome Canary. Remove `\\ Canary` in `launch.json` to
@@ -40,5 +38,5 @@ and write** access to theme templates and theme assets. Add the `password` and
 `theme_id` to `config.yml`, then run:
 
 ```
-yarn deploy
+npm run deploy
 ```

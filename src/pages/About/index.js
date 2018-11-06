@@ -4,7 +4,7 @@ import PageHeading from 'components/PageHeading';
 import TimelineEvent from 'components/TimelineEvent';
 import StoreHours from 'components/StoreHours';
 
-import Styled from './styles';
+import * as Styled from './styles';
 
 const timeline = [
   {

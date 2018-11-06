@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 
@@ -9,12 +10,13 @@ import AppContainer from 'containers/AppContainer';
 const context = {};
 const TestApp = props => (
   <StaticRouter location={props.location} context={context}>
-    <AppContainer
-      collections={mockData.collections}
-      metafields={mockData.metafields}
-    />
+    <AppContainer collections={mockData.collections} metafields={mockData.metafields} />
   </StaticRouter>
 );
+
+TestApp.propTypes = {
+  location: PropTypes.object,
+};
 
 const testRoutes = [
   ['/', 'Home page loads'],
@@ -26,8 +28,10 @@ const testRoutes = [
   ['/products/roasters-choice-single-origin', 'Product Page loads'],
 ];
 
-testRoutes.forEach(route =>
-  test(route[1], () => {
-    expect(renderToString(<TestApp location={route[0]} />))
-      .toBeTruthy();
-  }));
+describe('App routes', () => {
+  it('loads all routes correctly', () => {
+    testRoutes.forEach(([pathname, test]) =>
+      expect(renderToString(<TestApp location={pathname} />)).toBeTruthy()
+    );
+  });
+});

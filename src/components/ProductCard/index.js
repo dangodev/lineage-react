@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Styled from "./styles";
+import * as Styled from './styles';
 
 const ProductCard = props => {
   const productType = props.product.productType.toLowerCase();
-  const { altitude, color, country } = props.product.metafields.c_f || "";
+  const { altitude, color, country } = props.product.metafields.c_f || '';
 
   return (
     <Styled.Container
@@ -19,28 +19,26 @@ const ProductCard = props => {
       </Styled.Image>
       <Styled.Inner>
         <Styled.Heading>{props.product.title}</Styled.Heading>
-        {(productType === "coffee" || productType === "coffee beans") &&
+        {(productType === 'coffee' || productType === 'coffee beans') &&
           country &&
           altitude && (
             <Styled.Meta>
               {country} / {altitude}m
             </Styled.Meta>
           )}
-        {(productType === "coffee" || productType === "coffee beans") && [
-          <Styled.NoteHeading key="notes-heading">
-            Tasting Notes
-          </Styled.NoteHeading>,
+        {(productType === 'coffee' || productType === 'coffee beans') && [
+          <Styled.NoteHeading key="notes-heading">Tasting Notes</Styled.NoteHeading>,
           <Styled.NoteList key="notes">
             {props.product.tags.map(note => (
               <Styled.Note key={note.value}>{note.value}</Styled.Note>
             ))}
-          </Styled.NoteList>
+          </Styled.NoteList>,
         ]}
-        {productType !== "coffee" &&
-          productType !== "coffee beans" && (
+        {productType !== 'coffee' &&
+          productType !== 'coffee beans' && (
             <Styled.Content
               dangerouslySetInnerHTML={{
-                __html: props.product.descriptionHtml
+                __html: props.product.descriptionHtml,
               }}
             />
           )}
@@ -56,13 +54,13 @@ const ProductCard = props => {
 ProductCard.defaultProps = {
   delay: 0,
   isShowing: true,
-  product: undefined
+  product: undefined,
 };
 
 ProductCard.propTypes = {
   delay: PropTypes.number,
   isShowing: PropTypes.bool,
-  product: PropTypes.object
+  product: PropTypes.object,
 };
 
 export default ProductCard;

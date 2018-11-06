@@ -1,289 +1,278 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { ifProp } from 'styled-tools';
+import { color, font, layer, transition } from 'lib/theme';
 
-import { color, font, grid, layer, transition } from 'lib/theme';
+export const Actions = styled.menu`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1rem;
+  padding: 0;
+  position: relative;
+`;
 
-export default {
-  Actions: glamorous.menu({
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    marginTop: grid,
-    padding: 0,
-    position: 'relative',
-  }),
+export const Close = styled.a`
+  align-items: center;
+  color: rgb(${color.black});
+  display: grid;
+  font-size: 28px;
+  font-weight: 500;
+  height: 2rem;
+  justify-content: center;
+  left: 0;
+  line-height: 1;
+  position: fixed;
+  text-decoration: none;
+  top: 0;
+  width: 2rem;
+  z-index: ${layer.modal};
 
-  Close: glamorous.a({
-    alignItems: 'center',
-    color: `rgb(${color.black})`,
-    display: 'grid',
-    fontSize: 28,
-    fontWeight: 500,
-    height: 2 * grid,
-    justifyContent: 'center',
-    left: 0,
-    lineHeight: 1,
-    position: 'fixed',
-    textDecoration: 'none',
-    top: 0,
-    width: 2 * grid,
-    zIndex: layer.modal,
+  @media (min-width: 600px) {
+    left: auto;
+    position: absolute;
+    right: 0;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      left: 'auto',
-      position: 'absolute',
-      right: 0,
-    },
-  }),
+export const Container = styled.div`
+  height: 100vh;
+  left: 0;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  top: 0;
+  -webkit-overflow-scrolling: touch;
+  z-index: ${layer.modal};
+  visibility: ${ifProp({ isShowing: true }, 'visibile', 'hidden')};
+  transition: ${ifProp({ isShowing: true }, 'none', 'visibility 0ms 200ms')};
+`;
 
-  Container: glamorous.div(
-    {
-      height: '100vh',
-      left: 0,
-      overflowY: 'scroll',
-      position: 'fixed',
-      right: 0,
-      top: 0,
-      WebkitOverflowScrolling: 'touch',
-      zIndex: layer.modal,
-    },
-    ({ isShowing }) => ({
-      visibility: isShowing ? 'visibile' : 'hidden',
-      transition: isShowing ? 'none' : 'visibility 0ms 200ms',
-    }),
-  ),
+export const CoreInfo = styled.div`
+  flex: 4;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
-  CoreInfo: glamorous.div({
-    flex: 4,
-    marginBottom: grid,
-    paddingLeft: grid,
-    paddingRight: grid,
+  @media (min-width: 600px) {
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      marginBottom: 0,
-      paddingLeft: 0,
-    },
-  }),
+export const Description = styled.div`
+  font-size: ${font.down1};
 
-  Description: glamorous.div({
-    fontSize: font.down1,
+  & p {
+    line-height: 1.8;
+    margin-bottom: 0;
+    margin-top: 0;
 
-    ' & p': {
-      lineHeight: 1.8,
-      marginBottom: 0,
-      marginTop: 0,
+    & + p {
+      margin-top: 0.5rem;
+    }
+  }
+`;
 
-      '& + p': {
-        marginTop: 0.5 * grid,
-      },
-    },
-  }),
+export const Grid = styled.div`
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  max-width: calc(100vw - 1rem);
+  width: 100vw;
+  z-index: ${layer.modal + 1};
 
-  Grid: glamorous.div({
-    marginBottom: grid,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: 2 * grid,
-    maxWidth: `calc(100vw - ${grid}px)`,
-    width: '100vw',
-    zIndex: layer.modal + 1,
+  @media (min-width: 600px) {
+    width: 75vw;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      width: '75vw',
-    },
-  }),
+export const Heading = styled.h1`
+  font-size: ${font.up3};
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  text-transform: uppercase;
 
-  Heading: glamorous.h1({
-    fontSize: font.up3,
-    lineHeight: 1,
-    marginBottom: 0.5 * grid,
-    marginTop: 0,
-    textTransform: 'uppercase',
+  @media (min-width: 600px) {
+    padding-top: 1rem;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      paddingTop: grid,
-    },
-  }),
+export const Image = styled.figure`
+  border-radius: 0.5rem;
+  box-shadow: 0.25rem 0.25rem 1rem rgba(${color.black}, 0.1);
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  transform: translateY(-1rem);
+  width: 87.5%;
 
-  Image: glamorous.figure({
-    borderRadius: 0.5 * grid,
-    boxShadow: `${0.25 * grid}px ${0.25 * grid}px ${grid}px rgba(${color.black}, 0.1)`,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    overflow: 'hidden',
-    transform: `translateY(-${grid}px)`,
-    width: '87.5%',
+  @media (min-width: 600px) {
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    transform: translate(-2rem, -1rem);
+    width: 6rem;
+  }
 
-    '@media (min-width: 600px)': {
-      left: 0,
-      margin: 0,
-      position: 'absolute',
-      top: 0,
-      transform: `translate(-${2 * grid}px, -${grid}px)`,
-      width: 6 * grid,
-    },
+  & img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+`;
 
-    '& img': {
-      display: 'block',
-      height: 'auto',
-      width: '100%',
-    },
-  }),
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
 
-  Info: glamorous.div({
-    display: 'flex',
-    flexDirection: 'column',
+  @media (min-width: 600px) {
+    flex-direction: row;
+    padding-left: 25%;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      flexDirection: 'row',
-      paddingLeft: '25%',
-    },
-  }),
+export const Modal = styled.div`
+  background-color: rgb(${color.white});
+  display: block;
+  padding-bottom: 1rem;
+  position: relative;
+  transition: opacity 200ms, transform 200ms ${transition.standard};
+  z-index: ${layer.modal + 1};
+  opacity: ${ifProp({ isShowing: true }, 1, 0)};
+  transform: ${ifProp({ isShowing: true }, 'translateY(0)', 'translateY(3rem)')};
+`;
 
-  Modal: glamorous.div(
-    {
-      backgroundColor: `rgb(${color.white})`,
-      display: 'block',
-      paddingBottom: grid,
-      position: 'relative',
-      transition: `opacity 200ms, transform 200ms ${transition.standard}`,
-      zIndex: layer.modal + 1,
-    },
-    ({ isShowing }) => ({
-      opacity: isShowing ? 1 : 0,
-      transform: isShowing ? 'translateY(0)' : `translateY(${3 * grid}px)`,
-    })
-  ),
+export const Notes = styled.p`
+  font-size: ${font.down1};
+  line-height: 1.8;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-transform: capitalize;
+`;
 
-  Notes: glamorous.p({
-    fontSize: font.down1,
-    lineHeight: 1.8,
-    marginBottom: 0,
-    marginTop: 0,
-    textTransform: 'capitalize',
-  }),
+export const Option = styled.div`
+  display: block;
+  flex-grow: 1;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
 
-  Option: glamorous.div({
-    display: 'block',
-    flexGrow: 1,
-    lineHeight: 1,
-    overflow: 'hidden',
-    position: 'relative',
+  @media (min-width: 600px) {
+    flex-grow: 0;
+  }
 
-    '@media (min-width: 600px)': {
-      flexGrow: 0,
-    },
+  & input {
+    position: absolute;
+    right: 200%;
+  }
 
-    '& input': {
-      position: 'absolute',
-      right: '200%',
-    },
+  & label {
+    align-items: 'center';
+    box-shadow: inset 0 0 0 2px rgba(${color.gray}, 1);
+    color: rgb(${color.gray});
+    cursor: pointer;
+    display: flex;
+    font-size: ${font.down1};
+    font-weight: 500;
+    height: 1rem;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 200ms, box-shadow 200ms, color 200ms;
 
-    '& label': {
-      alignItems: 'center',
-      boxShadow: `inset 0 0 0 2px rgba(${color.gray}, 1)`,
-      color: `rgb(${color.gray})`,
-      cursor: 'pointer',
-      display: 'flex',
-      fontSize: font.down1,
-      fontWeight: 500,
-      height: grid,
-      justifyContent: 'center',
-      padding: 0,
-      transition: 'background-color 200ms, box-shadow 200ms, color 200ms',
+    @media (min-width: 600px) {
+      width: 2rem;
+    }
+  }
 
-      '@media (min-width: 600px)': {
-        width: 2 * grid,
-      },
-    },
+  & input:checked + label {
+    background-color: rgb(${color.black});
+    box-shadow: inset 0 0 0 2px rgba(${color.gray}, 0);
+    color: rgb(${color.white});
+  }
+`;
 
-    '& input:checked + label': {
-      backgroundColor: `rgb(${color.black})`,
-      boxShadow: `inset 0 0 0 2px rgba(${color.gray}, 0)`,
-      color: `rgb(${color.white})`,
-    },
-  }),
+export const OptionList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+  width: 100%;
 
-  OptionList: glamorous.div({
-    display: 'flex',
-    flexWrap: 'wrap',
-    marginTop: 0.25 * grid,
-    width: '100%',
+  @media (min-width: 600px) {
+    & > * + * {
+      margin-left: 0.25rem;
+    }
+  }
+`;
 
-    '@media (min-width: 600px)': {
+export const Overlay = styled.a`
+  background-color: ${ifProp(
+    { flavor: 'white' },
+    `rgba(${color.black}, 0.7)`,
+    `rgba(${({ flavor }) => color[flavor]}, 0.7)`
+  )};
+  opacity: ${ifProp({ isShowing: true }, 1, 0)};
+  cursor: pointer;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 200ms;
+  z-index: ${layer.modal};
+`;
 
-      '> * + *': {
-        marginLeft: 0.25 * grid,
-      },
-    },
-  }),
+export const Price = styled.div`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up3};
+  margin-top: 1rem;
+  text-align: center;
+`;
 
-  Overlay: glamorous.a(
-    {
-      cursor: 'pointer',
-      bottom: 0,
-      left: 0,
-      position: 'fixed',
-      right: 0,
-      top: 0,
-      transition: 'opacity 200ms',
-      zIndex: layer.modal,
-    },
-    ({ flavor, isShowing = false }) => ({
-      backgroundColor: flavor === 'white' ? `rgba(${color.black}, 0.7)` : `rgba(${color[flavor]}, 0.7)`,
-      opacity: isShowing ? 1 : 0,
-    }),
-  ),
+export const Quantity = styled.div`
+  display: flex;
+`;
 
-  Price: glamorous.div({
-    fontFamily: font.kaufmann,
-    fontSize: font.up3,
-    marginTop: grid,
-    textAlign: 'center',
-  }),
+export const QuantityWholesale = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 0 0 100%;
+  font-size: ${font.down2};
+  height: 1rem;
+  justify-content: center;
 
-  Quantity: glamorous.div({
-    display: 'flex',
-  }),
+  @media (min-width: 600px) {
+    flex: 1 0 auto;
+    height: auto;
+    justify-content: flex-start;
+  }
 
-  QuantityWholesale: glamorous.div({
-    alignItems: 'center',
-    display: 'flex',
-    flex: '0 0 100%',
-    fontSize: font.down2,
-    height: grid,
-    justifyContent: 'center',
+  & a {
+    color: rgb(${color.green});
+    font-weight: 500;
+    text-decoration: none;
+    width: auto;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      flex: '1 0 auto',
-      height: 'auto',
-      justifyContent: 'flex-start',
-    },
+export const Selections = styled.div`
+  padding-left: 1rem;
+  padding-right: 1rem;
 
-    '& a': {
-      color: `rgb(${color.green})`,
-      fontWeight: 500,
-      textDecoration: 'none',
-      width: 'auto',
-    },
-  }),
+  @media (min-width: 600px) {
+    padding-left: 25%;
+    padding-right: 0;
+  }
+`;
 
-  Selections: glamorous.div({
-    paddingLeft: grid,
-    paddingRight: grid,
-
-    '@media (min-width: 600px)': {
-      paddingLeft: '25%',
-      paddingRight: 0,
-    },
-  }),
-
-  Subheading: glamorous.h3({
-    fontSize: font.down2,
-    letterSpacing: '0.075em',
-    marginBottom: 0,
-    marginTop: 0.5 * grid,
-    textTransform: 'uppercase',
-  }),
-};
+export const Subheading = styled.h3`
+  font-size: ${font.down2};
+  letter-spacing: 0.075em;
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+`;

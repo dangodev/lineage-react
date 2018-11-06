@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Styled from './styles';
+import * as Styled from './styles';
 
 const Button = (props) => {
   if (props.to) {

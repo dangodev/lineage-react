@@ -1,60 +1,54 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { ifProp } from 'styled-tools';
+import { color, font } from 'lib/theme';
 
-import { color, font, grid } from 'lib/theme';
+export const Inner = styled.dl`
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.2;
+  margin: 0;
+  padding-top: 0;
+`;
 
-export default {
-  Inner: glamorous.dl({
-    display: 'flex',
-    flexWrap: 'wrap',
-    lineHeight: 1.2,
-    margin: 0,
-    paddingTop: 0,
-  }),
+export const Heading = styled.h3`
+  font-size: ${font.down1};
+  letter-spacing: 0.075em;
+  margin-bottom: 0.375rem;
+  margin-top: 0;
+  text-transform: uppercase;
 
-  Heading: glamorous.h3({
-    fontSize: font.down1,
-    letterSpacing: '0.075em',
-    marginBottom: 0.375 * grid,
-    marginTop: 0,
-    textTransform: 'uppercase',
+  @media (min-width: 600px) {
+    margin-top: 1.5rem;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      marginTop: 1.5 * grid,
-    },
-  }),
+export const Key = styled.dt`
+  color: rgb(${color.gray});
+  font-weight: 500;
+  margin: 0;
+  width: 50%;
 
-  Key: glamorous.dt({
-    color: `rgb(${color.gray})`,
-    fontWeight: 500,
-    margin: 0,
-    width: '50%',
+  & ~ dt {
+    padding-top: 0.375rem;
+  }
+`;
 
-    '& ~ dt': {
-      paddingTop: 0.375 * grid,
-    },
-  }),
+export const Metafields = styled.div`
+  background-color: rgb(${color.white});
+  flex: 2;
+  font-size: ${font.down1};
+  margin: 0;
+  padding: 0.75rem;
+`;
 
-  Metafields: glamorous.div({
-    backgroundColor: `rgb(${color.white})`,
-    flex: 2,
-    fontSize: font.down1,
-    margin: 0,
-    padding: 0.75 * grid,
-  }),
+export const Value = styled.dd`
+  font-size: ${font.down1};
+  line-height: 1.4;
+  text-align: ${ifProp({ full: true }, 'left', 'right')};
+  width: ${ifProp({ full: true }, '100%', '50%')};
+  margin: 0;
 
-  Value: glamorous.dd(
-    {
-      fontSize: font.down1,
-      lineHeight: 1.4,
-      margin: 0,
-
-      '& ~ dd': {
-        paddingTop: 0.375 * grid,
-      },
-    },
-    props => ({
-      textAlign: props.full ? 'left' : 'right',
-      width: props.full ? '100%' : '50%',
-    }),
-  ),
-};
+  & ~ dd {
+    padding-top: 0.375rem;
+  }
+`;

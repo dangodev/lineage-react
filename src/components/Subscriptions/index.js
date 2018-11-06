@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import ProductList from "components/ProductList";
-import Styled from "./styles";
+import ProductList from 'components/ProductList';
+import * as Styled from './styles';
 
 const Subscriptions = props => {
   return (
@@ -14,12 +14,12 @@ const Subscriptions = props => {
 };
 
 Subscriptions.defaultProps = {
-  products: []
+  products: [],
 };
 
 Subscriptions.propTypes = {
   isShowing: PropTypes.bool.isRequired,
-  products: PropTypes.array
+  products: PropTypes.array,
 };
 
 export default Subscriptions;

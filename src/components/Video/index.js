@@ -1,7 +1,7 @@
 import React from 'react';
 
 import bigLogo from 'assets/lineage-full.svg';
-import Styled from './styles';
+import * as Styled from './styles';
 
 class Video extends React.Component {
   componentDidMount() {

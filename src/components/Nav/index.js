@@ -5,20 +5,9 @@ import PropTypes from 'prop-types';
 import hamburger from 'assets/hamburger.svg';
 import logo from 'assets/lineage.svg';
 
-import Styled from './styles';
+import * as Styled from './styles';
 
 class Nav extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isOpen: false,
-    };
-
-    this.closeNav = this.closeNav.bind(this);
-    this.openNav = this.openNav.bind(this);
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname !== this.props.location.pathname) {
       this.relaxScroll();
@@ -26,19 +15,23 @@ class Nav extends React.Component {
     }
   }
 
-  closeNav(e) {
+  state = {
+    isOpen: false,
+  };
+
+  closeNav = e => {
     e.preventDefault();
 
     this.relaxScroll();
     this.setState({ isOpen: false });
-  }
+  };
 
-  openNav(e) {
+  openNav = e => {
     e.preventDefault();
 
     this.restrictScroll();
     this.setState({ isOpen: true });
-  }
+  };
 
   restrictScroll() {
     document.body.classList.add(Styled.state.isScrollLocked);

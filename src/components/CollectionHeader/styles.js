@@ -1,64 +1,58 @@
-import glamorous from 'glamorous';
-
-import { color, font, grid } from 'lib/theme';
+import styled from 'react-emotion';
+import { color, font } from 'lib/theme';
 
 const bgPositions = {
   coffee: 'center top',
   gear: 'center 75%',
 };
 
-export default {
-  Container: glamorous.div({
-  }),
+export const Description = styled.p`
+  line-height: 1.5;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  max-width: 40em;
+  text-align: center;
+`;
 
-  Description: glamorous.p({
-    lineHeight: 1.5,
-    marginBottom: 0,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: grid,
-    maxWidth: '40em',
-    textAlign: 'center',
-  }),
+export const Heading = styled.h1`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up8};
+  margin-bottom: 0;
+  margin-top: 0;
+  text-align: center;
+`;
 
-  Heading: glamorous.h1({
-    fontFamily: font.kaufmann,
-    fontSize: font.up8,
-    marginBottom: 0,
-    marginTop: 0,
-    textAlign: 'center',
-  }),
+export const Inner = styled.div`
+  align-items: center;
+  background-color: rgb(${color.cadet});
+  background-size: cover;
+  background-image: url('${({ imgSm }) => imgSm}');
+  background-position: ${({ handle }) => (handle ? bgPositions[handle] : 'center center')};
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  max-height: 30em;
+  min-height: 20em;
+  position: relative;
+  padding-top: 2rem;
 
-  Inner: glamorous.div(
-    {
-      alignItems: 'center',
-      backgroundColor: `rgb(${color.cadet})`,
-      backgroundSize: 'cover',
-      display: 'flex',
-      flexDirection: 'column',
-      height: '75vh',
-      maxHeight: '30em',
-      minHeight: '20em',
-      position: 'relative',
-      paddingTop: 2 * grid,
+  &::after {
+    background-image: linear-gradient(rgba(${color.offwhite}, 0), rgba(${color.offwhite}, 1));
+    bottom: 0;
+    content: "";
+    height: 3rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
 
-      '::after': {
-        backgroundImage: `linear-gradient(rgba(${color.offwhite}, 0), rgba(${color.offwhite}, 1))`,
-        bottom: 0,
-        content: '""',
-        height: 3 * grid,
-        left: 0,
-        position: 'absolute',
-        right: 0,
-      },
-    },
-    props => ({
-      backgroundImage: `url('${props.imgSm}')`,
-      backgroundPosition: bgPositions[props.handle] ? bgPositions[props.handle] : 'center center',
+  @media (min-width: 1281px) {
+    background-image: url('${({ imgLg }) => imgLg}');
+  }
 
-      '@media (min-width: 1281px), @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-width: 641px)': {
-        backgroundImage: `url('${props.imgLg}')`,
-      },
-    }),
-  ),
-};
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-width: 641px) {
+    background-image: url('${({ imgLg }) => imgLg}');
+  }
+  `;

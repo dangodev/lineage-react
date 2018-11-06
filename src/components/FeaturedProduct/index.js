@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ProductCard from 'components/ProductCard';
-import Styled from './styles';
+import * as Styled from './styles';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const date = typeof window !== 'undefined' ? new window.Date() : undefined;

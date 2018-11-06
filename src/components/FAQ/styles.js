@@ -1,81 +1,70 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { ifProp } from 'styled-tools';
+import { color, font, transition } from 'lib/theme';
 
-import { color, font, grid, transition } from 'lib/theme';
+export const Answer = styled.div`
+  height: ${ifProp(
+    { isMeasuring: true },
+    'auto',
+    ({ fullHeight, isOpen }) => (isOpen ? fullHeight : 0)
+  )};
+  transition: ${ifProp({ isMeasuring: true }, 'none', `height 200ms ${transition.standard}`)};
+  overflow: hidden;
 
-export default {
-  Answer: glamorous.div(
-    {
-      overflow: 'hidden',
+  @media (min-width: 600px) {
+    padding-left: 37.5%;
+  }
 
-      '@media (min-width: 600px)': {
-        paddingLeft: '37.5%',
-      },
+  & p {
+    margin-bottom: 0;
+    margin-top: 0;
+    max-width: 20em;
 
-      '& p': {
-        marginBottom: 0,
-        marginTop: 0,
-        maxWidth: '20em',
+    & + p {
+      margin-top: 1rem;
+    }
+  }
+`;
 
-        '& + p': {
-          marginTop: grid,
-        },
-      },
-    },
-    props => ({
-      height: props.isMeasuring ? 'auto' : (props.isOpen ? props.fullHeight : 0),
-      transition: props.isMeasuring ? 'none' : `height 200ms ${transition.standard}`,
-    })
-  ),
+export const AnswerInner = styled.div`
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+`;
 
-  AnswerInner: glamorous.div({
-    paddingBottom: grid,
-    paddingTop: 0.5 * grid,
-  }),
+export const Trigger = styled.button`
+  appearance: none;
+  background: none;
+  border: none;
+  box-shadow: 0 1px rgba(${color.black}, 0.5);
+  cursor: pointer;
+  display: block;
+  font-family: ${font.din};
+  font-size: 1em;
+  font-weight: 500;
+  outline: none;
+  padding-bottom: 0.25rem;
+  padding-left: 0;
+  padding-right: 1.5rem;
+  padding-top: 0.25rem;
+  position: relative;
+  text-align: left;
+  text-transform: uppercase;
+  transition: background-color 200ms linear;
+  width: 100%;
 
-  Container: glamorous.div({
-  }),
+  &::after {
+    box-shadow: 2px 2px rgb(${color.black});
+    content: '';
+    height: 0.25rem;
+    position: absolute;
+    right: 0.25rem;
+    top: 50%;
+    transform: ${ifProp({ isOpen: true }, 'rotate(-135deg)', 'translateY(-75%) rotate(45deg)')};
+    transition: transform 200ms ${transition.standard};
+    width: 0.25rem;
+  }
 
-  Trigger: glamorous.button(
-    {
-      appearance: 'none',
-      background: 'none',
-      border: 'none',
-      boxShadow: `0 1px rgba(${color.black}, 0.5)`,
-      cursor: 'pointer',
-      display: 'block',
-      fontFamily: font.din,
-      fontSize: '1em',
-      fontWeight: 500,
-      outline: 'none',
-      paddingBottom: 0.25 * grid,
-      paddingLeft: 0,
-      paddingRight: 1.5 * grid,
-      paddingTop: 0.25 * grid,
-      position: 'relative',
-      textAlign: 'left',
-      textTransform: 'uppercase',
-      transition: 'background-color 200ms',
-      width: '100%',
-
-      '::after': {
-        boxShadow: `2px 2px rgb(${color.black})`,
-        content: '""',
-        height: 0.25 * grid,
-        position: 'absolute',
-        right: 0.25 * grid,
-        top: '50%',
-        transition: `transform 200ms ${transition.standard}`,
-        width: 0.25 * grid,
-      },
-
-      ':hover': {
-        backgroundColor: `rgba(${color.black}, 0.05)`,
-      },
-    },
-    props => ({
-      '::after': {
-        transform: props.isOpen ? 'rotate(-135deg)' : 'translateY(-75%) rotate(45deg)',
-      },
-    }),
-  ),
-};
+  &:hover {
+    background-color: rgba(${color.black}, 0.05);
+  }
+`;

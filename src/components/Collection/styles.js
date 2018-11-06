@@ -1,26 +1,23 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { color, font } from 'lib/theme';
 
-import { color, font, grid } from 'lib/theme';
+export const Container = styled.div`
+  background-color: rgb(${color.offwhite});
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
 
-export default {
-  Container: glamorous.div({
-    backgroundColor: `rgb(${color.offWhite})`,
-    paddingBottom: 3 * grid,
-    paddingLeft: grid,
-    paddingRight: grid,
-    paddingTop: 2 * grid,
+  @media (min-width: 600px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      paddingLeft: 2 * grid,
-      paddingRight: 2 * grid,
-    },
-  }),
-
-  Subheading: glamorous.h3({
-    fontFamily: font.kaufmann,
-    fontSize: font.up4,
-    marginBottom: 0,
-    marginTop: grid,
-    textAlign: 'center',
-  }),
-};
+export const Subheading = styled.h3`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up4};
+  margin-bottom: 0;
+  margin-top: 1rem;
+  text-align: center;
+`;

@@ -1,38 +1,36 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Styled from "./styles";
+import * as Styled from './styles';
 
 const CartItem = ({ lineItem, ...props }) => {
-  if (!lineItem) return false;
+  if (!lineItem) {
+    return null;
+  }
 
   const productType = lineItem.productType.toLowerCase();
-  const featuredImage = lineItem.variant.image
-    ? lineItem.variant.image
-    : lineItem.images[0].src;
+  const featuredImage = lineItem.variant.image ? lineItem.variant.image : lineItem.images[0].src;
 
-  const { color } = lineItem.metafields.c_f || "";
+  const { color } = lineItem.metafields.c_f || '';
 
   const shouldShowVariant =
-    ["default title", "title"].indexOf(lineItem.variant.title.toLowerCase()) ===
-    -1;
+    ['default title', 'title'].indexOf(lineItem.variant.title.toLowerCase()) === -1;
 
-  let subscriptionInterval = "";
-  let subscriptionUnit = "";
+  let subscriptionInterval = '';
+  let subscriptionUnit = '';
 
-  if (productType.indexOf("subscription") >= 0) {
+  if (productType.indexOf('subscription') >= 0) {
     const interval = lineItem.customAttributes.find(
-      attr => attr.key === "shipping_interval_frequency"
+      attr => attr.key === 'shipping_interval_frequency'
     );
-    const unit = lineItem.customAttributes.find(
-      attr => attr.key === "shipping_interval_unit_type"
-    );
+    const unit = lineItem.customAttributes.find(attr => attr.key === 'shipping_interval_unit_type');
     if (interval) subscriptionInterval = interval.value;
     if (unit) subscriptionUnit = unit.value;
   }
 
   const clickHandler = e => {
     e.preventDefault();
+    // eslint-disable-next-line no-alert
     if (confirm(`Remove ${lineItem.title}?`)) {
       props.removeLineItem(lineItem.id);
     }
@@ -46,9 +44,9 @@ const CartItem = ({ lineItem, ...props }) => {
       <Styled.ProductInfo>
         <Styled.Heading>
           {lineItem.title}
-          {productType.indexOf("subscription") >= 0 &&
+          {productType.indexOf('subscription') >= 0 &&
             ` (Every ${subscriptionInterval} ${
-              subscriptionInterval === "1"
+              subscriptionInterval === '1'
                 ? subscriptionUnit.substr(0, subscriptionUnit.length - 1)
                 : subscriptionUnit
             })`}
@@ -56,10 +54,8 @@ const CartItem = ({ lineItem, ...props }) => {
         </Styled.Heading>
         <Styled.ProductType>{lineItem.productType}</Styled.ProductType>
         <Styled.Description>
-          {(productType === "coffee" || productType === "coffee beans") && (
-            <Styled.Notes>
-              {lineItem.tags.map(note => note.value).join(" / ")}
-            </Styled.Notes>
+          {(productType === 'coffee' || productType === 'coffee beans') && (
+            <Styled.Notes>{lineItem.tags.map(note => note.value).join(' / ')}</Styled.Notes>
           )}
         </Styled.Description>
         <Styled.Price>${lineItem.variant.price}</Styled.Price>
@@ -69,23 +65,19 @@ const CartItem = ({ lineItem, ...props }) => {
           defaultValue={lineItem.quantity}
           min="0"
           onChange={e => {
-            if (
-              parseInt(e.target.value, 10) === 0 &&
-              confirm(`Remove ${lineItem.title}?`)
-            ) {
+            // eslint-disable-next-line no-alert
+            if (parseInt(e.target.value, 10) === 0 && confirm(`Remove ${lineItem.title}?`)) {
               props.removeLineItem(lineItem.id);
             } else if (e.target.value) {
               props.updateLineItem({
                 id: lineItem.id,
-                quantity: e.target.value
+                quantity: e.target.value,
               });
             }
           }}
           type="number"
         />
-        {productType === "coffee" || productType === "coffee beans"
-          ? "bags"
-          : "count"}
+        {productType === 'coffee' || productType === 'coffee beans' ? 'bags' : 'count'}
         <Styled.Remove onClick={e => clickHandler(e)}>Remove</Styled.Remove>
       </Styled.QuantityLabel>
     </Styled.Container>
@@ -95,7 +87,7 @@ const CartItem = ({ lineItem, ...props }) => {
 CartItem.propTypes = {
   lineItem: PropTypes.object.isRequired,
   removeLineItem: PropTypes.func.isRequired,
-  updateLineItem: PropTypes.func.isRequired
+  updateLineItem: PropTypes.func.isRequired,
 };
 
 export default CartItem;

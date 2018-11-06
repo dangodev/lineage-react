@@ -1,34 +1,32 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 
-import { font, grid } from 'lib/theme';
+import { font } from 'lib/theme';
 
-export default {
-  BrewHeading: glamorous.h1({
-    fontFamily: font.kaufmann,
-    fontSize: font.up6,
-    marginBottom: 0,
-    marginTop: 2 * grid,
-    textAlign: 'center',
-  }),
+export const BrewHeading = styled.h1`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up6};
+  margin-bottom: 0;
+  margin-top: 2rem;
+  text-align: center;
+`;
 
-  Grid: glamorous.div({
-    display: 'grid',
-    gridColumnGap: grid,
-    gridRowGap: 1.5 * grid,
-    paddingBottom: 2 * grid,
-    paddingLeft: grid,
-    paddingRight: grid,
-    paddingTop: 2 * grid,
+export const Grid = styled.div`
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1.5rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
 
-    '@media (min-width: 600px)': {
-      gridTemplateColumns: '1fr 1fr',
-      paddingBottom: 3 * grid,
-      paddingLeft: 2 * grid,
-      paddingRight: 2 * grid,
-    },
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 
-    '@media (min-width: 1080px)': {
-      gridTemplateColumns: '1fr 1fr 1fr',
-    },
-  }),
-};
+  @media (min-width: 1080px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+`;

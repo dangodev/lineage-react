@@ -1,56 +1,52 @@
-import glamorous from 'glamorous';
-
-import { color, font, grid } from 'lib/theme';
-
+import styled from 'react-emotion';
+import { color, font } from 'lib/theme';
 import speckle from 'assets/speckle.png';
 
-export default {
-  Container: glamorous.div({
-    backgroundColor: `rgb(${color.green})`,
-    backgroundImage: `linear-gradient(rgb(250, 196, 170), rgb(255, 182, 170)), url(${speckle})`,
-    backgroundPosition: '0 0, 0 0',
-    backgroundRepeat: 'repeat-x, repeat',
-    backgroundSize: `100% ${4 * grid}px, 400px auto`,
-    paddingBottom: 2 * grid,
-    paddingTop: grid,
-  }),
+export const Container = styled.div`
+  background-color: rgb(${color.green});
+  background-image: linear-gradient(rgb(250, 196, 170), rgb(255, 182, 170)), url(${speckle});
+  background-position: 0 0, 0 0;
+  background-repeat: repeat-x, repeat;
+  background-size: 100% 4rem, 400px auto;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+`;
 
-  Content: glamorous.div({
-    backgroundColor: color.white,
-    gridColumnEnd: 11,
-    gridColumnStart: 3,
+export const Content = styled.div`
+  background-color: ${color.white};
+  grid-column-end: 11;
+  grid-column-start: 3;
 
-    '@media (min-width: 600px)': {
-      gridColumnEnd: 10,
-      gridColumnStart: 4,
-    },
-  }),
+  @media (min-width: 600px) {
+    grid-column-end: 10;
+    grid-column-start: 4;
+  }
+`;
 
-  Grid: glamorous.div({
-    alignItems: 'center',
-    display: 'grid',
-    gridColumnGap: 0.5 * grid,
-    gridTemplateColumns: 'repeat(12, 1fr)',
-  }),
+export const Grid = styled.div`
+  align-items: center;
+  display: grid;
+  grid-column-gap: 0.5rem;
+  grid-template-columns: repeat(12, 1fr);
+`;
 
-  Heading: glamorous.h1({
-    fontFamily: font.kaufmann,
-    fontSize: font.up3,
-    lineHeight: 1,
-    marginTop: 0,
-    marginBottom: grid,
-    textAlign: 'center',
+export const Heading = styled.h1`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up3};
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
 
-    '@media (min-width: 600px)': {
-      fontSize: font.up5,
-    },
+  @media (min-width: 600px) {
+    font-size: ${font.up5};
+  }
 
-    ' & small': {
-      display: 'block',
-      fontFamily: font.din,
-      fontSize: font.down5,
-      fontWeight: 500,
-      textTransform: 'uppercase',
-    },
-  }),
-};
+  & small {
+    display: block;
+    font-family: ${font.din};
+    font-size: ${font.down5};
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+`;

@@ -1,132 +1,125 @@
-import glamorous from 'glamorous';
-
-import { color, font, grid } from 'lib/theme';
-
+import styled from 'react-emotion';
+import { color, font } from 'lib/theme';
 import speckle from 'assets/speckle.png';
 
-export default {
-  Container: glamorous.div({
-    display: 'flex',
-    position: 'relative',
+export const Container = styled.div`
+  display: flex;
+  position: relative;
 
-    '& + *': {
-      marginTop: grid,
-    },
-  }),
+  & + * {
+    margin-top: 1rem;
+  }
+`;
 
-  Description: glamorous.div({
-    display: 'block',
-    fontSize: font.down2,
-    fontWeight: 400,
-    marginTop: 0.25 * grid,
-  }),
+export const Description = styled.div`
+  display: block;
+  font-size: ${font.down2};
+  font-weight: 400;
+  margin-top: 0.25rem;
+`;
 
-  Heading: glamorous.h3({
-    fontSize: '1em',
-    fontWeight: 700,
-    lineHeight: 1.2,
-    marginBottom: 0,
-    marginTop: 0,
-    textTransform: 'uppercase',
-  }),
+export const Heading = styled.h3`
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-transform: uppercase;
+`;
 
-  Notes: glamorous.div({
-    lineHeight: 1.5,
-    textTransform: 'capitalize',
-  }),
+export const Notes = styled.div`
+  line-height: 1.5;
+  text-transform: capitalize;
+`;
 
-  Price: glamorous.div({
-    fontFamily: font.kaufmann,
-    fontSize: font.up1,
-    marginTop: 0.25 * grid,
-  }),
+export const Price = styled.div`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up1};
+  margin-top: 0.25rem;
+`;
 
-  ProductInfo: glamorous.div({
-    flexGrow: 1,
-    paddingLeft: 0.625 * grid,
-    paddingRight: 0.625 * grid,
-    width: `calc(100% - ${4 * grid})`,
-  }),
+export const ProductInfo = styled.div`
+  flex-grow: 1;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: calc(100% - 4rem);
+`;
 
-  ProductType: glamorous.div({
-    fontSize: font.down1,
-  }),
+export const ProductType = styled.div`
+  font-size: ${font.down1};
+`;
 
+export const Quantity = styled.input`
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgb(${color.blue});
+  cursor: pointer;
+  font-size: ${font.up3};
+  font-weight: 500;
+  height: 1rem;
+  letter-spacing: 0;
+  margin-bottom: 0.25rem;
+  outline: none;
+  padding: 0;
+  text-align: center;
+  transition: background-color 200ms linear;
+  width: 1rem;
 
-  Quantity: glamorous.input({
-    border: 'none',
-    borderRadius: '50%',
-    boxShadow: `0 0 0 2px rgb(${color.blue})`,
-    cursor: 'pointer',
-    fontSize: font.up3,
-    fontWeight: 500,
-    height: grid,
-    letterSpacing: 0,
-    marginBottom: 0.25 * grid,
-    outline: 'none',
-    padding: 0,
-    textAlign: 'center',
-    transition: 'background-color 200ms',
-    width: grid,
-    WebkitAppearance: 'none',
-    MozAppearance: 'textfield',
+  &:hover {
+    background-color: rgba(${color.blue}, 0.2);
+  }
 
-    ':hover': {
-      backgroundColor: `rgba(${color.blue}, 0.2)`,
-    },
+  &::-webkit-inner-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+`;
 
-    '::-webkit-inner-spin-button, ::-webkit-inner-spin-button': {
-      appearance: 'none',
-    },
-  }),
+export const QuantityLabel = styled.div`
+  align-items: center;
+  color: rgb(${color.black});
+  display: flex;
+  flex-direction: column;
+  font-size: ${font.down3};
+  letter-spacing: 0.1em;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  text-transform: uppercase;
+  width: 2rem;
+`;
 
-  QuantityLabel: glamorous.div({
-    alignItems: 'center',
-    color: `rgb(${color.black})`,
-    display: 'flex',
-    flexDirection: 'column',
-    fontSize: font.down3,
-    letterSpacing: '0.1em',
-    paddingRight: grid,
-    paddingTop: 0.5 * grid,
-    textTransform: 'uppercase',
-    width: 2 * grid,
-  }),
+export const Remove = styled.button`
+  appearance: none;
+  background: none;
+  border: none;
+  color: rgb(${color.red});
+  cursor: pointer;
+  font-size: ${font.down2};
+  font-weight: 400;
+  margin-top: 0.25rem;
+  outline: none;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+`;
 
-  Remove: glamorous.button({
-    appearance: 'none',
-    background: 'none',
-    border: 'none',
-    color: `rgb(${color.red})`,
-    cursor: 'pointer',
-    fontSize: font.down2,
-    fontWeight: 400,
-    marginTop: 0.25 * grid,
-    outline: 'none',
-    padding: 0,
-    textAlign: 'center',
-    textTransform: 'uppercase',
-  }),
+export const Thumb = styled.img`
+  border-radius: 0.25rem;
+  box-shadow: 0.25rem 0.25rem 1rem rgba(${color.black}, 0.1);
+  display: block;
+  height: auto;
+  overflow: hidden;
+  transform: translate(-0.75rem, -0.625rem);
+  width: 2rem;
+`;
 
-  Thumb: glamorous.img({
-    borderRadius: 0.25 * grid,
-    boxShadow: `${0.25 * grid}px ${0.25 * grid}px ${grid}px rgba(${color.black}, 0.1)`,
-    display: 'block',
-    height: 'auto',
-    overflow: 'hidden',
-    transform: `translate(-${0.75 * grid}px, -${0.625 * grid}px)`,
-    width: 2 * grid,
-  }),
-
-  ThumbContainer: glamorous.div(
-    {
-      backgroundImage: `url(${speckle})`,
-      backgroundSize: '400px auto',
-      padding: 0.25 * grid,
-      width: 2 * grid,
-    },
-    props => ({
-      backgroundColor: `rgb(${color[props.color] ? color[props.color] : color.pink})`,
-    }),
-  ),
-};
+export const ThumbContainer = styled.div`
+  background-color: rgb(${props => color[props.color] || color.pink});
+  background-image: url(${speckle});
+  background-size: 400px auto;
+  padding: 0.25rem;
+  width: 2rem;
+`;

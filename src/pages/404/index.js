@@ -1,5 +1,5 @@
 import React from 'react';
-import Styled from './styles';
+import * as Styled from './styles';
 
 export default () => (
   <Styled.Container>
