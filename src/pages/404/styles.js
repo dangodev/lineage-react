@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 import { color, font } from 'lib/theme';
 
 export const Body = styled.p`
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 0;
 
   & a {
@@ -18,15 +18,15 @@ export const Container = styled.div`
   background-size: cover;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 1rem);
-  padding-left: 1rem;
-  padding-right: 1rem;
+  height: calc(100vh - 2rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
   justify-content: center;
   width: 100vw;
 
   @media (min-width: 600px) {
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
   }
 `;
 

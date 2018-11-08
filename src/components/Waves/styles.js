@@ -11,18 +11,18 @@ export const Container = styled.div`
   top: 50%;
   transform: translateY(-50%);
   z-index: ${layer.base};
-  height: ${({ waves }) => waves * 11};
+  height: ${({ waves }) => waves * 11}px;
   width: ${({ width }) => width};
 `;
 
 const ebb = keyframes`
     50% {
-      transform: translateX(2rem)
+      transform: translateX(4rem)
     }
   `;
 
 export const Inner = styled.div`
-  animation-duration: '16s';
+  animation-duration: 16s;
   animation-name: ${ebb};
   animation-iteration-count: 50;
   animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
@@ -34,5 +34,5 @@ export const Inner = styled.div`
   right: 0;
   position: absolute;
   top: 0;
-  width: calc(100% + 2rem);
+  width: calc(100% + 4rem);
 `;

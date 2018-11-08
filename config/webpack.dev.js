@@ -11,6 +11,9 @@ const mockData = require('../src/data/mockData');
 
 module.exports = merge.smart(common, {
   mode: 'development',
+  entry: {
+    styles: ['./assets/styles.css', './assets/fonts/fonts.css'],
+  },
   serve: {
     host: process.env.MANIFOLD_DASHBOARD_URL || '0.0.0.0',
     port: 8080,
@@ -40,9 +43,6 @@ module.exports = merge.smart(common, {
       template: '../src/index.ejs',
       title: 'But First, ☕!',
       appMountId: 'app-root',
-      files: {
-        css: ['./assets/styles.css', './assets/fonts/fonts.css'],
-      },
       mockData,
     }),
     new ExtractTextPlugin('[name].css'),

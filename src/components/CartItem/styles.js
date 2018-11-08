@@ -7,7 +7,7 @@ export const Container = styled.div`
   position: relative;
 
   & + * {
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 `;
 
@@ -15,7 +15,7 @@ export const Description = styled.div`
   display: block;
   font-size: ${font.down2};
   font-weight: 400;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 `;
 
 export const Heading = styled.h3`
@@ -35,14 +35,14 @@ export const Notes = styled.div`
 export const Price = styled.div`
   font-family: ${font.kaufmann};
   font-size: ${font.up1};
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 `;
 
 export const ProductInfo = styled.div`
   flex-grow: 1;
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
-  width: calc(100% - 4rem);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  width: calc(100% - 8rem);
 `;
 
 export const ProductType = styled.div`
@@ -59,14 +59,14 @@ export const Quantity = styled.input`
   cursor: pointer;
   font-size: ${font.up3};
   font-weight: 500;
-  height: 1rem;
+  height: 2rem;
   letter-spacing: 0;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   outline: none;
   padding: 0;
   text-align: center;
   transition: background-color 200ms linear;
-  width: 1rem;
+  width: 2rem;
 
   &:hover {
     background-color: rgba(${color.blue}, 0.2);
@@ -85,10 +85,10 @@ export const QuantityLabel = styled.div`
   flex-direction: column;
   font-size: ${font.down3};
   letter-spacing: 0.1em;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
   text-transform: uppercase;
-  width: 2rem;
+  width: 4rem;
 `;
 
 export const Remove = styled.button`
@@ -99,7 +99,7 @@ export const Remove = styled.button`
   cursor: pointer;
   font-size: ${font.down2};
   font-weight: 400;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   outline: none;
   padding: 0;
   text-align: center;
@@ -107,19 +107,19 @@ export const Remove = styled.button`
 `;
 
 export const Thumb = styled.img`
-  border-radius: 0.25rem;
-  box-shadow: 0.25rem 0.25rem 1rem rgba(${color.black}, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(${color.black}, 0.1);
   display: block;
   height: auto;
   overflow: hidden;
-  transform: translate(-0.75rem, -0.625rem);
-  width: 2rem;
+  transform: translate(-1.5rem, -1.25rem);
+  width: 4rem;
 `;
 
 export const ThumbContainer = styled.div`
   background-color: rgb(${props => color[props.color] || color.pink});
   background-image: url(${speckle});
   background-size: 400px auto;
-  padding: 0.25rem;
-  width: 2rem;
+  padding: 0.5rem;
+  width: 4rem;
 `;

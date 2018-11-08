@@ -14,45 +14,45 @@ const textColors = {
 
 export const Container = styled.div`
   background-color: rgb(${color.offwhite});
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 `;
 
 export const ProductInfo = styled.div`
   flex-grow: 1;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
   padding-left: 2.75rem;
 `;
 
 export const Heading = styled.h1`
   font-size: 1em;
   font-weight: 700;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   margin-bottom: 0;
   text-transform: uppercase;
 `;
 
 export const Grid = styled.div`
   display: flex;
-  padding-right: 1rem;
+  padding-right: 2rem;
   position: relative;
 `;
 
 export const Image = styled.img`
-  border-radius: 0.25rem;
-  box-shadow: 0.25rem 0.25rem 1rem rgba(${color.black}, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(${color.black}, 0.1);
   height: auto;
-  left: -0.5rem;
+  left: -1rem;
   overflow: hidden;
   position: absolute;
-  top: -0.5 rem;
+  top: -0.5rem;
   width: 2.25rem;
 `;
 
 export const Price = styled.div`
   font-family: ${font.kaufmann};
   font-size: ${font.up1};
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 `;
 
 export const ViewProduct = styled(Link)`
@@ -78,9 +78,9 @@ export const Label = styled.div`
   background-size: 400px auto;
   font-size: ${font.down2};
   font-weight: 700;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.5rem;
   padding-left: 2.75rem;
-  padding-top: 0.25rem;
+  padding-top: 0.5rem;
   text-transform: uppercase;
 `;
 

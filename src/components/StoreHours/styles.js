@@ -9,8 +9,8 @@ const colorState = {
 
 export const Container = styled.div`
   font-size: ${font.down1};
-  padding-bottom: 2rem;
-  padding-top: 1rem;
+  padding-bottom: 4rem;
+  padding-top: 2rem;
 
   @media (min-width: 600px) {
     font-size: 1em;
@@ -26,11 +26,11 @@ export const Days = styled.dt`
 export const Grid = styled.div`
   box-sizing: border-box;
   display: grid;
-  grid-column-gap: 0.5rem;
+  grid-column-gap: 1rem;
   grid-template-columns: repeat(12, 1fr);
 
   @media (min-width: 600px) {
-    grid-column-gap: 1.5rem;
+    grid-column-gap: 3rem;
   }
 `;
 
@@ -51,7 +51,7 @@ export const Hours = styled.dl`
 
 export const Location = styled.div`
   grid-column: 2 / span 5;
-  margin-top: 1rem;
+  margin-top: 2rem;
   max-width: 20em;
 
   &:nth-of-type(even) {
@@ -73,8 +73,8 @@ export const LocationAddress = styled.a`
   color: rgb(${color.blue});
   display: block;
   font-size: ${font.down1};
-  margin-top: 0.125rem;
-  text-decoration: 'none';
+  margin-top: 0.25rem;
+  text-decoration: none;
 `;
 
 export const LocationName = styled.h2`
@@ -98,5 +98,5 @@ export const Status = styled.h3`
   font-size: ${font.up3};
   line-height: 1;
   margin-bottom: 0;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 `;

@@ -3,23 +3,25 @@ import React from 'react';
 
 import * as Styled from './styles';
 
-const Button = (props) => {
-  if (props.to) {
-    return <Styled.LinkButton {...props}>{props.children}</Styled.LinkButton>;
-  } else if (props.href) {
-    return <Styled.AnchorButton {...props}>{props.children}</Styled.AnchorButton>;
+const Button = ({ color = 'blueT', children, disabled = false, href, to, ...rest }) => {
+  if (to) {
+    return (
+      <Styled.LinkButton {...rest} color={color} disabled={disabled} to={to}>
+        {children}
+      </Styled.LinkButton>
+    );
+  } else if (href) {
+    return (
+      <Styled.AnchorButton {...rest} color={color} disabled={disabled} href={href}>
+        {children}
+      </Styled.AnchorButton>
+    );
   }
-  return <Styled.ActionButton {...props}>{props.children}</Styled.ActionButton>;
-};
-
-Button.defaultProps = {
-  children: undefined,
-  color: 'blueT',
-  disabled: false,
-  href: undefined,
-  onClick: undefined,
-  small: undefined,
-  to: undefined,
+  return (
+    <Styled.ActionButton {...rest} color={color} disabled={disabled}>
+      {children}
+    </Styled.ActionButton>
+  );
 };
 
 Button.propTypes = {

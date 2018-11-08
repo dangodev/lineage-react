@@ -2,8 +2,8 @@ import styled from 'react-emotion';
 
 export const Grid = styled.div`
   display: grid;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
 
   @media (min-width: 920px) {
     grid-template-columns: 1fr 1fr;
@@ -11,7 +11,7 @@ export const Grid = styled.div`
 `;
 
 export const Zero = styled.div`
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
   text-align: center;
 `;

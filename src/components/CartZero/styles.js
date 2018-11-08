@@ -7,21 +7,21 @@ export const Actions = styled.menu`
   display: flex;
   justify-content: center;
   margin-bottom: 0;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   padding: 0;
 `;
 
 export const Container = styled.div`
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   box-shadow: 0 0 0 1px rgba(${color.gray}, 0.25);
   color: rgb(${color.gray});
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
   text-align: center;
   text-transform: uppercase;
 `;
@@ -36,7 +36,7 @@ export const Subheading = styled.small`
   display: block;
   font-size: ${font.down2};
   font-weight: 400;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   text-transform: none;
 `;
 

@@ -21,14 +21,14 @@ export const Answer = styled.div`
     max-width: 20em;
 
     & + p {
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
   }
 `;
 
 export const AnswerInner = styled.div`
-  padding-bottom: 1rem;
-  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
 `;
 
 export const Trigger = styled.button`
@@ -42,10 +42,10 @@ export const Trigger = styled.button`
   font-size: 1em;
   font-weight: 500;
   outline: none;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.5rem;
   padding-left: 0;
-  padding-right: 1.5rem;
-  padding-top: 0.25rem;
+  padding-right: 3rem;
+  padding-top: 0.5rem;
   position: relative;
   text-align: left;
   text-transform: uppercase;
@@ -55,13 +55,13 @@ export const Trigger = styled.button`
   &::after {
     box-shadow: 2px 2px rgb(${color.black});
     content: '';
-    height: 0.25rem;
+    height: 0.5rem;
     position: absolute;
-    right: 0.25rem;
+    right: 0.5rem;
     top: 50%;
     transform: ${ifProp({ isOpen: true }, 'rotate(-135deg)', 'translateY(-75%) rotate(45deg)')};
     transition: transform 200ms ${transition.standard};
-    width: 0.25rem;
+    width: 0.5rem;
   }
 
   &:hover {

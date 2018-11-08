@@ -11,7 +11,7 @@ export const Description = styled.p`
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1rem;
+  margin-top: 2rem;
   max-width: 40em;
   text-align: center;
 `;
@@ -36,13 +36,13 @@ export const Inner = styled.div`
   max-height: 30em;
   min-height: 20em;
   position: relative;
-  padding-top: 2rem;
+  padding-top: 4rem;
 
   &::after {
     background-image: linear-gradient(rgba(${color.offwhite}, 0), rgba(${color.offwhite}, 1));
     bottom: 0;
     content: "";
-    height: 3rem;
+    height: 6rem;
     left: 0;
     position: absolute;
     right: 0;

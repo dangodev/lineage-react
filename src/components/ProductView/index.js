@@ -49,7 +49,7 @@ class ProductView extends React.Component {
       quantity: this.state.quantity,
     };
 
-    if (this.shouldShowSubscriptions()) {
+    if (this.shouldShowSubscriptions) {
       lineItem.customAttributes = [
         {
           key: 'shipping_interval_frequency',
@@ -208,7 +208,7 @@ class ProductView extends React.Component {
               <Styled.Info>
                 <Styled.CoreInfo>
                   <Styled.Heading>{product.title}</Styled.Heading>
-                  {this.isCoffee() && (
+                  {this.isCoffee && (
                     <div>
                       <Styled.Subheading>Notes</Styled.Subheading>
                       <Styled.Notes>{product.tags.map(note => note.value).join(', ')}</Styled.Notes>

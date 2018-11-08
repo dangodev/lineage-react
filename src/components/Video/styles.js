@@ -49,11 +49,11 @@ export const BigLogo = styled.img`
   top: 50%;
   opacity: 0;
   transform: translate(-50%, -25%);
-  width: 5rem;
+  width: 10rem;
   z-index: ${layer.base + 1};
 
   @media (min-width: 600px) {
-    width: 8rem;
+    width: 16rem;
   }
 `;
 

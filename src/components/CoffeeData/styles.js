@@ -13,12 +13,12 @@ export const Inner = styled.dl`
 export const Heading = styled.h3`
   font-size: ${font.down1};
   letter-spacing: 0.075em;
-  margin-bottom: 0.375rem;
+  margin-bottom: 0.75rem;
   margin-top: 0;
   text-transform: uppercase;
 
   @media (min-width: 600px) {
-    margin-top: 1.5rem;
+    margin-top: 3rem;
   }
 `;
 
@@ -29,7 +29,7 @@ export const Key = styled.dt`
   width: 50%;
 
   & ~ dt {
-    padding-top: 0.375rem;
+    padding-top: 0.75rem;
   }
 `;
 
@@ -38,7 +38,7 @@ export const Metafields = styled.div`
   flex: 2;
   font-size: ${font.down1};
   margin: 0;
-  padding: 0.75rem;
+  padding: 1.5rem;
 `;
 
 export const Value = styled.dd`
@@ -49,6 +49,6 @@ export const Value = styled.dd`
   margin: 0;
 
   & ~ dd {
-    padding-top: 0.375rem;
+    padding-top: 0.75rem;
   }
 `;

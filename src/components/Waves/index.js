@@ -3,15 +3,11 @@ import PropTypes from 'prop-types';
 
 import * as Styled from './styles';
 
-const Waves = props => (
-  <Styled.Container waves={props.waves} width={props.width}>
+const Waves = ({ waves = 3, width }) => (
+  <Styled.Container waves={waves} width={width}>
     <Styled.Inner />
   </Styled.Container>
 );
-
-Waves.defaultProps = {
-  waves: 3,
-};
 
 Waves.propTypes = {
   waves: PropTypes.number,

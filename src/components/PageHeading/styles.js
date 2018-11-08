@@ -13,10 +13,10 @@ export const Container = styled.div`
   justify-content: center;
   max-height: 56.25vw;
   min-height: 37.5vh;
-  padding-bottom: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 2rem;
+  padding-bottom: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 4rem;
 
   @media (min-width: 600px) {
     min-height: 62.5vh;
@@ -33,7 +33,7 @@ export const Heading = styled.h1`
 export const Subheading = styled.h3`
   font-size: ${font.up1};
   font-weight: 500;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   margin-top: 0;
   text-align: center;
   text-transform: uppercase;

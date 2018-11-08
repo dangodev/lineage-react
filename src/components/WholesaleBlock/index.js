@@ -15,7 +15,7 @@ const WholesaleBlock = () => (
       </Styled.Body>
     </Styled.Content>
     <Styled.Actions>
-      <Waves width="3rem" />
+      <Waves width="6rem" />
       <Button color="white" to="/pages/wholesale">
         Learn More
       </Button>

@@ -58,19 +58,39 @@ class Nav extends React.Component {
         </Styled.Logo>
         <Styled.LinkList isOpen={this.state.isOpen}>
           <Styled.MobileClose onClick={e => this.closeNav(e)} aria-label="Close Mobile Menu" />
-          <Styled.Link to="/collections/coffee" isOpen={this.state.isOpen} delay={0}>
+          <Styled.Link
+            to="/collections/coffee"
+            isOpen={this.state.isOpen}
+            style={{ transitionDelay: '0ms' }}
+          >
             Coffee
           </Styled.Link>
-          <Styled.Link to="/collections/gear" isOpen={this.state.isOpen} delay={50}>
+          <Styled.Link
+            to="/collections/gear"
+            isOpen={this.state.isOpen}
+            style={{ transitionDelay: '50ms' }}
+          >
             Gear
           </Styled.Link>
-          <Styled.MobileLink to="/pages/wholesale" isOpen={this.state.isOpen} delay={100}>
+          <Styled.MobileLink
+            to="/pages/wholesale"
+            isOpen={this.state.isOpen}
+            style={{ transitionDelay: '100ms' }}
+          >
             Wholesale
           </Styled.MobileLink>
-          <Styled.Link to="/pages/learn" isOpen={this.state.isOpen} delay={150}>
+          <Styled.Link
+            to="/pages/learn"
+            isOpen={this.state.isOpen}
+            style={{ transitionDelay: '150ms' }}
+          >
             Learn
           </Styled.Link>
-          <Styled.Link to="/pages/about" isOpen={this.state.isOpen} delay={200}>
+          <Styled.Link
+            to="/pages/about"
+            isOpen={this.state.isOpen}
+            style={{ transitionDelay: '200ms' }}
+          >
             About
           </Styled.Link>
         </Styled.LinkList>

@@ -15,7 +15,7 @@ const LineageAcademyBlock = () => (
       </Styled.Body>
     </Styled.Content>
     <Styled.Actions>
-      <Waves width="3rem" />
+      <Waves width="6rem" />
       <Button
         color="blue"
         href="https://medium.com/lineage-academy/"

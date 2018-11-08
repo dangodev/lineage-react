@@ -6,9 +6,9 @@ export const Actions = styled.menu`
   margin-bottom: 0;
   margin-left: 0;
   margin-right: 0;
-  margin-top: 2rem;
+  margin-top: 4rem;
   padding-bottom: 0;
-  padding-left: 2rem;
+  padding-left: 4rem;
   padding-right: 0;
   padding-top: 0;
   position: relative;
@@ -17,28 +17,28 @@ export const Actions = styled.menu`
 export const Body = styled.p`
   font-size: ${font.up1};
   line-height: 1.8;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 `;
 
 export const Container = styled.div`
   background-color: rgb(${color.blue});
   padding-top: 1.25rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 
   @media (min-width: 600px) {
-    padding-top: 3rem;
-    padding-bottom: 2rem;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
   }
 `;
 
 export const Content = styled.div`
   max-width: 35em;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
   @media (min-width: 600px) {
-    padding-left: 2rem;
+    padding-left: 4rem;
     padding-right: 0;
     width: 50%;
   }
