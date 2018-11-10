@@ -36,6 +36,39 @@ const Wholesale = () => (
     </Styled.Grid>
     <Styled.FAQHeading>Additional Info</Styled.FAQHeading>
     <WholesaleFAQ />
+    <Styled.Newsletter>
+      <Styled.FAQHeading>Wholesale Deals</Styled.FAQHeading>
+      <p>
+        Regularly we send out our weekly specials and offers to our wholesale buyers.
+        <br />
+        Sign up for our regular email list to see what’s new! Unsubscribe any time. No spam.
+        Promise.
+      </p>
+      <form
+        action="https://lineageroasting.us14.list-manage.com/subscribe/post?u=5c1c7606596cf9a2e17a43836&id=174c40033a"
+        method="post"
+        id="mc-embedded-subscribe-form"
+        name="mc-embedded-subscribe-form"
+        target="_blank"
+        noValidate
+      >
+        <fieldset>
+          <label htmlFor="mce-EMAIL">Email Address</label>
+          <input type="email" name="EMAIL" id="mce-EMAIL" />
+        </fieldset>
+
+        <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+          <input type="text" name="b_5c1c7606596cf9a2e17a43836_174c40033a" tabIndex="-1" value="" />
+        </div>
+        <input
+          type="submit"
+          value="Subscribe"
+          name="subscribe"
+          id="mc-embedded-subscribe"
+          className="button"
+        />
+      </form>
+    </Styled.Newsletter>
     <Styled.CTA>
       <Styled.CTAHeading>Ready to get started?</Styled.CTAHeading>
       <p>
