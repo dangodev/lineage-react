@@ -113,7 +113,7 @@ export const Thumb = styled.img`
   height: auto;
   overflow: hidden;
   transform: translate(-1.5rem, -1.25rem);
-  width: 4rem;
+  width: 100%;
 `;
 
 export const ThumbContainer = styled.div`
@@ -121,5 +121,5 @@ export const ThumbContainer = styled.div`
   background-image: url(${speckle});
   background-size: 400px auto;
   padding: 0.5rem;
-  width: 4rem;
+  width: 8rem;
 `;

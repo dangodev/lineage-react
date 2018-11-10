@@ -9,7 +9,9 @@ const CartItem = ({ lineItem, ...props }) => {
   }
 
   const productType = lineItem.productType.toLowerCase();
-  const featuredImage = lineItem.variant.image ? lineItem.variant.image : lineItem.images[0].src;
+  const featuredImage = lineItem.variant.image
+    ? lineItem.variant.image.src
+    : lineItem.images[0].src;
 
   const { color } = lineItem.metafields.c_f || '';
 
