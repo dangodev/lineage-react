@@ -253,7 +253,7 @@ class ProductView extends React.Component {
                   <div>
                     <Styled.Subheading>Ship Every:</Styled.Subheading>
                     <Styled.OptionList>
-                      {this.getSubscriptionIntervals().map(interval => (
+                      {this.subscriptionIntervals.map(interval => (
                         <Styled.Option key={`week-${interval}`}>
                           <input
                             type="radio"
