@@ -1,4 +1,4 @@
-import { Link as RouterLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { css } from 'emotion';
 import styled from 'react-emotion';
 import { ifProp } from 'styled-tools';
@@ -9,7 +9,7 @@ const breakpoint = {
   sm: '580px',
 };
 
-export const Link = styled(RouterLink)`
+export const Link = styled(NavLink)`
   align-items: center;
   color: rgb(${color.black});
   display: flex;
@@ -40,19 +40,24 @@ export const Link = styled(RouterLink)`
       border-radius: 50%;
       bottom: 0;
       content: '';
-      height: 0.5rem;
+      height: 0.375rem;
       left: 50%;
-      opacity: ${ifProp({ isActivte: true }, 1, 0)};
+      opacity: 0;
       pointer-events: none;
       position: absolute;
-      transform: translate(-50%, ${ifProp({ isActive: true }, 0, '100%')});
+      transform: translate(-50%, 100%);
       transition: opacity 200ms;
-      width: 0.5rem;
+      width: 0.375rem;
     }
+  }
+
+  &.active::after {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 `;
 
-export const CartLink = styled(RouterLink)`
+export const CartLink = styled(NavLink)`
   align-items: center;
   background-color: ${ifProp(
     { empty: true },
