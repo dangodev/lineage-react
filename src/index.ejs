@@ -55,7 +55,7 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || [] %>
     <% if (process.env.NODE_ENV === 'production') { /* Shopify template code (updates on page
     refresh) */ %>
     <script type="text/javascript">
-      window.shopifyData = [<% for (collection of ['coffee', 'frontpage', 'gear', 'cart', 'wholesale', 'subscriptions']) { %> {% for product in collections.<%= collection %>.products %} { "id": { { product.id | json } }, "handle": { { product.handle | json } }, "title": { { product.title | json } }, "variants": [{% for variant in product.variants %} { "id": { { variant.id | json } }, "title": { { variant.title | json } } }, {% endfor %}], "metafields": { "c_f": { { product.metafields.c_f | json } }, "subscriptions": { { product.metafields.subscriptions | json } } } }, {% endfor %}<% } %>];
+      window.shopifyData = [<% for (collection of ['coffee', 'frontpage', 'gear', 'cart', 'wholesale', 'subscriptions']) { %> {% for product in collections.<%= collection %>.products %} { "id": {{ product.id | json }}, "handle": {{ product.handle | json }}, "title": {{ product.title | json }}, "variants": [{% for variant in product.variants %} { "id": {{ variant.id | json }}, "title": {{ variant.title | json }} }, {% endfor %}], "metafields": { "c_f": {{ product.metafields.c_f | json }}, "subscriptions": {{ product.metafields.subscriptions | json }} } }, {% endfor %}<% } %>];
     </script>
     {{ content_for_layout }} <% } else { %>
     <script type="text/javascript">

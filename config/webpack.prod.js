@@ -34,7 +34,6 @@ module.exports = merge.smart(common, {
       minify: {
         collapseWhitespace: true,
         minifyCSS: true,
-        minifyJS: true,
       },
     }),
     new HtmlWebpackPlugin({
