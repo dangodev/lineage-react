@@ -13,7 +13,7 @@ const locations = [
     name: 'Mills/50',
     address: '1011 E Colonial Dr',
     opening: 20171202,
-    militaryHours: [[7, 18], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19]],
+    militaryHours: [[7, 19], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19]],
   },
 ];
 
