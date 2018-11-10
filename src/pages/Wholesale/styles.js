@@ -88,6 +88,72 @@ export const Grid = styled.div`
   }
 `;
 
+export const Newsletter = styled.section`
+  padding-bottom: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 5rem;
+  text-align: center;
+
+  & form {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+
+  & fieldset {
+    border: none;
+    margin: 0;
+    max-width: calc(100vw - 4rem);
+    padding: 0;
+    text-align: left;
+    width: 18rem;
+  }
+
+  & [type='email'] {
+    align-items: center;
+    border: 1px solid rgb(${color.black});
+    display: flex;
+    font-family: ${font.din};
+    font-size: ${font.up1};
+    height: 2.5rem;
+    line-height: 1;
+    margin-top: 0.375rem;
+    padding-bottom: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0;
+    width: 100%;
+  }
+
+  & [type='submit'] {
+    align-items: center;
+    background-color: rgb(${color.black});
+    border: 1px solid rgb(${color.black});
+    color: rgb(${color.white});
+    display: flex;
+    font-size: ${font.down1};
+    font-weight: 500;
+    height: 2.5rem;
+    justify-content: center;
+    letter-spacing: 0.0625em;
+    padding: 0;
+    text-transform: uppercase;
+    width: 7rem;
+  }
+
+  & label {
+    color: rgb(${color.gray});
+    display: block;
+    font-size: ${font.down2};
+    font-weight: 700;
+    letter-spacing: 0.0625em;
+    text-transform: uppercase;
+  }
+`;
+
 export const Photo = styled.figure`
   align-items: center;
   display: flex;
