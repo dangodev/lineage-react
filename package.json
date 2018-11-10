@@ -32,6 +32,7 @@
     "name-all-modules-plugin": "^1.0.1",
     "offline-plugin": "^4.8.4",
     "prop-types": "^15.6.2",
+    "query-string": "^6.2.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-emotion": "^9.2.12",
@@ -43,7 +44,6 @@
     "styled-tools": "^1.5.2",
     "stylelint": "^9.7.1",
     "url-loader": "^0.6.2",
-    "url-parse": "^1.4.4",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   },
