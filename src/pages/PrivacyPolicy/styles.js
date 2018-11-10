@@ -2,12 +2,13 @@ import styled from 'react-emotion';
 import { font } from 'lib/theme';
 
 export const Content = styled.div`
-  padding-bottom: 4rem;
   margin-left: auto;
   margin-right: auto;
+  max-width: 55em;
+  padding-bottom: 4rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  max-width: 55em;
+  padding-top: 2rem;
 
   @media (min-width: 600px) {
     padding-left: 4rem;

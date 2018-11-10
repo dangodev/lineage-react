@@ -9,13 +9,10 @@ const storefrontAccessToken = '8b97d4f794c051c78b3f00e8da03ef19'; // Read-only. 
 const domain = 'lineage-coffee-roasting.myshopify.com';
 
 class AppContainer extends React.PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.getCheckout();
     this.fetchProducts();
     this.getPrivacyPolicy();
-  }
-
-  componentDidMount() {
     setInterval(() => this.getCheckout(), 30000);
   }
 
@@ -135,9 +132,13 @@ class AppContainer extends React.PureComponent {
   };
 
   getPrivacyPolicy = () =>
-    this.state.client.shop
-      .fetchPolicies()
-      .then(policies => this.setState({ privacyPolicy: policies.privacyPolicy }));
+    this.state.client.shop.fetchPolicies().then(({ privacyPolicy }) =>
+      this.setState({
+        privacyPolicy: `<p>${privacyPolicy.body
+          .replace(/\n\n/g, '</p><p>')
+          .replace(/\n/g, '<br />')}</p>`,
+      })
+    );
 
   expireCart = () => {
     // Don’t expire directly, expire in 5 min, as their cart will be gone if
