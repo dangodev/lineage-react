@@ -69,7 +69,7 @@ export const Thumb = styled.div`
   position: relative;
   width: 100%;
 
-  & img: {
+  & img {
     bottom: 0;
     height: auto;
     left: 50%;
