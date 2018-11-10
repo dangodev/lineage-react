@@ -12,7 +12,7 @@ const mockData = require('../src/data/mockData');
 module.exports = merge.smart(common, {
   mode: 'development',
   entry: {
-    styles: ['./assets/styles.css', './assets/fonts/fonts.css'],
+    styles: ['./shopify-assets/styles.css', './shopify-assets/fonts.css'],
   },
   serve: {
     host: process.env.MANIFOLD_DASHBOARD_URL || '0.0.0.0',
