@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/throttleTime';
@@ -160,4 +161,4 @@ Cart.propTypes = {
   updateLineItem: PropTypes.func.isRequired,
 };
 
-export default Cart;
+export default withRouter(Cart);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, withRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
@@ -19,15 +19,12 @@ const Container = styled.div`
   font-size: 16px;
 `;
 
-const AppRouter = withRouter(CartBlocker);
-const CartRouter = withRouter(Cart);
-
 const App = props => (
   <BrowserRouter>
     <Container>
       <Nav cartCount={props.checkoutLineItems.length} />
       <Loading isLoading={props.isLoading} />
-      <AppRouter>
+      <CartBlocker>
         <Route exact path="/" render={() => <Home featuredProduct={props.featuredHomeProduct} />} />
         <Route
           exact
@@ -47,8 +44,8 @@ const App = props => (
             />
           )}
         />
-      </AppRouter>
-      <CartRouter
+      </CartBlocker>
+      <Cart
         allProducts={props.allProducts}
         checkout={props.checkout}
         featuredProduct={props.featuredCheckoutProduct}

@@ -1,4 +1,9 @@
 {
   "presets": ["@babel/env", "@babel/react"],
-  "plugins": ["emotion", "@babel/plugin-proposal-class-properties"]
+  "plugins": ["emotion", "@babel/plugin-proposal-class-properties"],
+  "env": {
+    "test": {
+      "presets": [["@babel/env", { "targets": { "node": "10.12.0" } }], "@babel/react"]
+    }
+  }
 }

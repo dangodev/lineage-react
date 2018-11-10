@@ -26,6 +26,7 @@ const testRoutes = [
   ['/pages/learn', 'Learn Page loads'],
   ['/pages/wholesale', 'Wholesale Page loads'],
   ['/products/roasters-choice-single-origin', 'Product Page loads'],
+  ['/cart', 'Cart loads'],
 ];
 
 describe('App routes', () => {

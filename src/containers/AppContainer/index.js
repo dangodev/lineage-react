@@ -69,14 +69,13 @@ class AppContainer extends React.PureComponent {
         if (clearCart) {
           let updates = {};
           result.data.items.forEach(lineItem => (updates[lineItem.id] = 0));
-          axios
-            .post('/cart/update.js', { updates })
-            .then(() =>
-              this.state.checkoutLineItems.forEach(lineItem => addToLegacyCart(lineItem))
-            );
+          axios.post('/cart/update.js', { updates }).then(() =>
+            // eslint-disable-next-line no-use-before-define
+            this.state.checkoutLineItems.forEach(lineItem => addToLegacyCart(lineItem))
+          );
         } else if (result.data.item_count === this.state.checkoutLineItems.length) {
           this.expireCart();
-          redirectToRecharge();
+          redirectToRecharge(); // eslint-disable-line no-use-before-define
         }
       });
 
@@ -115,7 +114,7 @@ class AppContainer extends React.PureComponent {
       this.setState({ isLoading: false });
       if (checkout) {
         this.updateCheckout(checkout);
-        window.localStorage.setItem('lineageCheckout', checkout.id);
+        localStorage.setItem('lineageCheckout', checkout.id);
       } else {
         setTimeout(() => this.getCheckout(), 1000); // If failed, try again
       }
@@ -123,8 +122,8 @@ class AppContainer extends React.PureComponent {
   };
 
   getCheckout = () => {
-    const checkoutID = window.localStorage.getItem('lineageCheckout');
-    const lastUpdated = parseInt(window.localStorage.getItem('lineageCheckoutDate'), 10);
+    const checkoutID = localStorage.getItem('lineageCheckout');
+    const lastUpdated = parseInt(localStorage.getItem('lineageCheckoutDate'), 10);
     const threeDays = 259200000;
 
     if (checkoutID && lastUpdated && lastUpdated > Math.floor(Date.now() - threeDays)) {
@@ -144,7 +143,7 @@ class AppContainer extends React.PureComponent {
     // Don’t expire directly, expire in 5 min, as their cart will be gone if
     // they go back to add something
     const almostThreeDays = 258900000;
-    window.localStorage.setItem('lineageCheckoutDate', Date.now() - almostThreeDays);
+    localStorage.setItem('lineageCheckoutDate', Date.now() - almostThreeDays);
   };
 
   fetchCheckout = checkoutID => {
@@ -230,7 +229,7 @@ class AppContainer extends React.PureComponent {
       .then(checkout => this.updateCheckout(checkout));
 
   renewCart = () => {
-    window.localStorage.setItem('lineageCheckoutDate', Date.now());
+    localStorage.setItem('lineageCheckoutDate', Date.now());
   };
 
   updateCheckout = checkout => {
