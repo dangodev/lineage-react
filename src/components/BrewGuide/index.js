@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import * as Styled from './styles';
 
-const BrewGuide = props => (
-  <Styled.Container href={props.link} rel="noopener noreferrer" target="_blank">
+const BrewGuide = ({ description, image, link, time, title }) => (
+  <Styled.Container href={link} rel="noopener noreferrer" target="_blank">
     <Styled.Thumb>
-      <img src={props.image} alt={props.title} />
+      <img src={image} alt={title} />
     </Styled.Thumb>
     <Styled.Content>
-      <Styled.Heading>{props.title}</Styled.Heading>
-      <Styled.Description>{props.description}</Styled.Description>
-      <Styled.Time>{props.time}</Styled.Time>
+      <Styled.Heading>{title}</Styled.Heading>
+      <Styled.Description>{description}</Styled.Description>
+      <Styled.Time>{time}</Styled.Time>
       <Styled.LinkText>View</Styled.LinkText>
     </Styled.Content>
   </Styled.Container>
