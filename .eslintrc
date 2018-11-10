@@ -3,6 +3,7 @@
   "extends": ["react", "prettier", "prettier/react"],
   "plugins": ["emotion", "prettier", "import"],
   "rules": {
+    "camelcase": "off",
     "curly": "error",
     "no-irregular-whitespace": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
