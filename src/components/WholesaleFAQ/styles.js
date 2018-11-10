@@ -1,22 +1,19 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { font } from 'lib/theme';
 
-import { font, grid } from 'lib/theme';
+export const Container = styled.div`
+  font-size: ${font.down1};
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
-export default {
-  Container: glamorous.div({
-    fontSize: font.down1,
-    marginTop: grid,
-    marginBottom: grid,
-    paddingLeft: grid,
-    paddingRight: grid,
-
-    '@media (min-width: 600px)': {
-      fontSize: '1em',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      maxWidth: '60em',
-      paddingLeft: 2 * grid,
-      paddingRight: 2 * grid,
-    },
-  }),
-};
+  @media (min-width: 600px) {
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60em;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+`;

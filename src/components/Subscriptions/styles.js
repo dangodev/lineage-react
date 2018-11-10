@@ -1,17 +1,14 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { font } from 'lib/theme';
 
-import { font, grid } from 'lib/theme';
+export const Container = styled.div`
+  padding-top: 4rem;
+`;
 
-export default {
-  Container: glamorous.div({
-    paddingTop: 2 * grid,
-  }),
-
-  Subheading: glamorous.h3({
-    fontFamily: font.kaufmann,
-    fontSize: font.up4,
-    marginBottom: grid,
-    marginTop: 0,
-    textAlign: 'center',
-  }),
-};
+export const Subheading = styled.h3`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up4};
+  margin-bottom: 2rem;
+  margin-top: 0;
+  text-align: center;
+`;

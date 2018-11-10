@@ -1,8 +1,6 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
-
-import { color, font, grid } from 'lib/theme';
-
+import { color, font } from 'lib/theme';
 import speckle from 'assets/speckle.png';
 
 const textColors = {
@@ -14,85 +12,79 @@ const textColors = {
   yellow: `rgb(${color.black})`,
 };
 
-export default {
-  Container: glamorous.div({
-    backgroundColor: `rgb(${color.offwhite})`,
-    marginBottom: grid,
-    marginTop: grid,
-  }),
+export const Container = styled.div`
+  background-color: rgb(${color.offwhite});
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+`;
 
-  ProductInfo: glamorous.div({
-    flexGrow: 1,
-    paddingBottom: 0.5 * grid,
-    paddingLeft: 2.75 * grid,
-  }),
+export const ProductInfo = styled.div`
+  flex-grow: 1;
+  padding-bottom: 1rem;
+  padding-left: 2.75rem;
+`;
 
-  Heading: glamorous.h1({
-    fontSize: '1em',
-    fontWeight: 700,
-    marginTop: 0.25 * grid,
-    marginBottom: 0,
-    textTransform: 'uppercase',
-  }),
+export const Heading = styled.h1`
+  font-size: 1em;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  text-transform: uppercase;
+`;
 
-  Grid: glamorous.div({
-    display: 'flex',
-    paddingRight: grid,
-    position: 'relative',
-  }),
+export const Grid = styled.div`
+  display: flex;
+  padding-right: 2rem;
+  position: relative;
+`;
 
-  Image: glamorous.img({
-    borderRadius: 0.25 * grid,
-    boxShadow: `${0.25 * grid}px ${0.25 * grid}px ${grid}px rgba(${color.black}, 0.1)`,
-    height: 'auto',
-    left: `-${0.5 * grid}`,
-    overflow: 'hidden',
-    position: 'absolute',
-    top: `-${0.5 * grid}`,
-    width: 2.25 * grid,
-  }),
+export const Image = styled.img`
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(${color.black}, 0.1);
+  height: auto;
+  left: -1rem;
+  overflow: hidden;
+  position: absolute;
+  top: -0.5rem;
+  width: 2.25rem;
+`;
 
-  Price: glamorous.div({
-    fontFamily: font.kaufmann,
-    fontSize: font.up1,
-    marginTop: 0.25 * grid,
-  }),
+export const Price = styled.div`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up1};
+  margin-top: 0.5rem;
+`;
 
-  ViewProduct: glamorous(Link)({
-    alignItems: 'center',
-    color: `rgb(${color.black})`,
-    display: 'flex',
-    fontSize: '1em',
-    fontWeight: 700,
-    justifyContent: 'center',
-    textDecoration: 'none',
-    textTransform: 'uppercase',
-    transition: 'color 200ms',
+export const ViewProduct = styled(Link)`
+  align-items: center;
+  color: rgb(${color.black});
+  display: flex;
+  font-size: 1em;
+  font-weight: 700;
+  justify-content: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 200ms;
 
-    ':hover': {
-      color: `rgb(${color.blue})`,
-    },
-  }),
+  &:hover {
+    color: rgb(${color.blue});
+  }
+`;
 
-  Label: glamorous.div(
-    {
-      backgroundImage: `url(${speckle})`,
-      backgroundSize: '400px auto',
-      fontSize: font.down2,
-      fontWeight: 700,
-      paddingBottom: 0.25 * grid,
-      paddingLeft: 2.75 * grid,
-      paddingTop: 0.25 * grid,
-      textTransform: 'uppercase',
-    },
-    ({ themeColor = 'pink' }) => ({
-      backgroundColor: `rgb(${color[themeColor]})`,
-      color: textColors[themeColor],
-    })
-  ),
+export const Label = styled.div`
+  background-color: rgb(${({ themeColor }) => color[themeColor]});
+  color: ${({ themeColor }) => textColors[themeColor]};
+  background-image: url(${speckle});
+  background-size: 400px auto;
+  font-size: ${font.down2};
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  padding-left: 2.75rem;
+  padding-top: 0.5rem;
+  text-transform: uppercase;
+`;
 
-  Notes: glamorous.div({
-    fontSize: font.down2,
-    textTransform: 'capitalize',
-  }),
-};
+export const Notes = styled.div`
+  font-size: ${font.down2};
+  text-transform: capitalize;
+`;

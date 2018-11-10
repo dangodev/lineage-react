@@ -1,54 +1,51 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
+import { color, font } from 'lib/theme';
 
-import { color, font, grid } from 'lib/theme';
+export const Actions = styled.menu`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  margin-top: 1rem;
+  padding: 0;
+`;
 
-export default {
-  Actions: glamorous.menu({
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: 0,
-    marginTop: 0.5 * grid,
-    padding: 0,
-  }),
+export const Container = styled.div`
+  border-radius: 1rem;
+  box-shadow: 0 0 0 1px rgba(${color.gray}, 0.25);
+  color: rgb(${color.gray});
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+  text-align: center;
+  text-transform: uppercase;
+`;
 
-  Container: glamorous.div({
-    borderRadius: 0.5 * grid,
-    boxShadow: `0 0 0 1px rgba(${color.gray}, 0.25)`,
-    color: `rgb(${color.gray})`,
-    fontSize: '1rem',
-    fontWeight: '500',
-    marginBottom: grid,
-    marginLeft: grid,
-    marginRight: grid,
-    paddingBottom: 2 * grid,
-    paddingTop: 2 * grid,
-    textAlign: 'center',
-    textTransform: 'uppercase',
-  }),
+export const Heading = styled.h4`
+  font-size: ${font.up2};
+  margin-bottom: 0;
+  margin-top: 0;
+`;
 
-  Heading: glamorous.h4({
-    fontSize: font.up2,
-    marginBottom: 0,
-    marginTop: 0,
-  }),
+export const Subheading = styled.small`
+  display: block;
+  font-size: ${font.down2};
+  font-weight: 400;
+  margin-top: 0.5rem;
+  text-transform: none;
+`;
 
-  Subheading: glamorous.small({
-    display: 'block',
-    fontSize: font.down2,
-    fontWeight: 400,
-    marginTop: 0.25 * grid,
-    textTransform: 'none',
-  }),
-
-  SuggestedLink: glamorous(Link)({
-    color: `rgb(${color.blue})`,
-    fontSize: font.down1,
-    fontWeight: 700,
-    marginLeft: '0.5em',
-    marginRight: '0.5em',
-    textDecoration: 'none',
-    textTransform: 'uppercase',
-  }),
-};
+export const SuggestedLink = styled(Link)`
+  color: rgb(${color.blue});
+  font-size: ${font.down1};
+  font-weight: 700;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+`;

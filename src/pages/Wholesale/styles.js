@@ -1,127 +1,124 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { color, font } from 'lib/theme';
 
-import { color, font, grid } from 'lib/theme';
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-column-end: 6;
+  grid-column-start: 2;
+  justify-content: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
-export default {
-  Content: glamorous.div({
-    display: 'flex',
-    flexDirection: 'column',
-    gridColumnEnd: 6,
-    gridColumnStart: 2,
-    justifyContent: 'center',
-    marginBottom: grid,
-    marginTop: grid,
-    paddingLeft: grid,
-    paddingRight: grid,
+  @media (min-width: 800px) {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-    '@media (min-width: 800px)': {
-      marginBottom: grid,
-      marginTop: grid,
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
+  & h2 {
+    font-size: ${font.up2};
+    font-weight: 700;
+    margin-bottom: 2rem;
+    margin-top: 0;
+    text-transform: uppercase;
+  }
 
-    '& h2': {
-      fontSize: font.up2,
-      fontWeight: 700,
-      marginBottom: grid,
-      marginTop: 0,
-      textTransform: 'uppercase',
-    },
+  & p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 0;
+    margin-top: 0;
 
-    '& p': {
-      fontSize: '1em',
-      lineHeight: 1.5,
-      marginBottom: 0,
-      marginTop: 0,
+    & + p {
+      margin-top: 2rem;
+    }
+  }
+`;
 
-      '& + p': {
-        marginTop: grid,
-      },
-    },
-  }),
+export const CTA = styled.div`
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
 
-  CTA: glamorous.div({
-    marginBottom: 2 * grid,
-    marginTop: 2 * grid,
-    paddingLeft: grid,
-    paddingRight: grid,
-    textAlign: 'center',
+  & p {
+    margin-bottom: 0;
+    margin-top: 2rem;
 
-    '& p': {
-      marginBottom: 0,
-      marginTop: grid,
+    & a {
+      color: rgb(${color.blue});
+      font-weight: 500;
+      transition: color 200ms;
 
-      '& a': {
-        color: `rgb(${color.blue})`,
-        fontWeight: 500,
-        transition: 'color 200ms',
+      &:hover {
+        color: rgb(${color.blueT});
+      }
+    }
+  }
+`;
 
-        ':hover': {
-          color: `rgb(${color.blueT})`,
-        },
-      },
-    },
-  }),
+export const CTAHeading = styled.h3`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up4};
+  margin-bottom: 2rem;
+  margin-top: 0;
+`;
 
-  CTAHeading: glamorous.h3({
-    fontFamily: font.kaufmann,
-    fontSize: font.up4,
-    marginBottom: grid,
-    marginTop: 0,
-  }),
+export const FAQHeading = styled.h3`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up4};
+  margin-bottom: 3rem;
+  margin-top: 0;
+  text-align: center;
+`;
 
-  FAQHeading: glamorous.h3({
-    fontFamily: font.kaufmann,
-    fontSize: font.up4,
-    marginBottom: 1.5 * grid,
-    marginTop: 0,
-    textAlign: 'center',
-  }),
+export const Grid = styled.div`
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 
-  Grid: glamorous.div({
-    marginBottom: 2 * grid,
-    marginTop: 2 * grid,
+  @media (min-width: 800px) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 1rem;
+  }
+`;
 
-    '@media (min-width: 800px)': {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(12, 1fr)',
-      gridColumnGap: 0.5 * grid,
-    },
-  }),
+export const Photo = styled.figure`
+  align-items: center;
+  display: flex;
+  grid-column-end: 13;
+  grid-column-start: 7;
+  margin: 0;
+  padding: 0;
 
-  Photo: glamorous.figure({
-    alignItems: 'center',
-    display: 'flex',
-    gridColumnEnd: 13,
-    gridColumnStart: 7,
-    margin: 0,
-    padding: 0,
+  & img {
+    height: auto;
+    width: 100%;
+  }
+`;
 
-    '& img': {
-      height: 'auto',
-      width: '100%',
-    },
-  }),
+export const ProductHeading = styled.h3`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up4};
+  margin-bottom: 3rem;
+  margin-top: 0;
+  text-align: center;
+`;
 
-  ProductHeading: glamorous.h3({
-    fontFamily: font.kaufmann,
-    fontSize: font.up4,
-    marginBottom: 1.5 * grid,
-    marginTop: 0,
-    textAlign: 'center',
-  }),
+export const ProductWrapper = styled.div`
+  margin-top: 4rem;
+  padding-bottom: 6rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 4rem;
 
-  ProductWrapper: glamorous.div({
-    marginTop: 2 * grid,
-    paddingBottom: 3 * grid,
-    paddingLeft: grid,
-    paddingRight: grid,
-    paddingTop: 2 * grid,
-
-    '@media (min-width: 600px)': {
-      paddingLeft: 2 * grid,
-      paddingRight: 2 * grid,
-    },
-  }),
-};
+  @media (min-width: 600px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+`;

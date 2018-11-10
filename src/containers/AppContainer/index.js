@@ -1,46 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Client from "shopify-buy";
-import axios from "axios";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Client from 'shopify-buy';
+import axios from 'axios';
 
-import App from "components/App";
+import App from 'components/App';
 
-const storefrontAccessToken = "8b97d4f794c051c78b3f00e8da03ef19"; // Read-only. It’s cool if it’s in the client JS.
-const domain = "lineage-coffee-roasting.myshopify.com";
+const storefrontAccessToken = '8b97d4f794c051c78b3f00e8da03ef19'; // Read-only. It’s cool if it’s in the client JS.
+const domain = 'lineage-coffee-roasting.myshopify.com';
 
 class AppContainer extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      allProducts: [],
-      checkout: undefined,
-      checkoutLineItems: [],
-      client: Client.buildClient({
-        appId: "6", // '6' is for JS Buy Button (this app)
-        storefrontAccessToken,
-        domain
-      }),
-      collections: [],
-      featuredCheckoutProduct: undefined,
-      featuredHomeProduct: undefined,
-      privacyPolicy: undefined,
-      rechargeURL: undefined,
-      shopifyURL: `https://${domain}/checkout`,
-      subscriptionProducts: []
-    };
-
-    this.addLineItem = this.addLineItem.bind(this);
-    this.checkout = this.checkout.bind(this);
-    this.fetchProducts = this.fetchProducts.bind(this);
-    this.getCheckout = this.getCheckout.bind(this);
-    this.getLegacyID = this.getLegacyID.bind(this);
-    this.getMetafields = this.getMetafields.bind(this);
-    this.getPrivacyPolicy = this.getPrivacyPolicy.bind(this);
-    this.removeLineItem = this.removeLineItem.bind(this);
-    this.updateLineItem = this.updateLineItem.bind(this);
-  }
-
   componentWillMount() {
     this.getCheckout();
     this.fetchProducts();
@@ -51,11 +19,29 @@ class AppContainer extends React.PureComponent {
     setInterval(() => this.getCheckout(), 30000);
   }
 
-  addLineItem({ variantId, quantity, customAttributes = undefined }) {
+  state = {
+    allProducts: [],
+    checkout: undefined,
+    checkoutLineItems: [],
+    client: Client.buildClient({
+      appId: '6', // '6' is for JS Buy Button (this app)
+      storefrontAccessToken,
+      domain,
+    }),
+    collections: [],
+    featuredCheckoutProduct: undefined,
+    featuredHomeProduct: undefined,
+    privacyPolicy: undefined,
+    rechargeURL: undefined,
+    shopifyURL: `https://${domain}/checkout`,
+    subscriptionProducts: [],
+  };
+
+  addLineItem = ({ variantId, quantity, customAttributes = undefined }) => {
     this.renewCart();
     this.state.client.checkout
       .addLineItems(this.state.checkoutID, [
-        { variantId, quantity: parseInt(quantity), customAttributes }
+        { variantId, quantity: parseInt(quantity, 10), customAttributes },
       ])
       .then(
         checkout => {
@@ -63,10 +49,10 @@ class AppContainer extends React.PureComponent {
         },
         error => console.log(error)
       );
-  }
+  };
 
   // Some nasty ReCharge legacy code mumbo jumbo going on here
-  checkout() {
+  checkout = () => {
     this.setState({ isLoading: true });
 
     if (this.state.checkoutLineItems.length === 0) return false;
@@ -76,26 +62,20 @@ class AppContainer extends React.PureComponent {
       return (window.location = this.state.shopifyURL);
     }
 
-    const getCookie = name =>
-      (document.cookie.match("(^|; )" + name + "=([^;]*)") || 0)[2];
+    const getCookie = name => (document.cookie.match('(^|; )' + name + '=([^;]*)') || 0)[2];
 
     const getLegacyCart = (clearCart = false) =>
-      axios.get("/cart.js").then(result => {
+      axios.get('/cart.js').then(result => {
         if (clearCart) {
           let updates = {};
           result.data.items.forEach(lineItem => (updates[lineItem.id] = 0));
-          axios
-            .post("/cart/update.js", { updates })
-            .then(() =>
-              this.state.checkoutLineItems.forEach(lineItem =>
-                addToLegacyCart(lineItem)
-              )
-            );
-        } else if (
-          result.data.item_count === this.state.checkoutLineItems.length
-        ) {
+          axios.post('/cart/update.js', { updates }).then(() =>
+            // eslint-disable-next-line no-use-before-define
+            this.state.checkoutLineItems.forEach(lineItem => addToLegacyCart(lineItem))
+          );
+        } else if (result.data.item_count === this.state.checkoutLineItems.length) {
           this.expireCart();
-          redirectToRecharge();
+          redirectToRecharge(); // eslint-disable-line no-use-before-define
         }
       });
 
@@ -106,13 +86,13 @@ class AppContainer extends React.PureComponent {
       });
 
       axios
-        .post("/cart/add.js", {
+        .post('/cart/add.js', {
           quantity: lineItem.quantity,
           id: this.getLegacyVariantID(lineItem, lineItem.variant.title),
-          properties
+          properties,
         })
         .then(() => {
-          const cartToken = getCookie("cart");
+          const cartToken = getCookie('cart');
           const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?myshopify_domain=${domain}&cart_token=${cartToken}`;
           if (cartToken && this.state.rechargeURL !== rechargeURL) {
             this.setState({ rechargeURL });
@@ -126,60 +106,47 @@ class AppContainer extends React.PureComponent {
     };
 
     getLegacyCart(true);
-  }
+  };
 
-  createCheckout() {
+  createCheckout = () => {
     this.setState({ isLoading: true });
     this.state.client.checkout.create().then(checkout => {
       this.setState({ isLoading: false });
       if (checkout) {
         this.updateCheckout(checkout);
-        window.localStorage.setItem("lineageCheckout", checkout.id);
+        localStorage.setItem('lineageCheckout', checkout.id);
       } else {
         setTimeout(() => this.getCheckout(), 1000); // If failed, try again
       }
     });
-  }
+  };
 
-  getCheckout() {
-    const checkoutID = window.localStorage.getItem("lineageCheckout");
-    const lastUpdated = parseInt(
-      window.localStorage.getItem("lineageCheckoutDate"),
-      10
-    );
+  getCheckout = () => {
+    const checkoutID = localStorage.getItem('lineageCheckout');
+    const lastUpdated = parseInt(localStorage.getItem('lineageCheckoutDate'), 10);
     const threeDays = 259200000;
 
-    if (
-      checkoutID &&
-      lastUpdated &&
-      lastUpdated > Math.floor(Date.now() - threeDays)
-    ) {
+    if (checkoutID && lastUpdated && lastUpdated > Math.floor(Date.now() - threeDays)) {
       this.renewCart();
       return this.fetchCheckout(checkoutID);
     }
     this.renewCart();
     return this.createCheckout();
-  }
+  };
 
-  getPrivacyPolicy() {
+  getPrivacyPolicy = () =>
     this.state.client.shop
       .fetchPolicies()
-      .then(policies =>
-        this.setState({ privacyPolicy: policies.privacyPolicy })
-      );
-  }
+      .then(policies => this.setState({ privacyPolicy: policies.privacyPolicy }));
 
-  expireCart() {
+  expireCart = () => {
     // Don’t expire directly, expire in 5 min, as their cart will be gone if
     // they go back to add something
     const almostThreeDays = 258900000;
-    window.localStorage.setItem(
-      "lineageCheckoutDate",
-      Date.now() - almostThreeDays
-    );
-  }
+    localStorage.setItem('lineageCheckoutDate', Date.now() - almostThreeDays);
+  };
 
-  fetchCheckout(checkoutID) {
+  fetchCheckout = checkoutID => {
     this.setState({ isLoading: true });
     this.state.client.checkout.fetch(checkoutID).then(checkout => {
       this.setState({ isLoading: false });
@@ -189,9 +156,9 @@ class AppContainer extends React.PureComponent {
         this.createCheckout();
       }
     });
-  }
+  };
 
-  fetchProducts() {
+  fetchProducts = () => {
     this.state.client.collection.fetchAllWithProducts().then(collections => {
       this.setState({
         collections: collections.map(collection => ({
@@ -199,15 +166,13 @@ class AppContainer extends React.PureComponent {
           products: collection.products.map(product => ({
             ...product,
             legacyID: this.getLegacyID(product),
-            metafields: this.getMetafields(product)
-          }))
+            metafields: this.getMetafields(product),
+          })),
         })),
-        featuredCheckoutProduct: collections.find(
-          collection => collection.handle === "cart"
-        ).products[0],
-        featuredHomeProduct: collections.find(
-          collection => collection.handle === "frontpage"
-        ).products[0]
+        featuredCheckoutProduct: collections.find(collection => collection.handle === 'cart')
+          .products[0],
+        featuredHomeProduct: collections.find(collection => collection.handle === 'frontpage')
+          .products[0],
       });
     });
 
@@ -216,97 +181,71 @@ class AppContainer extends React.PureComponent {
         allProducts: products.map(product => ({
           ...product,
           legacyID: this.getLegacyID(product),
-          metafields: this.getMetafields(product)
+          metafields: this.getMetafields(product),
         })),
         subscriptionProducts: products
-          .filter(
-            product =>
-              product.productType.toLowerCase().indexOf("subscription") >= 0
-          )
+          .filter(product => product.productType.toLowerCase().indexOf('subscription') >= 0)
           .map(product => ({
             ...product,
             legacyID: this.getLegacyID(product),
-            metafields: this.getMetafields(product)
-          }))
+            metafields: this.getMetafields(product),
+          })),
       });
     });
-  }
+  };
 
-  getLegacyID(lineItem) {
-    const product =
-      this.props.metafields.find(
-        metafield => metafield.handle === lineItem.handle
-      ) ||
-      this.props.metafields.find(
-        metafield => metafield.title === lineItem.title
-      );
-    return product ? product.id : null;
-  }
-
-  getLegacyVariantID(lineItem, variantTitle) {
-    const product =
-      this.props.metafields.find(
-        metafield => metafield.handle === lineItem.handle
-      ) ||
-      this.props.metafields.find(
-        metafield => metafield.title === lineItem.title
-      );
-
-    const selectedVariant = product.variants.find(
-      variant => variant.title === variantTitle
+  getLegacyID = lineItem => {
+    const product = this.props.metafields.find(
+      ({ handle, title }) => handle === lineItem.handle || title === lineItem.title
     );
+    return product ? product.id : null;
+  };
+
+  getLegacyVariantID = (lineItem, variantTitle) => {
+    const product =
+      this.props.metafields.find(metafield => metafield.handle === lineItem.handle) ||
+      this.props.metafields.find(metafield => metafield.title === lineItem.title);
+
+    const selectedVariant = product.variants.find(variant => variant.title === variantTitle);
 
     return selectedVariant ? selectedVariant.id : null;
-  }
+  };
 
-  getMetafields(lineItem) {
+  getMetafields = lineItem => {
     const product =
-      this.props.metafields.find(
-        metafield => metafield.handle === lineItem.handle
-      ) ||
-      this.props.metafields.find(
-        metafield => metafield.title === lineItem.title
-      );
+      this.props.metafields.find(metafield => metafield.handle === lineItem.handle) ||
+      this.props.metafields.find(metafield => metafield.title === lineItem.title);
     return product ? product.metafields : { c_f: {}, subscriptions: {} };
-  }
+  };
 
-  hasSubscription(lineItems = this.state.checkoutLineItems) {
-    return (
-      lineItems.findIndex(
-        lineItem =>
-          lineItem.customAttributes.findIndex(
-            attr => attr.key === "subscription_id"
-          ) >= 0
-      ) >= 0
-    );
-  }
+  hasSubscription = (lineItems = this.state.checkoutLineItems) =>
+    lineItems.findIndex(
+      lineItem => lineItem.customAttributes.findIndex(attr => attr.key === 'subscription_id') >= 0
+    ) >= 0;
 
-  removeLineItem(id) {
+  removeLineItem = id =>
     this.state.client.checkout
       .removeLineItems(this.state.checkoutID, [id])
       .then(checkout => this.updateCheckout(checkout));
-  }
 
-  renewCart() {
-    window.localStorage.setItem("lineageCheckoutDate", Date.now());
-  }
+  renewCart = () => {
+    localStorage.setItem('lineageCheckoutDate', Date.now());
+  };
 
-  updateCheckout(checkout) {
+  updateCheckout = checkout => {
     const shopifyURL = checkout.webUrl;
     this.setState({
       checkoutID: checkout.id,
       checkoutLineItems: checkout.lineItems,
-      shopifyURL
+      shopifyURL,
     });
-  }
+  };
 
-  updateLineItem({ id, quantity }) {
+  updateLineItem = ({ id, quantity }) => {
     this.state.client.checkout
-      .updateLineItems(this.state.checkoutID, [
-        { id, quantity: parseInt(quantity) }
-      ])
+      .updateLineItems(this.state.checkoutID, [{ id, quantity: parseInt(quantity, 10) }])
       .then(checkout => this.updateCheckout(checkout));
-  }
+  };
 
   render() {
     return (
@@ -327,5 +266,9 @@ class AppContainer extends React.PureComponent {
     );
   }
 }
+
+AppContainer.propTypes = {
+  metafields: PropTypes.arrayOf(PropTypes.shape()),
+};
 
 export default AppContainer;

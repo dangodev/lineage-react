@@ -1,23 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 
-import Styled from './styles';
+import * as Styled from './styles';
 
 class FAQ extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      fullHeight: 'auto',
-      isMeasuring: true,
-      isOpen: false,
-    };
-
-    this.toggle = this.toggle.bind(this);
-    this.resizeHandler = this.resizeHandler.bind(this);
+  componentWillMount() {
+    if (typeof window !== 'undefined') {
+      this.resize$ = Observable.fromEvent(window, 'resize')
+        .debounceTime(16)
+        .subscribe(() => this.resizeHandler);
+    }
   }
 
   componentDidMount() {
@@ -27,48 +22,49 @@ class FAQ extends React.Component {
     });
   }
 
-  componentWillMount() {
-    if (typeof window !== 'undefined') {
-      this.resize$ = Observable.fromEvent(window, 'resize')
-        .debounceTime(16)
-        .subscribe(() => this.resizeHandler);
-    }
-  }
-
   componentWillUnmount() {
     if (this.resize$) {
       this.resize$.unsubscribe();
     }
   }
 
-  resizeHandler() {
+  state = {
+    fullHeight: 'auto',
+    isMeasuring: true,
+    isOpen: false,
+  };
+
+  resizeHandler = () => {
     this.setState({ isMeasuring: true }, () =>
       this.setState({
         fullHeight: this.answer.getBoundingClientRect().height,
         isMeasuring: false,
-      }));
-  }
+      })
+    );
+  };
 
-  toggle(e) {
+  toggle = e => {
     e.preventDefault();
     this.setState({ isOpen: !this.state.isOpen });
-  }
+  };
 
   render() {
     return (
-      <Styled.Container isOpen={this.state.isOpen}>
+      <Fragment>
         <Styled.Trigger onClick={e => this.toggle(e)} isOpen={this.state.isOpen}>
           {this.props.faq.question}
         </Styled.Trigger>
         <Styled.Answer
-          innerRef={(el) => { this.answer = el; }}
+          innerRef={el => {
+            this.answer = el;
+          }}
           fullHeight={this.state.fullHeight}
           isMeasuring={this.state.isMeasuring}
           isOpen={this.state.isOpen}
         >
           <Styled.AnswerInner>{this.props.faq.answer}</Styled.AnswerInner>
         </Styled.Answer>
-      </Styled.Container>
+      </Fragment>
     );
   }
 }

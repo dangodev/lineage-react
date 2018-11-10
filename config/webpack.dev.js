@@ -1,16 +1,27 @@
-const webpack = require('webpack');
+const path = require('path');
 const merge = require('webpack-merge');
+const history = require('connect-history-api-fallback');
+const convert = require('koa-connect');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const common = require('./webpack.common.js');
 
 const mockData = require('../src/data/mockData');
 
 module.exports = merge.smart(common, {
-  devServer: {
-    historyApiFallback: true,
+  mode: 'development',
+  entry: {
+    styles: ['./assets/styles.css', './assets/fonts/fonts.css'],
+  },
+  serve: {
+    host: process.env.MANIFOLD_DASHBOARD_URL || '0.0.0.0',
+    port: 8080,
+    content: [path.resolve(__dirname, '..', 'src')],
+    dev: { publicPath: '/' },
+    add: app => {
+      app.use(convert(history({})));
+    },
   },
   module: {
     rules: [
@@ -27,11 +38,6 @@ module.exports = merge.smart(common, {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development'),
-      },
-    }),
     new HtmlWebpackPlugin({
       inject: false,
       template: '../src/index.ejs',
@@ -39,7 +45,6 @@ module.exports = merge.smart(common, {
       appMountId: 'app-root',
       mockData,
     }),
-    new BundleAnalyzerPlugin(),
     new ExtractTextPlugin('[name].css'),
   ],
 });

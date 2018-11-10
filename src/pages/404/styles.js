@@ -1,46 +1,44 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 
-import { color, font, grid } from 'lib/theme';
+import { color, font } from 'lib/theme';
 
-export default {
-  Container: glamorous.div({
-    backgroundColor: '#e7cbc7',
-    backgroundImage: 'url(https://cdn.shopify.com/s/files/1/0746/4367/files/Cafe_Sneak-12.jpg?7295630232810353631)',
-    backgroundPosition: 'center bottom',
-    backgroundSize: 'cover',
-    display: 'flex',
-    flexDirection: 'column',
-    height: `calc(100vh - ${grid}px)`,
-    paddingLeft: grid,
-    paddingRight: grid,
-    justifyContent: 'center',
-    width: '100vw',
+export const Body = styled.p`
+  margin-top: 1rem;
+  margin-bottom: 0;
 
-    '@media (min-width: 600px)': {
-      paddingLeft: 4 * grid,
-      paddingRight: 4 * grid,
-    },
-  }),
+  & a {
+    color: rgb(${color.blue});
+  }
+`;
 
-  Heading: glamorous.h1({
-    fontFamily: font.din,
-    fontSize: font.up10,
-    fontWeight: 700,
-    margin: 0,
-  }),
+export const Container = styled.div`
+  background-color: #e7cbc7;
+  background-image: url('https://cdn.shopify.com/s/files/1/0746/4367/files/Cafe_Sneak-12.jpg?7295630232810353631');
+  background-position: center bottom;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 2rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  justify-content: center;
+  width: 100vw;
 
-  Subheading: glamorous.h2({
-    fontFamily: font.kaufmann,
-    fontSize: font.up4,
-    margin: 0,
-  }),
+  @media (min-width: 600px) {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+`;
 
-  Body: glamorous.p({
-    marginTop: 0.5 * grid,
-    marginBottom: 0,
+export const Heading = styled.h1`
+  font-family: ${font.din};
+  font-size: ${font.up10};
+  font-weight: 700;
+  margin: 0;
+`;
 
-    '& a': {
-      color: `rgb(${color.blue})`,
-    },
-  }),
-};
+export const Subheading = styled.h2`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up4};
+  margin: 0;
+`;

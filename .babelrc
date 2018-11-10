@@ -1,15 +1,9 @@
 {
-  "presets": [
-    ["env", "react"]
-  ],
-  "plugins": [
-    "syntax-dynamic-import",
-    "transform-object-rest-spread",
-    "transform-react-jsx"
-  ],
+  "presets": ["@babel/env", "@babel/react"],
+  "plugins": ["emotion", "@babel/plugin-proposal-class-properties"],
   "env": {
     "test": {
-      "plugins": ["dynamic-import-node", "transform-es2015-modules-commonjs"]
+      "presets": [["@babel/env", { "targets": { "node": "10.12.0" } }], "@babel/react"]
     }
   }
 }

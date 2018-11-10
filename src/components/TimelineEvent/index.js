@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Styled from './styles';
+import * as Styled from './styles';
 
 const TimelineEvent = props => (
   <Styled.Container inBetween={props.inBetween}>

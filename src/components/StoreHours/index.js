@@ -1,27 +1,23 @@
 import React from 'react';
 
-import Styled from './styles';
+import * as Styled from './styles';
 
 const locations = [
   {
     name: 'East End Market',
     address: '3201 Corrine Dr',
     opening: 20130901,
-    militaryHours: [
-      [8, 18], [8, 19], [8, 19], [8, 19], [8, 19], [8, 19], [8, 19],
-    ],
+    militaryHours: [[8, 18], [8, 19], [8, 19], [8, 19], [8, 19], [8, 19], [8, 19]],
   },
   {
     name: 'Mills/50',
     address: '1011 E Colonial Dr',
     opening: 20171202,
-    militaryHours: [
-      [7, 18], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19],
-    ],
+    militaryHours: [[7, 18], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19], [7, 19]],
   },
 ];
 
-const format = (hours) => {
+const format = hours => {
   if (hours === 12) {
     return `${hours}p`;
   } else if (hours >= 13) {
@@ -33,10 +29,14 @@ const format = (hours) => {
 const today = new Date();
 const offsetMin = today.getTimezoneOffset();
 const offsetHours = offsetMin / 60;
-let day = Math.floor(today.getUTCDay() + ((today.getUTCHours() - offsetHours) / 24));
-day = day < 0 ? 6 : (day >= 7 ? 0 : day);
+let day = Math.floor(today.getUTCDay() + (today.getUTCHours() - offsetHours) / 24);
+if (day < 0) {
+  day = 6;
+} else if (day >= 7) {
+  day = 0;
+}
 
-const isOpen = (location) => {
+const isOpen = location => {
   let hours = today.getUTCHours() - offsetHours; // can be > 24; makes late-night closing calculations and timezones simpler
   hours = hours < 0 ? hours + 24 : hours;
   let minutes = today.getUTCMinutes();
@@ -54,7 +54,7 @@ const isOpen = (location) => {
   let close = location.militaryHours[day][1];
   close = close < 0 ? close + 24 : close;
 
-  if ((hours + minutes / 60) >= (close - 0.5) && hours < close) {
+  if (hours + minutes / 60 >= close - 0.5 && hours < close) {
     return 'Closing Soon';
   } else if (hours >= open && hours < close) {
     return 'Open';
@@ -66,35 +66,43 @@ const StoreHours = () => (
   <Styled.Container>
     <Styled.Heading>Locations</Styled.Heading>
     <Styled.Grid>
-      {locations.map((location) => {
+      {locations.map(location => {
         const status = isOpen(location);
         return (
           <Styled.Location key={location.name}>
             <Styled.LocationName>{location.name}</Styled.LocationName>
             <Styled.LocationAddress
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.address)},+Orlando+FL`}
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                location.address
+              )},+Orlando+FL`}
               target="_blank"
               rel="noopener noreferrer"
             >
               {location.address}
             </Styled.LocationAddress>
             <Styled.Status status={status}>{status}</Styled.Status>
-            {status !== 'Opening Soon' &&
+            {status !== 'Opening Soon' && (
               <div>
                 <Styled.Hours isToday={day > 1 && day < 6}>
                   <Styled.Days>M–F</Styled.Days>
-                  <Styled.Range>{format(location.militaryHours[1][0])} – {format(location.militaryHours[1][1])}</Styled.Range>
+                  <Styled.Range>
+                    {format(location.militaryHours[1][0])} – {format(location.militaryHours[1][1])}
+                  </Styled.Range>
                 </Styled.Hours>
                 <Styled.Hours isToday={day === 6}>
                   <Styled.Days>Sat</Styled.Days>
-                  <Styled.Range>{format(location.militaryHours[6][0])} – {format(location.militaryHours[6][1])}</Styled.Range>
+                  <Styled.Range>
+                    {format(location.militaryHours[6][0])} – {format(location.militaryHours[6][1])}
+                  </Styled.Range>
                 </Styled.Hours>
                 <Styled.Hours isToday={day === 0}>
                   <Styled.Days>Sun</Styled.Days>
-                  <Styled.Range>{format(location.militaryHours[0][0])} – {format(location.militaryHours[0][1])}</Styled.Range>
+                  <Styled.Range>
+                    {format(location.militaryHours[0][0])} – {format(location.militaryHours[0][1])}
+                  </Styled.Range>
                 </Styled.Hours>
               </div>
-            }
+            )}
           </Styled.Location>
         );
       })}

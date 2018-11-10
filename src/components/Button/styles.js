@@ -1,7 +1,7 @@
+import styled from 'react-emotion';
+import { ifProp } from 'styled-tools';
 import { Link } from 'react-router-dom';
-import glamorous from 'glamorous';
-
-import { color, font, grid } from 'lib/theme';
+import { color, font } from 'lib/theme';
 
 const textColors = {
   blue: `rgb(${color.black})`,
@@ -10,45 +10,40 @@ const textColors = {
   white: `rgb(${color.black})`,
 };
 
-const ActionButton = glamorous.button(
-  {
-    alignItems: 'center',
-    appearance: 'none',
-    border: 'none',
-    borderRadius: 0,
-    cursor: 'pointer',
-    display: 'flex',
-    fontFamily: font.din,
-    fontWeight: 700,
-    justifyContent: 'center',
-    minWidth: 6 * grid,
-    paddingBottom: 0,
-    paddingTop: 0,
-    textDecoration: 'none',
-    transition: 'background-color 200ms',
-    textTransform: 'uppercase',
-  },
-  props => ({
-    backgroundColor: props.disabled ? `rgba(${color.gray}, 0.25)` : `rgb(${color[props.color]})`,
-    color: props.disabled ? `rgba(${color.black}, 0.375)` : textColors[props.color],
-    fontSize: props.small ? font.down2 : font.down1,
-    height: props.small ? grid : 1.5 * grid,
-    paddingLeft: props.small ? 0.5 * grid : grid,
-    paddingRight: props.small ? 0.5 * grid : grid,
-    pointerEvents: props.disabled ? 'none' : 'normal',
+export const ActionButton = styled.button`
+  align-items: center;
+  appearance: none;
+  background-color: ${props =>
+    props.disabled ? `rgba(${color.gray}, 0.25)` : `rgb(${color[props.color] || color.blueT})`};
+  border-radius: 0;
+  border: none;
+  color: ${props => (props.disabled ? `rgba(${color.black}, 0.375)` : textColors[props.color])};
+  cursor: pointer;
+  display: flex;
+  font-family: ${font.din};
+  font-size: ${ifProp({ small: true }, font.down2, font.down1)};
+  font-weight: 700;
+  height: ${ifProp({ small: true }, 'rem', '3rem')};
+  justify-content: center;
+  min-width: 12rem;
+  padding-bottom: 0;
+  padding-left: ${ifProp({ small: true }, '1rem', '2rem')};
+  padding-right: ${ifProp({ small: true }, '1rem', '2rem')};
+  padding-top: 0;
+  pointer-events: ${ifProp({ disabled: true }, 'none', 'normal')};
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 200ms;
 
-    ':hover': {
-      backgroundColor: `rgba(${color[props.color]}, 0.6)`,
-    },
+  &:focus,
+  &:hover {
+    background-color: rgba(${props => color[props.color] || color.blueT}, 0.6);
+  }
 
-    '@media (min-width: 600px)': {
-      fontSize: props.small ? font.down1 : '1em',
-    },
-  }),
-);
+  @media (min-width: 600px) {
+    font-size: ${ifProp({ small: true }, font.down1, '1em')};
+  }
+`;
+export const AnchorButton = ActionButton.withComponent('a');
 
-export default {
-  ActionButton,
-  AnchorButton: ActionButton.withComponent('a'),
-  LinkButton: ActionButton.withComponent(Link),
-};
+export const LinkButton = ActionButton.withComponent(Link);

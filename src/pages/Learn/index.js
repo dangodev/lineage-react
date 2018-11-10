@@ -4,7 +4,7 @@ import BrewGuide from 'components/BrewGuide';
 import LineageAcademyBlock from 'components/LineageAcademyBlock';
 import PageHeading from 'components/PageHeading';
 
-import Styled from './styles';
+import * as Styled from './styles';
 
 const brewGuides = [
   {

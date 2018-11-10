@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ProductCard from 'components/ProductCard';
-import Styled from './styles';
+import * as Styled from './styles';
 
 const ProductList = props => (
   <Styled.Grid>

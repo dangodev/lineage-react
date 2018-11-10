@@ -1,0 +1,5 @@
+development:
+  directory: dist
+  password:
+  store:
+  theme_id:

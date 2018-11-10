@@ -1,6 +1,9 @@
 .DS_Store
 .git
+config.yml
 dist/
 node_modules/
 theme.lock
 tmp/
+yarn.lock
+yarn-error.log

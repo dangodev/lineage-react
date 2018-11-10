@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 class CartBlocker extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -18,4 +19,4 @@ CartBlocker.propTypes = {
   location: PropTypes.object,
 };
 
-export default CartBlocker;
+export default withRouter(CartBlocker);

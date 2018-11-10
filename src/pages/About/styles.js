@@ -1,78 +1,75 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { font } from 'lib/theme';
 
-import { font, grid } from 'lib/theme';
+export const Award = styled.a`
+  display: block;
 
-export default {
-  Award: glamorous.a({
-    display: 'block',
+  & img {
+    height: auto;
+    width: 100%;
+  }
+`;
 
-    '& img': {
-      height: 'auto',
-      width: '100%',
-    },
-  }),
+export const AwardList = styled.div`
+  display: 2rem;
+  grid-column-gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
 
-  AwardList: glamorous.div({
-    display: 'grid',
-    gridColumnGap: grid,
-    gridTemplateColumns: '1fr 1fr 1fr',
-    justifyItems: 'center',
-    paddingBottom: grid,
-    paddingLeft: grid,
-    paddingRight: grid,
-    paddingTop: grid,
+  @media (min-width: 600px) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60em;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      maxWidth: '60em',
-      paddingLeft: 2 * grid,
-      paddingRight: 2 * grid,
-    },
-  }),
+export const Content = styled.div`
+  padding-bottom: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  max-width: 55em;
 
-  Content: glamorous.div({
-    paddingBottom: 2 * grid,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    paddingLeft: grid,
-    paddingRight: grid,
-    maxWidth: '55em',
+  @media (min-width: 600px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 
-    '@media (min-width: 600px)': {
-      paddingLeft: 2 * grid,
-      paddingRight: 2 * grid,
-    },
+  & p {
+    font-size: ${font.up1};
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    line-height: 1.6;
+  }
+`;
 
-    '& p': {
-      fontSize: font.up1,
-      marginBottom: grid,
-      marginTop: grid,
-      lineHeight: 1.6,
-    },
-  }),
+export const Grid = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0;
 
-  Grid: glamorous.div({
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    paddingBottom: 2 * grid,
-    paddingLeft: grid,
-    paddingRight: grid,
-    paddingTop: 0,
+  @media (min-width: 600px) {
+    max-width: 50em;
+    padding-bottom: 6rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      maxWidth: '50em',
-      paddingBottom: 3 * grid,
-      paddingLeft: 2 * grid,
-      paddingRight: 2 * grid,
-    },
-  }),
-
-  SectionHeading: glamorous.h1({
-    fontFamily: font.kaufmann,
-    fontSize: font.up6,
-    marginBottom: 0,
-    marginTop: 2 * grid,
-    textAlign: 'center',
-  }),
-};
+export const SectionHeading = styled.h1`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up6};
+  margin-bottom: 0;
+  margin-top: 4rem;
+  text-align: center;
+`;

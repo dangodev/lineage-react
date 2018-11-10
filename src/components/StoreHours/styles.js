@@ -1,118 +1,102 @@
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
+import { ifProp } from 'styled-tools';
+import { color, font } from 'lib/theme';
 
-import { color, font, grid } from 'lib/theme';
+const colorState = {
+  Open: `rgb(${color.blue})`,
+  'Closing Soon': `rgb(${color.red})`,
+};
 
-const colorState = (status) => {
-  switch (status) {
-    case 'Open':
-      return `rgb(${color.blue})`;
-    case 'Closing Soon':
-      return `rgb(${color.red})`;
-    default:
-      return `rgb(${color.gray})`;
+export const Container = styled.div`
+  font-size: ${font.down1};
+  padding-bottom: 4rem;
+  padding-top: 2rem;
+
+  @media (min-width: 600px) {
+    font-size: 1em;
   }
-};
+`;
 
-export default {
-  Container: glamorous.div({
-    fontSize: font.down1,
-    paddingBottom: 2 * grid,
-    paddingTop: grid,
+export const Days = styled.dt`
+  display: block;
+  margin: 0;
+  width: 50%;
+`;
 
-    '@media (min-width: 600px)': {
-      fontSize: '1em',
-    },
-  }),
+export const Grid = styled.div`
+  box-sizing: border-box;
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-template-columns: repeat(12, 1fr);
 
-  Days: glamorous.dt({
-    display: 'block',
-    margin: 0,
-    width: '50%',
-  }),
+  @media (min-width: 600px) {
+    grid-column-gap: 3rem;
+  }
+`;
 
-  Grid: glamorous.div({
-    boxSizing: 'border-box',
-    display: 'grid',
-    gridColumnGap: 0.5 * grid,
-    gridTemplateColumns: 'repeat(12, 1fr)',
+export const Heading = styled.h1`
+  font-family: ${font.kaufmann};
+  font-size: ${font.up4};
+  text-align: center;
+`;
 
-    '@media (min-width: 600px)': {
-      gridColumnGap: 1.5 * grid,
-    },
-  }),
+export const Hours = styled.dl`
+  color: ${ifProp({ isToday: true }, `rgb(${color.black})`, `rgb(${color.gray})`)};
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 500;
+  line-height: 1;
+`;
 
-  Heading: glamorous.h1({
-    fontFamily: font.kaufmann,
-    fontSize: font.up4,
-    textAlign: 'center',
-  }),
+export const Location = styled.div`
+  grid-column: 2 / span 5;
+  margin-top: 2rem;
+  max-width: 20em;
 
-  Hours: glamorous.dl(
-    {
-      alignItems: 'center',
-      display: 'flex',
-      flexWrap: 'wrap',
-      fontWeight: 500,
-      lineHeight: 1,
-    },
-    props => ({
-      color: props.isToday ? `rgb(${color.black})` : `rgb(${color.gray})`,
-    }),
-  ),
+  &:nth-of-type(even) {
+    grid-column-start: 7;
+  }
 
-  Location: glamorous.div({
-    gridColumn: '2 / span 5',
-    marginTop: grid,
-    maxWidth: '20em',
+  @media (min-width: 600px) {
+    grid-column: 4 / span 3;
+    margin-left: 0;
+    margin-right: 0;
 
-    '&:nth-of-type(even)': {
-      gridColumnStart: '7',
-    },
+    &:nth-of-type(even) {
+      grid-column-start: 7;
+    }
+  }
+`;
 
-    '@media (min-width: 600px)': {
-      gridColumn: '4 / span 3',
-      marginLeft: 0,
-      marginRight: 0,
+export const LocationAddress = styled.a`
+  color: rgb(${color.blue});
+  display: block;
+  font-size: ${font.down1};
+  margin-top: 0.25rem;
+  text-decoration: none;
+`;
 
-      '&:nth-of-type(even)': {
-        gridColumnStart: '7',
-      },
-    },
-  }),
+export const LocationName = styled.h2`
+  font-size: ${font.up1};
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+`;
 
-  LocationAddress: glamorous.a({
-    color: `rgb(${color.blue})`,
-    display: 'block',
-    fontSize: font.down1,
-    marginTop: 0.125 * grid,
-    textDecoration: 'none',
-  }),
+export const Range = styled.dd`
+  display: block;
+  margin: 0;
+  text-align: right;
+  width: 50%;
+`;
 
-  LocationName: glamorous.h2({
-    fontSize: font.up1,
-    fontWeight: 700,
-    lineHeight: 1,
-    margin: 0,
-    textTransform: 'uppercase',
-  }),
-
-  Range: glamorous.dd({
-    display: 'block',
-    margin: 0,
-    textAlign: 'right',
-    width: '50%',
-  }),
-
-  Status: glamorous.h3(
-    {
-      fontFamily: font.kaufmann,
-      fontSize: font.up3,
-      lineHeight: 1,
-      marginBottom: 0,
-      marginTop: 0.25 * grid,
-    },
-    props => ({
-      color: colorState(props.status),
-    }),
-  ),
-};
+export const Status = styled.h3`
+  color: ${props => colorState[props.status] || `rgb(${color.gray})`};
+  font-family: ${font.kaufmann};
+  font-size: ${font.up3};
+  line-height: 1;
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+`;
