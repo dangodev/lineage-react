@@ -16,6 +16,7 @@ const LineageAcademyBlock = () => (
     </Styled.Content>
     <Styled.Actions>
       <Waves width="6rem" />
+      {/*
       <Button
         color="blue"
         href="https://medium.com/lineage-academy/"
@@ -24,6 +25,7 @@ const LineageAcademyBlock = () => (
       >
         Lineage Academy on Medium
       </Button>
+      */}
       <Button
         color="blue"
         href="https://instagram.com/lineageacademy"
