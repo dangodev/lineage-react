@@ -27,9 +27,6 @@ const stringify = title => title.replace(/_/g, ' ');
 
 const userValue = (value, field) => {
   switch (field) {
-    case 'elevation':
-      const elevation = parseInt(value, 10);
-      return isNaN(elevation) ? value : `${elevation}m`;
     case 'additional_notes':
       return value.replace(/\n/g, '<br />');
     default:
