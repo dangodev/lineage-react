@@ -42,7 +42,7 @@
     "rxjs": "^5.5.12",
     "shopify-buy": "^1.9.1",
     "styled-tools": "^1.5.2",
-    "stylelint": "^9.7.1",
+    "stylelint": "^10.1.0",
     "url-loader": "^0.6.2",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
