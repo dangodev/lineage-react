@@ -11,15 +11,15 @@ const LOCAL_FOLDERS = readdirSync(SRC_DIR).reduce((obj, ref) => {
 module.exports = {
   context: path.resolve(__dirname, '..', 'src'),
   entry: {
-    main: ['./main.js'],
+    main: ['./main.tsx'],
     vendor: ['react', 'react-dom', 'react-router-dom', 'shopify-buy'],
   },
   module: {
     rules: [
       {
-        test: /\.js$/i,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        test: /\.(j|t)sx?$/i,
+        use: 'awesome-typescript-loader',
       },
       {
         test: /\.ejs$/i,
@@ -34,9 +34,9 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.js'],
     alias: {
       ...LOCAL_FOLDERS,
     },
+    extensions: ['.tsx', '.ts', '.js'],
   },
 };

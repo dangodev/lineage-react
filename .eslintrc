@@ -1,19 +1,47 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["prettier", "prettier/react"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "jsx": true,
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "extends": [
+    "prettier",
+    "prettier/react",
+    "prettier/@typescript-eslint",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
   "plugins": ["react", "emotion", "prettier", "import"],
   "rules": {
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/indent": "off",
+    "arrow-parens": "off",
     "camelcase": "off",
-    "curly": ["error", "all"],
-    "no-irregular-whitespace": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-  },
-  "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "config/webpack.dev.js"
+    "class-methods-use-this": "off",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "exports": "never",
+        "functions": "never",
+        "imports": "always-multiline",
+        "objects": "always-multiline"
       }
-    }
+    ],
+    "curly": ["error", "all"],
+    "import/no-unresolved": "off",
+    "no-irregular-whitespace": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".tsx"] }],
+    "react/jsx-indent": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/prop-types": "off"
   },
   "env": {
     "browser": true,

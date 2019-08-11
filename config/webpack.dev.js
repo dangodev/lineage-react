@@ -1,6 +1,7 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const common = require('./webpack.common.js');
@@ -14,6 +15,7 @@ module.exports = merge.smart(common, {
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
+    historyApiFallback: true,
     host: process.env.MANIFOLD_DASHBOARD_URL || '0.0.0.0',
     port: 8080,
     publicPath: '/',
@@ -31,6 +33,7 @@ module.exports = merge.smart(common, {
     ],
   },
   plugins: [
+    new CheckerPlugin(), // surface TS errors in dev
     new HtmlWebpackPlugin({
       inject: false,
       template: '../src/index.ejs',

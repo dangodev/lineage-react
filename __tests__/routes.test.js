@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 
@@ -13,10 +12,6 @@ const TestApp = props => (
     <AppContainer collections={mockData.collections} metafields={mockData.metafields} />
   </StaticRouter>
 );
-
-TestApp.propTypes = {
-  location: PropTypes.object,
-};
 
 const testRoutes = [
   ['/', 'Home page loads'],
