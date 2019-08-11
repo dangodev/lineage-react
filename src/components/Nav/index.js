@@ -8,7 +8,7 @@ import logo from 'assets/lineage.svg';
 import * as Styled from './styles';
 
 class Nav extends React.Component {
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname !== this.props.location.pathname) {
       this.relaxScroll();
       this.setState({ isOpen: false });
@@ -34,11 +34,15 @@ class Nav extends React.Component {
   };
 
   restrictScroll() {
-    document.body.classList.add(Styled.state.isScrollLocked);
+    if (window.innerWidth < 600) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
   }
 
   relaxScroll() {
-    document.body.classList.remove(Styled.state.isScrollLocked);
+    document.body.style.overflowY = 'auto';
   }
 
   render() {

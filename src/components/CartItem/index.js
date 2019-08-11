@@ -26,8 +26,12 @@ const CartItem = ({ lineItem, ...props }) => {
       attr => attr.key === 'shipping_interval_frequency'
     );
     const unit = lineItem.customAttributes.find(attr => attr.key === 'shipping_interval_unit_type');
-    if (interval) subscriptionInterval = interval.value;
-    if (unit) subscriptionUnit = unit.value;
+    if (interval) {
+      subscriptionInterval = interval.value;
+    }
+    if (unit) {
+      subscriptionUnit = unit.value;
+    }
   }
 
   const clickHandler = e => {

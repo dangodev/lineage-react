@@ -23,11 +23,11 @@ class Cart extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.isShowing(nextProps)) {
-      document.body.classList.add(Styled.state.isScrollLocked);
+      document.body.style.overflowY = 'hidden';
     } else {
-      document.body.classList.remove(Styled.state.isScrollLocked);
+      document.body.style.overflowY = 'auto';
     }
   }
 

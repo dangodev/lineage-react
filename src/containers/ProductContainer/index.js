@@ -1,22 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 
 import Meta from 'containers/Meta';
 import Collection from 'components/Collection';
 import ProductView from 'components/ProductView';
-
-const IsShowing = css`
-  height: 100vw;
-  overflow: hidden;
-`;
 
 class ProductContainer extends React.Component {
   componentWillMount() {
     this.route(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.route(nextProps);
 
     if (this.props.location.pathname !== nextProps.location.pathname) {
@@ -69,14 +64,26 @@ class ProductContainer extends React.Component {
     }
   }
 
+  hideProduct() {
+    document.body.style.height = 'auto';
+    document.body.style.overflowY = 'auto';
+  }
+
+  showProduct() {
+    document.body.style.height = '100vw';
+    document.body.style.overflowY = 'hidden';
+  }
+
   route(nextProps) {
     const request = nextProps.location.pathname.split('/');
     const subroute = request[request.length - 1];
 
-    if (!nextProps.allProducts.length || !nextProps.collections.length) return false;
+    if (!nextProps.allProducts.length || !nextProps.collections.length) {
+      return false;
+    }
 
     if (nextProps.match.url === '/products') {
-      document.body.classList.add(IsShowing);
+      this.showProduct();
       this.transition('SELECT');
       const nextProduct = nextProps.allProducts.find(({ handle }) => handle === subroute);
       this.setState({ product: nextProduct });
@@ -89,7 +96,7 @@ class ProductContainer extends React.Component {
         });
       }
     } else if (nextProps.match.url === '/collections') {
-      document.body.classList.remove(IsShowing);
+      this.hideProduct();
       this.transition('CLOSE');
       this.setState({
         collection: nextProps.collections.find(({ handle }) => handle === subroute),
@@ -100,7 +107,7 @@ class ProductContainer extends React.Component {
         setTimeout(() => this.transition('SUCCESS'), 30);
       }
     } else {
-      document.body.classList.remove(IsShowing);
+      this.hideProduct();
       this.transition('CLOSE');
       this.setState({ collection: undefined, product: undefined });
     }

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Client from 'shopify-buy';
 import axios from 'axios';
-import { stringify } from 'query-string';
 
 import App from 'components/App';
 
@@ -53,7 +52,9 @@ class AppContainer extends React.PureComponent {
   checkout = () => {
     this.setState({ isLoading: true });
 
-    if (this.state.checkoutLineItems.length === 0) return false;
+    if (this.state.checkoutLineItems.length === 0) {
+      return false;
+    }
 
     if (this.hasSubscription(this.state.checkoutLineItems) === false) {
       this.expireCart();
@@ -95,7 +96,9 @@ class AppContainer extends React.PureComponent {
             myshopify_domain: domain,
             cart_token: cartToken,
           };
-          const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?${stringify(search)}`;
+          const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?${new URLSearchParams(
+            search
+          ).toString()}`;
           if (cartToken && this.state.rechargeURL !== rechargeURL) {
             this.setState({ rechargeURL });
           }

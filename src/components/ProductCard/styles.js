@@ -1,5 +1,5 @@
 import { ifProp } from 'styled-tools';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { color, font, layer, transition } from 'lib/theme';
 

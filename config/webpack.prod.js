@@ -1,6 +1,6 @@
 const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const common = require('./webpack.common.js');
@@ -11,14 +11,7 @@ module.exports = merge.smart(common, {
     rules: [
       {
         test: /\.css$/i,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: { url: false },
-            },
-          ],
-        }),
+        use: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { url: false } }],
       },
       {
         test: /\.(gif|jpe?g|png|svg)$/i,
@@ -59,7 +52,7 @@ module.exports = merge.smart(common, {
         minifyJS: true,
       },
     }),
-    new ExtractTextPlugin({ filename: 'fonts.css' }),
+    new MiniCssExtractPlugin({ filename: 'fonts.css' }),
     new CopyWebpackPlugin([
       // copy /public dir
       { from: '../src/shopify-assets', to: './' },

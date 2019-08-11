@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { css } from 'emotion';
-import styled from 'react-emotion';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { ifProp } from 'styled-tools';
 import { color, font, layer, transition } from 'lib/theme';
 import speckle from 'assets/speckle.png';

@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'react-emotion';
+import { keyframes } from '@emotion/core';
+import styled from '@emotion/styled';
 import { layer } from 'lib/theme';
 
 import waves from 'assets/wave.svg';

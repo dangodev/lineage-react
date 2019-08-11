@@ -1,9 +1,7 @@
 const path = require('path');
 const merge = require('webpack-merge');
-const history = require('connect-history-api-fallback');
-const convert = require('koa-connect');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -14,22 +12,17 @@ module.exports = merge.smart(common, {
   entry: {
     styles: ['./shopify-assets/styles.css', './shopify-assets/fonts.css'],
   },
-  serve: {
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
     host: process.env.MANIFOLD_DASHBOARD_URL || '0.0.0.0',
     port: 8080,
-    content: [path.resolve(__dirname, '..', 'src')],
-    dev: { publicPath: '/' },
-    add: app => {
-      app.use(convert(history({})));
-    },
+    publicPath: '/',
   },
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ExtractTextPlugin.extract({
-          use: 'css-loader',
-        }),
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(gif|jpe?g|mp4|png|svg|woff2?)$/i,
@@ -45,6 +38,6 @@ module.exports = merge.smart(common, {
       appMountId: 'app-root',
       mockData,
     }),
-    new ExtractTextPlugin('[name].css'),
+    new MiniCssExtractPlugin('[name].css'),
   ],
 });

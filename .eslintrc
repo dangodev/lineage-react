@@ -1,10 +1,10 @@
 {
   "parser": "babel-eslint",
-  "extends": ["react", "prettier", "prettier/react"],
-  "plugins": ["emotion", "prettier", "import"],
+  "extends": ["prettier", "prettier/react"],
+  "plugins": ["react", "emotion", "prettier", "import"],
   "rules": {
     "camelcase": "off",
-    "curly": "error",
+    "curly": ["error", "all"],
     "no-irregular-whitespace": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
