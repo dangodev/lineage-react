@@ -43,7 +43,7 @@
     "shopify-buy": "^1.9.1",
     "styled-tools": "^1.5.2",
     "stylelint": "^9.7.1",
-    "url-loader": "^0.6.2",
+    "url-loader": "^2.1.0",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   },
