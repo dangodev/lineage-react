@@ -2,8 +2,8 @@ import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 class CartBlocker extends React.Component<RouteComponentProps> {
-  shouldComponentUpdate({ location }: RouteComponentProps) {
-    if (location.pathname === '/cart') {
+  shouldComponentUpdate(nextProps: RouteComponentProps) {
+    if (nextProps.location.pathname === '/cart') {
       return false;
     }
     return true;

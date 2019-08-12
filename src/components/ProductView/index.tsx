@@ -16,7 +16,6 @@ interface ProductViewProps extends RouteComponentProps {
 }
 
 interface ProductViewState {
-  quantities: number[];
   quantity: number;
   selectedInterval: string;
   selectedOptions?: { [key: string]: string };
@@ -30,13 +29,27 @@ class ProductView extends React.Component<ProductViewProps, ProductViewState> {
   };
 
   componentDidMount() {
-    this.setDefaultVariant(this.props);
     window.addEventListener('keydown', this.keydownHandler);
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps: ProductViewProps) {
-    this.setDefaultVariant(nextProps);
-    this.setState({ quantity: 1 }); // go back to 1 quantity on product change
+  static getDerivedStateFromProps(
+    { product }: ProductViewProps,
+    { selectedVariant }: ProductViewState
+  ) {
+    if (!selectedVariant && product) {
+      if (product.variants.length === 1) {
+        return { selectedVariant: product.variants[0] };
+      } else {
+        const params = new URLSearchParams(window.location.search);
+        const variantID = params.get('variant') || undefined;
+        return {
+          selectedVariant:
+            product.variants.find(variant => variant.id === variantID) || product.variants[0],
+        };
+      }
+    }
+
+    return null;
   }
 
   componentWillUnmount() {
@@ -44,7 +57,6 @@ class ProductView extends React.Component<ProductViewProps, ProductViewState> {
   }
 
   state: ProductViewState = {
-    quantities: [1, 2, 3, 4, 5],
     quantity: 1,
     selectedInterval: '1',
     selectedVariant: this.props.product && this.props.product.variants[0],
@@ -117,26 +129,6 @@ class ProductView extends React.Component<ProductViewProps, ProductViewState> {
     }
   };
 
-  setDefaultVariant = ({ product }: ProductViewProps) => {
-    if (!product) {
-      return;
-    }
-
-    if (product.variants.length === 1) {
-      this.setState({ selectedVariant: product.variants[0] });
-      return;
-    }
-
-    const params = new URLSearchParams(window.location.search);
-    const variantID = params.get('variant') || undefined;
-    const selectedVariant =
-      product.variants.find(variant => variant.id === variantID) || product.variants[0];
-
-    this.setState({
-      selectedVariant: selectedVariant || product.variants[0],
-    });
-  };
-
   setOption = (name: string, value: string) => {
     const { product } = this.props;
 
@@ -159,8 +151,6 @@ class ProductView extends React.Component<ProductViewProps, ProductViewState> {
     this.props.history.replace(`${this.props.location.pathname}?variant=${selectedVariant.id}`);
   };
 
-  setQuantity = (quantity: number) => this.setState({ quantity });
-
   setSelectedInterval = (interval: string) => this.setState({ selectedInterval: `${interval}` });
 
   get shouldShowVariants() {
@@ -181,7 +171,6 @@ class ProductView extends React.Component<ProductViewProps, ProductViewState> {
   render() {
     const { isShowing, product, returnTo } = this.props;
     const {
-      quantities,
       quantity,
       selectedInterval,
       selectedVariant = product && product.variants[0],
@@ -219,7 +208,7 @@ class ProductView extends React.Component<ProductViewProps, ProductViewState> {
                   <Styled.Subheading>Description</Styled.Subheading>
                   <Styled.Description
                     dangerouslySetInnerHTML={{
-                      __html: product.description,
+                      __html: product.descriptionHtml,
                     }}
                   />
                 </Styled.CoreInfo>
@@ -279,17 +268,17 @@ class ProductView extends React.Component<ProductViewProps, ProductViewState> {
                 <Styled.Subheading>Quantity</Styled.Subheading>
                 <Styled.Quantity>
                   <Styled.OptionList>
-                    {quantities.map(q => (
+                    {[1, 2, 3, 4, 5].map(q => (
                       <Styled.Option key={q}>
                         <input
                           type="radio"
                           id={`quantity-${q}`}
                           name="quantity"
                           defaultChecked={q === quantity}
-                          onChange={() => this.setQuantity(q)}
+                          onChange={() => this.setState({ quantity: q })}
                           value={q}
                         />
-                        <label htmlFor={`quantity-${quantity}`}>{quantity}</label>
+                        <label htmlFor={`quantity-${q}`}>{q}</label>
                       </Styled.Option>
                     ))}
                     {/* {isCoffee() &&
