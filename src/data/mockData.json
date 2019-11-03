@@ -5,6 +5,7 @@
       "handle": "ethiopia-giulietta",
       "title": "Ethiopia Giulietta",
       "variants": [{ "id": 12048901799972, "title": "Default Title" }],
+      "tags": ["Apricot", "Rose Water"],
       "metafields": {
         "c_f": {
           "color": "white",
@@ -31,6 +32,7 @@
       "handle": "modern-american",
       "title": "Modern American",
       "variants": [{ "id": 1040976949, "title": "Default Title" }],
+      "tags": ["Candied Lemon", "Soft Peach"],
       "metafields": {
         "c_f": {
           "color": "yellow",
@@ -56,6 +58,7 @@
       "handle": "ethiopia-sulladjah",
       "title": "Ethiopia Sulladjah (Dry)",
       "variants": [{ "id": 31034539343972, "title": "Default Title" }],
+      "tags": ["Apricot Jam", "Lemon Zest", "Muddled Berries"],
       "metafields": {
         "c_f": {
           "color": "white",
@@ -81,7 +84,8 @@
       "id": 4326132940900,
       "handle": "kenya-kiandu",
       "title": "Kenya Kiandu",
-      "variants": [{ "id": 31130628554852, "title": "Default Title" }],
+      "variants": [{ "id": 31131229454436, "title": "Default Title" }],
+      "tags": ["Sparkling Acidity", "Tropical Fruit"],
       "metafields": {
         "c_f": {
           "color": "white",
@@ -108,6 +112,7 @@
       "handle": "northern-italian-espresso",
       "title": "431°",
       "variants": [{ "id": 31050215719012, "title": "16oz" }],
+      "tags": ["Cherry", "Dark Chocolate"],
       "metafields": {
         "c_f": {
           "color": "green",
@@ -139,6 +144,7 @@
         { "id": 9893920768036, "title": "$50" },
         { "id": 9893920800804, "title": "$100" }
       ],
+      "tags": [],
       "metafields": { "c_f": {}, "subscriptions": {} }
     },
     {
@@ -146,6 +152,7 @@
       "handle": "the-lineage-dad-hat",
       "title": "The Lineage Dad Hat",
       "variants": [{ "id": 5078443425828, "title": "Default Title" }],
+      "tags": [],
       "metafields": { "c_f": {}, "subscriptions": {} }
     },
     {
@@ -153,6 +160,7 @@
       "handle": "northern-italian-espresso",
       "title": "431°",
       "variants": [{ "id": 31050215719012, "title": "16oz" }],
+      "tags": ["Cherry", "Dark Chocolate"],
       "metafields": {
         "c_f": {
           "color": "green",
@@ -180,6 +188,7 @@
       "handle": "roasters-choice-single-origin",
       "title": "Roasters Choice (Single Origin)",
       "variants": [{ "id": 5304483184676, "title": "Default Title" }],
+      "tags": [],
       "metafields": {
         "c_f": {},
         "subscriptions": {
@@ -198,6 +207,7 @@
       "handle": "431-subscription",
       "title": "431° Subscription",
       "variants": [{ "id": 11975462092836, "title": "Default Title" }],
+      "tags": ["Cherry", "Dark Chocolate"],
       "metafields": {
         "c_f": {
           "color": "green",
@@ -225,6 +235,7 @@
       "handle": "modern-american-subscription",
       "title": "Modern American Subscription",
       "variants": [{ "id": 11975480180772, "title": "Default Title" }],
+      "tags": ["Chocolate", "Tropical"],
       "metafields": {
         "c_f": {
           "color": "yellow",

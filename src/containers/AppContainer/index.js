@@ -179,6 +179,7 @@ class AppContainer extends React.PureComponent {
             ...product,
             legacyID: this.getLegacyID(product),
             metafields: this.getMetafields(product),
+            tags: this.getTags(product),
           })),
         })),
         featuredCheckoutProduct: collections.find(collection => collection.handle === 'cart')
@@ -194,6 +195,7 @@ class AppContainer extends React.PureComponent {
           ...product,
           legacyID: this.getLegacyID(product),
           metafields: this.getMetafields(product),
+          tags: this.getTags(product),
         })),
         subscriptionProducts: products
           .filter(product => product.productType.toLowerCase().indexOf('subscription') >= 0)
@@ -214,9 +216,9 @@ class AppContainer extends React.PureComponent {
   };
 
   getLegacyVariantID = (lineItem, variantTitle) => {
-    const product =
-      this.props.metafields.find(metafield => metafield.handle === lineItem.handle) ||
-      this.props.metafields.find(metafield => metafield.title === lineItem.title);
+    const product = this.props.metafields.find(
+      ({ handle, title }) => handle === lineItem.handle || title === lineItem.title
+    );
 
     const selectedVariant = product.variants.find(variant => variant.title === variantTitle);
 
@@ -224,10 +226,17 @@ class AppContainer extends React.PureComponent {
   };
 
   getMetafields = lineItem => {
-    const product =
-      this.props.metafields.find(metafield => metafield.handle === lineItem.handle) ||
-      this.props.metafields.find(metafield => metafield.title === lineItem.title);
+    const product = this.props.metafields.find(
+      ({ handle, title }) => handle === lineItem.handle || title === lineItem.title
+    );
     return product ? product.metafields : { c_f: {}, subscriptions: {} };
+  };
+
+  getTags = lineItem => {
+    const product = this.props.metafields.find(
+      ({ handle, title }) => handle === lineItem.handle || title === lineItem.title
+    );
+    return product ? product.tags : [];
   };
 
   hasSubscription = (lineItems = this.state.checkoutLineItems) =>
