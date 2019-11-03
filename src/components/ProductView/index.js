@@ -208,7 +208,7 @@ class ProductView extends React.Component {
                   {this.isCoffee && Array.isArray(product.tags) && (
                     <div>
                       <Styled.Subheading>Notes</Styled.Subheading>
-                      <Styled.Notes>{product.tags.map(note => note.value).join(', ')}</Styled.Notes>
+                      <Styled.Notes>{product.tags.map(tag => tag).join(', ')}</Styled.Notes>
                     </div>
                   )}
                   <Styled.Subheading>Description</Styled.Subheading>

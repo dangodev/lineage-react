@@ -28,9 +28,7 @@ const ProductCard = props => {
           <Styled.NoteHeading key="notes-heading">Tasting Notes</Styled.NoteHeading>,
           <Styled.NoteList key="notes">
             {Array.isArray(props.product.tags) &&
-              props.product.tags.map(note => (
-                <Styled.Note key={note.value}>{note.value}</Styled.Note>
-              ))}
+              props.product.tags.map(tag => <Styled.Note key={tag}>{tag}</Styled.Note>)}
           </Styled.NoteList>,
         ]}
         {productType !== 'coffee' && productType !== 'coffee beans' && (

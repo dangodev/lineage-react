@@ -58,7 +58,7 @@ const CartItem = ({ lineItem, ...props }) => {
         <Styled.Description>
           {(productType === 'coffee' || productType === 'coffee beans') &&
             Array.isArray(lineItem.tags) && (
-              <Styled.Notes>{lineItem.tags.map(note => note.value).join(' / ')}</Styled.Notes>
+              <Styled.Notes>{lineItem.tags.map(tag => tag).join(' / ')}</Styled.Notes>
             )}
         </Styled.Description>
         <Styled.Price>${lineItem.variant.price}</Styled.Price>
