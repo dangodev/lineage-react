@@ -1,5 +1,5 @@
 import styled from 'react-emotion';
-import { font } from 'lib/theme';
+import { font } from '../../lib/theme';
 
 export const Content = styled.div`
   margin-left: auto;

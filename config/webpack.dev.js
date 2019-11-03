@@ -1,12 +1,8 @@
 const path = require('path');
 const merge = require('webpack-merge');
-const history = require('connect-history-api-fallback');
-const convert = require('koa-connect');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const common = require('./webpack.common.js');
-
 const mockData = require('../src/data/mockData');
 
 module.exports = merge.smart(common, {
@@ -14,14 +10,11 @@ module.exports = merge.smart(common, {
   entry: {
     styles: ['./shopify-assets/styles.css', './shopify-assets/fonts.css'],
   },
-  serve: {
-    host: process.env.MANIFOLD_DASHBOARD_URL || '0.0.0.0',
+  devServer: {
+    compress: true,
+    contentBase: path.join(__dirname, 'dist'),
+    historyApiFallback: true,
     port: 8080,
-    content: [path.resolve(__dirname, '..', 'src')],
-    dev: { publicPath: '/' },
-    add: app => {
-      app.use(convert(history({})));
-    },
   },
   module: {
     rules: [
@@ -45,6 +38,5 @@ module.exports = merge.smart(common, {
       appMountId: 'app-root',
       mockData,
     }),
-    new ExtractTextPlugin('[name].css'),
   ],
 });

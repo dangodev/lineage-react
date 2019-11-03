@@ -1,7 +1,7 @@
 import styled from 'react-emotion';
 import { ifProp } from 'styled-tools';
 import { Link } from 'react-router-dom';
-import { color, font } from 'lib/theme';
+import { color, font } from '../../lib/theme';
 
 const textColors = {
   blue: `rgb(${color.black})`,

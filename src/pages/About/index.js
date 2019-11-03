@@ -1,8 +1,8 @@
 import React from 'react';
 
-import PageHeading from 'components/PageHeading';
-import TimelineEvent from 'components/TimelineEvent';
-import StoreHours from 'components/StoreHours';
+import PageHeading from '../../components/PageHeading';
+import TimelineEvent from '../../components/TimelineEvent';
+import StoreHours from '../../components/StoreHours';
 
 import * as Styled from './styles';
 
@@ -15,7 +15,8 @@ const timeline = [
   {
     month: 'May',
     year: 2012,
-    event: 'Bought first perforated drum roaster and retrofitted a grill to roast with an ice cream motor (the coffee was every bit as bad as you’d expect)',
+    event:
+      'Bought first perforated drum roaster and retrofitted a grill to roast with an ice cream motor (the coffee was every bit as bad as you’d expect)',
   },
   {
     month: 'Oct',
@@ -88,10 +89,9 @@ const About = () => (
     <Styled.SectionHeading>About</Styled.SectionHeading>
     <Styled.Content>
       <p>
-        Lineage Coffee Roasting is a craft coffee roaster from Orlando, FL
-        set on sharing our love of coffee with our community. We’re
-        passionate about uncovering the nuances and complexities of each
-        coffee we source, roast, and serve, and telling the stories behind them.
+        Lineage Coffee Roasting is a craft coffee roaster from Orlando, FL set on sharing our love
+        of coffee with our community. We’re passionate about uncovering the nuances and complexities
+        of each coffee we source, roast, and serve, and telling the stories behind them.
       </p>
     </Styled.Content>
     <Styled.SectionHeading>Lineage Timeline</Styled.SectionHeading>

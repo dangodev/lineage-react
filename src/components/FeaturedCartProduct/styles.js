@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
-import { color, font } from 'lib/theme';
+import { color, font } from '../../lib/theme';
 import speckle from 'assets/speckle.png';
 
 const textColors = {

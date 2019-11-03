@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Client from 'shopify-buy';
 import axios from 'axios';
-import { stringify } from 'query-string';
 
-import App from 'components/App';
+import App from '../../components/App';
 
 const storefrontAccessToken = '8b97d4f794c051c78b3f00e8da03ef19'; // Read-only. It’s cool if it’s in the client JS.
 const domain = 'lineage-coffee-roasting.myshopify.com';
@@ -91,11 +90,11 @@ class AppContainer extends React.PureComponent {
         })
         .then(() => {
           const cartToken = getCookie('cart');
-          const search = {
+          const search = new URLSearchParams({
             myshopify_domain: domain,
             cart_token: cartToken,
-          };
-          const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?${stringify(search)}`;
+          });
+          const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?${search.toString()}`;
           if (cartToken && this.state.rechargeURL !== rechargeURL) {
             this.setState({ rechargeURL });
           }

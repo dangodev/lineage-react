@@ -1,12 +1,5 @@
-const { readdirSync } = require('fs');
 const path = require('path');
-
-const SRC_DIR = path.resolve(__dirname, '..', 'src');
-const LOCAL_FOLDERS = readdirSync(SRC_DIR).reduce((obj, ref) => {
-  const alias = ref.indexOf('.') > 0 ? ref.split('.')[0] : ref;
-  obj[alias] = path.resolve(__dirname, '..', 'src', ref);
-  return obj;
-}, {});
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, '..', 'src'),
@@ -16,6 +9,16 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { hmr: process.env.NODE_ENV === 'development' },
+          },
+          'css-loader',
+        ],
+      },
       {
         test: /\.js$/i,
         exclude: /node_modules/,
@@ -33,10 +36,10 @@ module.exports = {
     path: path.resolve(__dirname, '..', 'dist', 'assets'),
     publicPath: '/',
   },
-  resolve: {
-    extensions: ['.js'],
-    alias: {
-      ...LOCAL_FOLDERS,
-    },
-  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
 };

@@ -1,19 +1,10 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["react", "prettier", "prettier/react"],
-  "plugins": ["emotion", "prettier", "import"],
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["emotion", "prettier", "import", "react", "react-hooks"],
   "rules": {
     "camelcase": "off",
     "curly": "error",
-    "no-irregular-whitespace": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-  },
-  "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "config/webpack.dev.js"
-      }
-    }
+    "no-irregular-whitespace": "off"
   },
   "env": {
     "browser": true,

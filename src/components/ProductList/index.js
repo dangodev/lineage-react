@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ProductCard from 'components/ProductCard';
+import ProductCard from '../ProductCard';
 import * as Styled from './styles';
 
 const ProductList = props => (
@@ -14,11 +14,7 @@ const ProductList = props => (
         delay={index * 100}
       />
     ))}
-    {props.products.length === 0 &&
-      <Styled.Zero>
-        No products to display
-      </Styled.Zero>
-    }
+    {props.products.length === 0 && <Styled.Zero>No products to display</Styled.Zero>}
   </Styled.Grid>
 );
 

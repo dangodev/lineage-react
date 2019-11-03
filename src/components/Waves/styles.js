@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'react-emotion';
-import { layer } from 'lib/theme';
+import { layer } from '../../lib/theme';
 
 import waves from 'assets/wave.svg';
 

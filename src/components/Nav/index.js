@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import hamburger from 'assets/hamburger.svg';
-import logo from 'assets/lineage.svg';
+import hamburger from '../../assets/hamburger.svg';
+import logo from '../../assets/lineage.svg';
 
 import * as Styled from './styles';
 

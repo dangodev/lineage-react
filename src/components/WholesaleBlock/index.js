@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Button from 'components/Button';
-import Waves from 'components/Waves';
+import Button from '../Button';
+import Waves from '../Waves';
 
 import * as Styled from './styles';
 

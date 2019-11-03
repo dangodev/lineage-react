@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
-import { color, font } from 'lib/theme';
+import { color, font } from '../../lib/theme';
 
 export const Container = styled.div`
   background-color: rgb(${color.white});

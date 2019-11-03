@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import { ifProp } from 'styled-tools';
-import { color, font } from 'lib/theme';
+import { color, font } from '../../lib/theme';
 
 export const Container = styled.div`
   align-items: center;
@@ -17,12 +17,8 @@ export const Container = styled.div`
     transform: translateX(-50%);
     background-image: ${ifProp(
       { inBetween: true },
-      `repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(${
-        color.black
-      }, 0.5) 4px, rgba(${color.black}, 0.5) 8px)`,
-      `linear-gradient(rgb(${color.black}), rgb(${
-        color.black
-      }) 8px, transparent 8px, transparent 16px)`
+      `repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(${color.black}, 0.5) 4px, rgba(${color.black}, 0.5) 8px)`,
+      `linear-gradient(rgb(${color.black}), rgb(${color.black}) 8px, transparent 8px, transparent 16px)`
     )};
     background-size: ${ifProp({ inBetween: true }, 'auto', '16px 16px')};
     bottom: ${ifProp({ inBetween: true }, 0, '100%')};

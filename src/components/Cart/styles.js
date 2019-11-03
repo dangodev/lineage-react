@@ -1,7 +1,7 @@
 import { css } from 'emotion';
 import styled from 'react-emotion';
 import { ifProp, ifNotProp } from 'styled-tools';
-import { color, font, layer, transition } from 'lib/theme';
+import { color, font, layer, transition } from '../../lib/theme';
 
 export const Actions = styled.menu`
   align-items: flex-end;

@@ -1,5 +1,5 @@
 import styled from 'react-emotion';
-import { color, font } from 'lib/theme';
+import { color, font } from '../../lib/theme';
 
 const bgPositions = {
   coffee: 'center top',

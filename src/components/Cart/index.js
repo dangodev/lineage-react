@@ -5,12 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/throttleTime';
 
-import Meta from 'containers/Meta';
-import Button from 'components/Button';
-import CartItem from 'components/CartItem';
-import CartZero from 'components/CartZero';
-import FeaturedCartProduct from 'components/FeaturedCartProduct';
-import Waves from 'components/Waves';
+import Meta from '../../containers/Meta';
+import Button from '../Button';
+import CartItem from '../CartItem';
+import CartZero from '../CartZero';
+import FeaturedCartProduct from '../FeaturedCartProduct';
+import Waves from '../Waves';
 
 import * as Styled from './styles';
 

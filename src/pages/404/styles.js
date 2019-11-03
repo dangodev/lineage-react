@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 
-import { color, font } from 'lib/theme';
+import { color, font } from '../../lib/theme';
 
 export const Body = styled.p`
   margin-top: 1rem;

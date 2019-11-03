@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
-import Meta from 'containers/Meta';
-import Collection from 'components/Collection';
-import ProductView from 'components/ProductView';
+import Meta from '../Meta';
+import Collection from '../../components/Collection';
+import ProductView from '../../components/ProductView';
 
 const IsShowing = css`
   height: 100vw;

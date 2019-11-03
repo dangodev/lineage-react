@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import { ifProp } from 'styled-tools';
-import { color, font } from 'lib/theme';
+import { color, font } from '../../lib/theme';
 
 const colorState = {
   Open: `rgb(${color.blue})`,

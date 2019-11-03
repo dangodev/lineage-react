@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import lineageLg from 'assets/lineage-full-black.svg';
+import lineageLg from '../../assets/lineage-full-black.svg';
 import * as Styled from './styles';
 
 const thisYear = new Date().getUTCFullYear();

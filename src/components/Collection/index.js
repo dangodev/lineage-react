@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CollectionHeader from 'components/CollectionHeader';
-import ProductList from 'components/ProductList';
-import Subscriptions from 'components/Subscriptions';
-import WholesaleBlock from 'components/WholesaleBlock';
+import CollectionHeader from '../CollectionHeader';
+import ProductList from '../ProductList';
+import Subscriptions from '../Subscriptions';
+import WholesaleBlock from '../WholesaleBlock';
 
 import * as Styled from './styles';
 

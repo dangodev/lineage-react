@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Observable } from 'rxjs/Observable';
-import { parse } from 'query-string';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/throttleTime';
 
@@ -124,7 +123,8 @@ class ProductView extends React.Component {
       return this.setState({ selectedVariant: nextProps.product.variants[0] });
     }
 
-    const variantID = parse(window.location.search).variant;
+    const search = new URLSearchParams(window.location.search);
+    const variantID = search.get('variant');
     const selectedVariant =
       nextProps.product.variants.find(variant => variant.id === variantID) ||
       nextProps.product.variants[0];

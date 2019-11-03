@@ -1,6 +1,6 @@
 import React from 'react';
 
-import bigLogo from 'assets/lineage-full.svg';
+import bigLogo from '../../assets/lineage-full.svg';
 import * as Styled from './styles';
 
 class Video extends React.Component {
@@ -26,9 +26,14 @@ class Video extends React.Component {
             playsInline
             poster="https://cdn.shopify.com/s/files/1/0746/4367/files/home-reel-poster.jpg?2238910942592067902"
             muted
-            ref={(el) => { this.video = el; }}
+            ref={el => {
+              this.video = el;
+            }}
           >
-            <source src="https://cdn.shopify.com/s/files/1/0746/4367/files/homepage-720.mp4?15396948752035854437" type="video/mp4" />
+            <source
+              src="https://cdn.shopify.com/s/files/1/0746/4367/files/homepage-720.mp4?15396948752035854437"
+              type="video/mp4"
+            />
           </video>
         </Styled.Stretch>
         <Styled.Pink />

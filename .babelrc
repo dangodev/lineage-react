@@ -3,7 +3,7 @@
   "plugins": ["emotion", "@babel/plugin-proposal-class-properties"],
   "env": {
     "test": {
-      "presets": [["@babel/env", { "targets": { "node": "10.12.0" } }], "@babel/react"]
+      "presets": [["@babel/env", { "targets": { "node": "13.0.1" } }], "@babel/react"]
     }
   }
 }

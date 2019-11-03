@@ -1,7 +1,7 @@
 import React from 'react';
 
-import PageHeading from 'components/PageHeading';
-import WholesaleFAQ from 'components/WholesaleFAQ';
+import PageHeading from '../../components/PageHeading';
+import WholesaleFAQ from '../../components/WholesaleFAQ';
 
 import * as Styled from './styles';
 

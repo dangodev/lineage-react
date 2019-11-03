@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import { ifProp } from 'styled-tools';
-import { color, font, layer, transition } from 'lib/theme';
+import { color, font, layer, transition } from '../../lib/theme';
 
 export const Actions = styled.menu`
   display: flex;
