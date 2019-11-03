@@ -23,7 +23,7 @@ const pageTitles = {
 };
 
 class PageContainer extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.scrollUp();
   }
 

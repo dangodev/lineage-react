@@ -19,12 +19,6 @@ module.exports = merge.smart(common, {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ExtractTextPlugin.extract({
-          use: 'css-loader',
-        }),
-      },
-      {
         test: /\.(gif|jpe?g|mp4|png|svg|woff2?)$/i,
         use: 'file-loader',
       },

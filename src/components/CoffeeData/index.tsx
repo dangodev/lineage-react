@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 import * as Styled from './styles';
 
-const title = {
+const title: { [key: string]: string } = {
   additional_notes: 'Additional Notes',
   annual_production: 'Annual Production',
   country: 'Country',
@@ -23,9 +22,15 @@ const title = {
   water_activity: 'Water Activity',
 };
 
-const stringify = title => title.replace(/_/g, ' ');
+interface CoffeeDataProps {
+  metafields: {
+    c_f: { [key in keyof typeof title]: string };
+  };
+}
 
-const userValue = (value, field) => {
+const stringify = (str: string) => str.replace(/_/g, ' ');
+
+const userValue = (value: string, field: string) => {
   switch (field) {
     case 'additional_notes':
       return value.replace(/\n/g, '<br />');
@@ -34,7 +39,7 @@ const userValue = (value, field) => {
   }
 };
 
-const CoffeeData = ({ metafields: { c_f } }) => (
+const CoffeeData: React.FunctionComponent<CoffeeDataProps> = ({ metafields: { c_f } }) => (
   <Styled.Metafields>
     <Styled.Heading>Deets</Styled.Heading>
     <Styled.Inner>
@@ -50,11 +55,5 @@ const CoffeeData = ({ metafields: { c_f } }) => (
     </Styled.Inner>
   </Styled.Metafields>
 );
-
-CoffeeData.propTypes = {
-  metafields: PropTypes.shape({
-    c_f: PropTypes.shape(),
-  }).isRequired,
-};
 
 export default CoffeeData;

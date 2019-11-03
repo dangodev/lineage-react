@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { ifProp } from 'styled-tools';
 import { color, font, layer, transition } from '../../lib/theme';
 

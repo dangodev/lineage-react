@@ -15,7 +15,9 @@ import Waves from '../Waves';
 import * as Styled from './styles';
 
 class Cart extends React.Component {
-  componentWillMount() {
+  state = { isLoading: false };
+
+  componentDidMount() {
     if (typeof window !== 'undefined') {
       this.keydown$ = Observable.fromEvent(window, 'keydown')
         .throttleTime(16)
@@ -23,11 +25,11 @@ class Cart extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.isShowing(nextProps)) {
-      document.body.classList.add(Styled.state.isScrollLocked);
+      document.body.classList.add('is-cart-open');
     } else {
-      document.body.classList.remove(Styled.state.isScrollLocked);
+      document.body.classList.remove('is-cart-open');
     }
   }
 
@@ -37,8 +39,6 @@ class Cart extends React.Component {
     }
   }
 
-  state = { isLoading: false };
-
   keydownHandler = e => {
     if (this.isShowing() && e.keyCode === 27) {
       this.closeCart();
@@ -46,7 +46,8 @@ class Cart extends React.Component {
   };
 
   fetchAdditionalInfo = lineItem => {
-    const product = this.props.allProducts.find(product => product.title === lineItem.title);
+    const product = this.props.allProducts.find(({ title }) => title === lineItem.title);
+
     if (!product) {
       return {
         ...lineItem,
@@ -156,7 +157,6 @@ Cart.propTypes = {
   history: PropTypes.object.isRequired,
   lineItems: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
-  location: PropTypes.object.isRequired,
   removeLineItem: PropTypes.func.isRequired,
   updateLineItem: PropTypes.func.isRequired,
 };

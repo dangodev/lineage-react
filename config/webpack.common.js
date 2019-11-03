@@ -20,13 +20,17 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/i,
+        test: /\.jsx?$/i,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
       {
         test: /\.ejs$/i,
         use: 'ejs-loader',
+      },
+      {
+        test: /\.tsx?$/i,
+        use: 'awesome-typescript-loader',
       },
     ],
   },
@@ -42,4 +46,7 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
 };

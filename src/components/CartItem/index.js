@@ -33,7 +33,7 @@ const CartItem = ({ lineItem, ...props }) => {
   const clickHandler = e => {
     e.preventDefault();
     // eslint-disable-next-line no-alert
-    if (confirm(`Remove ${lineItem.title}?`)) {
+    if (window.confirm(`Remove ${lineItem.title}?`)) {
       props.removeLineItem(lineItem.id);
     }
   };
@@ -68,7 +68,7 @@ const CartItem = ({ lineItem, ...props }) => {
           min="0"
           onChange={e => {
             // eslint-disable-next-line no-alert
-            if (parseInt(e.target.value, 10) === 0 && confirm(`Remove ${lineItem.title}?`)) {
+            if (parseInt(e.target.value, 10) === 0 && window.confirm(`Remove ${lineItem.title}?`)) {
               props.removeLineItem(lineItem.id);
             } else if (e.target.value) {
               props.updateLineItem({

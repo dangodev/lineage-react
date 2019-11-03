@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import CartBlocker from '../../containers/CartBlocker';
 import PageContainer from '../../containers/PageContainer';
@@ -61,6 +61,7 @@ const App = props => (
 
 App.defaultProps = {
   allProducts: [],
+  checkoutLineItems: [],
   collections: [],
   featuredCheckoutProduct: undefined,
   featuredHomeProduct: undefined,

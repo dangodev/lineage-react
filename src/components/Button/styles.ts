@@ -1,5 +1,4 @@
-import styled from 'react-emotion';
-import { ifProp } from 'styled-tools';
+import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { color, font } from '../../lib/theme';
 
@@ -10,27 +9,34 @@ const textColors = {
   white: `rgb(${color.black})`,
 };
 
+interface ButtonProps {
+  color: keyof typeof textColors;
+  disabled: boolean;
+  small: boolean;
+}
+
 export const ActionButton = styled.button`
   align-items: center;
   appearance: none;
-  background-color: ${props =>
+  background-color: ${(props: ButtonProps) =>
     props.disabled ? `rgba(${color.gray}, 0.25)` : `rgb(${color[props.color] || color.blueT})`};
   border-radius: 0;
   border: none;
-  color: ${props => (props.disabled ? `rgba(${color.black}, 0.375)` : textColors[props.color])};
+  color: ${(props: ButtonProps) =>
+    props.disabled ? `rgba(${color.black}, 0.375)` : textColors[props.color]};
   cursor: pointer;
   display: flex;
   font-family: ${font.din};
-  font-size: ${ifProp({ small: true }, font.down2, font.down1)};
+  font-size: ${({ small }: ButtonProps) => (small === true ? font.down2 : font.down1)};
   font-weight: 700;
-  height: ${ifProp({ small: true }, 'rem', '3rem')};
+  height: ${({ small }: ButtonProps) => (small === true ? 'rem' : '3rem')};
   justify-content: center;
   min-width: 12rem;
   padding-bottom: 0;
-  padding-left: ${ifProp({ small: true }, '1rem', '2rem')};
-  padding-right: ${ifProp({ small: true }, '1rem', '2rem')};
+  padding-left: ${({ small }: ButtonProps) => (small === true ? '1rem' : '2rem')};
+  padding-right: ${({ small }: ButtonProps) => (small === true ? '1rem' : '2rem')};
   padding-top: 0;
-  pointer-events: ${ifProp({ disabled: true }, 'none', 'normal')};
+  pointer-events: ${({ disabled }: ButtonProps) => (disabled === true ? 'none' : 'normal')};
   text-decoration: none;
   text-transform: uppercase;
   transition: background-color 200ms;
@@ -41,7 +47,7 @@ export const ActionButton = styled.button`
   }
 
   @media (min-width: 600px) {
-    font-size: ${ifProp({ small: true }, font.down1, '1em')};
+    font-size: ${({ small }: ButtonProps) => (small === true ? font.down1 : '1em')};
   }
 `;
 export const AnchorButton = ActionButton.withComponent('a');

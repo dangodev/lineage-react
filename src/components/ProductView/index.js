@@ -5,13 +5,20 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/throttleTime';
 
-import Button from 'components/Button';
-import CoffeeData from 'components/CoffeeData';
-import Waves from 'components/Waves';
+import Button from '../Button';
+import CoffeeData from '../CoffeeData';
+import Waves from '../Waves';
 import * as Styled from './styles';
 
 class ProductView extends React.Component {
-  componentWillMount() {
+  state = {
+    quantities: [1, 2, 3, 4, 5],
+    quantity: 1,
+    selectedInterval: '1',
+    selectedVariant: {},
+  };
+
+  componentDidMount() {
     this.setDefaultVariant(this.props);
     if (typeof window !== 'undefined') {
       this.keydown$ = Observable.fromEvent(window, 'keydown')
@@ -20,7 +27,7 @@ class ProductView extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setDefaultVariant(nextProps);
     this.setState({ quantity: 1 }); // go back to 1 quantity on product change
   }
@@ -31,19 +38,51 @@ class ProductView extends React.Component {
     }
   }
 
-  state = {
-    quantities: [1, 2, 3, 4, 5],
-    quantity: 1,
-    selectedInterval: '1',
-    selectedVariant: {},
-  };
+  get flavor() {
+    const { product } = this.props;
+
+    if (!product || !product.metafields.c_f || !product.metafields.c_f.color) {
+      return 'pink';
+    }
+    return product.metafields.c_f.color;
+  }
+
+  get subscriptionIntervals() {
+    return (
+      this.props.product.metafields.subscriptions.shipping_interval_frequency
+        .replace(/\s/g, '')
+        .split(',') || []
+    );
+  }
+
+  get isCoffee() {
+    if (!this.props.product) {
+      return false;
+    }
+    return ['coffee', 'coffee beans'].indexOf(this.props.product.productType.toLowerCase()) !== -1;
+  }
+
+  get shouldShowVariants() {
+    if (!this.props.product) {
+      return false;
+    }
+
+    return this.props.product.options.length > 0 && this.props.product.options[0].values.length > 1;
+  }
+
+  get shouldShowSubscriptions() {
+    return (
+      this.props.product &&
+      this.props.product.productType.toLowerCase().indexOf('subscription') >= 0
+    );
+  }
 
   addLineItem = e => {
     if (e) {
       e.preventDefault();
     }
 
-    let lineItem = {
+    const lineItem = {
       variantId: this.state.selectedVariant.id,
       quantity: this.state.quantity,
     };
@@ -73,30 +112,6 @@ class ProductView extends React.Component {
     e.preventDefault();
     this.props.history.push(this.props.returnTo);
   };
-
-  get flavor() {
-    const { product } = this.props;
-
-    if (!product || !product.metafields.c_f || !product.metafields.c_f.color) {
-      return 'pink';
-    }
-    return product.metafields.c_f.color;
-  }
-
-  get subscriptionIntervals() {
-    return (
-      this.props.product.metafields.subscriptions['shipping_interval_frequency']
-        .replace(/\s/g, '')
-        .split(',') || []
-    );
-  }
-
-  get isCoffee() {
-    if (!this.props.product) {
-      return false;
-    }
-    return ['coffee', 'coffee beans'].indexOf(this.props.product.productType.toLowerCase()) !== -1;
-  }
 
   isSelectedOption = ({ name, value }) => {
     if (!this.props.product || !this.state.selectedVariant) {
@@ -129,7 +144,7 @@ class ProductView extends React.Component {
       nextProps.product.variants.find(variant => variant.id === variantID) ||
       nextProps.product.variants[0];
 
-    this.setState({
+    return this.setState({
       selectedVariant: selectedVariant || nextProps.product.variants[0],
     });
   };
@@ -152,7 +167,7 @@ class ProductView extends React.Component {
     }
 
     const options = {
-      ...this.state.selectedOptions,
+      ...this.state.selectedOptions, // eslint-disable-line react/no-access-state-in-setstate
       [name]: value,
     };
 
@@ -175,21 +190,6 @@ class ProductView extends React.Component {
   setQuantity = quantity => this.setState({ quantity });
 
   setSelectedInterval = interval => this.setState({ selectedInterval: `${interval}` });
-
-  get shouldShowVariants() {
-    if (!this.props.product) {
-      return false;
-    }
-
-    return this.props.product.options.length > 0 && this.props.product.options[0].values.length > 1;
-  }
-
-  get shouldShowSubscriptions() {
-    return (
-      this.props.product &&
-      this.props.product.productType.toLowerCase().indexOf('subscription') >= 0
-    );
-  }
 
   render() {
     const { isShowing, product, returnTo } = this.props;

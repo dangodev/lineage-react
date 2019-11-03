@@ -8,16 +8,16 @@ import logo from '../../assets/lineage.svg';
 import * as Styled from './styles';
 
 class Nav extends React.Component {
-  componentWillReceiveProps(nextProps) {
+  state = {
+    isOpen: false,
+  };
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname !== this.props.location.pathname) {
       this.relaxScroll();
       this.setState({ isOpen: false });
     }
   }
-
-  state = {
-    isOpen: false,
-  };
 
   closeNav = e => {
     e.preventDefault();
@@ -34,11 +34,11 @@ class Nav extends React.Component {
   };
 
   restrictScroll() {
-    document.body.classList.add(Styled.state.isScrollLocked);
+    document.body.classList.add('is-mobile-menu-open');
   }
 
   relaxScroll() {
-    document.body.classList.remove(Styled.state.isScrollLocked);
+    document.body.classList.remove('is-mobile-menu-open');
   }
 
   render() {

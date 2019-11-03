@@ -1,9 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import { css } from 'emotion';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { ifProp } from 'styled-tools';
 import { color, font, layer, transition } from '../../lib/theme';
-import speckle from 'assets/speckle.png';
+import speckle from '../../assets/speckle.png';
 
 const breakpoint = {
   sm: '580px',
@@ -238,13 +237,3 @@ export const MobileOpen = styled.button`
     width: 1.75rem;
   }
 `;
-
-export const state = {
-  isScrollLocked: css`
-    overflow: hidden;
-
-    @media (min-width: 600px) {
-      overflow: auto;
-    }
-  `,
-};
