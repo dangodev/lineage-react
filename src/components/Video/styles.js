@@ -1,5 +1,6 @@
-import styled, { keyframes } from 'react-emotion';
-import { color, layer, transition } from 'lib/theme';
+import { keyframes } from '@emotion/core';
+import styled from '@emotion/styled';
+import { color, layer, transition } from '../../lib/theme';
 
 const fadeIn = keyframes`
     to {

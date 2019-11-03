@@ -1,6 +1,6 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
-import { color, font } from 'lib/theme';
+import { color, font } from '../../lib/theme';
 
 export const Actions = styled.menu`
   align-items: center;

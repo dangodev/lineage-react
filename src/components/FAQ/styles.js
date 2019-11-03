@@ -1,12 +1,10 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { ifProp } from 'styled-tools';
-import { color, font, transition } from 'lib/theme';
+import { color, font, transition } from '../../lib/theme';
 
 export const Answer = styled.div`
-  height: ${ifProp(
-    { isMeasuring: true },
-    'auto',
-    ({ fullHeight, isOpen }) => (isOpen ? fullHeight : 0)
+  height: ${ifProp({ isMeasuring: true }, 'auto', ({ fullHeight, isOpen }) =>
+    isOpen ? fullHeight : 0
   )};
   transition: ${ifProp({ isMeasuring: true }, 'none', `height 200ms ${transition.standard}`)};
   overflow: hidden;

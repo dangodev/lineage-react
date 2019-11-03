@@ -1,6 +1,6 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
-import { font } from 'lib/theme';
+import { font } from '../../lib/theme';
 
 export const BrewHeading = styled.h1`
   font-family: ${font.kaufmann};

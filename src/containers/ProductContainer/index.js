@@ -1,29 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
 
-import Meta from 'containers/Meta';
-import Collection from 'components/Collection';
-import ProductView from 'components/ProductView';
-
-const IsShowing = css`
-  height: 100vw;
-  overflow: hidden;
-`;
+import Meta from '../Meta';
+import Collection from '../../components/Collection';
+import ProductView from '../../components/ProductView';
+import { CSS_PRODUCT_SHOWING } from '../../lib/constants';
 
 class ProductContainer extends React.Component {
-  componentWillMount() {
-    this.route(this.props);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.route(nextProps);
-
-    if (this.props.location.pathname !== nextProps.location.pathname) {
-      window.scrollTo(0, 0);
-    }
-  }
-
   state = {
     current: 'collections',
     collection: undefined,
@@ -48,10 +31,23 @@ class ProductContainer extends React.Component {
     },
   };
 
+  componentDidMount() {
+    this.route(this.props);
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    this.route(nextProps);
+
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
+  }
+
   getPageTitle() {
     if (this.state.current === 'collections' && this.state.collection) {
       return `${this.state.collection.title} • Lineage Coffee Roasting`;
-    } else if (this.state.current === 'products' && this.state.product) {
+    }
+    if (this.state.current === 'products' && this.state.product) {
       return `${this.state.product.title} • Lineage Coffee Roasting`;
     }
     return undefined;
@@ -73,10 +69,10 @@ class ProductContainer extends React.Component {
     const request = nextProps.location.pathname.split('/');
     const subroute = request[request.length - 1];
 
-    if (!nextProps.allProducts.length || !nextProps.collections.length) return false;
+    if (!nextProps.allProducts.length || !nextProps.collections.length) return;
 
     if (nextProps.match.url === '/products') {
-      document.body.classList.add(IsShowing);
+      document.body.classList.add(CSS_PRODUCT_SHOWING);
       this.transition('SELECT');
       const nextProduct = nextProps.allProducts.find(({ handle }) => handle === subroute);
       this.setState({ product: nextProduct });
@@ -89,7 +85,7 @@ class ProductContainer extends React.Component {
         });
       }
     } else if (nextProps.match.url === '/collections') {
-      document.body.classList.remove(IsShowing);
+      document.body.classList.remove(CSS_PRODUCT_SHOWING);
       this.transition('CLOSE');
       this.setState({
         collection: nextProps.collections.find(({ handle }) => handle === subroute),
@@ -100,7 +96,7 @@ class ProductContainer extends React.Component {
         setTimeout(() => this.transition('SUCCESS'), 30);
       }
     } else {
-      document.body.classList.remove(IsShowing);
+      document.body.classList.remove(CSS_PRODUCT_SHOWING);
       this.transition('CLOSE');
       this.setState({ collection: undefined, product: undefined });
     }

@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import ProductCard from 'components/ProductCard';
+import ProductCard from '../ProductCard';
 import * as Styled from './styles';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -9,7 +8,11 @@ const date = new Date();
 const thisMonth = date ? months[date.getMonth()] : '';
 const thisYear = date ? date.getFullYear() : '';
 
-const FeaturedProduct = props => (
+interface FeaturedProductProps {
+  featuredProduct: any;
+}
+
+const FeaturedProduct: React.FunctionComponent<FeaturedProductProps> = ({ featuredProduct }) => (
   <Styled.Container>
     <Styled.Grid>
       <Styled.Content>
@@ -19,14 +22,10 @@ const FeaturedProduct = props => (
             {thisMonth} {thisYear}
           </small>
         </Styled.Heading>
-        <ProductCard product={props.featuredProduct} />
+        <ProductCard product={featuredProduct} />
       </Styled.Content>
     </Styled.Grid>
   </Styled.Container>
 );
-
-FeaturedProduct.propTypes = {
-  featuredProduct: PropTypes.object,
-};
 
 export default FeaturedProduct;

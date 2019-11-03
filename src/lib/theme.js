@@ -47,12 +47,13 @@ export const font = {
 
 /* Layers */
 
-const layers = ['base', 'nav', 'modal', 'loading', 'cart'];
-
-export const layer = layers.reduce(
-  (mapping, key, index) => ({ ...mapping, [key]: (index + 1) * 10 }),
-  {}
-);
+export const layer = {
+  base: 10,
+  nav: 20,
+  modal: 30,
+  loading: 40,
+  cart: 50,
+};
 
 /* Transitions */
 

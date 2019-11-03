@@ -1,6 +1,6 @@
-import styled from 'react-emotion';
-import { color, font } from 'lib/theme';
-import speckle from 'assets/speckle.png';
+import styled from '@emotion/styled';
+import { color, font } from '../../lib/theme';
+import speckle from '../../assets/speckle.png';
 
 export const Container = styled.div`
   background-color: rgb(${color.green});

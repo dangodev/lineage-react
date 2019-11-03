@@ -1,7 +1,6 @@
-import { css } from 'emotion';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { ifProp, ifNotProp } from 'styled-tools';
-import { color, font, layer, transition } from 'lib/theme';
+import { color, font, layer, transition } from '../../lib/theme';
 
 export const Actions = styled.menu`
   align-items: flex-end;
@@ -116,9 +115,3 @@ export const WaveContainer = styled.div`
   position: relative;
   width: 100%;
 `;
-
-export const state = {
-  isScrollLocked: css`
-    overflow: hidden;
-  `,
-};

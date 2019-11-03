@@ -1,5 +1,5 @@
-import styled from 'react-emotion';
-import { font } from 'lib/theme';
+import styled from '@emotion/styled';
+import { font } from '../../lib/theme';
 
 export const Container = styled.div`
   align-items: center;

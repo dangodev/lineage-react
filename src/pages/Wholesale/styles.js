@@ -1,5 +1,5 @@
-import styled from 'react-emotion';
-import { color, font } from 'lib/theme';
+import styled from '@emotion/styled';
+import { color, font } from '../../lib/theme';
 
 export const Content = styled.div`
   display: flex;

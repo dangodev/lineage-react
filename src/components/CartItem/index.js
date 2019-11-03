@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as Styled from './styles';
 
 const CartItem = ({ lineItem, ...props }) => {
-  if (!lineItem) {
+  if (!lineItem || !lineItem.variant) {
     return null;
   }
 
@@ -33,7 +33,7 @@ const CartItem = ({ lineItem, ...props }) => {
   const clickHandler = e => {
     e.preventDefault();
     // eslint-disable-next-line no-alert
-    if (confirm(`Remove ${lineItem.title}?`)) {
+    if (window.confirm(`Remove ${lineItem.title}?`)) {
       props.removeLineItem(lineItem.id);
     }
   };
@@ -56,9 +56,10 @@ const CartItem = ({ lineItem, ...props }) => {
         </Styled.Heading>
         <Styled.ProductType>{lineItem.productType}</Styled.ProductType>
         <Styled.Description>
-          {(productType === 'coffee' || productType === 'coffee beans') && (
-            <Styled.Notes>{lineItem.tags.map(note => note.value).join(' / ')}</Styled.Notes>
-          )}
+          {(productType === 'coffee' || productType === 'coffee beans') &&
+            Array.isArray(lineItem.tags) && (
+              <Styled.Notes>{lineItem.tags.map(note => note.value).join(' / ')}</Styled.Notes>
+            )}
         </Styled.Description>
         <Styled.Price>${lineItem.variant.price}</Styled.Price>
       </Styled.ProductInfo>
@@ -68,7 +69,7 @@ const CartItem = ({ lineItem, ...props }) => {
           min="0"
           onChange={e => {
             // eslint-disable-next-line no-alert
-            if (parseInt(e.target.value, 10) === 0 && confirm(`Remove ${lineItem.title}?`)) {
+            if (parseInt(e.target.value, 10) === 0 && window.confirm(`Remove ${lineItem.title}?`)) {
               props.removeLineItem(lineItem.id);
             } else if (e.target.value) {
               props.updateLineItem({

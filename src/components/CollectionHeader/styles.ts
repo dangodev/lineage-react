@@ -1,5 +1,5 @@
-import styled from 'react-emotion';
-import { color, font } from 'lib/theme';
+import styled from '@emotion/styled';
+import { color, font } from '../../lib/theme';
 
 const bgPositions = {
   coffee: 'center top',
@@ -24,12 +24,19 @@ export const Heading = styled.h1`
   text-align: center;
 `;
 
+interface InnerProps {
+  handle: keyof typeof bgPositions;
+  imgSm: string;
+  imgLg: string;
+}
+
 export const Inner = styled.div`
   align-items: center;
   background-color: rgb(${color.cadet});
   background-size: cover;
-  background-image: url('${({ imgSm }) => imgSm}');
-  background-position: ${({ handle }) => (handle ? bgPositions[handle] : 'center center')};
+  background-image: url('${({ imgSm }: InnerProps) => imgSm}');
+  background-position: ${({ handle }: InnerProps) =>
+    handle ? bgPositions[handle] : 'center center'};
   display: flex;
   flex-direction: column;
   height: 75vh;
@@ -49,10 +56,10 @@ export const Inner = styled.div`
   }
 
   @media (min-width: 1281px) {
-    background-image: url('${({ imgLg }) => imgLg}');
+    background-image: url('${({ imgLg }: InnerProps) => imgLg}');
   }
 
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-width: 641px) {
-    background-image: url('${({ imgLg }) => imgLg}');
+    background-image: url('${({ imgLg }: InnerProps) => imgLg}');
   }
   `;

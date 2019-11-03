@@ -2,7 +2,14 @@ import React from 'react';
 
 import * as Styled from './styles';
 
-const locations = [
+interface Location {
+  name: string;
+  address: string;
+  opening: number;
+  militaryHours: ([number, number])[];
+}
+
+const locations: Location[] = [
   {
     name: 'East End Market',
     address: '3201 Corrine Dr',
@@ -17,10 +24,11 @@ const locations = [
   },
 ];
 
-const format = hours => {
+const format = (hours: number) => {
   if (hours === 12) {
     return `${hours}p`;
-  } else if (hours >= 13) {
+  }
+  if (hours >= 13) {
     return `${hours - 12}p`;
   }
   return `${hours}a`;
@@ -36,7 +44,7 @@ if (day < 0) {
   day = 0;
 }
 
-const isOpen = location => {
+const isOpen = (location: Location) => {
   let hours = today.getUTCHours() - offsetHours; // can be > 24; makes late-night closing calculations and timezones simpler
   hours = hours < 0 ? hours + 24 : hours;
   let minutes = today.getUTCMinutes();
@@ -56,13 +64,14 @@ const isOpen = location => {
 
   if (hours + minutes / 60 >= close - 0.5 && hours < close) {
     return 'Closing Soon';
-  } else if (hours >= open && hours < close) {
+  }
+  if (hours >= open && hours < close) {
     return 'Open';
   }
   return 'Closed';
 };
 
-const StoreHours = () => (
+const StoreHours: React.FunctionComponent = () => (
   <Styled.Container>
     <Styled.Heading>Locations</Styled.Heading>
     <Styled.Grid>

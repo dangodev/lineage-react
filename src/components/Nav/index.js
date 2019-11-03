@@ -2,22 +2,23 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import hamburger from 'assets/hamburger.svg';
-import logo from 'assets/lineage.svg';
+import hamburger from '../../assets/hamburger.svg';
+import logo from '../../assets/lineage.svg';
+import { CSS_MOBILE_MENU } from '../../lib/constants';
 
 import * as Styled from './styles';
 
 class Nav extends React.Component {
-  componentWillReceiveProps(nextProps) {
+  state = {
+    isOpen: false,
+  };
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname !== this.props.location.pathname) {
       this.relaxScroll();
       this.setState({ isOpen: false });
     }
   }
-
-  state = {
-    isOpen: false,
-  };
 
   closeNav = e => {
     e.preventDefault();
@@ -34,11 +35,11 @@ class Nav extends React.Component {
   };
 
   restrictScroll() {
-    document.body.classList.add(Styled.state.isScrollLocked);
+    document.body.classList.add(CSS_MOBILE_MENU);
   }
 
   relaxScroll() {
-    document.body.classList.remove(Styled.state.isScrollLocked);
+    document.body.classList.remove(CSS_MOBILE_MENU);
   }
 
   render() {

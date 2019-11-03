@@ -2,21 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Client from 'shopify-buy';
 import axios from 'axios';
-import { stringify } from 'query-string';
 
-import App from 'components/App';
+import App from '../../components/App';
 
 const storefrontAccessToken = '8b97d4f794c051c78b3f00e8da03ef19'; // Read-only. It’s cool if it’s in the client JS.
 const domain = 'lineage-coffee-roasting.myshopify.com';
 
-class AppContainer extends React.PureComponent {
-  componentDidMount() {
-    this.getCheckout();
-    this.fetchProducts();
-    this.getPrivacyPolicy();
-    setInterval(() => this.getCheckout(), 30000);
-  }
+/* eslint-disable @typescript-eslint/no-use-before-define */
 
+class AppContainer extends React.PureComponent {
   state = {
     allProducts: [],
     checkout: undefined,
@@ -34,6 +28,13 @@ class AppContainer extends React.PureComponent {
     shopifyURL: `https://${domain}/checkout`,
     subscriptionProducts: [],
   };
+
+  componentDidMount() {
+    this.getCheckout();
+    this.fetchProducts();
+    this.getPrivacyPolicy();
+    setInterval(() => this.getCheckout(), 30000);
+  }
 
   addLineItem = ({ variantId, quantity, customAttributes = undefined }) => {
     this.renewCart();
@@ -57,16 +58,19 @@ class AppContainer extends React.PureComponent {
 
     if (this.hasSubscription(this.state.checkoutLineItems) === false) {
       this.expireCart();
-      return (window.location = this.state.shopifyURL);
+      window.location = this.state.shopifyURL;
+      return true;
     }
 
-    const getCookie = name => (document.cookie.match('(^|; )' + name + '=([^;]*)') || 0)[2];
+    const getCookie = name => (document.cookie.match(`(^|; )${name}=([^;]*)`) || 0)[2];
 
     const getLegacyCart = (clearCart = false) =>
       axios.get('/cart.js').then(result => {
         if (clearCart) {
-          let updates = {};
-          result.data.items.forEach(lineItem => (updates[lineItem.id] = 0));
+          const updates = {};
+          result.data.items.forEach(lineItem => {
+            updates[lineItem.id] = 0;
+          });
           axios.post('/cart/update.js', { updates }).then(() =>
             // eslint-disable-next-line no-use-before-define
             this.state.checkoutLineItems.forEach(lineItem => addToLegacyCart(lineItem))
@@ -91,11 +95,11 @@ class AppContainer extends React.PureComponent {
         })
         .then(() => {
           const cartToken = getCookie('cart');
-          const search = {
+          const search = new URLSearchParams({
             myshopify_domain: domain,
             cart_token: cartToken,
-          };
-          const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?${stringify(search)}`;
+          });
+          const rechargeURL = `https://checkout.rechargeapps.com/r/checkout?${search.toString()}`;
           if (cartToken && this.state.rechargeURL !== rechargeURL) {
             this.setState({ rechargeURL });
           }
@@ -108,6 +112,8 @@ class AppContainer extends React.PureComponent {
     };
 
     getLegacyCart(true);
+
+    return true;
   };
 
   createCheckout = () => {
@@ -272,6 +278,10 @@ class AppContainer extends React.PureComponent {
     );
   }
 }
+
+AppContainer.defaultProps = {
+  metafields: [],
+};
 
 AppContainer.propTypes = {
   metafields: PropTypes.arrayOf(PropTypes.shape()),

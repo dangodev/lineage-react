@@ -5,17 +5,20 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/throttleTime';
 
-import Meta from 'containers/Meta';
-import Button from 'components/Button';
-import CartItem from 'components/CartItem';
-import CartZero from 'components/CartZero';
-import FeaturedCartProduct from 'components/FeaturedCartProduct';
-import Waves from 'components/Waves';
+import Meta from '../../containers/Meta';
+import Button from '../Button';
+import CartItem from '../CartItem';
+import CartZero from '../CartZero';
+import FeaturedCartProduct from '../FeaturedCartProduct';
+import Waves from '../Waves';
+import { CSS_CART_OPEN } from '../../lib/constants';
 
 import * as Styled from './styles';
 
 class Cart extends React.Component {
-  componentWillMount() {
+  state = { isLoading: false };
+
+  componentDidMount() {
     if (typeof window !== 'undefined') {
       this.keydown$ = Observable.fromEvent(window, 'keydown')
         .throttleTime(16)
@@ -23,11 +26,11 @@ class Cart extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.isShowing(nextProps)) {
-      document.body.classList.add(Styled.state.isScrollLocked);
+      document.body.classList.add(CSS_CART_OPEN);
     } else {
-      document.body.classList.remove(Styled.state.isScrollLocked);
+      document.body.classList.remove(CSS_CART_OPEN);
     }
   }
 
@@ -37,8 +40,6 @@ class Cart extends React.Component {
     }
   }
 
-  state = { isLoading: false };
-
   keydownHandler = e => {
     if (this.isShowing() && e.keyCode === 27) {
       this.closeCart();
@@ -46,7 +47,8 @@ class Cart extends React.Component {
   };
 
   fetchAdditionalInfo = lineItem => {
-    const product = this.props.allProducts.find(product => product.title === lineItem.title);
+    const product = this.props.allProducts.find(({ title }) => title === lineItem.title);
+
     if (!product) {
       return {
         ...lineItem,
@@ -156,7 +158,6 @@ Cart.propTypes = {
   history: PropTypes.object.isRequired,
   lineItems: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
-  location: PropTypes.object.isRequired,
   removeLineItem: PropTypes.func.isRequired,
   updateLineItem: PropTypes.func.isRequired,
 };

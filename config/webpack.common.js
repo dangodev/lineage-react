@@ -1,12 +1,5 @@
-const { readdirSync } = require('fs');
 const path = require('path');
-
-const SRC_DIR = path.resolve(__dirname, '..', 'src');
-const LOCAL_FOLDERS = readdirSync(SRC_DIR).reduce((obj, ref) => {
-  const alias = ref.indexOf('.') > 0 ? ref.split('.')[0] : ref;
-  obj[alias] = path.resolve(__dirname, '..', 'src', ref);
-  return obj;
-}, {});
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, '..', 'src'),
@@ -17,13 +10,27 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/i,
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { hmr: process.env.NODE_ENV === 'development' },
+          },
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.jsx?$/i,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
       {
         test: /\.ejs$/i,
         use: 'ejs-loader',
+      },
+      {
+        test: /\.tsx?$/i,
+        use: 'awesome-typescript-loader',
       },
     ],
   },
@@ -33,10 +40,13 @@ module.exports = {
     path: path.resolve(__dirname, '..', 'dist', 'assets'),
     publicPath: '/',
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
   resolve: {
-    extensions: ['.js'],
-    alias: {
-      ...LOCAL_FOLDERS,
-    },
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 };

@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
-import CartBlocker from 'containers/CartBlocker';
-import PageContainer from 'containers/PageContainer';
-import ProductContainer from 'containers/ProductContainer';
-import Cart from 'components/Cart';
-import Footer from 'components/Footer';
-import Loading from 'components/Loading';
-import Nav from 'components/Nav';
-import Home from 'pages/Home';
+import CartBlocker from '../../containers/CartBlocker';
+import PageContainer from '../../containers/PageContainer';
+import ProductContainer from '../../containers/ProductContainer';
+import Cart from '../Cart';
+import Footer from '../Footer';
+import Loading from '../Loading';
+import Nav from '../Nav';
+import Home from '../../pages/Home';
 
-import { color } from 'lib/theme';
+import { color } from '../../lib/theme';
 
 const Container = styled.div`
   background-color: rgb(${color.offwhite});
@@ -61,6 +61,7 @@ const App = props => (
 
 App.defaultProps = {
   allProducts: [],
+  checkoutLineItems: [],
   collections: [],
   featuredCheckoutProduct: undefined,
   featuredHomeProduct: undefined,

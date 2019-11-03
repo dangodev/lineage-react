@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
@@ -7,15 +7,19 @@ import 'rxjs/add/operator/debounceTime';
 import * as Styled from './styles';
 
 class FAQ extends React.Component {
-  componentWillMount() {
+  state = {
+    fullHeight: 'auto',
+    isMeasuring: true,
+    isOpen: false,
+  };
+
+  componentDidMount() {
     if (typeof window !== 'undefined') {
       this.resize$ = Observable.fromEvent(window, 'resize')
         .debounceTime(16)
         .subscribe(() => this.resizeHandler);
     }
-  }
 
-  componentDidMount() {
     this.setState({
       fullHeight: this.answer.getBoundingClientRect().height,
       isMeasuring: false,
@@ -28,12 +32,6 @@ class FAQ extends React.Component {
     }
   }
 
-  state = {
-    fullHeight: 'auto',
-    isMeasuring: true,
-    isOpen: false,
-  };
-
   resizeHandler = () => {
     this.setState({ isMeasuring: true }, () =>
       this.setState({
@@ -45,12 +43,12 @@ class FAQ extends React.Component {
 
   toggle = e => {
     e.preventDefault();
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
   };
 
   render() {
     return (
-      <Fragment>
+      <>
         <Styled.Trigger onClick={e => this.toggle(e)} isOpen={this.state.isOpen}>
           {this.props.faq.question}
         </Styled.Trigger>
@@ -64,7 +62,7 @@ class FAQ extends React.Component {
         >
           <Styled.AnswerInner>{this.props.faq.answer}</Styled.AnswerInner>
         </Styled.Answer>
-      </Fragment>
+      </>
     );
   }
 }

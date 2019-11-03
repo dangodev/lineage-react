@@ -24,3 +24,22 @@ img {
   height: auto;
   max-width: 100%;
 }
+
+.is-cart-open {
+  overflow: hidden;
+}
+
+.is-mobile-menu-open {
+  overflow: hidden;
+}
+
+@media (min-width: 600px) {
+  .is-mobile-menu-open {
+    overflow: auto;
+  }
+}
+
+.is-product-showing {
+  height: 100vw;
+  overflow: hidden;
+}

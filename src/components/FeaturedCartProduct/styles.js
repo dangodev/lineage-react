@@ -1,7 +1,7 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
-import { color, font } from 'lib/theme';
-import speckle from 'assets/speckle.png';
+import { color, font } from '../../lib/theme';
+import speckle from '../../assets/speckle.png';
 
 const textColors = {
   blue: `rgb(${color.black})`,

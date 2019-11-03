@@ -1,6 +1,7 @@
-import styled, { keyframes } from 'react-emotion';
+import { keyframes } from '@emotion/core';
+import styled from '@emotion/styled';
 import { ifProp } from 'styled-tools';
-import { color, layer, transition } from 'lib/theme';
+import { color, layer, transition } from '../../lib/theme';
 
 const progress = keyframes`
   0% {

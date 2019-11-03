@@ -1,7 +1,7 @@
 import React from 'react';
 
-import PageHeading from 'components/PageHeading';
-import WholesaleFAQ from 'components/WholesaleFAQ';
+import PageHeading from '../../components/PageHeading';
+import WholesaleFAQ from '../../components/WholesaleFAQ';
 
 import * as Styled from './styles';
 
@@ -58,7 +58,7 @@ const Wholesale = () => (
         </fieldset>
 
         <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
-          <input type="text" name="b_5c1c7606596cf9a2e17a43836_174c40033a" tabIndex="-1" value="" />
+          <input type="text" name="b_5c1c7606596cf9a2e17a43836_174c40033a" tabIndex={-1} value="" />
         </div>
         <input
           type="submit"

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ProductList from 'components/ProductList';
+import ProductList from '../ProductList';
 import * as Styled from './styles';
 
 const Subscriptions = props => {

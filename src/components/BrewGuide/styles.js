@@ -1,5 +1,5 @@
-import styled from 'react-emotion';
-import { color, font, transition } from 'lib/theme';
+import styled from '@emotion/styled';
+import { color, font, transition } from '../../lib/theme';
 
 export const Container = styled.a`
   border-radius: 0.5rem;

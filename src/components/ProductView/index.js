@@ -2,17 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Observable } from 'rxjs/Observable';
-import { parse } from 'query-string';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/throttleTime';
 
-import Button from 'components/Button';
-import CoffeeData from 'components/CoffeeData';
-import Waves from 'components/Waves';
+import Button from '../Button';
+import CoffeeData from '../CoffeeData';
+import Waves from '../Waves';
 import * as Styled from './styles';
 
 class ProductView extends React.Component {
-  componentWillMount() {
+  state = {
+    option: {},
+    quantities: [1, 2, 3, 4, 5],
+    quantity: 1,
+    selectedInterval: '1',
+    selectedVariant: {},
+  };
+
+  componentDidMount() {
     this.setDefaultVariant(this.props);
     if (typeof window !== 'undefined') {
       this.keydown$ = Observable.fromEvent(window, 'keydown')
@@ -21,7 +28,7 @@ class ProductView extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setDefaultVariant(nextProps);
     this.setState({ quantity: 1 }); // go back to 1 quantity on product change
   }
@@ -32,19 +39,51 @@ class ProductView extends React.Component {
     }
   }
 
-  state = {
-    quantities: [1, 2, 3, 4, 5],
-    quantity: 1,
-    selectedInterval: '1',
-    selectedVariant: {},
-  };
+  get flavor() {
+    const { product } = this.props;
+
+    if (!product || !product.metafields.c_f || !product.metafields.c_f.color) {
+      return 'pink';
+    }
+    return product.metafields.c_f.color;
+  }
+
+  get subscriptionIntervals() {
+    return (
+      this.props.product.metafields.subscriptions.shipping_interval_frequency
+        .replace(/\s/g, '')
+        .split(',') || []
+    );
+  }
+
+  get isCoffee() {
+    if (!this.props.product) {
+      return false;
+    }
+    return ['coffee', 'coffee beans'].indexOf(this.props.product.productType.toLowerCase()) !== -1;
+  }
+
+  get shouldShowVariants() {
+    if (!this.props.product) {
+      return false;
+    }
+
+    return this.props.product.options.length > 0 && this.props.product.options[0].values.length > 1;
+  }
+
+  get shouldShowSubscriptions() {
+    return (
+      this.props.product &&
+      this.props.product.productType.toLowerCase().indexOf('subscription') >= 0
+    );
+  }
 
   addLineItem = e => {
     if (e) {
       e.preventDefault();
     }
 
-    let lineItem = {
+    const lineItem = {
       variantId: this.state.selectedVariant.id,
       quantity: this.state.quantity,
     };
@@ -75,30 +114,6 @@ class ProductView extends React.Component {
     this.props.history.push(this.props.returnTo);
   };
 
-  get flavor() {
-    const { product } = this.props;
-
-    if (!product || !product.metafields.c_f || !product.metafields.c_f.color) {
-      return 'pink';
-    }
-    return product.metafields.c_f.color;
-  }
-
-  get subscriptionIntervals() {
-    return (
-      this.props.product.metafields.subscriptions['shipping_interval_frequency']
-        .replace(/\s/g, '')
-        .split(',') || []
-    );
-  }
-
-  get isCoffee() {
-    if (!this.props.product) {
-      return false;
-    }
-    return ['coffee', 'coffee beans'].indexOf(this.props.product.productType.toLowerCase()) !== -1;
-  }
-
   isSelectedOption = ({ name, value }) => {
     if (!this.props.product || !this.state.selectedVariant) {
       return false;
@@ -121,75 +136,57 @@ class ProductView extends React.Component {
     }
 
     if (nextProps.product.variants.length === 1) {
-      return this.setState({ selectedVariant: nextProps.product.variants[0] });
+      const selectedVariant = nextProps.product.variants[0];
+      return this.setState({
+        selectedVariant,
+        option: this.mapOptions(selectedVariant.selectedOptions),
+      });
     }
 
-    const variantID = parse(window.location.search).variant;
+    const search = new URLSearchParams(window.location.search);
+    const variantID = search.get('variant');
     const selectedVariant =
       nextProps.product.variants.find(variant => variant.id === variantID) ||
       nextProps.product.variants[0];
 
-    this.setState({
-      selectedVariant: selectedVariant || nextProps.product.variants[0],
+    return this.setState({
+      selectedVariant,
+      option: this.mapOptions(selectedVariant.selectedOptions),
     });
   };
 
   setOption = (name, value) => {
-    function isShallowEqual(obj1, obj2) {
-      for (var key1 in obj1) {
-        if (!(key1 in obj2) || obj1[key1] !== obj2[key1]) {
-          return false;
+    this.setState(
+      ({ option }) => ({ option: { ...option, [name]: value } }),
+      () => {
+        const selectedVariant = this.props.product.variants.find(({ selectedOptions }) => {
+          const optionMap = this.mapOptions(selectedOptions);
+          let isMatching = true;
+          Object.entries(optionMap).forEach(([optionName, optionValue]) => {
+            if (this.state.option[optionName] !== optionValue) {
+              isMatching = false;
+            }
+          });
+          return isMatching;
+        });
+
+        if (!selectedVariant) {
+          return;
         }
+
+        const search = new URLSearchParams(window.location.search);
+        search.set('variant', selectedVariant.id);
+        this.props.history.replace(`${this.props.location.pathname}?${search.toString()}`);
       }
-
-      for (var key2 in obj2) {
-        if (!(key2 in obj1) || obj1[key2] !== obj2[key2]) {
-          return false;
-        }
-      }
-
-      return true;
-    }
-
-    const options = {
-      ...this.state.selectedOptions,
-      [name]: value,
-    };
-
-    const selectedVariant =
-      this.props.product.variants.find(variant =>
-        isShallowEqual(
-          options,
-          variant.selectedOptions.reduce((a, b) => ({ ...a, [b.name]: b.value }), {})
-        )
-      ) || this.props.product.variants[0];
-
-    this.setState({
-      selectedOptions: options,
-      selectedVariant,
-    });
-
-    this.props.history.replace(`${this.props.location.pathname}?variant=${selectedVariant.id}`);
+    );
   };
 
   setQuantity = quantity => this.setState({ quantity });
 
   setSelectedInterval = interval => this.setState({ selectedInterval: `${interval}` });
 
-  get shouldShowVariants() {
-    if (!this.props.product) {
-      return false;
-    }
-
-    return this.props.product.options.length > 0 && this.props.product.options[0].values.length > 1;
-  }
-
-  get shouldShowSubscriptions() {
-    return (
-      this.props.product &&
-      this.props.product.productType.toLowerCase().indexOf('subscription') >= 0
-    );
-  }
+  mapOptions = selectedOptions =>
+    selectedOptions.reduce((map, option) => ({ ...map, [option.name]: option.value }), {});
 
   render() {
     const { isShowing, product, returnTo } = this.props;
@@ -208,7 +205,7 @@ class ProductView extends React.Component {
               <Styled.Info>
                 <Styled.CoreInfo>
                   <Styled.Heading>{product.title}</Styled.Heading>
-                  {this.isCoffee && (
+                  {this.isCoffee && Array.isArray(product.tags) && (
                     <div>
                       <Styled.Subheading>Notes</Styled.Subheading>
                       <Styled.Notes>{product.tags.map(note => note.value).join(', ')}</Styled.Notes>
@@ -240,7 +237,7 @@ class ProductView extends React.Component {
                                 value: value.value,
                               })}
                               onChange={() => this.setOption(option.name, value.value)}
-                              onClickange={() => this.setOption(option.name, value.value)}
+                              onClick={() => this.setOption(option.name, value.value)}
                               value={value.value}
                             />
                             <label htmlFor={`${option.id}-${index}`}>{value.value}</label>
@@ -253,22 +250,23 @@ class ProductView extends React.Component {
                   <div>
                     <Styled.Subheading>Ship Every:</Styled.Subheading>
                     <Styled.OptionList>
-                      {this.subscriptionIntervals.map(interval => (
-                        <Styled.Option key={`week-${interval}`}>
-                          <input
-                            type="radio"
-                            id={`week-${interval}`}
-                            name="subscription-interval"
-                            defaultChecked={interval === this.state.selectedInterval}
-                            onChange={() => this.setSelectedInterval(interval)}
-                            value={interval}
-                          />
-                          <label htmlFor={`week-${interval}`}>
-                            {interval} Week
-                            {interval !== '1' ? 's' : ''}
-                          </label>
-                        </Styled.Option>
-                      ))}
+                      {Array.isArray(this.subscriptionIntervals) &&
+                        this.subscriptionIntervals.map(interval => (
+                          <Styled.Option key={`week-${interval}`}>
+                            <input
+                              type="radio"
+                              id={`week-${interval}`}
+                              name="subscription-interval"
+                              defaultChecked={interval === this.state.selectedInterval}
+                              onChange={() => this.setSelectedInterval(interval)}
+                              value={interval}
+                            />
+                            <label htmlFor={`week-${interval}`}>
+                              {interval} Week
+                              {interval !== '1' ? 's' : ''}
+                            </label>
+                          </Styled.Option>
+                        ))}
                     </Styled.OptionList>
                   </div>
                 )}

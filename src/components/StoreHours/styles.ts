@@ -1,9 +1,10 @@
-import styled from 'react-emotion';
-import { ifProp } from 'styled-tools';
-import { color, font } from 'lib/theme';
+import styled from '@emotion/styled';
+import { color, font } from '../../lib/theme';
 
 const colorState = {
   Open: `rgb(${color.blue})`,
+  'Opening Soon': `rgb(${color.gray})`,
+  Closed: `rgb(${color.gray})`,
   'Closing Soon': `rgb(${color.red})`,
 };
 
@@ -41,7 +42,8 @@ export const Heading = styled.h1`
 `;
 
 export const Hours = styled.dl`
-  color: ${ifProp({ isToday: true }, `rgb(${color.black})`, `rgb(${color.gray})`)};
+  color: ${({ isToday }: { isToday: boolean }) =>
+    isToday === true ? `rgb(${color.black})` : `rgb(${color.gray})`};
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -93,7 +95,7 @@ export const Range = styled.dd`
 `;
 
 export const Status = styled.h3`
-  color: ${props => colorState[props.status] || `rgb(${color.gray})`};
+  color: ${({ status }: { status: keyof typeof colorState }) => colorState[status]};
   font-family: ${font.kaufmann};
   font-size: ${font.up3};
   line-height: 1;
