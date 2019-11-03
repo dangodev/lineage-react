@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import * as Styled from './styles';
 
 const title: { [key: string]: string } = {
+  altitude: 'Altitude',
   additional_notes: 'Additional Notes',
   annual_production: 'Annual Production',
   country: 'Country',
@@ -15,6 +16,7 @@ const title: { [key: string]: string } = {
   peak_flavor: 'Peak Flavor',
   processing_method: 'Processing Method',
   region: 'Region',
+  score: 'Score',
   seller: 'Industry Seller',
   size: 'Size',
   variety: 'Variety',

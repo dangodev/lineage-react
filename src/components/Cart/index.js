@@ -11,6 +11,7 @@ import CartItem from '../CartItem';
 import CartZero from '../CartZero';
 import FeaturedCartProduct from '../FeaturedCartProduct';
 import Waves from '../Waves';
+import { CSS_CART_OPEN } from '../../lib/constants';
 
 import * as Styled from './styles';
 
@@ -27,9 +28,9 @@ class Cart extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.isShowing(nextProps)) {
-      document.body.classList.add('is-cart-open');
+      document.body.classList.add(CSS_CART_OPEN);
     } else {
-      document.body.classList.remove('is-cart-open');
+      document.body.classList.remove(CSS_CART_OPEN);
     }
   }
 

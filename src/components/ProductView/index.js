@@ -12,6 +12,7 @@ import * as Styled from './styles';
 
 class ProductView extends React.Component {
   state = {
+    option: {},
     quantities: [1, 2, 3, 4, 5],
     quantity: 1,
     selectedInterval: '1',
@@ -135,7 +136,11 @@ class ProductView extends React.Component {
     }
 
     if (nextProps.product.variants.length === 1) {
-      return this.setState({ selectedVariant: nextProps.product.variants[0] });
+      const selectedVariant = nextProps.product.variants[0];
+      return this.setState({
+        selectedVariant,
+        option: this.mapOptions(selectedVariant.selectedOptions),
+      });
     }
 
     const search = new URLSearchParams(window.location.search);
@@ -145,51 +150,43 @@ class ProductView extends React.Component {
       nextProps.product.variants[0];
 
     return this.setState({
-      selectedVariant: selectedVariant || nextProps.product.variants[0],
+      selectedVariant,
+      option: this.mapOptions(selectedVariant.selectedOptions),
     });
   };
 
   setOption = (name, value) => {
-    function isShallowEqual(obj1, obj2) {
-      for (var key1 in obj1) {
-        if (!(key1 in obj2) || obj1[key1] !== obj2[key1]) {
-          return false;
+    this.setState(
+      ({ option }) => ({ option: { ...option, [name]: value } }),
+      () => {
+        const selectedVariant = this.props.product.variants.find(({ selectedOptions }) => {
+          const optionMap = this.mapOptions(selectedOptions);
+          let isMatching = true;
+          Object.entries(optionMap).forEach(([optionName, optionValue]) => {
+            if (this.state.option[optionName] !== optionValue) {
+              isMatching = false;
+            }
+          });
+          return isMatching;
+        });
+
+        if (!selectedVariant) {
+          return;
         }
+
+        const search = new URLSearchParams(window.location.search);
+        search.set('variant', selectedVariant.id);
+        this.props.history.replace(`${this.props.location.pathname}?${search.toString()}`);
       }
-
-      for (var key2 in obj2) {
-        if (!(key2 in obj1) || obj1[key2] !== obj2[key2]) {
-          return false;
-        }
-      }
-
-      return true;
-    }
-
-    const options = {
-      ...this.state.selectedOptions, // eslint-disable-line react/no-access-state-in-setstate
-      [name]: value,
-    };
-
-    const selectedVariant =
-      this.props.product.variants.find(variant =>
-        isShallowEqual(
-          options,
-          variant.selectedOptions.reduce((a, b) => ({ ...a, [b.name]: b.value }), {})
-        )
-      ) || this.props.product.variants[0];
-
-    this.setState({
-      selectedOptions: options,
-      selectedVariant,
-    });
-
-    this.props.history.replace(`${this.props.location.pathname}?variant=${selectedVariant.id}`);
+    );
   };
 
   setQuantity = quantity => this.setState({ quantity });
 
   setSelectedInterval = interval => this.setState({ selectedInterval: `${interval}` });
+
+  mapOptions = selectedOptions =>
+    selectedOptions.reduce((map, option) => ({ ...map, [option.name]: option.value }), {});
 
   render() {
     const { isShowing, product, returnTo } = this.props;
@@ -208,7 +205,7 @@ class ProductView extends React.Component {
               <Styled.Info>
                 <Styled.CoreInfo>
                   <Styled.Heading>{product.title}</Styled.Heading>
-                  {this.isCoffee && (
+                  {this.isCoffee && Array.isArray(product.tags) && (
                     <div>
                       <Styled.Subheading>Notes</Styled.Subheading>
                       <Styled.Notes>{product.tags.map(note => note.value).join(', ')}</Styled.Notes>
@@ -240,7 +237,7 @@ class ProductView extends React.Component {
                                 value: value.value,
                               })}
                               onChange={() => this.setOption(option.name, value.value)}
-                              onClickange={() => this.setOption(option.name, value.value)}
+                              onClick={() => this.setOption(option.name, value.value)}
                               value={value.value}
                             />
                             <label htmlFor={`${option.id}-${index}`}>{value.value}</label>
@@ -253,22 +250,23 @@ class ProductView extends React.Component {
                   <div>
                     <Styled.Subheading>Ship Every:</Styled.Subheading>
                     <Styled.OptionList>
-                      {this.subscriptionIntervals.map(interval => (
-                        <Styled.Option key={`week-${interval}`}>
-                          <input
-                            type="radio"
-                            id={`week-${interval}`}
-                            name="subscription-interval"
-                            defaultChecked={interval === this.state.selectedInterval}
-                            onChange={() => this.setSelectedInterval(interval)}
-                            value={interval}
-                          />
-                          <label htmlFor={`week-${interval}`}>
-                            {interval} Week
-                            {interval !== '1' ? 's' : ''}
-                          </label>
-                        </Styled.Option>
-                      ))}
+                      {Array.isArray(this.subscriptionIntervals) &&
+                        this.subscriptionIntervals.map(interval => (
+                          <Styled.Option key={`week-${interval}`}>
+                            <input
+                              type="radio"
+                              id={`week-${interval}`}
+                              name="subscription-interval"
+                              defaultChecked={interval === this.state.selectedInterval}
+                              onChange={() => this.setSelectedInterval(interval)}
+                              value={interval}
+                            />
+                            <label htmlFor={`week-${interval}`}>
+                              {interval} Week
+                              {interval !== '1' ? 's' : ''}
+                            </label>
+                          </Styled.Option>
+                        ))}
                     </Styled.OptionList>
                   </div>
                 )}

@@ -1,61 +1,19 @@
 {
   "metafields": [
     {
-      "id": 399243769,
-      "handle": "northern-italian-espresso",
-      "title": "431°",
-      "variants": [{ "id": 1040970625, "title": "Default Title" }],
+      "id": 1550844231716,
+      "handle": "ethiopia-giulietta",
+      "title": "Ethiopia Giulietta",
+      "variants": [{ "id": 12048901799972, "title": "Default Title" }],
       "metafields": {
         "c_f": {
-          "additional_notes": "On our trip to Mexico in April of 2017 we fell in love with the coffees of Mexico. The uniqueness coming from this country was so surprising. Every single coffee was so unique but on these community lots we would see such a trend of this underlying theme of chocolate, toffee and a very pleasant acidity that was sweet and soft. We are proud to present the next chapter of our 431 from Mexico.",
-          "altitude": "1200–1800",
-          "color": "green",
-          "country": "Chiapas, Mexico",
-          "processing_method": "Fully Washed",
-          "score": 98,
-          "variety": "Typica, Caturra, Catuai"
-        },
-        "subscriptions": {
-          "discount_percentage": "0E-10",
-          "discount_product_id": "6409488769",
-          "has_subscription": "True",
-          "is_subscription_only": "false",
-          "shipping_interval_frequency": "1,2,3,4",
-          "shipping_interval_unit_type": "Weeks",
-          "subscription_id": "9568"
-        }
-      }
-    },
-    {
-      "id": 215725408286,
-      "handle": "ethiopia-aricha",
-      "title": "Ethiopia Aricha",
-      "variants": [{ "id": 4156169355294, "title": "Default Title" }],
-      "metafields": {
-        "c_f": {
-          "altitude": "2000",
           "color": "white",
-          "country": "Yirgacheffe, Ethiopia",
-          "grower": "Small Holders",
-          "processing_method": "Dry processed",
-          "variety": "Native Heirloom Varietals"
-        },
-        "subscriptions": {}
-      }
-    },
-    {
-      "id": 399245693,
-      "handle": "modern-american",
-      "title": "Modern American",
-      "variants": [{ "id": 1040976949, "title": "Default Title" }],
-      "metafields": {
-        "c_f": {
-          "altitude": "1600-1900",
-          "color": "yellow",
-          "country": "Sidamo, Ethiopia",
-          "processing_method": "Washed",
-          "score": 95,
-          "variety": "Native Heirloom Varietals"
+          "country": "Gera, Limu, Ethiopia",
+          "elevation": "1933 - 2200m",
+          "farm": "Abana Coffee Estate",
+          "harvest": "Oct 2018-Jan 2019",
+          "processing_method": "Semi-Anaerobic fermentation, washed, and dried on raised beds",
+          "variety": "Heirloom"
         },
         "subscriptions": {
           "discount_percentage": "0E-10",
@@ -69,21 +27,119 @@
       }
     },
     {
-      "id": 215725408286,
-      "handle": "ethiopia-aricha",
-      "title": "Ethiopia Aricha",
-      "variants": [{ "id": 4156169355294, "title": "Default Title" }],
+      "id": 399245693,
+      "handle": "modern-american",
+      "title": "Modern American",
+      "variants": [{ "id": 1040976949, "title": "Default Title" }],
       "metafields": {
         "c_f": {
-          "altitude": "2000",
-          "color": "white",
-          "country": "Yirgacheffe, Ethiopia",
-          "grower": "Small Holders",
-          "processing_method": "Dry processed",
-          "variety": "Native Heirloom Varietals"
+          "color": "yellow",
+          "country": "Guji, Sidama, Ethiopia",
+          "elevation": "2000m",
+          "mill": "Bekele Roma Bunna",
+          "processing_method": "Washed",
+          "variety": "Heirloom"
         },
-        "subscriptions": {}
+        "subscriptions": {
+          "discount_percentage": "0E-10",
+          "discount_product_id": "6409488129",
+          "has_subscription": "True",
+          "is_subscription_only": "false",
+          "shipping_interval_frequency": "1,2,3,4",
+          "shipping_interval_unit_type": "Weeks",
+          "subscription_id": "9568"
+        }
       }
+    },
+    {
+      "id": 4319496306788,
+      "handle": "ethiopia-sulladjah",
+      "title": "Ethiopia Sulladjah (Dry)",
+      "variants": [{ "id": 31034539343972, "title": "Default Title" }],
+      "metafields": {
+        "c_f": {
+          "color": "white",
+          "country": "Gera, Limu, Ethiopia",
+          "elevation": "1933 - 2200m",
+          "farm": "Abana Coffee Estate",
+          "harvest": "Oct 2018-Jan 2019",
+          "processing_method": "Natural",
+          "variety": "Heirloom"
+        },
+        "subscriptions": {
+          "discount_percentage": "0E-10",
+          "discount_product_id": "6409488129",
+          "has_subscription": "True",
+          "is_subscription_only": "false",
+          "shipping_interval_frequency": "1,2,3,4",
+          "shipping_interval_unit_type": "Weeks",
+          "subscription_id": "9568"
+        }
+      }
+    },
+    {
+      "id": 4326132940900,
+      "handle": "kenya-kiandu",
+      "title": "Kenya Kiandu",
+      "variants": [{ "id": 31130628554852, "title": "Default Title" }],
+      "metafields": {
+        "c_f": {
+          "color": "white",
+          "country": "Nyeri, Kenya",
+          "elevation": "1650m",
+          "farm": "Kiandu Cooperative",
+          "harvest": "Nov 2018-Jan 2019",
+          "processing_method": "Extended Washed",
+          "variety": "SL28 and SL34"
+        },
+        "subscriptions": {
+          "discount_percentage": "0E-10",
+          "discount_product_id": "6409488129",
+          "has_subscription": "True",
+          "is_subscription_only": "false",
+          "shipping_interval_frequency": "1,2,3,4",
+          "shipping_interval_unit_type": "Weeks",
+          "subscription_id": "9568"
+        }
+      }
+    },
+    {
+      "id": 399243769,
+      "handle": "northern-italian-espresso",
+      "title": "431°",
+      "variants": [{ "id": 31050215719012, "title": "16oz" }],
+      "metafields": {
+        "c_f": {
+          "color": "green",
+          "country": "Guatemala 80%/ Brazil 20%",
+          "elevation": "1100–1800",
+          "farm": "Tehuya Estate/ Terra Alta Estate",
+          "grower": "Acatenango/ Minas Gerais",
+          "processing_method": "Fully Washed/ Pulped Natural with both lots dried on raised beds",
+          "region": "Acatenango/ Minas Gerais",
+          "variety": "Caturra, Bourbon/ IAC-125"
+        },
+        "subscriptions": {
+          "discount_percentage": "0E-10",
+          "discount_product_id": "6409488769",
+          "has_subscription": "True",
+          "is_subscription_only": "false",
+          "shipping_interval_frequency": "1,2,3,4",
+          "shipping_interval_unit_type": "Weeks",
+          "subscription_id": "9568"
+        }
+      }
+    },
+    {
+      "id": 1056981352484,
+      "handle": "lineage-gift-card",
+      "title": "Lineage Gift Card",
+      "variants": [
+        { "id": 9893914574884, "title": "$25" },
+        { "id": 9893920768036, "title": "$50" },
+        { "id": 9893920800804, "title": "$100" }
+      ],
+      "metafields": { "c_f": {}, "subscriptions": {} }
     },
     {
       "id": 395627593764,
@@ -93,32 +149,20 @@
       "metafields": { "c_f": {}, "subscriptions": {} }
     },
     {
-      "id": 395628609572,
-      "handle": "circle-logo-tee",
-      "title": "Circle Logo Tee",
-      "variants": [
-        { "id": 5078489071652, "title": "XS" },
-        { "id": 5078489137188, "title": "S" },
-        { "id": 5078489202724, "title": "M" },
-        { "id": 5078489235492, "title": "L" },
-        { "id": 5078489301028, "title": "XL" }
-      ],
-      "metafields": { "c_f": {}, "subscriptions": {} }
-    },
-    {
       "id": 399243769,
       "handle": "northern-italian-espresso",
       "title": "431°",
-      "variants": [{ "id": 1040970625, "title": "Default Title" }],
+      "variants": [{ "id": 31050215719012, "title": "16oz" }],
       "metafields": {
         "c_f": {
-          "additional_notes": "On our trip to Mexico in April of 2017 we fell in love with the coffees of Mexico. The uniqueness coming from this country was so surprising. Every single coffee was so unique but on these community lots we would see such a trend of this underlying theme of chocolate, toffee and a very pleasant acidity that was sweet and soft. We are proud to present the next chapter of our 431 from Mexico.",
-          "altitude": "1200–1800",
           "color": "green",
-          "country": "Chiapas, Mexico",
-          "processing_method": "Fully Washed",
-          "score": 98,
-          "variety": "Typica, Caturra, Catuai"
+          "country": "Guatemala 80%/ Brazil 20%",
+          "elevation": "1100–1800",
+          "farm": "Tehuya Estate/ Terra Alta Estate",
+          "grower": "Acatenango/ Minas Gerais",
+          "processing_method": "Fully Washed/ Pulped Natural with both lots dried on raised beds",
+          "region": "Acatenango/ Minas Gerais",
+          "variety": "Caturra, Bourbon/ IAC-125"
         },
         "subscriptions": {
           "discount_percentage": "0E-10",
@@ -146,6 +190,58 @@
           "shipping_interval_frequency": "1,2,3,4",
           "shipping_interval_unit_type": "Weeks",
           "subscription_id": "9570"
+        }
+      }
+    },
+    {
+      "id": 1531760738340,
+      "handle": "431-subscription",
+      "title": "431° Subscription",
+      "variants": [{ "id": 11975462092836, "title": "Default Title" }],
+      "metafields": {
+        "c_f": {
+          "color": "green",
+          "country": "Guatemala 80%/ Brazil 20%",
+          "elevation": "1100–1800",
+          "farm": "Tehuya Estate/ Terra Alta Estate",
+          "grower": "Acatenango/ Minas Gerais",
+          "processing_method": "Fully Washed/ Pulped Natural with both lots dried on raised beds",
+          "region": "Acatenango/ Minas Gerais",
+          "variety": "Caturra, Bourbon/ IAC-125"
+        },
+        "subscriptions": {
+          "discount_percentage": "0E-10",
+          "discount_product_id": "6409488769",
+          "has_subscription": "True",
+          "is_subscription_only": "false",
+          "shipping_interval_frequency": "1,2,3,4",
+          "shipping_interval_unit_type": "Weeks",
+          "subscription_id": "9568"
+        }
+      }
+    },
+    {
+      "id": 1531764375588,
+      "handle": "modern-american-subscription",
+      "title": "Modern American Subscription",
+      "variants": [{ "id": 11975480180772, "title": "Default Title" }],
+      "metafields": {
+        "c_f": {
+          "color": "yellow",
+          "country": "Cajamarca, Peru",
+          "elevation": "1600-2000m",
+          "farm": "El Guayacan ",
+          "processing_method": "Washed",
+          "variety": "Typica, Caturra, Bourbon"
+        },
+        "subscriptions": {
+          "discount_percentage": "0E-10",
+          "discount_product_id": "6409488129",
+          "has_subscription": "True",
+          "is_subscription_only": "false",
+          "shipping_interval_frequency": "1,2,3,4",
+          "shipping_interval_unit_type": "Weeks",
+          "subscription_id": "9568"
         }
       }
     }

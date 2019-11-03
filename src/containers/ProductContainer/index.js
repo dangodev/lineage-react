@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Meta from '../Meta';
 import Collection from '../../components/Collection';
 import ProductView from '../../components/ProductView';
+import { CSS_PRODUCT_SHOWING } from '../../lib/constants';
 
 class ProductContainer extends React.Component {
   state = {
@@ -71,7 +72,7 @@ class ProductContainer extends React.Component {
     if (!nextProps.allProducts.length || !nextProps.collections.length) return;
 
     if (nextProps.match.url === '/products') {
-      document.body.classList.add('is-product-showing');
+      document.body.classList.add(CSS_PRODUCT_SHOWING);
       this.transition('SELECT');
       const nextProduct = nextProps.allProducts.find(({ handle }) => handle === subroute);
       this.setState({ product: nextProduct });
@@ -84,7 +85,7 @@ class ProductContainer extends React.Component {
         });
       }
     } else if (nextProps.match.url === '/collections') {
-      document.body.classList.remove('is-product-showing');
+      document.body.classList.remove(CSS_PRODUCT_SHOWING);
       this.transition('CLOSE');
       this.setState({
         collection: nextProps.collections.find(({ handle }) => handle === subroute),
@@ -95,7 +96,7 @@ class ProductContainer extends React.Component {
         setTimeout(() => this.transition('SUCCESS'), 30);
       }
     } else {
-      document.body.classList.remove(IsShowing);
+      document.body.classList.remove(CSS_PRODUCT_SHOWING);
       this.transition('CLOSE');
       this.setState({ collection: undefined, product: undefined });
     }

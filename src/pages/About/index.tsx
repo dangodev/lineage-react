@@ -98,7 +98,7 @@ const About = () => (
     <Styled.Grid>
       {timeline.map(event => (
         <TimelineEvent
-          key={`${event.year}${event.month}`}
+          key={event.event}
           month={event.month}
           inBetween={event.inBetween ? true : undefined}
           year={event.year}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import hamburger from '../../assets/hamburger.svg';
 import logo from '../../assets/lineage.svg';
+import { CSS_MOBILE_MENU } from '../../lib/constants';
 
 import * as Styled from './styles';
 
@@ -34,11 +35,11 @@ class Nav extends React.Component {
   };
 
   restrictScroll() {
-    document.body.classList.add('is-mobile-menu-open');
+    document.body.classList.add(CSS_MOBILE_MENU);
   }
 
   relaxScroll() {
-    document.body.classList.remove('is-mobile-menu-open');
+    document.body.classList.remove(CSS_MOBILE_MENU);
   }
 
   render() {

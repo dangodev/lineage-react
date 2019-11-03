@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as Styled from './styles';
 
 const CartItem = ({ lineItem, ...props }) => {
-  if (!lineItem) {
+  if (!lineItem || !lineItem.variant) {
     return null;
   }
 
@@ -56,9 +56,10 @@ const CartItem = ({ lineItem, ...props }) => {
         </Styled.Heading>
         <Styled.ProductType>{lineItem.productType}</Styled.ProductType>
         <Styled.Description>
-          {(productType === 'coffee' || productType === 'coffee beans') && (
-            <Styled.Notes>{lineItem.tags.map(note => note.value).join(' / ')}</Styled.Notes>
-          )}
+          {(productType === 'coffee' || productType === 'coffee beans') &&
+            Array.isArray(lineItem.tags) && (
+              <Styled.Notes>{lineItem.tags.map(note => note.value).join(' / ')}</Styled.Notes>
+            )}
         </Styled.Description>
         <Styled.Price>${lineItem.variant.price}</Styled.Price>
       </Styled.ProductInfo>

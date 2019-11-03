@@ -19,29 +19,27 @@ const ProductCard = props => {
       </Styled.Image>
       <Styled.Inner>
         <Styled.Heading>{props.product.title}</Styled.Heading>
-        {(productType === 'coffee' || productType === 'coffee beans') &&
-          country &&
-          altitude && (
-            <Styled.Meta>
-              {country} / {altitude}m
-            </Styled.Meta>
-          )}
+        {(productType === 'coffee' || productType === 'coffee beans') && country && altitude && (
+          <Styled.Meta>
+            {country} / {altitude}m
+          </Styled.Meta>
+        )}
         {(productType === 'coffee' || productType === 'coffee beans') && [
           <Styled.NoteHeading key="notes-heading">Tasting Notes</Styled.NoteHeading>,
           <Styled.NoteList key="notes">
-            {props.product.tags.map(note => (
-              <Styled.Note key={note.value}>{note.value}</Styled.Note>
-            ))}
+            {Array.isArray(props.product.tags) &&
+              props.product.tags.map(note => (
+                <Styled.Note key={note.value}>{note.value}</Styled.Note>
+              ))}
           </Styled.NoteList>,
         ]}
-        {productType !== 'coffee' &&
-          productType !== 'coffee beans' && (
-            <Styled.Content
-              dangerouslySetInnerHTML={{
-                __html: props.product.descriptionHtml,
-              }}
-            />
-          )}
+        {productType !== 'coffee' && productType !== 'coffee beans' && (
+          <Styled.Content
+            dangerouslySetInnerHTML={{
+              __html: props.product.descriptionHtml,
+            }}
+          />
+        )}
         <Styled.Colophon>
           <Styled.Price>${props.product.variants[0].price}</Styled.Price>
           <Styled.HoverLink>View</Styled.HoverLink>
