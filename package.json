@@ -54,7 +54,7 @@
     "@types/react-helmet": "^5.0.14",
     "@types/react-router": "^5.1.2",
     "@types/react-router-dom": "^5.1.2",
-    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
