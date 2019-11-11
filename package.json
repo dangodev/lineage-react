@@ -39,7 +39,7 @@
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.1.2",
     "rxjs": "^5.5.12",
     "shopify-buy": "^1.9.1",
     "styled-tools": "^1.5.2",
