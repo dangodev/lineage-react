@@ -15,7 +15,7 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || [] %>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <% if (process.env.NODE_ENV === 'production') { %>
-    <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" />
+    <link rel="shortcut icon" href="{{ 'lineage.png' | asset_url }}" />
     <title>
       {{ page_title }}
       {% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} /
