@@ -101,7 +101,7 @@ const StoreHours: React.FunctionComponent = () => {
               <Styled.Status status={status}>{status}</Styled.Status>
               {status !== 'Opening Soon' && (
                 <div>
-                  <Styled.Hours isToday={day > 1 && day < 6}>
+                  <Styled.Hours isToday={day >= 1 && day <= 5}>
                     <Styled.Days>M–F</Styled.Days>
                     <Styled.Range>
                       {format(location.militaryHours[1][0])} –{' '}
