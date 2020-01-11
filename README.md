@@ -30,41 +30,17 @@ Chrome (stable)._
 
 # Editing
 
-## Metafields
+## Coffee Notes
 
-This site makes use of Shopify’s native metafields, a dark and secret API.
+This site makes use of Shopify’s native metafields, a dark and secret API. Under “more actions” you
+should see a **Edit Metafields** button on all products:
 
-### Shopify Users
+<p align="center"><img src="./.github/edit-metafields.png" width="612" /></p>
 
-For Shopify users, the best way to set metafields per-product is using the [Custom Fields Chrome
-Extension][custom-fields-chrome]. Navigate to the product or page to edit, and click the extension
-in Chrome to load the metafields.
+You’ll see many metafields that don’t pertain to coffee notes. Scroll down until you see **Namespace
+`c_f`** fields like `country`, `processing_method`,`variety`,`color`, etc.
 
-![](./docs/custom-fields.png)
-
-### Theme Developers
-
-For web devs, the easiest way to set custom fields is using the [Shopify FD Dashboard Tool for
-Chrome][fd-dashboard-chrome].
-
-To manage the fields, navigate to **Settings > General** and enable the extension. You should see a
-“Metafields” pane appear.
-
-![](./docs/fd-dashboard.png)
-
-- **Namespace** must be `c_f`. Nothing else will display for the Custom Fields tool.
-- **Key** can be any snake_case name you’d like
-- **Value** should consist of tags + description of the field (e.g.: `[p]Choose a color` is a field
-  with instructions “Choose a color” that’s only available for `[p]`roducts)
-
-| Name   | Description                       |
-| :----- | :-------------------------------- |
-| `[a]`  | limit display to articles only    |
-| `[c]`  | limit display to collections only |
-| `[g]`  | limit display to pages only       |
-| `[p]`  | limit display to products only    |
-| `[_c]` | mark as a collection field        |
-| `[_t]` | mark as a textarea                |
+For creating new coffees, copy over the `c_f`-namespaced fields from another coffee product.
 
 # Deployment
 

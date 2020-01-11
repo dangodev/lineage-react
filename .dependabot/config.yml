@@ -1,0 +1,8 @@
+version: 1
+
+update_configs:
+  - package_manager: 'javascript'
+    ignored_updates:
+      - match:
+          dependency_name: 'react-router' # This breaks the cart
+          version_requirement: '*'

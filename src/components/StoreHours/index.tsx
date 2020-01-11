@@ -23,14 +23,30 @@ const locations: Location[] = [
     name: 'East End Market',
     address: '3201 Corrine Dr',
     opening: '2013-09-01',
-    militaryHours: [[8, 18], [8, 19], [8, 19], [8, 19], [8, 19], [8, 19], [8, 19]],
+    militaryHours: [
+      [8, 18],
+      [8, 19],
+      [8, 19],
+      [8, 19],
+      [8, 19],
+      [8, 19],
+      [8, 19],
+    ],
     tz: 5, // EST
   },
   {
     name: 'Mills/50',
     address: '1011 E Colonial Dr',
     opening: '2017-12-02',
-    militaryHours: [[7, 21], [7, 21], [7, 21], [7, 21], [7, 21], [7, 21], [7, 21]],
+    militaryHours: [
+      [7, 19],
+      [7, 19],
+      [7, 19],
+      [7, 19],
+      [7, 19],
+      [7, 19],
+      [7, 19],
+    ],
     tz: 5, // EST
   },
 ];
